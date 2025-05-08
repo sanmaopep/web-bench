@@ -1,0 +1,70 @@
+.room-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.room-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.room-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.room-creator {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 12px 0;
+}
+
+.room-status {
+  font-size: 14px;
+  margin: 0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.status-waiting {
+  background-color: #e8f4fd;
+  color: #2d88dd;
+}
+
+.status-in-game {
+  background-color: #e9f7ef;
+  color: #27ae60;
+}
+
+.status-finished {
+  background-color: #f8f9fa;
+  color: #6c757d;
+}
+
+.room-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.join-room-btn {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.join-room-btn:hover {
+  background-color: #3a7bc8;
+}

@@ -1,0 +1,251 @@
+- id: task-1
+  date: 20250310
+  level: easy
+  description: |
+    1) Create components/Header.tsx that displays 'Hello Blog' at the top of the page with appealing background color.
+    2) Create components/Main.tsx where content is aligned at the top left and fills the remaining space. 
+    3) Develop components/Blog.tsx that accepts 'title' and 'detail' as props. Display mock blog data in Main.tsx using this Blog component with the mock data: { title: 'Morning', detail: 'Morning My Friends' }.
+    3) Render Header.tsx And Main.tsx in App.tsx 
+    4) The classname of title in Blog.tsx is 'blog-title', the width of blog-title is 'fit-content', fontSize is 24px
+
+- id: task-2
+  date: 20250310
+  level: easy
+  description: |
+    1) Create a appealing BlogList component that accepts an array of blogs as props and displays the titles in div elements with the className 'list-item'.
+    2) Create models/blog.ts, use @reduxjs/toolkit to create a slice with name 'blog', include this slice in store.tsx, initialState is: 
+    ```
+    { blogs: [{title: 'Morning', detail: 'Morning My Friends'}, {title: 'Travel', detail: 'I love traveling!'}] }
+    ```
+    2) In Main.tsx, render BlogList with the data from the store (by using useSelector to pick the data from the store)
+    3) Position BlogList on the left side of Main.tsx with a width of 300px; each blog item should have a height of 40px and a border-box layout. 
+    4) Only One Blog.tsx occupies the remaining space of Main.tsx. The content of Blog.tsx should be the first item of blog list.
+
+- id: task-3
+  date: 20250310
+  level: easy
+  description: |
+    1) Make blog items in BlogList selectable. When an item in BlogList is selected, highlight it with appealing style and display its content in the Blog Component. 
+    2) Set 'Morning' as the default selected blog. 
+    3) Beautify the List without changing the size of List Item
+    4) Use redux to manage the selected blog
+
+- id: task-4
+  date: 20250310
+  level: easy
+  description: |
+    1) Create a BlogForm component as a appealing Modal with the title 'Create Blog'. 
+    2) Use redux to manage the 'formVisible' state. When formVisible is true, the BlogForm should be displayed, otherwise, it should be hidden.
+    3) Add an 'Add Blog' appealing blue button in the right of Header.tsx to toggle the BlogForm's visibility. 
+    4) Place a close button (.close-btn) with 'x' in the top right of BlogForm to hide it.
+    5) Place the BlogForm component in App.tsx.
+
+- id: task-5
+  date: 20250310
+  level: easy
+  description: |
+    1) An API is prepared, here is the docs of API:
+    GET /api/blogs
+    <response_definition>
+      interface Response {
+        blogs: { title: string; detail:string; }[];
+      }
+    </response_definition>
+    <response_example>
+    {
+        blogs: [
+          { title: 'XXX', detail: 'XXX' },
+        ],
+      }
+    </response_example>
+    2) In models/blog.ts, use createAsyncThunk from @reduxjs/toolkit to fetch data from API and update the Blog List data in store.
+    3) When App.tsx mounted, dispatch action to start fetching blogs.
+    4) When API is fetching, show 'Blog is loading' in App.tsx
+    5) Notice: When Initial Blog is fetching, Header is always visible but 'Add Blog' button should be disabled.
+
+- id: task-6
+  date: 20250310
+  level: moderate
+  description: |
+    1) Add appealing Form with label (label[htmlFor="title"], label[htmlFor="detail"]) in BlogForm to input title and detail; BlogForm can be submitted by button (.submit-btn); 
+    2) When submitted, append this Blog to BlogList, and set this Blog as selected.
+    3) Use Redux to append form data to blogs. 
+    4) Check title duplication when submit clicked. When title is duplicated, stop submitting and show a red border around the input field.
+    5) Add a span(.blog-list-len) near 'Hello Blog' in Header.tsx to show the length of blogs
+
+- id: task-7
+  date: 20250310
+  level: moderate
+  description: |
+    1) Add 'Delete' appealing red button (.delete-btn) in top&right of Blog.tsx to delete the selected blog.
+    2) When blog deleted, set the first blog in blogs as selected.
+    3) If blogs is empty, shows 'No Blog' instead.
+
+- id: task-8
+  date: 20250310
+  level: moderate
+  description: |
+    1) Add 'Edit' appealing blue button (.edit-btn) in top&right of Blog.tsx. 
+    2) When Edit clicked, toggle BlogForm to edit the content of selected Blog. The Title of BlogForm is 'Edit Blog' in this case. When submitted, update selected Blog. 
+    3) Use Redux to manage edit logic.
+
+- id: task-9
+  date: 20250310
+  level: moderate
+  description: |
+    1) Here is Search API:
+    GET /api/search_blogs?keywords=XXX
+    <response_definition>
+      interface Response {
+        // blogs is the search result
+        blogs: { title: string; detail:string; }[];
+      }
+    </response_definition>
+    <response_example>
+    {
+        blogs: [
+          { title: 'XXX', detail: 'XXX' },
+        ],
+      }
+    </response_example>
+    2) Add a Search.tsx(width: 200px, border-box) component above BlogList.tsx in Main.tsx. 
+    3) Include an input field with the placeholder 'Search Blogs'. The keywords in the input field are used to FILTER blogs by using new Search API.
+    4) Use Redux to request Search API and manage filtered blogs. Notice: Do not change the blogs in store.
+    5) Hint: When input field is typed fast, make sure the latest search result is displayed.
+    Constraint: DO NOT USE any third-party packages, ONLY React/Redux APIs can be used to optimize performance.
+
+- id: task-10
+  date: 20250310
+  level: moderate
+  description: |
+    1) Add models/route.ts to control the Route Logic
+    The definition of state is:
+    ```
+    interface RouteState {
+      currentRoute: string;
+    }
+    ```
+    The initial state of route will be the pathname of the current page.
+    2) Write middleware/route.ts, listen to browser history change, and update the currentRoute in store.
+    3) When path is '/', shows Main.tsx, when path is '/login', shows pages/Login.tsx. Header is visible for every page.
+    4) Render <h1>User Login</h1> in components/Login.tsx. Add Button with text '🔑' in the right of Header.tsx, when clicked, go to '/login'.
+    Constraint: DO NOT USE any third-party packages, ONLY React/Redux APIs can be used to optimize performance.
+
+- id: task-11
+  date: 20250310
+  level: chanllenging
+  description: |
+    1) Add a button with the text '🔀' in Header to append 100,000 blogs to BlogList at one time. Each blog should have a title formatted in regex 'RandomBlog-[\\d]{12}', digits in title is random. 
+    2) Ensure the page will not be stuck when 100000 blogs are appended. 
+    Constraint: DO NOT USE any third-party packages, ONLY React/Redux APIs can be used to optimize performance.
+
+- id: task-12
+  date: 20250310
+  level: chanllenging
+  description: |
+    1) Enable Markdown text input for blog details. Preview the Markdown in Blog.tsx. 
+    2) Develop a utility to reuse Markdown-related logic. 
+    3) Prevent XSS attacks. 
+    Constraint: DO NOT use any third-party packages; ONLY React/Redux APIs are permitted.
+
+- id: task-13
+  date: 20250310
+  level: chanllenging
+  description: |
+    Implement user login, logout, and display blog poster's username.
+
+     1) Login API:
+    POST /api/login
+    Request: { username: string, password: string }
+    Response: { success: boolean }
+    2) On the /login page, add a LoginForm with labels(label[htmlFor="username"], label[htmlFor="password"]), and a .login-submit-btn to submit the form via the Login API.
+    3) Display the user's username in Header.tsx with the class '.username'.
+    4) Show the blog author's username with the class '.blog-author'. If blog has no author, display 'Anonymous'.
+    5) Add a '👋' Logout button (class '.logout-btn') next to the username in Header.tsx. Clicking it logs the user out.
+    6) Use Redux to manage user states.
+    Constraint: DO NOT use any third-party packages; ONLY React/Redux APIs are permitted.
+
+- id: task-14
+  date: 20250310
+  level: chanllenging
+  description: |
+    Implement blog comment feature:
+    1) Display commenter's username with class '.comment-author' and text with '.comment-text'.
+    2) Add a CommentForm with a '.comment-input' textarea and a '.comment-submit-btn' below each blog.
+    3) Use Redux to manage comments.
+    4) Add undo functionality via Ctrl+Z (Windows/Linux) or Command+Z (Mac) to remove the last comment.
+    Constraint: DO NOT use any third-party packages; ONLY React/Redux APIs are permitted.
+
+- id: task-15
+  date: 20250310
+  level: chanllenging
+  description: |
+    Write a Gomoku chess game in route: '/game'
+    1) Add a button with the text '🎮' in Header, when clicked, jump to new page '/game'
+    2) chess board is 15*15, there is black chess and white chess, black chess first 
+    3) Add the className for important element: white chess(.chess-white), black chess(.chess-black), position chess can be clicked to drop follow regex: .chess-pos-\\d{1,2}-d\\{1,2}. 
+    4) show 'White's Turn' and 'Black'Turn' to shw current player 
+    5) show 'White Wins!' and 'Black Wins!'.
+    6) Use redux to manage the game logic. Beautify this game 
+    Constraint: DO NOT use any third-party packages; ONLY React/Redux APIs are permitted.
+
+- id: task-16
+  date: 20250310
+  level: chanllenging
+  description: |
+    Enhance the Gomoku game with multi-step undo functionality.
+    1) Implement keyboard shortcut (Ctrl+Z on Windows/Linux or Command+Z on Mac) to trigger the undo action.
+    2) Allow multiple consecutive undos to revert the game state to any previous point.
+    3) Add a move history display with className '.move-history' showing all moves in the format "White: (x,y)" or "Black: (x,y)".
+    4) Each history item should have className '.history-item'.
+    Constraint: DO NOT use any third-party packages; ONLY React/Redux APIs are permitted; Use redux to manage the logic;
+
+- id: task-17
+  date: 20250310
+  level: chanllenging
+  description: |
+    Implement a recording and replay system for Gomoku games.
+    1) Every games will be auto recorded, and can be replayed by play button (.replay-play-btn) after the game is finished. 
+    2) Add play/pause button (className '.replay-play-btn', '.replay-pause-btn') and a slider (className '.replay-slider') to navigate through game moves.
+    3) When replaying, show the current move number with className '.current-move'. 
+    4) There is an interval of 1000 ms between each move.
+    Constraint: DO NOT use any third-party packages; ONLY React/Redux APIs are permitted; Use redux to manage the logic;
+
+- id: task-18
+  date: 20250310
+  level: chanllenging
+  description: |
+    Create functionality to share Gomoku games as blog posts.
+    1) Shows the "Share to Blog" button with className '.share-to-blog-btn' in the Gomoku game after the game is finished.
+    2) When clicked, open a modal form (className '.share-modal') with title input (className '.title-input'), description input (className '.description-input'), submit button (className '.share-submit').
+    Go to home page ('/') after submitted.
+    3) In Blog Detail, detect if a blog contains a Gomoku game recording and display a "Replay Game" button (className '.blog-replay-btn').
+    4) When the replay button is clicked, show a modal (className '.blog-replay-modal') with the full game replay interface.
+    5) The replay interface should include the start play button (className '.blog-replay-start-play'), showing the current move number with className '.current-move'. There is an interval of 1000 ms between each move. 
+    Constraint: DO NOT use any third-party packages; ONLY React/Redux APIs are permitted; Use redux to manage the logic.
+
+- id: task-19
+  date: 20250312
+  level: chanllenging
+  description: |
+    Add new page '/rooms':
+    1) Add a button with the text '🚪' in Header, when clicked, jump to new page '/rooms'
+    2) Add a "Create Room" button with className '.create-room-btn' that opens a room creation form.
+    3) The room creation form should include a labeled input field for room name ("Room Name") and a "Create" button to submit the form and create a new game room with a unique ID. Don't enter the room instantly.
+    4) Each room should be displayed as a card with className '.room-card' showing room name, creator's username, and current status.
+    5) Sync room status between all open tabs/windows.
+    Constraint: DO NOT use any third-party packages; ONLY React/Redux APIs are permitted; Use redux to manage the state and sync logic.
+
+- id: task-20
+  date: 20250310
+  level: chanllenging
+  description: |
+    Implement a multi-user chat system based on rooms
+    1) When a user clicks on a chat room card (with className '.room-card'), navigate to '/chat/:roomId' route.
+    2) The chat room page ('/chat/:roomId') contains a message list (className '.message-list'), status display (in '.room-status'), and participant information (display all participants' usernames in '.participant-list').
+    3) Implement message sending and receiving functionality, including a message input box (className '.message-input') and a send button (className '.send-button').
+    4) Each message (className .message) should contains the sender's information (className '.message-sender').
+    5) If the user enters the chat room, add this user to .participant-list.
+    6) User will send heartbeat to check if user is in chat room, if the user is not active for 2000ms, the user will be removed from .participant-list.
+    7) Sync chat room status, messages, and user connection status between all open tabs/windows.
+    Constraint: DO NOT use any third-party packages; ONLY React/Redux APIs are permitted; Use redux to manage the logic.
