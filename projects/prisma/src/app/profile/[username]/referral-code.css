@@ -1,0 +1,84 @@
+.referral-section {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px dashed #4CAF50;
+}
+
+.referral-title {
+  font-size: 1.3rem;
+  color: #4CAF50;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.referral-code-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.referral-code-label {
+  font-weight: 600;
+  color: #555;
+  margin-right: 0.5rem;
+}
+
+.referral-code {
+  padding: 0.5rem 1rem;
+  background-color: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  border-radius: 4px;
+  font-weight: 700;
+  color: #2e7d32;
+  font-family: monospace;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.copy-referral-code {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.copy-referral-code:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+.copy-referral-code:active {
+  transform: translateY(0);
+}
+
+.referral-rules {
+  background-color: #fff8e1;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #ff6f00;
+  border-left: 4px solid #ffc107;
+  margin-top: 1rem;
+}
+
+@media (max-width: 480px) {
+  .referral-code-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .copy-referral-code {
+    width: 100%;
+    text-align: center;
+  }
+}

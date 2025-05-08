@@ -1,0 +1,220 @@
+<link rel="stylesheet" href="/public/css/admin.css">
+<link rel="stylesheet" href="/public/css/order.css">
+
+<div class="admin-container">
+  <div class="admin-header">
+    <h1 class="admin-title">Order Management</h1>
+    <div class="admin-navigation">
+      <a href="/admin/products" class="admin-nav-link">Manage Products</a>
+      <a href="/admin/users" class="admin-nav-link">Manage Users</a>
+      <a href="/" class="admin-nav-link">Back to Home</a>
+    </div>
+  </div>
+
+  <div id="adminOrdersContainer">
+    <div id="ordersLoading" class="orders-loading">Loading orders...</div>
+    <div id="ordersList" class="admin-orders-list" style="display: none;">
+      <!-- Orders will be loaded here -->
+    </div>
+    <div id="noOrders" class="no-orders" style="display: none;">
+      <h2>No orders found in the system</h2>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const response = await fetch('/api/admin/orders');
+      const data = await response.json();
+      
+      const loadingElement = document.getElementById('ordersLoading');
+      const listElement = document.getElementById('ordersList');
+      const noOrdersElement = document.getElementById('noOrders');
+      
+      if (data.success && data.orders && data.orders.length > 0) {
+        // Sort orders by date (newest first)
+        const sortedOrders = data.orders.sort((a, b) => {
+          return new Date(b.created_at) - new Date(a.created_at);
+        });
+        
+        sortedOrders.forEach(order => {
+          const orderElement = document.createElement('div');
+          orderElement.className = 'order-card admin-order-card';
+          orderElement.id = `admin_order_${order.id}`;
+          
+          const date = new Date(order.created_at).toLocaleDateString();
+          
+          let actionButtons = '';
+          if (order.status === 'Refund Reviewing') {
+            actionButtons = `<button class="pass-refund-review-button" data-order-id="${order.id}">Pass Refund</button>`;
+          }
+          
+          orderElement.innerHTML = `
+            <div class="order-header">
+              <div class="order-number">Order #${order.id}</div>
+              <div class="order-date">${date}</div>
+            </div>
+            <div class="order-body">
+              <div class="order-info-row">
+                <span class="order-label">Customer:</span>
+                <span class="order-value">${order.username}</span>
+              </div>
+              <div class="order-info-row">
+                <span class="order-label">Status:</span>
+                <span class="order-value order-status-${order.status.replace(/\s+/g, '-').toLowerCase()}">${order.status}</span>
+              </div>
+              <div class="order-info-row">
+                <span class="order-label">Total:</span>
+                <span class="order-value order-total">$${order.total_price.toFixed(2)}</span>
+              </div>
+            </div>
+            <div class="order-footer">
+              <a href="/order/${order.id}" class="view-order-btn">View Details</a>
+              ${actionButtons}
+            </div>
+          `;
+          
+          listElement.appendChild(orderElement);
+        });
+        
+        // Add event listeners to pass refund buttons
+        document.querySelectorAll('.pass-refund-review-button').forEach(button => {
+          button.addEventListener('click', async () => {
+            const orderId = button.getAttribute('data-order-id');
+            
+            try {
+              button.disabled = true;
+              button.textContent = 'Processing...';
+              
+              const response = await fetch(`/api/orders/${orderId}/process-refund`, {
+                method: 'POST'
+              });
+              
+              const data = await response.json();
+              
+              if (data.success) {
+                // Update the order status display
+                const orderElement = document.getElementById(`admin_order_${orderId}`);
+                const statusElement = orderElement.querySelector('.order-status-refund-reviewing');
+                
+                if (statusElement) {
+                  statusElement.textContent = 'Refund Passed';
+                  statusElement.className = 'order-value order-status-refund-passed';
+                }
+                
+                // Remove the refund button
+                button.remove();
+                
+                alert('Refund has been processed successfully!');
+              } else {
+                alert(data.message || 'Failed to process refund');
+                button.disabled = false;
+                button.textContent = 'Pass Refund';
+              }
+            } catch (error) {
+              console.error('Error processing refund:', error);
+              alert('An error occurred while processing the refund');
+              button.disabled = false;
+              button.textContent = 'Pass Refund';
+            }
+          });
+        });
+        
+        loadingElement.style.display = 'none';
+        listElement.style.display = 'block';
+      } else {
+        loadingElement.style.display = 'none';
+        noOrdersElement.style.display = 'block';
+      }
+    } catch (error) {
+      console.error('Error loading orders:', error);
+      document.getElementById('ordersLoading').style.display = 'none';
+      document.getElementById('noOrders').style.display = 'block';
+    }
+  });
+</script>
+
+<style>
+  .admin-orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .admin-order-card {
+    cursor: default;
+  }
+  
+  .admin-order-card .order-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .order-info-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  
+  .order-info-row:last-child {
+    margin-bottom: 0;
+  }
+  
+  .order-label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .order-status-pending-payment {
+    color: #f39c12;
+  }
+  
+  .order-status-finished {
+    color: #27ae60;
+  }
+  
+  .order-status-failed {
+    color: #e74c3c;
+  }
+  
+  .order-status-refund-reviewing {
+    color: #3498db;
+  }
+  
+  .order-status-refund-passed {
+    color: #9b59b6;
+  }
+  
+  .order-total {
+    font-weight: bold;
+    color: #4a89dc;
+  }
+  
+  .pass-refund-review-button {
+    background-color: #9b59b6;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .pass-refund-review-button:hover {
+    background-color: #8e44ad;
+  }
+  
+  .pass-refund-review-button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+  }
+  
+  .order-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+</style>

@@ -1,0 +1,225 @@
+.order-detail-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.order-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 1rem;
+}
+
+.order-detail-header h1 {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.order-status {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+}
+
+.order-status.pending {
+  color: #ff9800;
+  background-color: rgba(255, 152, 0, 0.1);
+}
+
+.order-status.paid {
+  color: #4CAF50;
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.order-status.finished {
+  color: #4CAF50;
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.order-status.cancelled {
+  color: #f44336;
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.order-status.failed {
+  color: #f44336;
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.order-status.refund-reviewing {
+  color: #2196F3;
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+.order-status.refund-passed {
+  color: #9C27B0;
+  background-color: rgba(156, 39, 176, 0.1);
+}
+
+.order-products-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.order-products-table th,
+.order-products-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.order-products-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.order-products-table tr:last-child td {
+  border-bottom: none;
+}
+
+.order-product-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.order-summary {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.order-summary-item:last-child {
+  margin-bottom: 0;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.payment-controls {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.pay-my-order {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pay-my-order:hover {
+  background-color: #f57c00;
+  transform: translateY(-2px);
+}
+
+.pay-my-order:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.refund-button {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.refund-button:hover {
+  background-color: #1976D2;
+  transform: translateY(-2px);
+}
+
+.refund-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.back-to-orders {
+  display: inline-block;
+  margin-top: 2rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.back-to-orders:hover {
+  background-color: #388E3C;
+}
+
+.order-empty {
+  text-align: center;
+  padding: 3rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.order-empty h2 {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.order-loading {
+  text-align: center;
+  padding: 3rem;
+}
+
+.payment-error {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.payment-success {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}

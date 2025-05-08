@@ -1,0 +1,214 @@
+.refund-button {
+  background-color: #f39c12;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
+  margin-left: 1rem;
+  display: inline-block;
+}
+
+.refund-button:hover {
+  background-color: #e67e22;
+}
+
+.refund-button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.order-detail-container {
+  padding: 2rem 0;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.order-detail-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.order-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.order-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.order-id-date, .order-status-price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.order-number {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.order-date {
+  color: #666;
+}
+
+.order-status {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.status-finished {
+  color: #27ae60;
+}
+
+.status-refund-reviewing {
+  color: #f39c12;
+}
+
+.status-refund-passed {
+  color: #27ae60;
+}
+
+.status-pending-payment {
+  color: #f39c12;
+}
+
+.status-failed {
+  color: #e74c3c;
+}
+
+.order-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.order-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.order-items-table th,
+.order-items-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.order-items-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+  color: #555;
+}
+
+.order-items-table tr:last-child td {
+  border-bottom: none;
+}
+
+.product-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.product-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.product-price {
+  color: #e74c3c;
+}
+
+.product-total {
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.back-to-orders {
+  display: block;
+  margin: 0 auto;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-to-orders:hover {
+  background-color: #2980b9;
+}
+
+.pay-my-order {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
+}
+
+.pay-my-order:hover {
+  background-color: #27ae60;
+}
+
+.pay-my-order:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.payment-success {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border: 1px solid #c3e6cb;
+}
+
+.payment-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border: 1px solid #f5c6cb;
+}
+
+.order-detail-loading,
+.order-detail-error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+.order-detail-error {
+  color: #e74c3c;
+}

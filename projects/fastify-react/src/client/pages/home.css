@@ -1,0 +1,83 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.home-go-products-link {
+  margin-top: 2rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.home-go-products-link:hover {
+  background-color: #2980b9;
+}
+
+.admin-links-container {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-go-product-portal-link,
+.home-go-user-portal-link,
+.home-go-order-portal-link {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.home-go-product-portal-link:hover,
+.home-go-user-portal-link:hover,
+.home-go-order-portal-link:hover {
+  background-color: #219653;
+}
+
+.home-go-order-portal-link {
+  background-color: #f39c12;
+}
+
+.home-go-order-portal-link:hover {
+  background-color: #e67e22;
+}
+
+.home-go-wish-list {
+  margin-top: 1rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.home-go-wish-list:hover {
+  background-color: #c0392b;
+}
+
+.user-links-container {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}

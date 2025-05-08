@@ -1,0 +1,139 @@
+.referral-code-container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.referral-code-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.8rem;
+  font-weight: bold;
+}
+
+.referral-code {
+  padding: 0.8rem;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 1.1rem;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #495057;
+  margin-bottom: 1rem;
+  user-select: all;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.referral-code:hover {
+  background-color: #dee2e6;
+}
+
+.referral-code:active {
+  background-color: #ced4da;
+}
+
+.referral-code-copy {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  padding: 0.2rem 0.5rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.referral-code:hover .referral-code-copy {
+  opacity: 1;
+}
+
+.referral-rules {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-left: 3px solid #3498db;
+  border-radius: 4px;
+  color: #555;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.referral-history {
+  margin-top: 1.5rem;
+}
+
+.referral-history-title {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0.8rem;
+}
+
+.referral-history-empty {
+  color: #6c757d;
+  font-style: italic;
+  text-align: center;
+  padding: 1rem;
+}
+
+.referral-history-list {
+  list-style: none;
+  padding: 0;
+}
+
+.referral-history-item {
+  padding: 0.8rem;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.referral-history-item:last-child {
+  border-bottom: none;
+}
+
+.referral-username {
+  font-weight: bold;
+  color: #333;
+}
+
+.referral-reward {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.referral-date {
+  color: #6c757d;
+  font-size: 0.8rem;
+}
+
+.copy-success-message {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #27ae60;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeInOut 2s forwards;
+  z-index: 1000;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}

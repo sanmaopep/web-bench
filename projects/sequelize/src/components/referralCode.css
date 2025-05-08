@@ -1,0 +1,64 @@
+.referral-code-container {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background-color: #f0f9f1;
+  border-radius: 8px;
+  border-left: 4px solid #4CAF50;
+}
+
+.referral-code-container h3 {
+  color: #2e7d32;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.referral-code-box {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px dashed #4CAF50;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.referral-code {
+  font-family: monospace;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: #333;
+  flex-grow: 1;
+  font-weight: bold;
+}
+
+.copy-referral-code {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-referral-code:hover {
+  background-color: #388E3C;
+  transform: translateY(-2px);
+}
+
+.copy-referral-code:active {
+  transform: translateY(0);
+}
+
+.referral-info {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+
+.referral-info p {
+  margin: 0;
+}

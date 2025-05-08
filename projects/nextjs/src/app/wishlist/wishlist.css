@@ -1,0 +1,39 @@
+.wishlist-container {
+  padding: 20px;
+}
+
+.wishlist-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.wishlist-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.wishlist-name {
+  flex-grow: 1;
+  font-weight: bold;
+}
+
+.wishlist-price {
+  margin-right: 20px;
+}
+
+.remove-from-wishlist {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.remove-from-wishlist:hover {
+  background-color: #ff3333;
+}

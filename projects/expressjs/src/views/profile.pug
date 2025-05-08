@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  if user
+    h1.profile-username #{user.username}'s Profile
+    .profile-coin 💰 Coins: #{user.coin}
+    if isCurrent
+      button.recharge-button Recharge 1000 Coins
+      .referral-code-container
+        .referral-code= user.referral_code
+        .referral-rule When a new user registers through your referral code, you will earn $888, and an additional $1888 when they pay for their first order.
+  else 
+    h1 User not found
+
+  link(rel="stylesheet", href="/css/profile.css")
+  script.
+    const rechargeButton = document.querySelector('.recharge-button')
+    if (rechargeButton) {
+      rechargeButton.addEventListener('click', async () => {
+        const res = await fetch('/api/recharge', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+
+        const data = await res.json()
+        if (data.success) {
+          window.location.reload()
+        }
+      })
+    }

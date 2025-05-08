@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title || 'WebBench Shopping Mart' %></title>
+  <link rel="stylesheet" href="/public/css/style.css">
+  <link rel="stylesheet" href="/public/css/header-menu.css">
+  <script src="/public/components/HeaderUserMenu.js" defer></script>
+  <script src="/public/components/Cart.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-menu-container">
+      <div class="header-left">
+        <h1 class="site-title"><a href="/" class="header-link">🛍️ WebBench Shopping Mart</a></h1>
+      </div>
+      <div class="header-right">
+        <header-user-menu></header-user-menu>
+      </div>
+    </div>
+  </header>
+  
+  <main class="content">
+    <%- body %>
+  </main>
+  
+  <shopping-cart></shopping-cart>
+
+  <footer class="site-footer">
+    <p>Copyright: Web Bench</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  if hasPrivilege
+    h1.admin-title User Management Portal
+    table.admin-table 
+      thead
+        tr
+          th Username
+          th Role
+          th Coins
+      tbody
+        each user in users
+          tr.admin-user-row(id=`admin_user_${user.username}`)
+            td= user.username
+            td= user.role
+            td= user.coin
+
+    link(rel="stylesheet", href="/css/admin.css")

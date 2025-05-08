@@ -1,0 +1,161 @@
+.product-comments-section {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #eee;
+  width: 100%;
+}
+
+.product-comments-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.comment-form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.comment-form h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.rate-input {
+  margin-bottom: 15px;
+  display: flex;
+}
+
+.rate-input span {
+  font-size: 2rem;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.rate-input span.active {
+  color: #ffc107;
+}
+
+.rate-input span:hover {
+  color: #ffc107;
+}
+
+.comment-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.comment-textarea:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.comment-submit-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.comment-submit-button:hover {
+  background-color: #388E3C;
+}
+
+.comment-submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.comment-item {
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.comment-username {
+  font-weight: bold;
+  color: #333;
+}
+
+.comment-rating {
+  background-color: #ffc107;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.comment-rating::before {
+  content: '★ ';
+  margin-right: 2px;
+}
+
+.comment-text {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: #444;
+}
+
+.comment-date {
+  font-size: 0.8rem;
+  color: #888;
+  text-align: right;
+}
+
+.no-comments {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.comment-error {
+  color: #e53935;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+.product-average-rating {
+  background-color: #f8f9fa;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #333;
+  font-weight: 500;
+}

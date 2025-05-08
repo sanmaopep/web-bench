@@ -1,0 +1,4 @@
+nuxt.config.ts
+tsconfig.json
+.nuxt
+node_modules

@@ -1,0 +1,164 @@
+.order-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.order-title {
+  color: #333;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.order-loading {
+  text-align: center;
+  padding: 30px;
+  font-style: italic;
+  color: #777;
+}
+
+.order-info {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.order-status, .order-total, .order-date {
+  font-weight: bold;
+}
+
+.order-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.order-items-table th {
+  background-color: #4a89dc;
+  color: white;
+  text-align: left;
+  padding: 12px;
+}
+
+.order-items-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.order-items-table tr:last-child td {
+  border-bottom: none;
+}
+
+.order-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.order-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-to-orders-btn {
+  display: inline-block;
+  background-color: #4a89dc;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.back-to-orders-btn:hover {
+  background-color: #357bd8;
+}
+
+.order-not-found {
+  text-align: center;
+  padding: 30px;
+}
+
+.order-not-found h2 {
+  color: #e74c3c;
+  margin-bottom: 10px;
+}
+
+.order-not-found p {
+  margin-bottom: 20px;
+  color: #777;
+}
+
+.pay-my-order {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.pay-my-order:hover {
+  background-color: #219653;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pay-my-order:active {
+  transform: translateY(0);
+}
+
+.pay-my-order:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.payment-failed {
+  background-color: #e74c3c !important;
+}
+
+.refund-button {
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.refund-button:hover {
+  background-color: #d35400;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.refund-button:active {
+  transform: translateY(0);
+}
+
+.refund-button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}

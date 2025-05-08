@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  .product-list
+    each product in products
+      .product-card(id=`product_card_${product.id}` onclick=`window.location.href='/products/${product.id}'`)
+        img.product-image(src=product.image)
+        .product-name= product.name
+        .product-price= `$${product.price}`

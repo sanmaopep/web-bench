@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 My Orders
+  .orders-container
+    if orders && orders.length
+      each order in orders
+        .order-item(id=`my_order_${order.id}` onclick=`window.location.href='/order/${order.id}'`)
+          .order-id Order ##{order.id}
+          .order-status= order.status
+          .order-total= `Total: $${order.total_price}`
+    else
+      .empty-orders No orders found
+
+  link(rel="stylesheet", href="/css/orders.css")

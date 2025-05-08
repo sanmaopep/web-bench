@@ -1,0 +1,34 @@
+.add-to-wishlist, .remove-from-wishlist {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 20px 0;
+  display: block;
+}
+
+.add-to-wishlist {
+  background-color: #ff9800;
+  color: white;
+}
+
+.add-to-wishlist:hover {
+  background-color: #e68a00;
+}
+
+.remove-from-wishlist {
+  background-color: #f44336;
+  color: white;
+}
+
+.remove-from-wishlist:hover {
+  background-color: #d32f2f;
+}
+
+.add-to-wishlist:disabled, .remove-from-wishlist:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

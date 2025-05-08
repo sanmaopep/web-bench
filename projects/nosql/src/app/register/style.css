@@ -1,0 +1,65 @@
+.register-form {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.register-form h1 {
+  text-align: center;
+  color: #333;
+}
+
+.username,
+.password,
+.confirm-password,
+.referral-code-input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.referral-code-input {
+  border: 1px solid #6610f2;
+}
+
+.referral-code-input:focus {
+  outline: none;
+  border-color: #6610f2;
+  box-shadow: 0 0 0 2px rgba(102, 16, 242, 0.2);
+}
+
+.register-button {
+  padding: 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.register-button:hover {
+  background: #0056b3;
+}
+
+.error-message {
+  color: #dc3545;
+  text-align: center;
+}
+
+.login-link {
+  text-align: center;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}

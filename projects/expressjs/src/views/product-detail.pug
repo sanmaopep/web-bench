@@ -1,0 +1,66 @@
+extends layout
+
+block content
+  .product-container
+    if product
+      .product-detail
+        img.product-image(src=product.image)
+        .product-name= product.name
+        .product-price= `$${product.price}`
+        .product-quantity= `Quantity: ${product.quantity}`
+        .product-description= product.description
+        if user
+          button.add-to-wishlist(data-product-id=product.id) Add to Wishlist
+          button.add-to-cart-button Add to Cart
+    else
+      .product-not-found
+        h2 Product Not Found
+        
+    include comment.pug
+
+  script.
+    const addWishlistBtn = document.querySelector('.add-to-wishlist')
+    if (addWishlistBtn) {
+      addWishlistBtn.addEventListener('click', async () => {
+        const productId = addWishlistBtn.dataset.productId
+        const res = await fetch('/api/wishlist/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            productId
+          })
+        })
+
+        const data = await res.json()
+        if (data.success) {
+          addWishlistBtn.textContent = 'Added to Wishlist'
+          addWishlistBtn.disabled = true
+        }
+      })
+    }
+    
+    const addCart = document.querySelector('.add-to-cart-button')
+    if(addCart) {
+      addCart.addEventListener('click', async () => {
+        const productId = window.location.pathname.split('/').pop();
+        
+        const res = await fetch('/api/cart/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            productId,
+            quantity: 1
+          })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          const cart = document.querySelector('shopping-cart');
+          cart.render();
+        }
+      });     
+    }

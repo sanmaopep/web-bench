@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="/public/css/wishlist.css">
+
+<div class="wishlist-container">
+  <h1 class="wishlist-title">My Wishlist</h1>
+  
+  <div class="wishlist-items" id="wishlistItems">
+    <!-- Wishlist items will be loaded here -->
+  </div>
+  
+  <div class="empty-wishlist" id="emptyWishlist" style="display:none;">
+    <h2>Your wishlist is empty</h2>
+    <p>Browse our products and add some items to your wishlist!</p>
+    <a href="/products" class="view-products-btn">View Products</a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const response = await fetch('/api/wishlist');
+      const data = await response.json();
+      
+      const wishlistItems = document.getElementById('wishlistItems');
+      const emptyWishlist = document.getElementById('emptyWishlist');
+      
+      if (data.success && data.items && data.items.length > 0) {
+        data.items.forEach(item => {
+          const itemElement = document.createElement('div');
+          itemElement.className = 'wishlist-item';
+          itemElement.id = `wishlist_item_${item.product_id}`;
+          
+          itemElement.innerHTML = `
+            <a href="/products/${item.product_id}" class="wishlist-item-link">
+              <img class="wishlist-image" src="${item.image}" alt="${item.name}">
+              <div class="wishlist-name">${item.name}</div>
+              <div class="wishlist-price">$${item.price.toFixed(2)}</div>
+            </a>
+            <button class="remove-from-wishlist" data-product-id="${item.product_id}">×</button>
+          `;
+          
+          wishlistItems.appendChild(itemElement);
+        });
+        
+        // Add event listeners to remove buttons
+        document.querySelectorAll('.remove-from-wishlist').forEach(button => {
+          button.addEventListener('click', async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const productId = button.getAttribute('data-product-id');
+            
+            try {
+              const response = await fetch(`/api/wishlist/${productId}`, {
+                method: 'DELETE'
+              });
+              
+              const data = await response.json();
+              
+              if (data.success) {
+                const itemElement = document.getElementById(`wishlist_item_${productId}`);
+                itemElement.remove();
+                
+                // Check if there are any items left
+                if (wishlistItems.children.length === 0) {
+                  wishlistItems.style.display = 'none';
+                  emptyWishlist.style.display = 'block';
+                }
+              }
+            } catch (error) {
+              console.error('Error removing from wishlist:', error);
+            }
+          });
+        });
+      } else {
+        wishlistItems.style.display = 'none';
+        emptyWishlist.style.display = 'block';
+      }
+    } catch (error) {
+      console.error('Error loading wishlist:', error);
+      const wishlistItems = document.getElementById('wishlistItems');
+      const emptyWishlist = document.getElementById('emptyWishlist');
+      
+      wishlistItems.style.display = 'none';
+      emptyWishlist.style.display = 'block';
+    }
+  });
+</script>

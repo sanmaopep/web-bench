@@ -1,0 +1,51 @@
+.header-user-menu {
+  position: relative;
+}
+
+.header-username {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+}
+
+.header-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.header-go-user-profile,
+.header-logout-btn {
+  border: none;
+  background: none;
+  padding: 5px 10px;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+
+.header-go-user-profile:hover,
+.header-logout-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.header-go-login {
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.header-go-login:hover {
+  background-color: #0056b3;
+}

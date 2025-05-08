@@ -1,0 +1,118 @@
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.profile-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #4CAF50;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  margin: 0 auto 1.5rem;
+}
+
+.profile-username {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.profile-details {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.profile-role {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.profile-coin {
+  font-size: 1.5rem;
+  color: #e63946;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.recharge-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+
+.recharge-button:hover {
+  background-color: #45a049;
+}
+
+.recharge-container {
+  margin-top: 1rem;
+}
+
+.referral-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.referral-title {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.referral-code-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.referral-code {
+  background-color: #f5f5f5;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 1px;
+  border: 1px dashed #ccc;
+}
+
+.referral-description {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 1rem 0;
+  text-align: left;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 4px;
+  border-left: 3px solid #4CAF50;
+}

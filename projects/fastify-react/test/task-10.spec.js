@@ -1,0 +1,37 @@
+const { test, expect } = require('@playwright/test')
+const { pageLoginUser, pageLoginAdmin } = require('@web-bench/shop-test-util')
+
+test.beforeEach(async ({ page }) => {
+  await page.goto('/')
+})
+
+test('Regular user accessing own profile', async ({ page }) => {
+  await pageLoginUser(page)
+
+  await page.goto('/profile/user')
+  await expect(page).toHaveURL('/profile/user')
+  await expect(page.locator('.profile-username')).toBeVisible()
+  await expect(page.locator('.profile-coin')).toBeVisible()
+  await expect(page.locator('.profile-coin')).toContainText('1000')
+})
+
+test('Regular user accessing other profile', async ({ page }) => {
+  await pageLoginUser(page)
+
+  await page.goto('/profile/admin')
+  await expect(page).toHaveURL('/login')
+})
+
+test('Admin accessing other profile', async ({ page }) => {
+  await pageLoginAdmin(page)
+  await page.goto('/profile/user')
+
+  await expect(page).toHaveURL('/profile/user')
+  await expect(page.locator('.profile-username')).toContainText('user')
+  await expect(page.locator('.profile-coin')).toBeVisible()
+})
+
+test('Redirect to login for unauthenticated profile access', async ({ page }) => {
+  await page.goto('/profile/user')
+  await expect(page).toHaveURL('/login')
+})

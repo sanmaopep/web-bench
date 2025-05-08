@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  h1 💡 Please Login First
+  form.login-form
+    input.username(type="text" name="username" placeholder="Username")
+    input.password(type="password" name="password" placeholder="Password") 
+    button.login-btn(type="submit") Login
+    .error-message
+    a.register-link(href="/register") Need an account? Register
+  
+  link(rel="stylesheet", href="/css/login.css")
+  script.
+    const form = document.querySelector('.login-form')
+    const username = form.querySelector('.username')
+    const password = form.querySelector('.password') 
+    const error = form.querySelector('.error-message')
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: username.value,
+          password: password.value
+        })
+      })
+
+      const data = await res.json()
+
+      if (data.success) {
+        window.location.href = '/'
+      } else {
+        error.textContent = 'Login Failed'
+      }
+    })

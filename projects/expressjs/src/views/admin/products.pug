@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  if hasPrivilege
+    h1.admin-title Product Management Portal
+    table.admin-table
+      thead
+        tr
+          th ID
+          th Image
+          th Name 
+          th Price
+          th Quantity
+          th Description
+      tbody
+        each product in products
+          tr.admin-product-row(id=`admin_product_${product.id}`)
+            td= product.id
+            td
+              img.admin-product-image(src=product.image)
+            td= product.name
+            td= `$${product.price}` 
+            td= product.quantity
+            td= product.description
+
+    link(rel="stylesheet", href="/css/admin.css")

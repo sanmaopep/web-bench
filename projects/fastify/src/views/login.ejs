@@ -1,0 +1,56 @@
+<h1>💡 Please Login First</h1>
+
+<div id="loginForm">
+  <form id="authForm" class="login-form">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" class="username" required>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" class="password" required>
+    </div>
+    <button type="submit" class="login-btn">Login</button>
+    <div id="loginError" style="color: red; display: none;">Login Failed</div>
+    <div class="register-section">
+      Don't have an account? <a href="/register" class="register-link">Register here</a>
+    </div>
+  </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('authForm');
+    const errorMessage = document.getElementById('loginError');
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      try {
+        const response = await fetch('/api/auth', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+          window.location.href = '/';
+        } else {
+          errorMessage.style.display = 'block';
+        }
+      } catch (error) {
+        console.error('Login error:', error);
+        console.error('Login error:', error.status);
+
+        errorMessage.style.display = 'block';
+      }
+    });
+  });
+</script>

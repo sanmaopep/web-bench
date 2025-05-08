@@ -1,0 +1,66 @@
+extends layout
+
+block content
+  h1 💡 Register Account
+  form.register-form
+    input.username(type="text" name="username" placeholder="Username")
+    input.password(type="password" name="password" placeholder="Password")
+    input.confirm-password(type="password" name="confirm-password" placeholder="Confirm Password")
+    input.referral-code-input(type="text" name="referral-code" placeholder="Referral Code (Optional)")
+    button.register-button(type="submit") Register
+    .error-message
+    a.login-link(href="/login") Have an account? Login
+
+  link(rel="stylesheet", href="/css/register.css")
+  script.
+    const form = document.querySelector('.register-form')
+    const username = form.querySelector('.username')
+    const password = form.querySelector('.password')
+    const confirmPassword = form.querySelector('.confirm-password')
+    const referralCode = form.querySelector('.referral-code-input')
+    const error = form.querySelector('.error-message')
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+
+      if (password.value !== confirmPassword.value) {
+        error.textContent = 'Passwords must match'
+        return
+      }
+
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: username.value,
+          password: password.value,
+          referralCode: referralCode.value,
+          coins: 1000
+        })
+      })
+
+      const data = await res.json()
+
+      if (data.success) {
+        const loginRes = await fetch('/api/auth', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            username: username.value,
+            password: password.value
+          })
+        })
+
+        const loginData = await loginRes.json()
+        
+        if (loginData.success) {
+          window.location.href = '/'
+        }
+      } else {
+        error.textContent = data.message || 'Username already exists'
+      }
+    })

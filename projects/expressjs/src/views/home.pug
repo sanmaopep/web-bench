@@ -1,0 +1,18 @@
+extends layout 
+
+block content
+  if username
+    h1 Hello #{username}!
+  h1 🛍️🛍️🛍️ Welcome to Shopping Mart !
+  a.home-go-products-link(href="/products") View Products
+  if username
+    div
+      a.home-go-wish-list(href='/wishlist') View My Wishlist
+  if role === 'admin'
+    .admin-portal-links
+      a.home-go-product-portal-link(href="/admin/products") 
+        span 📦 Product Management
+      a.home-go-user-portal-link(href="/admin/users")
+        span 👥 User Management
+      a.home-go-order-portal-link(href="/admin/orders") 
+        span 📦 Order Management Portal

@@ -1,0 +1,80 @@
+
+.comment-container
+  link(rel="stylesheet", href="/css/comment.css")
+
+  if canComment
+    form.comment-form
+      .rate-input
+        span.rate-1-star ★
+        span.rate-2-star ★
+        span.rate-3-star ★
+        span.rate-4-star ★
+        span.rate-5-star ★
+      textarea.comment-textarea(placeholder="Write your comment...")
+      button.comment-submit-button Submit Review
+
+  if comments
+    .comments-section
+      h2 Customer Reviews &nbsp;
+        span.product-average-rating #{averageRating || 'No ratings yet'}
+      .comments-list
+        each comment in comments
+          .comment-item
+            div
+              span.comment-username=comment.username
+              span.comment-rating=comment.rating
+            .comment-text= comment.text
+
+script.
+  let rating = 0;
+  const commentForm = document.querySelector('.comment-form')
+
+  if (commentForm) {
+    const rateInput = commentForm.querySelector('.rate-input')
+    const textarea = commentForm.querySelector('.comment-textarea')
+
+
+    Array.from(rateInput.children).forEach((star, index) => {
+      star.addEventListener('click', () => {
+        rating = index + 1
+        Array.from(rateInput.children).forEach((s, i) => {
+          if (i <= index) {
+            s.classList.add('active')
+          } else {
+            s.classList.remove('active')
+          }
+        })
+      })
+    })
+
+
+    commentForm.addEventListener('submit', async (e) => {
+      e.preventDefault()
+
+      if (!rating) {
+        alert('Please select a rating')
+        return
+      }
+
+      const productId = window.location.pathname.split('/').pop();
+
+      const res = await fetch('/api/comment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          productId,
+          rating,
+          text: textarea.value
+        })
+      })
+
+      const data = await res.json()
+      if (data.success) {
+        window.location.reload()
+      } else {
+        alert(data.message)
+      }
+    })
+  }

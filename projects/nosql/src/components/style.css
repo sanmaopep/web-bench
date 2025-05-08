@@ -1,0 +1,64 @@
+.header-user-menu {
+  position: relative;
+}
+
+.header-go-login {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.header-go-login:hover {
+  background-color: #0056b3;
+}
+
+.header-username {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.header-username:hover {
+  background-color: #e9ecef;
+}
+
+.header-dropdown {
+  position: absolute;
+  top: 85%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.header-go-user-profile,
+.header-go-to-my-orders,
+.header-logout-btn {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.header-go-user-profile:hover,
+.header-go-to-my-orders:hover,
+.header-logout-btn:hover {
+  background-color: #f8f9fa;
+}
+
+.header-logout-btn {
+  color: #dc3545;
+}

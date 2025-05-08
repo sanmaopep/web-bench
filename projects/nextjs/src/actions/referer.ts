@@ -1,0 +1,47 @@
+'use server'
+
+import db, { runTransaction } from '@/libs/db'
+
+export async function creditReferrer(referralCode: string, amount: number) {
+  return new Promise<void>((resolve, reject) => {
+    db.run(
+      'UPDATE users SET coin = coin + ? WHERE referral_code = ?',
+      [amount, referralCode],
+      (err) => {
+        if (err) reject(err)
+        else resolve()
+      }
+    )
+  })
+}
+
+export async function creditReferrerForFirstPayment(
+  currentUserName: string,
+  amount: number = 1888
+) {
+  const hasPurchased = await new Promise<boolean>((resolve, reject) => {
+    db.get(
+      'SELECT has_first_purchase from users WHERE username = ?',
+      [currentUserName],
+      (err, row: any) => {
+        if (err) {
+          reject(err)
+        }
+        resolve(!!row?.has_first_purchase)
+      }
+    )
+  })
+
+  if (!hasPurchased) {
+    await runTransaction([
+      {
+        sql: 'UPDATE users SET has_first_purchase = 1 WHERE username = ?',
+        deps: [currentUserName],
+      },
+      {
+        sql: 'UPDATE users SET coin = coin + ? WHERE referral_code = (SELECT referrer_referral_code FROM users WHERE username =?)',
+        deps: [amount, currentUserName],
+      },
+    ])
+  }
+}

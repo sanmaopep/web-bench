@@ -1,0 +1,46 @@
+.payment-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.pay-my-order {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.pay-my-order:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.pay-my-order:active {
+  transform: translateY(0);
+}
+
+.pay-my-order:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.payment-error {
+  color: #f44336;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #ffebee;
+  border-radius: 4px;
+  display: inline-block;
+}

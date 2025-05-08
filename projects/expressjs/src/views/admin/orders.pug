@@ -1,0 +1,45 @@
+extends ../layout
+
+block content
+  link(rel="stylesheet", href="/css/admin.css")
+
+  h1 Order Management Portal
+  table.admin-table
+    thead
+      tr
+        th ID
+        th User
+        th Status 
+        th Total
+        th Buttons
+    tbody
+      each order in orders
+        tr.admin-order(id=`admin_order_${order.id}`)
+          td.order-id #{order.id}
+          td.order-user #{order.username}
+          td.order-status #{order.status}
+          td.order-total $#{order.total_price}
+          td
+            if order.status === 'Refund Reviewing'
+              button.pass-refund-review-button(data-order-id=order.id) Approve Refund
+
+  script.
+    document.addEventListener('click', async (e) => {
+      if (e.target.classList.contains('pass-refund-review-button')) {
+        const orderId = e.target.dataset.orderId
+        const res = await fetch(`/api/orders/${orderId}/refund/approve`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            orderId
+          })
+        })
+
+        const data = await res.json()
+        if (data.success) {
+          window.location.reload()
+        }
+      }
+    })

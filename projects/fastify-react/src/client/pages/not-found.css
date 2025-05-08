@@ -1,0 +1,30 @@
+.not-found-container {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+.not-found-container h1 {
+  color: #e74c3c;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.not-found-go-to-home {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.not-found-go-to-home:hover {
+  background-color: #2980b9;
+}

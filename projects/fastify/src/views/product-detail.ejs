@@ -1,0 +1,347 @@
+<div id="productDetailContainer">
+  <!-- Product detail will be loaded here -->
+  <div class="product-not-found" id="productNotFound" style="display: none">
+    <h2>Product Not Found</h2>
+    <p>The product you are looking for does not exist or has been removed.</p>
+    <a href="/products" class="back-to-products">Back to Products</a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const productId = '<%= productId %>'
+      const response = await fetch(`/api/products/${productId}`)
+      const data = await response.json()
+
+      const container = document.getElementById('productDetailContainer')
+      const notFoundElement = document.getElementById('productNotFound')
+
+      if (data.success && data.product) {
+        const product = data.product
+
+        // Check if the product is in the user's wishlist
+        const wishlistResponse = await fetch(`/api/wishlist/check/${productId}`)
+        const wishlistData = await wishlistResponse.json()
+        const inWishlist = wishlistData.inWishlist
+
+        // Get product comments, average rating and check if user can comment
+        const commentsResponse = await fetch(`/api/comments/${productId}`)
+        const commentsData = await commentsResponse.json()
+        const comments = commentsData.comments || []
+        const averageRating = commentsData.averageRating || 0
+        const canComment = commentsData.canComment || false
+        const hasCommented = commentsData.hasCommented || false
+
+        // Create the wishlist button based on status
+        const wishlistButtonHTML = inWishlist
+          ? `<button class="add-to-wishlist" disabled style="background-color: #e74c3c;">❤️ Added to Wishlist</button>`
+          : `<button class="add-to-wishlist">Add to Wishlist ❤️</button>`
+
+        const detailHTML = `
+          <div class="product-detail-container">
+            <div class="product-detail-header">
+              <img class="product-detail-image" src="${product.image}" alt="${product.name}">
+              <div class="product-detail-info">
+                <h1 class="product-name">${product.name}</h1>
+                <div class="product-price">$${product.price.toFixed(2)}</div>
+                <div class="product-quantity">In Stock: ${product.quantity}</div>
+
+                <div class="product-detail-buttons">
+                  ${wishlistButtonHTML}
+                  <button class="add-to-cart-button">Add to Cart 🛒</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-description">
+              <h2>Description</h2>
+              <p>${product.description}</p>
+            </div>
+
+            <div class="product-reviews-section">
+              <h2>Reviews</h2>
+              <div class="product-average-rating-container">
+                <div class="product-average-rating">${
+                  averageRating ? averageRating.toFixed(1) : '0'
+                }</div>
+                <div class="product-reviews-count">${comments.length} reviews</div>
+              </div>
+
+              ${
+                canComment
+                  ? `
+                <div class="comment-form">
+                  <h3>Write a Review</h3>
+                  <form id="productCommentForm">
+                    <div class="rate-input">
+                      <input type="radio" id="star5" name="rating" value="5" />
+                      <label for="star5" class="rate-5-star"></label>
+                      <input type="radio" id="star4" name="rating" value="4" />
+                      <label for="star4" class="rate-4-star"></label>
+                      <input type="radio" id="star3" name="rating" value="3" />
+                      <label for="star3" class="rate-3-star"></label>
+                      <input type="radio" id="star2" name="rating" value="2" />
+                      <label for="star2" class="rate-2-star"></label>
+                      <input type="radio" id="star1" name="rating" value="1" />
+                      <label for="star1" class="rate-1-star"></label>
+                    </div>
+                    <textarea class="comment-textarea" id="commentText" placeholder="Share your thoughts about this product"></textarea>
+                    <button type="submit" class="comment-submit-button">Submit Review</button>
+                    <div class="comment-error" id="commentError" style="display: none;"></div>
+                  </form>
+                </div>
+              `
+                  : hasCommented
+                  ? `
+                <div class="comment-message">
+                  <p>You have already reviewed this product. Thank you for your feedback!</p>
+                </div>
+              `
+                  : `
+                <div class="comment-message">
+                  <p>Purchase this product to leave a review!</p>
+                </div>
+              `
+              }
+
+              <div class="comments-list">
+                <h3 class="comments-list-title">Customer Reviews</h3>
+                ${
+                  comments.length > 0
+                    ? comments
+                        .map(
+                          (comment) => `
+                  <div class="comment-item">
+                    <div class="comment-header">
+                      <div>
+                        <div class="comment-username">${comment.username}</div>
+                        <div class="comment-date">${new Date(
+                          comment.created_at
+                        ).toLocaleDateString()}</div>
+                      </div>
+                      <div class="comment-rating">${comment.rating}</div>
+                    </div>
+                    <div class="comment-text">${comment.comment}</div>
+                  </div>
+                `
+                        )
+                        .join('')
+                    : `
+                  <div class="no-comments-message">
+                    <p>No reviews yet. Be the first to review this product!</p>
+                  </div>
+                `
+                }
+              </div>
+            </div>
+          </div>
+        `
+
+        container.innerHTML = detailHTML
+
+        // Add event listener to the wishlist button
+        const wishlistButton = document.querySelector('.add-to-wishlist')
+        if (wishlistButton && !inWishlist) {
+          wishlistButton.addEventListener('click', async () => {
+            try {
+              const response = await fetch('/api/wishlist', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ productId: parseInt(productId) }),
+              })
+
+              const data = await response.json()
+
+              if (data.success) {
+                wishlistButton.disabled = true
+                wishlistButton.style.backgroundColor = '#e74c3c'
+                wishlistButton.textContent = '❤️ Added to Wishlist'
+              }
+            } catch (error) {
+              console.error('Error adding to wishlist:', error)
+            }
+          })
+        }
+
+        // Add event listener to the cart button
+        const cartButton = document.querySelector('.add-to-cart-button')
+        if (cartButton) {
+          cartButton.addEventListener('click', async () => {
+            try {
+              const response = await fetch('/api/cart', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  productId: parseInt(productId),
+                  quantity: 1,
+                }),
+              })
+
+              const data = await response.json()
+
+              if (data.success) {
+                // Update the cart component
+                const cartComponent = document.querySelector('shopping-cart')
+                if (cartComponent) {
+                  await cartComponent.loadCartItems()
+                }
+              }
+            } catch (error) {
+              console.error('Error adding to cart:', error)
+            }
+          })
+        }
+
+        // Add event listener to the comment form
+        const commentForm = document.getElementById('productCommentForm')
+        if (commentForm) {
+          commentForm.addEventListener('submit', async (e) => {
+            e.preventDefault()
+
+            const ratingInputs = document.querySelectorAll('input[name="rating"]')
+            let selectedRating = 0
+            ratingInputs.forEach((input) => {
+              if (input.checked) {
+                selectedRating = parseInt(input.value)
+              }
+            })
+
+            const commentText = document.getElementById('commentText').value
+            const errorElement = document.getElementById('commentError')
+
+            if (!selectedRating) {
+              errorElement.textContent = 'Please select a rating'
+              errorElement.style.display = 'block'
+              return
+            }
+
+            if (!commentText.trim()) {
+              errorElement.textContent = 'Please write a comment'
+              errorElement.style.display = 'block'
+              return
+            }
+
+            try {
+              const submitButton = commentForm.querySelector('.comment-submit-button')
+              submitButton.disabled = true
+              submitButton.textContent = 'Submitting...'
+
+              const response = await fetch('/api/comments', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  productId: parseInt(productId),
+                  rating: selectedRating,
+                  comment: commentText,
+                }),
+              })
+
+              const data = await response.json()
+
+              if (data.success) {
+                // Refresh the page to show the new comment
+                window.location.reload()
+              } else {
+                errorElement.textContent = data.message || 'Failed to submit review'
+                errorElement.style.display = 'block'
+                submitButton.disabled = false
+                submitButton.textContent = 'Submit Review'
+              }
+            } catch (error) {
+              console.error('Error submitting review:', error)
+              errorElement.textContent = 'An error occurred while submitting your review'
+              errorElement.style.display = 'block'
+              const submitButton = commentForm.querySelector('.comment-submit-button')
+              submitButton.disabled = false
+              submitButton.textContent = 'Submit Review'
+            }
+          })
+        }
+      } else {
+        notFoundElement.style.display = 'block'
+      }
+    } catch (error) {
+      console.error('Error loading product details:', error)
+      document.getElementById('productNotFound').style.display = 'block'
+    }
+  })
+</script>
+
+<style>
+  .product-detail-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .add-to-wishlist {
+    background-color: #4a89dc;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 200px;
+  }
+
+  .add-to-wishlist:hover {
+    background-color: #357bd8;
+    transform: translateY(-2px);
+  }
+
+  .add-to-wishlist:disabled {
+    cursor: not-allowed;
+  }
+
+  .add-to-cart-button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    white-space: nowrap;
+    width: 200px;
+  }
+
+  .add-to-cart-button:hover {
+    background-color: #219653;
+    transform: translateY(-2px);
+  }
+
+  .add-to-cart-button:active {
+    transform: translateY(0);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+</style>
+
+<link rel="stylesheet" href="/public/css/comment.css" />

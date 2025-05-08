@@ -1,0 +1,84 @@
+.admin-orders-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.admin-orders-title {
+  margin-bottom: 1.5rem;
+  color: #4CAF50;
+  border-left: 4px solid #4CAF50;
+  padding-left: 0.5rem;
+}
+
+.order-status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-align: center;
+  min-width: 120px;
+}
+
+.status-pending {
+  background-color: #fff8e8;
+  color: #ff9800;
+  border: 1px solid #ffd54f;
+}
+
+.status-finished {
+  background-color: #e8f5e9;
+  color: #4caf50;
+  border: 1px solid #a5d6a7;
+}
+
+.status-failed {
+  background-color: #ffebee;
+  color: #f44336;
+  border: 1px solid #ef9a9a;
+}
+
+.status-reviewing {
+  background-color: #e3f2fd;
+  color: #2196f3;
+  border: 1px solid #90caf9;
+}
+
+.status-refunded {
+  background-color: #f3e5f5;
+  color: #9c27b0;
+  border: 1px solid #ce93d8;
+}
+
+.pass-refund-review-button {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pass-refund-review-button:hover {
+  background-color: #0d8bf2;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.order-details-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.order-details-button:hover {
+  background-color: #45a049;
+}

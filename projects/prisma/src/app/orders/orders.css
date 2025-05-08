@@ -1,0 +1,140 @@
+.orders-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.orders-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+  text-align: center;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 0.5rem;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.order-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.order-id {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.order-date {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.order-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.order-status.pending {
+  background-color: #fff8e8;
+  color: #ff9800;
+  border: 1px solid #ffd54f;
+}
+
+.order-status.completed {
+  background-color: #e8f5e9;
+  color: #4caf50;
+  border: 1px solid #a5d6a7;
+}
+
+.order-status.cancelled {
+  background-color: #ffebee;
+  color: #f44336;
+  border: 1px solid #ef9a9a;
+}
+
+.order-status.refund {
+  background-color: #e8eaf6;
+  color: #3f51b5;
+  border: 1px solid #9fa8da;
+}
+
+.order-total {
+  font-weight: 700;
+  color: #e63946;
+  font-size: 1.2rem;
+}
+
+.empty-orders {
+  text-align: center;
+  padding: 3rem;
+  color: #777;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.empty-orders p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.shop-now-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.shop-now-button:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+  .orders-container {
+    padding: 0.5rem;
+  }
+  
+  .order-card {
+    padding: 1rem;
+  }
+}

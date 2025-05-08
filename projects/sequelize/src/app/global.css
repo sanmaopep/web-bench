@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+.site-header {
+background-color: #f8f9fa;
+padding: 1rem;
+z-index: 1000;
+display: flex;
+justify-content: space-between;
+}
+
+main {
+flex: 1;
+padding: 1rem;
+margin: 1rem;
+}
+
+.site-footer {
+background-color: #f8f9fa;
+padding: 1rem;
+}
+
+.home-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.home-buttons a button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.home-buttons a button:hover {
+  background-color: #388E3C;
+}
+
+.home-go-product-portal-link button,
+.home-go-user-portal-link button {
+  background-color: #2196F3;
+}
+
+.home-go-product-portal-link button:hover,
+.home-go-user-portal-link button:hover {
+  background-color: #1565C0;
+}
+
+.not-found-go-to-home {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.not-found-go-to-home:hover {
+  background-color: #388E3C;
+}

@@ -1,0 +1,120 @@
+.product-detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.product-detail-image-container {
+  flex: 1;
+  min-width: 300px;
+}
+
+.product-detail-image-container .product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-detail-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.product-detail-info .product-name {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.product-detail-info .product-price {
+  font-size: 1.5rem;
+  color: #e53935;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.product-detail-info .product-quantity {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.product-detail-info .product-description {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.product-detail-info .product-description h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.product-detail-info .product-description p {
+  line-height: 1.6;
+  color: #333;
+}
+
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.add-to-cart-button {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.add-to-cart-button:hover {
+  background-color: #f57c00;
+  transform: translateY(-2px);
+}
+
+.add-to-cart-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.wishlist-actions {
+  margin-top: 10px;
+}
+
+.add-to-wishlist, .remove-from-wishlist {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-wishlist {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.add-to-wishlist:hover {
+  background-color: #388E3C;
+}
+
+.remove-from-wishlist {
+  background-color: #f44336;
+  color: white;
+}
+
+.remove-from-wishlist:hover {
+  background-color: #d32f2f;
+}

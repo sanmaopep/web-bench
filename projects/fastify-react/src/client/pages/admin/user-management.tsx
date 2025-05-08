@@ -1,0 +1,83 @@
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { useAuth } from '../../context/auth';
+import './user-management.css';
+
+interface User {
+  username: string;
+  role: string;
+  coin: number;
+}
+
+const UserManagement = () => {
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (user?.role !== 'admin') {
+      navigate('/login');
+      return;
+    }
+
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch('/api/admin/users');
+        const data = await response.json();
+        
+        if (data.success) {
+          setUsers(data.users);
+        } else {
+          setError('Failed to load users');
+        }
+      } catch (err) {
+        setError('Error connecting to server');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, [navigate, user]);
+
+  if (loading) return <div className="admin-users-loading">Loading users...</div>;
+  if (error) return <div className="admin-users-error">{error}</div>;
+
+  return (
+    <div className="admin-users-container">
+      <h1 className="admin-users-title">User Management</h1>
+      
+      <table className="admin-users-table">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Coins</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.username} id={`admin_user_${user.username}`}>
+              <td>{user.username}</td>
+              <td className={user.role === 'admin' ? 'admin-role-admin' : 'admin-role-user'}>
+                {user.role}
+              </td>
+              <td>{user.coin}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      
+      <button 
+        className="admin-back-button"
+        onClick={() => navigate('/')}
+      >
+        Back to Home
+      </button>
+    </div>
+  );
+};
+
+export default UserManagement;

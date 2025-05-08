@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  flex: 1;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.site-footer {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  text-align: center;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.product-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.product-price {
+  color: #e44d26;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.product-quantity {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.product-description {
+  text-align: justify;
+  color: #444;
+  line-height: 1.5;
+}
+
+.home-go-products-link {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+}
+
+.home-go-products-link:hover {
+  background-color: #0056b3;
+}
+
+.home-go-product-portal-link,
+.home-go-user-portal-link {
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 1rem;
+  transition: background-color 0.2s;
+}
+
+.home-go-product-portal-link:hover,
+.home-go-user-portal-link:hover {
+  background-color: #218838;
+}
+
+.home-go-wish-list {
+  display: inline-block;
+  background-color: #17a2b8;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 1rem;
+  transition: background-color 0.2s;
+}
+
+.home-go-wish-list:hover {
+  background-color: #138496;
+}
+
+.home-go-order-portal-link {
+  display: inline-block;
+  background-color: #6f42c1;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 1rem;
+  transition: background-color 0.2s;
+}
+
+.home-go-order-portal-link:hover {
+  background-color: #563d7c;
+}
+

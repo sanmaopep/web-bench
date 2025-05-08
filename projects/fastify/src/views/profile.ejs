@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="/public/css/profile.css" />
+
+<div class="profile-container">
+  <h1 class="profile-username"><%= profile.username %>'s Profile</h1>
+
+  <div class="profile-details">
+    <div class="profile-item">
+      <span class="profile-label">Role:</span>
+      <span class="profile-value"><%= profile.role %></span>
+    </div>
+
+    <div class="profile-item">
+      <span class="profile-label">Coins:</span>
+      <span class="profile-value profile-coin"><%= profile.coin %> 🪙</span>
+    </div>
+  </div>
+
+  <% if (profile.username === currentUser) { %>
+  <div class="profile-actions">
+    <button id="rechargeButton" class="recharge-button">Recharge 1000 🪙</button>
+    <a href="/" class="profile-button">Back to Home</a>
+  </div>
+
+  <div class="referral-section">
+    <h2>Your Referral Program</h2>
+    <p>Share your unique referral code with friends:</p>
+    <div class="referral-code" id="referralCodeDisplay"><%= profile.referral_code %></div>
+    <div class="referral-rule">
+      When a new user registers through your referral code, you will earn $888, and an additional $1888 when they pay for their first order.
+    </div>
+  </div>
+  <% } %>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const rechargeButton = document.getElementById('rechargeButton')
+
+    if (rechargeButton) {
+      rechargeButton.addEventListener('click', async () => {
+        try {
+          const response = await fetch('/api/profile/recharge', {
+            method: 'POST',
+          })
+
+          if (response.ok) {
+            const data = await response.json()
+            if (data.success) {
+              // Update the coin display without refreshing the page
+              const coinElement = document.querySelector('.profile-coin')
+              coinElement.textContent = `${data.newBalance} 🪙`
+
+              // Show success message
+              alert('Successfully recharged 1000 coins!')
+            }
+          } else {
+            alert('Failed to recharge coins. Please try again.')
+          }
+        } catch (error) {
+          console.error('Error recharging coins:', error)
+          alert('An error occurred while recharging coins.')
+        }
+      })
+    }
+  })
+</script>

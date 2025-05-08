@@ -1,0 +1,40 @@
+.orders-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.order-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.order-item:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.order-id {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.order-status {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.order-total {
+  font-weight: bold;
+  color: #333;
+}
+
+.empty-orders {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}

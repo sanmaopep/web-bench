@@ -1,0 +1,160 @@
+.profile-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-username {
+  color: #4a89dc;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+  font-size: 24px;
+}
+
+.profile-details {
+  margin-bottom: 30px;
+}
+
+.profile-item {
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.profile-value {
+  color: #555;
+  font-size: 16px;
+}
+
+.profile-coin {
+  color: #f39c12;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.profile-actions {
+  margin-top: 30px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.profile-button {
+  display: inline-block;
+  background-color: #4a89dc;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.profile-button:hover {
+  background-color: #357bd8;
+}
+
+.recharge-button {
+  display: inline-block;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.recharge-button:hover {
+  background-color: #219653;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recharge-button:active {
+  transform: translateY(1px);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(39, 174, 96, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(39, 174, 96, 0);
+  }
+}
+
+.profile-not-found {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.profile-not-found h1 {
+  color: #e74c3c;
+  margin-bottom: 15px;
+}
+
+.profile-not-found p {
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.referral-code {
+  font-size: 24px;
+  font-weight: bold;
+  color: #3498db;
+  background-color: #ecf0f1;
+  padding: 10px 15px;
+  border-radius: 6px;
+  display: inline-block;
+  letter-spacing: 1px;
+  margin: 10px 0;
+}
+
+.referral-rule {
+  background-color: #f8f9fa;
+  border-left: 4px solid #3498db;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 0 6px 6px 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+.referral-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.referral-section h2 {
+  color: #3498db;
+  margin-bottom: 15px;
+  font-size: 20px;
+}

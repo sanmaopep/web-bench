@@ -1,0 +1,46 @@
+.refund-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.refund-button {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.refund-button:hover {
+  background-color: #f57c00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.refund-button:active {
+  transform: translateY(0);
+}
+
+.refund-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.refund-error {
+  color: #f44336;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #ffebee;
+  border-radius: 4px;
+  display: inline-block;
+}

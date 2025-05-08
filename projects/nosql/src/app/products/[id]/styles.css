@@ -1,0 +1,195 @@
+.product-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .product-name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .product-price {
+    font-size: 2rem;
+    color: #e44d26;
+    font-weight: bold;
+  }
+  
+  .product-quantity {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .product-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+  }
+  
+  .add-to-wishlist {
+    padding: 12px 24px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+  }
+  
+  .add-to-wishlist:hover:not(:disabled) {
+    background: #5a6268;
+    transform: translateY(-2px);
+  }
+  
+  .add-to-wishlist:disabled {
+    background: #28a745;
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
+
+  .add-to-cart-button {
+    padding: 12px 24px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+  }
+  
+  .add-to-cart-button:hover:not(:disabled) {
+    background: #218838;
+    transform: translateY(-2px);
+  }
+  
+  .add-to-cart-button:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
+
+  .product-comments-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    grid-column: 1 / -1;
+  }
+  
+  .product-average-rating {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f8b400;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .product-average-rating::after {
+    content: " ⭐";
+  }
+  
+  .comment-form {
+    border-top: 2px solid #dee2e6;
+    margin-top: 2rem;
+    padding-top: 2rem;
+  }
+  
+  .rate-input {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .rate-1-star,
+  .rate-2-star,
+  .rate-3-star,
+  .rate-4-star,
+  .rate-5-star {
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: opacity 0.2s;
+  }
+  
+  .rate-1-star.active,
+  .rate-2-star.active,
+  .rate-3-star.active,
+  .rate-4-star.active,
+  .rate-5-star.active {
+    opacity: 1;
+  }
+  
+  .comment-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-family: inherit;
+  }
+  
+  .comment-submit-button {
+    padding: 0.75rem 1.5rem;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .comment-submit-button:hover {
+    background: #218838;
+  }
+  
+  .comment-item {
+    padding: 1.5rem;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .comment-item:last-child {
+    border-bottom: none;
+  }
+  
+  .comment-username {
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 0.5rem;
+  }
+  
+  .comment-rating {
+    color: #f8b400;
+    margin-bottom: 0.5rem;
+  }
+  
+  .comment-rating::after {
+    content: " ⭐";
+  }
+  
+  .comment-text {
+    color: #6c757d;
+    line-height: 1.6;
+  }
+}
+

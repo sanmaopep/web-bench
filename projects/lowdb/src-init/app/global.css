@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+.site-header {
+background-color: #f8f9fa;
+padding: 1rem;
+z-index: 1000;
+display: flex;
+justify-content: space-between;
+}
+
+main {
+flex: 1;
+padding: 1rem;
+margin: 1rem;
+}
+
+.site-footer {
+background-color: #f8f9fa;
+padding: 1rem;
+}

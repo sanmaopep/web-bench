@@ -1,0 +1,97 @@
+.product-comments-section {
+  margin-top: 3rem;
+}
+
+.product-comments-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  border-bottom: 2px solid #eaeaea;
+  padding-bottom: 0.5rem;
+}
+
+.product-average-rating {
+  display: inline-flex;
+  align-items: center;
+  background-color: #4CAF50;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.product-average-rating::before {
+  content: '★';
+  margin-right: 4px;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.comment-item {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.comment-item:hover {
+  transform: translateY(-2px);
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.comment-username {
+  font-weight: 600;
+  color: #333;
+}
+
+.comment-rating {
+  display: inline-flex;
+  align-items: center;
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.comment-rating::before {
+  content: '★';
+  margin-right: 4px;
+  color: #ffb700;
+}
+
+.comment-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #444;
+}
+
+.comment-date {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  color: #777;
+  text-align: right;
+}
+
+.no-comments-message {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: #6c757d;
+  font-style: italic;
+}

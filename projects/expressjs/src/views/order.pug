@@ -1,0 +1,86 @@
+extends layout 
+
+block content
+  link(rel="stylesheet", href="/css/order.css")
+
+  h1 Order Details
+  .order-details
+    .order-header
+      .order-id Order ##{order.id}
+      .order-status= order.status
+    
+    table.order-products
+      thead
+        tr
+          th Product
+          th Price
+          th Quantity
+          th Subtotal
+      tbody
+        each item in order.items
+          tr.product-row(id=`product_in_order_${item.product.id}`)
+            td
+              img.product-image(src=item.product.image)
+              .product-name= item.product.name
+            td= `$${item.product.price}`
+            td= item.quantity
+            td= `$${item.product.price * item.quantity}`
+    
+    .order-summary
+      .order-total Total: $#{order.total_price}
+
+    if order.status === 'Pending payment'
+      button.pay-my-order Pay Now ($#{order.total_price})
+
+    if order.status === 'Finished'
+      button.refund-button Request Refund
+
+  script.
+    const payButton = document.querySelector('.pay-my-order')
+    if (payButton) {
+      payButton.addEventListener('click', async () => {
+        try {
+          const orderId = window.location.pathname.split('/').pop()
+          const res = await fetch(`/api/orders/${orderId}/pay`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          
+          const data = await res.json()
+          if (!data.success) {
+            alert('Payment failed: ' + data.error)
+          }
+        } catch (err) {
+          console.error(err)
+          alert('Payment failed')
+        } finally {
+          window.location.reload()
+        }
+      })
+    }
+    const refundButton = document.querySelector('.refund-button')
+    if (refundButton) {
+      refundButton.addEventListener('click', async () => {
+        try {
+          const orderId = window.location.pathname.split('/').pop()
+          const res = await fetch(`/api/orders/${orderId}/refund/request`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          
+          const data = await res.json()
+          if (!data.success) {
+            alert('Refund failed: ' + data.error)
+          }
+        } catch (err) {
+          console.error(err)
+          alert('Refund failed')
+        } finally {
+          window.location.reload()
+        }
+      })
+    }

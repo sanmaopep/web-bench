@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="/public/css/register.css" />
+
+<h1>📝 Register New Account</h1>
+
+<div id="registerForm">
+  <form id="registerFormElement" class="register-form">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" class="username" required />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" class="password" required />
+    </div>
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        class="confirm-password"
+        required
+      />
+    </div>
+    <div>
+      <label for="referralCode">Referral Code (Optional):</label>
+      <input type="text" id="referralCode" name="referralCode" class="referral-code-input" />
+      <span class="referral-code-info">ℹ️
+        <span class="referral-tooltip">Enter a referral code from an existing user to get started with our referral program!</span>
+      </span>
+    </div>
+    <button type="submit" class="register-button">Register</button>
+    <div class="error-message" style="color: red; display: none"></div>
+    <div class="login-section">
+      Already have an account? <a href="/login" class="login-link">Login here</a>
+    </div>
+  </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('registerFormElement')
+    const errorMessage = document.querySelector('.error-message')
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+
+      const username = document.getElementById('username').value
+      const password = document.getElementById('password').value
+      const confirmPassword = document.getElementById('confirmPassword').value
+      const referralCode = document.getElementById('referralCode').value
+
+      // Client-side validation
+      if (password !== confirmPassword) {
+        errorMessage.textContent = 'Passwords must match'
+        errorMessage.style.display = 'block'
+        return
+      }
+
+      try {
+        const response = await fetch('/api/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            username, 
+            password,
+            referralCode: referralCode.trim() || undefined
+          }),
+        })
+
+        const data = await response.json()
+
+        if (data.success) {
+          window.location.href = '/'
+        } else {
+          errorMessage.textContent = data.message || 'Username already exists'
+          errorMessage.style.display = 'block'
+        }
+      } catch (error) {
+        console.error('Registration error:', error)
+        errorMessage.textContent = 'An error occurred during registration'
+        errorMessage.style.display = 'block'
+      }
+    })
+  })
+</script>

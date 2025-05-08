@@ -1,0 +1,77 @@
+.header-user-menu {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header-go-login {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.header-go-login:hover {
+  background-color: #2980b9;
+}
+
+.header-user-container {
+  position: relative;
+}
+
+.header-username {
+  cursor: pointer;
+  font-weight: bold;
+  color: #3498db;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.header-username:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.header-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  width: 150px;
+  z-index: 1000;
+}
+
+.header-dropdown-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.header-dropdown-menu button:hover {
+  background-color: #f5f5f5;
+}
+
+.header-go-user-profile {
+  color: #333;
+}
+
+.header-go-to-my-orders {
+  color: #333;
+}
+
+.header-logout-btn {
+  color: #e74c3c;
+}

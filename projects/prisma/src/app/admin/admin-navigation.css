@@ -1,0 +1,22 @@
+.admin-navigation {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.admin-nav-link {
+  padding: 0.5rem 1rem;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.admin-nav-link:hover {
+  background-color: #4CAF50;
+  color: white;
+}

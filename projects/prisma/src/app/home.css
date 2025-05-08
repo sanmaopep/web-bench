@@ -1,0 +1,84 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.home-greeting {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.home-title {
+  font-size: 2.5rem;
+  color: #4CAF50;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.home-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-go-products-link button,
+.home-go-product-portal-link button,
+.home-go-user-portal-link button,
+.home-go-wish-list button,
+.home-go-order-portal-link button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.home-go-products-link button:hover,
+.home-go-product-portal-link button:hover,
+.home-go-user-portal-link button:hover,
+.home-go-wish-list button:hover,
+.home-go-order-portal-link button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.home-go-product-portal-link button {
+  background-color: #2196F3;
+}
+
+.home-go-product-portal-link button:hover {
+  background-color: #0b7dda;
+}
+
+.home-go-user-portal-link button {
+  background-color: #ff9800;
+}
+
+.home-go-user-portal-link button:hover {
+  background-color: #e68a00;
+}
+
+.home-go-wish-list button {
+  background-color: #e91e63;
+}
+
+.home-go-wish-list button:hover {
+  background-color: #c2185b;
+}
+
+.home-go-order-portal-link button {
+  background-color: #9C27B0;
+}
+
+.home-go-order-portal-link button:hover {
+  background-color: #7B1FA2;
+}

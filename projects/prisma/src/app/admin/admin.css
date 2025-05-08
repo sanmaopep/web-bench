@@ -1,0 +1,74 @@
+.admin-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.admin-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #333;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 0.5rem;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.admin-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.admin-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.admin-section-title {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #4CAF50;
+  border-left: 4px solid #4CAF50;
+  padding-left: 0.5rem;
+}
+
+.admin-no-items {
+  text-align: center;
+  padding: 2rem;
+  color: #777;
+  font-style: italic;
+}
+
+.admin-product-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.admin-table .username-cell {
+  font-weight: 600;
+  color: #4CAF50;
+}
+
+.admin-table .role-cell {
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.admin-table .coin-cell {
+  color: #e63946;
+  font-weight: 600;
+}

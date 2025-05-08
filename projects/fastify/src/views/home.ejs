@@ -1,0 +1,18 @@
+<% if (locals.username) { %>
+  <h1>Hello <%= username %>!</h1>
+<% } else { %>
+  <h1>🛍️🛍️🛍️ Welcome to Shopping Mart !</h1>
+<% } %>
+<a href="/products" class="home-go-products-link">View Our Products</a>
+
+<% if (locals.username) { %>
+  <a href="/wishlist" class="home-go-wish-list">My Wishlist ❤️</a>
+<% } %>
+
+<% if (locals.userRole === 'admin') { %>
+  <div style="margin-top: 20px;">
+    <a href="/admin/products" class="home-go-product-portal-link">Product Management Portal</a>
+    <a href="/admin/users" class="home-go-user-portal-link">User Management Portal</a>
+    <a href="/admin/orders" class="home-go-order-portal-link">Order Management Portal</a>
+  </div>
+<% } %>

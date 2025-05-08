@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  h1 My Wishlist
+  .wishlist-container
+    if wishlistItems && wishlistItems.length
+      each product in wishlistItems
+        .wishlist-item(id=`wishlist_item_${product.id}`)
+          img.wishlist-image(src=product.image)
+          .wishlist-name= product.name
+          .wishlist-price= `$${product.price}`
+          button.remove-from-wishlist(data-product-id=product.id) Remove
+    else
+      .empty-wishlist
+        h2 Your wishlist is empty
+
+  link(rel="stylesheet", href="/css/wishlist.css")
+  script.
+    const wishlistContainer = document.querySelector('.wishlist-container')
+
+    wishlistContainer.addEventListener('click', async (e) => {
+      if (e.target.classList.contains('remove-from-wishlist')) {
+        const productId = e.target.dataset.productId
+        const res = await fetch('/api/wishlist/remove', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            productId
+          })
+        })
+
+        const data = await res.json()
+        if (data.success) {
+          const item = document.querySelector(`#wishlist_item_${productId}`)
+          item.remove()
+
+          if (!document.querySelector('.wishlist-item')) {
+            location.reload()
+          }
+        }
+      }
+    })

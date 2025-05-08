@@ -1,0 +1,105 @@
+.admin-orders-container {
+  padding: 20px;
+}
+
+.admin-orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.admin-orders-header h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.admin-orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-orders-table th, 
+.admin-orders-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.admin-orders-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+  color: #333;
+}
+
+.admin-orders-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-orders-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.status-pending-payment {
+  background-color: #FFF3CD;
+  color: #856404;
+}
+
+.status-finished {
+  background-color: #D4EDDA;
+  color: #155724;
+}
+
+.status-refund-reviewing {
+  background-color: #FFF3CD;
+  color: #856404;
+}
+
+.status-refund-passed {
+  background-color: #D1ECF1;
+  color: #0C5460;
+}
+
+.status-failed {
+  background-color: #F8D7DA;
+  color: #721C24;
+}
+
+.pass-refund-review-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pass-refund-review-button:hover {
+  background-color: #218838;
+}
+
+.pass-refund-review-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.admin-orders-empty {
+  text-align: center;
+  padding: 50px;
+  color: #666;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 20px;
+}

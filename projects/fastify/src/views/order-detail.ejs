@@ -1,0 +1,172 @@
+<link rel="stylesheet" href="/public/css/order.css">
+
+<div class="order-container">
+  <h1 class="order-title">Order #<span id="order_id"><%= orderId %></span></h1>
+  
+  <div class="order-loading" id="orderLoading">Loading order details...</div>
+  
+  <div class="order-details" id="orderDetails" style="display: none;">
+    <div class="order-info">
+      <div class="order-status">Status: <span id="orderStatus"></span></div>
+      <div class="order-total">Total: <span id="orderTotal"></span></div>
+      <div class="order-date">Date: <span id="orderDate"></span></div>
+    </div>
+    
+    <h2>Ordered Items</h2>
+    <table class="order-items-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="orderItemsList">
+        <!-- Order items will be loaded here -->
+      </tbody>
+    </table>
+    
+    <div class="order-actions">
+      <a href="/orders" class="back-to-orders-btn">Back to Orders</a>
+      <button id="payOrderBtn" class="pay-my-order" style="display: none;">Pay Now</button>
+      <button id="refundOrderBtn" class="refund-button" style="display: none;">Request Refund</button>
+    </div>
+  </div>
+  
+  <div class="order-not-found" id="orderNotFound" style="display: none;">
+    <h2>Order Not Found</h2>
+    <p>The order you are looking for does not exist or you don't have permission to view it.</p>
+    <a href="/orders" class="back-to-orders-btn">Back to Orders</a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const orderId = '<%= orderId %>';
+      const response = await fetch(`/api/orders/${orderId}`);
+      const data = await response.json();
+      
+      const loadingElement = document.getElementById('orderLoading');
+      const detailsElement = document.getElementById('orderDetails');
+      const notFoundElement = document.getElementById('orderNotFound');
+      
+      if (data.success && data.order) {
+        const order = data.order;
+        
+        // Update order details
+        document.getElementById('orderStatus').textContent = order.status;
+        document.getElementById('orderTotal').textContent = `$${order.total_price.toFixed(2)}`;
+        document.getElementById('orderDate').textContent = new Date(order.created_at).toLocaleString();
+        
+        // Populate order items
+        const itemsList = document.getElementById('orderItemsList');
+        
+        if (order.items && order.items.length > 0) {
+          order.items.forEach(item => {
+            const row = document.createElement('tr');
+            row.id = `product_in_order_${item.product_id}`;
+            
+            row.innerHTML = `
+              <td><img src="${item.image}" alt="${item.name}" class="order-item-image"></td>
+              <td>${item.name}</td>
+              <td>$${item.price.toFixed(2)}</td>
+              <td>${item.quantity}</td>
+              <td>$${(item.price * item.quantity).toFixed(2)}</td>
+            `;
+            
+            itemsList.appendChild(row);
+          });
+        }
+        
+        // Show pay button if order is pending payment
+        const payButton = document.getElementById('payOrderBtn');
+        if (order.status === 'Pending payment') {
+          payButton.style.display = 'inline-block';
+          payButton.addEventListener('click', async () => {
+            try {
+              payButton.disabled = true;
+              payButton.textContent = 'Processing...';
+              
+              const payResponse = await fetch(`/api/orders/${orderId}/pay`, {
+                method: 'POST'
+              });
+              
+              const payData = await payResponse.json();
+              
+              if (payData.success) {
+                // Update the status without refreshing
+                document.getElementById('orderStatus').textContent = 'Finished';
+                payButton.style.display = 'none';
+                alert('Payment successful!');
+                
+                // Show refund button after successful payment
+                const refundButton = document.getElementById('refundOrderBtn');
+                refundButton.style.display = 'inline-block';
+              } else {
+                alert(payData.message || 'Payment failed. Please try again.');
+                document.getElementById('orderStatus').textContent = 'Failed';
+                payButton.textContent = 'Payment Failed';
+                payButton.disabled = true;
+                payButton.classList.add('payment-failed');
+              }
+            } catch (error) {
+              console.error('Error processing payment:', error);
+              alert('Error processing payment. Please try again.');
+              payButton.disabled = false;
+              payButton.textContent = 'Pay Now';
+            }
+          });
+        }
+        
+        // Show refund button if order is finished
+        const refundButton = document.getElementById('refundOrderBtn');
+        if (order.status === 'Finished') {
+          refundButton.style.display = 'inline-block';
+          refundButton.addEventListener('click', async () => {
+            try {
+              refundButton.disabled = true;
+              refundButton.textContent = 'Processing...';
+              
+              const refundResponse = await fetch(`/api/orders/${orderId}/refund`, {
+                method: 'POST'
+              });
+              
+              const refundData = await refundResponse.json();
+              
+              if (refundData.success) {
+                // Update the status without refreshing
+                document.getElementById('orderStatus').textContent = 'Refund Reviewing';
+                refundButton.style.display = 'none';
+                alert('Refund request submitted successfully!');
+              } else {
+                alert(refundData.message || 'Refund request failed. Please try again.');
+                refundButton.disabled = false;
+                refundButton.textContent = 'Request Refund';
+              }
+            } catch (error) {
+              console.error('Error processing refund request:', error);
+              alert('Error processing refund request. Please try again.');
+              refundButton.disabled = false;
+              refundButton.textContent = 'Request Refund';
+            }
+          });
+        }
+        
+        // Hide loading, show details
+        loadingElement.style.display = 'none';
+        detailsElement.style.display = 'block';
+      } else {
+        // Show not found message
+        loadingElement.style.display = 'none';
+        notFoundElement.style.display = 'block';
+      }
+    } catch (error) {
+      console.error('Error loading order details:', error);
+      document.getElementById('orderLoading').style.display = 'none';
+      document.getElementById('orderNotFound').style.display = 'block';
+    }
+  });
+</script>
