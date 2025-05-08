@@ -1,0 +1,28 @@
+{
+  "name": "@web-bench/evaluator-types",
+  "version": "1.0.1-alpha.3",
+  "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run build:fast -- --dts-resolve",
+    "clean": "rm -rf dist",
+    "build:watch": "tsup",
+    "build:fast": "tsup",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "ignore": "^6.0.2",
+    "@types/node": "^22.7.9",
+    "prettier": "^3.3.3",
+    "tsup": "^8.3.5",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0"
+  }
+}

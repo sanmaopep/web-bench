@@ -1,0 +1,42 @@
+{
+  "name": "@web-bench/bench-agent",
+  "version": "1.0.1-alpha.3",
+  "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run build:fast -- --dts-resolve",
+    "clean": "rm -rf dist",
+    "build:watch": "tsup",
+    "test": "vitest",
+    "build:fast": "tsup"
+  },
+  "devDependencies": {
+    "@web-bench/evaluator-types": "workspace:*",
+    "prettier": "^3.3.3",
+    "@types/node": "^22.7.9",
+    "@types/node-fetch": "^2.6.11",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
+    "@types/follow-redirects": "^1.14.4"
+  },
+  "dependencies": {
+    "http-proxy-agent": "^7.0.1",
+    "https-proxy-agent": "^7.0.3",
+    "llama-tokenizer-js": "^1.2.2",
+    "js-tiktoken": "^1.0.8",
+    "axios": "1.7.9",
+    "axios-retry": "4.5.0",
+    "node-fetch": "^2.6.11",
+    "follow-redirects": "^1.15.5"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

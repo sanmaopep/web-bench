@@ -1,0 +1,12 @@
+{
+  "name": "@web-bench/summary",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "dependencies": {
+    "ignore": "^6.0.2"
+  },
+  "devDependencies": {}
+}

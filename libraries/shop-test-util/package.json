@@ -1,0 +1,13 @@
+{
+  "name": "@web-bench/shop-test-util",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "",
+    "test": ""
+  },
+  "dependencies": {
+    "@web-bench/test-util": "workspace:*",
+    "@playwright/test": "^1.49.1"
+  }
+}

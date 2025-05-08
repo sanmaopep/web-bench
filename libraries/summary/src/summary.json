@@ -1,0 +1,314 @@
+{
+  "projects": [
+    {
+      "name": "angular",
+      "files": 20,
+      "lines": 1675,
+      "cases": 59
+    },
+    {
+      "name": "bom",
+      "files": 17,
+      "lines": 1259,
+      "cases": 76
+    },
+    {
+      "name": "calculator",
+      "files": 1,
+      "lines": 502,
+      "cases": 69
+    },
+    {
+      "name": "calculator-files",
+      "files": 3,
+      "lines": 500,
+      "cases": 69
+    },
+    {
+      "name": "canvas",
+      "files": 8,
+      "lines": 1454,
+      "cases": 66
+    },
+    {
+      "name": "chart",
+      "files": 17,
+      "lines": 1341,
+      "cases": 99
+    },
+    {
+      "name": "color",
+      "files": 3,
+      "lines": 631,
+      "cases": 78
+    },
+    {
+      "name": "dom",
+      "files": 12,
+      "lines": 1122,
+      "cases": 93
+    },
+    {
+      "name": "dom1",
+      "files": 12,
+      "lines": 1122,
+      "cases": 86
+    },
+    {
+      "name": "draw",
+      "files": 14,
+      "lines": 1128,
+      "cases": 70
+    },
+    {
+      "name": "esmodule",
+      "files": 17,
+      "lines": 240,
+      "cases": 39
+    },
+    {
+      "name": "expression-editor",
+      "files": 8,
+      "lines": 1308,
+      "cases": 24
+    },
+    {
+      "name": "expressjs",
+      "files": 44,
+      "lines": 2842,
+      "cases": 91
+    },
+    {
+      "name": "fastify",
+      "files": 40,
+      "lines": 5315,
+      "cases": 91
+    },
+    {
+      "name": "fastify-react",
+      "files": 55,
+      "lines": 6180,
+      "cases": 90
+    },
+    {
+      "name": "flex",
+      "files": 1,
+      "lines": 564,
+      "cases": 77
+    },
+    {
+      "name": "float",
+      "files": 1,
+      "lines": 534,
+      "cases": 95
+    },
+    {
+      "name": "form",
+      "files": 16,
+      "lines": 1472,
+      "cases": 95
+    },
+    {
+      "name": "grid",
+      "files": 1,
+      "lines": 549,
+      "cases": 92
+    },
+    {
+      "name": "jotai",
+      "files": 28,
+      "lines": 3281,
+      "cases": 69
+    },
+    {
+      "name": "less",
+      "files": 34,
+      "lines": 2577,
+      "cases": 88
+    },
+    {
+      "name": "lowdb",
+      "files": 64,
+      "lines": 5093,
+      "cases": 90
+    },
+    {
+      "name": "mobx",
+      "files": 27,
+      "lines": 3047,
+      "cases": 69
+    },
+    {
+      "name": "nextjs",
+      "files": 49,
+      "lines": 3140,
+      "cases": 92
+    },
+    {
+      "name": "nosql",
+      "files": 64,
+      "lines": 2949,
+      "cases": 91
+    },
+    {
+      "name": "nuxt",
+      "files": 54,
+      "lines": 5122,
+      "cases": 91
+    },
+    {
+      "name": "parcel",
+      "files": 27,
+      "lines": 863,
+      "cases": 0
+    },
+    {
+      "name": "prisma",
+      "files": 76,
+      "lines": 5264,
+      "cases": 90
+    },
+    {
+      "name": "react",
+      "files": 20,
+      "lines": 1271,
+      "cases": 59
+    },
+    {
+      "name": "react-no-ts",
+      "files": 22,
+      "lines": 1541,
+      "cases": 59
+    },
+    {
+      "name": "redux",
+      "files": 50,
+      "lines": 3925,
+      "cases": 69
+    },
+    {
+      "name": "sass",
+      "files": 34,
+      "lines": 2590,
+      "cases": 88
+    },
+    {
+      "name": "selector",
+      "files": 3,
+      "lines": 363,
+      "cases": 48
+    },
+    {
+      "name": "sequelize",
+      "files": 65,
+      "lines": 5591,
+      "cases": 91
+    },
+    {
+      "name": "styled-components",
+      "files": 18,
+      "lines": 1396,
+      "cases": 34
+    },
+    {
+      "name": "stylus",
+      "files": 34,
+      "lines": 2484,
+      "cases": 88
+    },
+    {
+      "name": "survey",
+      "files": 22,
+      "lines": 2514,
+      "cases": 87
+    },
+    {
+      "name": "svelte",
+      "files": 20,
+      "lines": 1530,
+      "cases": 59
+    },
+    {
+      "name": "svg",
+      "files": 21,
+      "lines": 1396,
+      "cases": 99
+    },
+    {
+      "name": "svg-chart",
+      "files": 15,
+      "lines": 1142,
+      "cases": 78
+    },
+    {
+      "name": "svg-solar",
+      "files": 11,
+      "lines": 1004,
+      "cases": 68
+    },
+    {
+      "name": "table",
+      "files": 11,
+      "lines": 1390,
+      "cases": 86
+    },
+    {
+      "name": "tailwind",
+      "files": 1,
+      "lines": 552,
+      "cases": 92
+    },
+    {
+      "name": "threejs",
+      "files": 10,
+      "lines": 604,
+      "cases": 70
+    },
+    {
+      "name": "typescript",
+      "files": 3,
+      "lines": 256,
+      "cases": 86
+    },
+    {
+      "name": "unocss",
+      "files": 2,
+      "lines": 582,
+      "cases": 92
+    },
+    {
+      "name": "vite",
+      "files": 26,
+      "lines": 917,
+      "cases": 0
+    },
+    {
+      "name": "vue",
+      "files": 18,
+      "lines": 1436,
+      "cases": 59
+    },
+    {
+      "name": "webpack",
+      "files": 27,
+      "lines": 876,
+      "cases": 0
+    },
+    {
+      "name": "zustand",
+      "files": 25,
+      "lines": 2961,
+      "cases": 69
+    }
+  ],
+  "summary": {
+    "avgFiles": 23.42,
+    "maxFiles": 76,
+    "avgLines": 1947.9,
+    "maxLines": 6180,
+    "avgProjectCases": 72.4,
+    "maxProjectCases": 99,
+    "avgTaskCases": 3.62,
+    "maxTaskCases": 4.95
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "@web-bench/evaluator",
+  "version": "1.0.1-alpha.3",
+  "description": "web-bench evaluator",
+  "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run build:fast -- --dts-resolve",
+    "clean": "rm -rf dist",
+    "test": "vitest",
+    "build:watch": "tsup",
+    "build:fast": "tsup"
+  },
+  "author": "",
+  "devDependencies": {
+    "@types/node": "^22.7.9",
+    "@types/promise-fs": "^2.1.5",
+    "prettier": "^3.3.3",
+    "tsup": "^8.3.5",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
+    "typescript": "^5.6.3",
+    "@types/lodash": "^4.17.0",
+    "@vitest/coverage-v8": "^2.1.4",
+    "@types/tiny-async-pool": "^2.0.3",
+    "csvtojson": "^2.0.10",
+    "vitest": "^2.1.4"
+  },
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "ignore": "^6.0.2",
+    "dayjs": "^1.11.13",
+    "lodash": "^4.17.0",
+    "dotenv": "~16.4.5",
+    "@web-bench/evaluator-types": "workspace:*",
+    "node-html-parser": "^6.1.13",
+    "promise-fs": "^2.1.1",
+    "tiny-async-pool": "^2.1.0",
+    "strip-ansi": "^6.0.1",
+    "yaml": "^2.7.0",
+    "fs-extra": "^11.2.0",
+    "@types/fs-extra": "^11.0.4",
+    "execa": "^9.5.2",
+    "string-diff-viewer": "^0.4.1"
+  },
+  "license": "ISC"
+}
