@@ -1,0 +1,84 @@
+import { expect, test } from '@playwright/test'
+import { getOffsetByLocator } from '@web-bench/test-util'
+import { data, length } from './util/util'
+
+test.beforeEach(async ({ page }) => {
+  await page.goto('/index.html')
+  await page.locator('#bar').scrollIntoViewIfNeeded()
+})
+
+test('BarChart | tooltips | init', async ({ page }) => {
+  await expect(page.locator('#bar .tooltips')).toHaveCount(1)
+  await expect(page.locator('#bar .tooltips')).toBeHidden()
+})
+
+test('BarChart | tooltips | show', async ({ page }) => {
+  const tooltips = page.locator('#bar .tooltips')
+  await page.locator('#bar').hover()
+  await expect(tooltips).toBeVisible()
+  await expect(page.locator('#bar .grid-x.selected')).toHaveCount(1)
+  await expect(page.locator('#bar .grid-x-2.selected')).toHaveCount(1)
+
+  for await (const [, dataset] of Object.entries(data.datasets)) {
+    await expect(tooltips).toContainText(`${dataset.data[2]}`)
+  }
+})
+
+test('BarChart | tooltips | hide', async ({ page }) => {
+  const tooltips = page.locator('#bar .tooltips')
+  await page.locator('#bar').hover()
+  await expect(tooltips).toBeVisible()
+  await expect(page.locator('#bar .grid-x.selected')).toHaveCount(1)
+
+  await page.locator('#bar .legends').hover()
+  await expect(tooltips).toHaveClass(/hidden/)
+  await expect(page.locator('#bar .grid-x.selected')).toHaveCount(0)
+})
+
+// test('BarChart | tooltips | show', async ({ page }) => {
+//   const tooltips = page.locator('#bar .tooltips')
+//   const gridXs = await page.locator('#bar .grid-x').all()
+//   for await (const [i, gridX] of Object.entries(gridXs)) {
+//     if (parseInt(i) >= gridXs.length - 1) break
+//     const offset = await getOffsetByLocator(gridX)
+//     await page.mouse.move(offset.centerX, offset.centerY)
+//     console.log(offset)
+
+//     // await expect(gridX).toHaveClass(/selected/i)
+//     // await expect(tooltips).toBeVisible()
+
+//     for await (const [, dataset] of Object.entries(data.datasets)) {
+//       await expect(tooltips).toContainText(`${dataset.data[i]}`)
+//     }
+//   }
+// })
+
+// test('BarChart | tooltips | hide', async ({ page }) => {
+//   const tooltips = page.locator('#bar .tooltips')
+//   const gridXs = await page.locator('#bar .grid-x').all()
+//   const offsetLegends = await getOffsetByLocator(page.locator('#bar .legends'))
+//   for await (const [, gridX] of Object.entries(gridXs)) {
+//     const offset = await getOffsetByLocator(gridX)
+//     await page.mouse.move(offset.centerX, offset.centerY)
+//     await expect(tooltips).not.toHaveClass(/hidden/i)
+//     await expect(tooltips).toBeVisible()
+
+//     await page.mouse.move(offsetLegends.centerX, offsetLegends.centerY)
+//     // await expect(tooltips).not.toBeVisible() WHY failed?
+//     await expect(tooltips).toHaveClass(/hidden/i)
+//   }
+// })
+
+// test('BarChart | tooltips | position', async ({ page }) => {
+//   const tooltips = page.locator('#bar .tooltips')
+//   const gridXs = await page.locator('#bar .grid-x').all()
+//   for await (const [i, gridX] of Object.entries(gridXs)) {
+//     const offset = await getOffsetByLocator(gridX)
+//     await page.mouse.move(offset.centerX, offset.centerY)
+
+//     const offset1 = await getOffsetByLocator(tooltips)
+//     const length1 = length(0, 0, offset1.width, offset1.height)
+//     const distance = length(offset.centerX, offset.centerY, offset1.centerX, offset1.centerY)
+//     await expect(distance).toBeLessThanOrEqual(length1)
+//   }
+// })

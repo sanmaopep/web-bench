@@ -1,0 +1,115 @@
+@import './config'
+
+.q
+  margin 2 * $gap 0
+  border-radius 0.8rem
+  border 0.1rem $color.border-base
+  padding $gap 2 * $gap
+  background-color $color.white
+  box-shadow 0 0.2rem 0.4rem $color.shadow
+
+  button
+    padding 0.6rem 1.2rem
+    background none
+    border-radius 0.2rem
+    border 0.1rem $color.border-lightest
+    cursor pointer
+    transition all 0.2s ease
+
+    &:hover
+      background-color $color.border-lightest
+
+  .option
+    display flex
+    align-items center
+    justify-content flex-start
+    height 3rem
+
+    &:hover
+      background-color $color.hover
+
+    &[draggable='true']
+      cursor grab
+
+    .remove-option
+      display none
+
+    &:hover .remove-option
+      display block
+
+    .option-text
+      cursor pointer
+      &:focus
+        outline none
+
+  .q-title
+    font-size 1.6rem
+    font-weight 600
+    color $color.text
+    padding 0 $gap
+
+  .q-body
+    margin-top 0.5rem
+    display flex
+    flex-direction column
+    align-items stretch
+
+    textarea,
+    select,
+    input:not([type='radio']):not([type='checkbox'])
+      padding $gap
+      border-radius 0.2rem
+      border 0.1rem $color.border-light
+      margin 0.5rem 0
+      font-family inherit
+      font-size 1.4rem
+
+      &:focus
+        outline none
+        border-color $color.primary
+        box-shadow 0 0 0 0.2rem $color.primary-transparent
+
+    input[type='number'],
+    input[type='date']
+      width 40%
+
+  .q-config
+    margin-top 0.5rem
+    display flex
+    justify-content space-between
+
+    &-left
+      flex 1
+      display flex
+      justify-content flex-start
+      align-items center
+
+    &-center
+      flex 1
+      display flex
+      justify-content center
+      align-items center
+
+    &-right
+      flex 1
+      display flex
+      justify-content flex-end
+      align-items center
+
+  &.pre .q-config
+    display none
+
+  select,
+  input[type='radio'],
+  input[type='number'],
+  input[type='checkbox']
+    margin-right 0.5rem
+
+  label
+    padding 0.5rem
+    color $color.text-light
+
+  input.q-minLength,
+  input.q-starCount
+    width 3.5rem
+    height 2 * $gap

@@ -1,0 +1,13 @@
+$color: black;
+$bgColor: white;
+
+body {
+  margin: 0;
+  color: $color;
+  background-color: $bgColor;
+}
+
+.root {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

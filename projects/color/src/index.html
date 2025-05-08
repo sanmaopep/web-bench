@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web-Bench Color</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+
+        --light-bg: ghostwhite;
+        --light-color: rgb(32, 54, 54);
+
+        --dark-bg: rgb(32, 54, 54);
+        --dark-color: ghostwhite;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: light-dark(var(--light-bg), var(--dark-bg));
+        color: light-dark(var(--light-color), var(--dark-color));
+      }
+
+      .light {
+        color-scheme: light;
+      }
+
+      .dark {
+        color-scheme: dark;
+      }
+
+      .root {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 10px;
+      }
+
+      .color {
+        box-sizing: border-box;
+        width: calc(50% - 5px);
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .color .prop {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+        position: relative;
+      }
+
+      .color input[type='range'] {
+        width: 70%;
+        height: 8px;
+        border-radius: 10px;
+        appearance: none;
+        margin-right: 15px;
+        background-color: light-dark(var(--light-bg), var(--dark-bg));
+      }
+
+      .color input[type='range']::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background-color: light-dark(#3498db, hsl(from #3498db h s calc(l - 20)));
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .color input[type='range']::-webkit-slider-thumb:hover {
+        background-color: light-dark(#2980b9, hsl(from #2980b9 h s calc(l - 20)));
+      }
+
+      .color .result {
+        display: inline-block;
+        min-width: 40px;
+        text-align: center;
+        font-weight: bold;
+        background-color: light-dark(var(--light-bg), var(--dark-bg));
+        padding: 4px 8px;
+        border-radius: 4px;
+        margin-left: 10px;
+      }
+
+      #changeTheme {
+        width: 100px;
+        position: fixed;
+        left: calc(50% - 50px);
+        bottom: 5px;
+      }
+
+      .color.wheel-color {
+        cursor: crosshair;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: light-dark(var(--dark-bg), var(--light-bg));
+      }
+
+      .color.wheel-color .wheel-container {
+        position: relative;
+      }
+
+      .color.wheel-color .wheel-container .block {
+        position: absolute;
+        box-sizing: border-box;
+        width: 12px;
+        height: 12px;
+        border-radius: 6px;
+        opacity: 0.5;
+        background-color: light-dark(var(--dark-bg), var(--light-bg));
+        border: 2px solid light-dark(var(--light-bg), var(--dark-bg));
+      }
+
+      .color.wheel-color .l,
+      .color.wheel-color .c,
+      .color.wheel-color .w,
+      .color.wheel-color .b {
+        width: 120px;
+        transform: rotate(90deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <div class="color rgb">
+        <label class="prop">
+          <input type="range" name="r" min="0" max="255" value="0" />
+          R
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="g" min="0" max="255" value="0" />
+          G
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="b" min="0" max="255" value="0" />
+          B
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="a" min="0" max="1" value="1" step="0.1" />
+          A
+          <span class="result"></span>
+        </label>
+      </div>
+
+      <div class="color hsl">
+        <label class="prop">
+          <input type="range" name="h" min="0" max="360" value="0" />
+          H
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="s" min="0" max="100" value="0" />
+          S
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="l" min="0" max="100" value="0" />
+          L
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="a" min="0" max="1" value="1" step="0.1" />
+          A
+          <span class="result"></span>
+        </label>
+      </div>
+
+      <div class="color hwb">
+        <label class="prop">
+          <input type="range" name="h" min="0" max="360" value="0" />
+          H
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="s" min="0" max="100" value="0" />
+          W
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="l" min="0" max="100" value="0" />
+          B
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="a" min="0" max="1" value="1" step="0.1" />
+          A
+          <span class="result"></span>
+        </label>
+      </div>
+
+      <div class="color lab">
+        <label class="prop">
+          <input type="range" name="l" min="0" max="100" value="0" />
+          L
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="a" min="-125" max="125" value="0" />
+          A
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="b" min="-125" max="125" value="0" />
+          B
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="a" min="0" max="1" value="1" step="0.1" />
+          A
+          <span class="result"></span>
+        </label>
+      </div>
+
+      <div class="color lch">
+        <label class="prop">
+          <input type="range" name="l" min="0" max="100" value="0" />
+          L
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="c" min="0" max="230" value="0" />
+          C
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="h" min="0" max="360" value="0" />
+          H
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="a" min="0" max="1" value="1" step="0.1" />
+          A
+          <span class="result"></span>
+        </label>
+      </div>
+
+      <div class="color oklab">
+        <label class="prop">
+          <input type="range" name="l" min="0" max="1" value="0" step="0.1" />
+          L
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="a" min="-0.4" max="0.4" value="0" step="0.1" />
+          A
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="b" min="-0.4" max="0.4" value="0" step="0.1" />
+          B
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="a" min="0" max="1" value="1" step="0.1" />
+          A
+          <span class="result"></span>
+        </label>
+      </div>
+
+      <div class="color oklch">
+        <label class="prop">
+          <input type="range" name="l" min="0" max="1" value="0" step="0.1" />
+          L
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="a" min="0" max="0.4" value="0" step="0.1" />
+          C
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="b" min="0" max="360" value="0" />
+          H
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="a" min="0" max="1" value="1" step="0.1" />
+          A
+          <span class="result"></span>
+        </label>
+      </div>
+
+      <div class="color wheel-color hsl-wheel"></div>
+      <div class="color wheel-color lch-wheel"></div>
+      <div class="color wheel-color hwb-wheel"></div>
+
+      <button id="changeTheme">Theme</button>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

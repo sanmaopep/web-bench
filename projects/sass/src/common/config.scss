@@ -1,0 +1,69 @@
+@use 'sass:map';
+@use 'sass:color';
+
+$gap: 1rem;
+$border-color: #ddd;
+
+$color: (
+  primary: #4caf50,
+  primary-dark: #45a049,
+  background: #f5f5f5,
+  border: $border-color,
+  border-light: color.adjust($border-color, $lightness: 5%),
+  border-lighter: color.adjust($border-color, $lightness: 10%),
+  border-lightest: color.adjust($border-color, $lightness: 15%),
+  text: #333,
+  text-light: #555,
+  text-lighter: #666,
+  white: #fff,
+  hover: #f8f9fa,
+  star: #ddd,
+  shadow: rgba(0, 0, 0, 0.05),
+  shadow-dark: rgba(0, 0, 0, 0.5),
+  primary-transparent: rgba(76, 175, 80, 0.2),
+);
+
+// Common border mixins
+@mixin border($radius, $borderColor) {
+  border: 0.1rem solid $borderColor;
+  border-radius: $radius;
+}
+
+@mixin border-base($radius) {
+  @include border($radius, map.get($color, border));
+}
+
+@mixin border-light($radius) {
+  @include border($radius, map.get($color, border-light));
+}
+
+@mixin border-lighter($radius) {
+  @include border($radius, map.get($color, border-lighter));
+}
+
+@mixin border-lightest($radius) {
+  @include border($radius, map.get($color, border-lightest));
+}
+
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+html {
+  font-size: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+body {
+  font-size: 1.4rem;
+  padding: 2 * $gap;
+  background-color: map.get($color, background);
+}

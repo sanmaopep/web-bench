@@ -1,0 +1,29 @@
+@use './config';
+
+.chart {
+  display: block;
+  width: 50vw;
+  height: 35vw;
+
+  &:nth-child(4n + 2),
+  &:nth-child(4n + 3) {
+    background-color: #f6f6f6;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  polyline,
+  line  {
+    stroke: black;
+    stroke-width: 0.2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  text {
+    font-size: 2px;
+  }
+}

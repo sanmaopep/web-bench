@@ -1,0 +1,37 @@
+@import './config.less';
+
+.rating {
+  margin: @gap 0;
+  display: flex;
+
+  .option {
+    font-size: 2.4rem;
+    color: @color[star];
+    margin-right: 0.8rem;
+    transition: color 0.2s ease;
+
+    input[type='radio'] {
+      appearance: none;
+      margin: 0;
+      width: 0;
+    }
+
+    &:hover {
+      background: none;
+    }
+  }
+}
+
+.pre .rating {
+  .option {
+    cursor: pointer;
+
+    &:hover {
+      color: @color[primary];
+    }
+
+    &.active {
+      color: @color[primary];
+    }
+  }
+}

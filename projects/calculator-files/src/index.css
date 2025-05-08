@@ -1,0 +1,245 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calculator {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.calculator.dark-mode {
+  background-color: #333;
+  border-color: #666;
+}
+
+.display {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  text-align: right;
+  font-size: 24px;
+  background-color: #fff;
+  color: #000;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.dark-mode .display {
+  background-color: #444;
+  color: #fff;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+button {
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+.dark-mode button {
+  background-color: #444;
+  color: #fff;
+  border-color: #666;
+}
+
+.dark-mode button {
+  background-color: #444;
+  color: #fff;
+  border-color: #666;
+}
+
+button:hover {
+  background-color: #eee;
+}
+
+.dark-mode button:hover {
+  background-color: #555;
+}
+
+.buttons button:nth-child(4),
+.buttons button:nth-child(8),
+.buttons button:nth-child(12),
+.buttons button:nth-child(16),
+.buttons button:nth-child(18) {
+  background-color: #ffd700;
+  color: #000;
+}
+
+.buttons button:nth-child(4):hover,
+.buttons button:nth-child(8):hover,
+.buttons button:nth-child(12):hover,
+.buttons button:nth-child(16):hover,
+.buttons button:nth-child(18):hover {
+  background-color: #ffed4a;
+}
+
+.dark-mode .buttons button:nth-child(4),
+.dark-mode .buttons button:nth-child(8),
+.dark-mode .buttons button:nth-child(12),
+.dark-mode .buttons button:nth-child(16),
+.dark-mode .buttons button:nth-child(18) {
+  background-color: #ff8c00;
+  color: #fff;
+}
+
+.dark-mode .buttons button:nth-child(4):hover,
+.dark-mode .buttons button:nth-child(8):hover,
+.dark-mode .buttons button:nth-child(12):hover,
+.dark-mode .buttons button:nth-child(16):hover,
+.dark-mode .buttons button:nth-child(18):hover {
+  background-color: #ffa500;
+}
+
+.buttons button.memory-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.buttons button.memory-btn:hover {
+  background-color: #45a049;
+}
+
+.dark-mode .buttons button.memory-btn {
+  background-color: #2e7d32;
+  color: white;
+}
+
+.dark-mode .buttons button.memory-btn:hover {
+  background-color: #388e3c;
+}
+
+#toggle,
+#mode {
+  position: fixed;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+#toggle {
+  bottom: 20px;
+  left: 35%;
+  transform: translateX(-50%);
+}
+
+#mode {
+  bottom: 20px;
+  left: 65%;
+  transform: translateX(-50%);
+}
+
+.dark-mode #toggle,
+.dark-mode #mode {
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.buttons button:nth-of-type(n + 19) {
+  display: none;
+}
+
+.scientific .buttons button:nth-of-type(n + 19) {
+  display: block;
+}
+
+/* Add styles for the panels container and panels */
+.info-panels {
+  display: none;
+  margin-top: 15px;
+  border-top: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.dark-mode .info-panels {
+  border-color: #666;
+}
+
+.scientific .info-panels {
+  display: block;
+}
+
+.memory-panel,
+.clicks-panel {
+  padding: 10px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.dark-mode .memory-panel,
+.dark-mode .clicks-panel {
+  color: #fff;
+}
+
+#memory,
+#clicks {
+  font-family: monospace;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 4px 8px;
+  border-radius: 3px;
+  min-width: 50px;
+  text-align: right;
+}
+
+.dark-mode #memory,
+.dark-mode #clicks {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#clicks {
+  width: 180px;
+}
+
+.clicks-history {
+  font-family: monospace;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 4px 8px;
+  border-radius: 3px;
+  min-width: 150px;
+  text-align: right;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.dark-mode .clicks-history {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.history-item {
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+.history-item:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .history-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}

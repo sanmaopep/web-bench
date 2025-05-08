@@ -1,0 +1,505 @@
+html {
+  font-size: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+body {
+  font-size: 1.4rem;
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+
+form.survey {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form > * {
+  width: 100%;
+}
+
+.survey-top {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.survey-title {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.survey-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 1rem 1rem 0;
+}
+
+.survey-toolbar button {
+  margin-right: 1rem;
+  background-color: #4caf50;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.6rem;
+  transition: background-color 0.2s ease;
+}
+
+.survey-toolbar button:hover {
+  background-color: #45a049;
+}
+
+.survey-questions {
+}
+
+fieldset.q {
+  margin: 2rem 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.q-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #333;
+  padding: 0 1rem;
+}
+
+.q-body {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.q-config {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pre .q-config {
+  display: none;
+}
+
+.q-config-left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.q-config-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.q-config-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* .q-extra {
+  display: flex;
+  justify-content: center;
+}
+
+.pre .q-extra {
+  display: none; */
+/* } */
+
+.q button {
+  padding: 0.6rem 1.2rem;
+  background: none;
+  border: 1px solid #f3f3f3;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.q button:hover {
+  background-color: #f3f3f3;
+}
+
+.q .remove-option {
+  /* border: none; */
+  display: none;
+}
+
+.q .remove-option:hover {
+}
+
+.q .option {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 3rem;
+}
+
+.q .option:hover {
+  background-color: #f8f9fa;
+}
+
+.q .option[draggable='true'] {
+  cursor: grab;
+}
+
+.q .option-text:focus {
+  outline: none;
+}
+
+.q .option-text {
+  cursor: pointer;
+}
+
+.q .option:hover .remove-option {
+  display: block;
+}
+
+.q-body textarea,
+.q-body select,
+.q-body input:not([type='radio']):not([type='checkbox']) {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+  font-family: inherit;
+  font-size: 1.4rem;
+}
+
+.q-body textarea:focus,
+.q-body input:not([type='radio']):not([type='checkbox']):focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.q-body input[type='number'],
+.q-body input[type='date'] {
+  width: 40%;
+}
+
+/* Style for radio and checkbox inputs */
+select,
+input[type='radio'],
+input[type='number'],
+input[type='checkbox'] {
+  margin-right: 0.5rem;
+}
+
+label {
+  padding: 0.5rem;
+  color: #555;
+}
+
+/* Rating stars styling */
+.rating {
+  margin: 1rem 0;
+  display: flex;
+}
+
+input.q-starCount {
+  width: 3.5rem;
+  height: 2rem;
+}
+
+.rating .option input[type='radio'] {
+  appearance: none;
+  margin: 0;
+  width: 0;
+}
+
+.rating .option {
+  font-size: 2.4rem;
+  color: #ddd;
+  margin-right: 0.8rem;
+  transition: color 0.2s ease;
+}
+
+.rating .option:hover {
+  background: none;
+}
+
+.pre .rating .option {
+  cursor: pointer;
+}
+
+.pre .rating .option:hover {
+  color: #4caf50;
+}
+
+.pre .rating .option.active {
+  color: #4caf50;
+}
+
+/* Enhanced Ranking Question Styling */
+.ranking {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.ranking .option {
+  height: 4rem;
+  line-height: 4rem;
+  padding-left: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+}
+
+.ranking .option:hover {
+  border-color: #4caf50;
+}
+
+.ranking .option.dragging {
+  opacity: 0.6;
+  cursor: grabbing;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ranking .option.dragover {
+  border-bottom: 4px solid #4caf50;
+}
+
+/* Enhanced NPS Question Styling */
+.nps {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  padding: 1rem 0;
+}
+
+.nps .option {
+  flex: 1;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.nps .option input[type='radio'] {
+  appearance: none; /* Remove default styling */
+  margin: 0;
+}
+
+.pre .nps .option {
+  cursor: pointer;
+}
+
+.pre .nps .option:hover {
+  background-color: #f5f5f5;
+  border-color: #4caf50;
+}
+
+.pre .nps .option.active {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Enhanced Likert Question Styling */
+.likert {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.likert td {
+  padding: 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.likert td:focus {
+  outline: none;
+}
+
+.likert tr:first-child td {
+  font-weight: 500;
+  color: #666;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.likert td:first-child {
+  text-align: left;
+  padding-left: 0;
+  width: 40%;
+}
+
+.likert .statement {
+  height: 5rem;
+}
+
+.likert .statement .statement-text {
+  cursor: pointer;
+}
+
+.likert .statement .remove-statement {
+  cursor: pointer;
+  display: none;
+  margin-left: 1rem;
+}
+
+.likert .statement:hover .remove-statement {
+  display: inline;
+}
+
+.pre .likert .statement .statement-text {
+  cursor: default;
+}
+
+.likert .option {
+  display: table-cell;
+}
+
+.likert .option .option-text {
+  cursor: pointer;
+}
+
+.pre .likert .option .option-text {
+  cursor: default;
+}
+
+.likert .option .add-option,
+.likert .option .remove-option {
+  display: none;
+}
+
+.likert .option:hover .add-option,
+.likert .option:hover .remove-option {
+  display: inline;
+}
+
+.likert input[type='radio'] {
+  width: 1.6rem;
+  height: 1.6rem;
+  accent-color: #4caf50;
+}
+
+.pre .likert input[type='radio'] {
+  cursor: pointer;
+}
+
+.likert tr:hover {
+  background-color: #f8f9fa;
+}
+
+.contents {
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  bottom: 1rem;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden auto;
+  gap: 0.5rem;
+  background-color: white;
+  border-radius: 8px;
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+  padding: 1.5rem;
+}
+
+.contents-item {
+  display: flex;
+  padding: 0rem 1.5rem;
+  min-height: 4rem;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: grab;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  /* transition: all 0.2s ease; */
+}
+
+.contents-item:hover {
+  border-color: #4caf50;
+  background-color: #f8f9fa;
+  transform: translateX(-4px);
+}
+
+.contents-item.dragging {
+  opacity: 0.3;
+  cursor: grabbing;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  background-color: #f8f9fa;
+  transform: scale(1.02);
+}
+
+.contents-item.dragover-above {
+  border-top: 4px solid #4caf50;
+}
+
+.contents-item.dragover {
+  border-bottom: 4px solid #4caf50;
+}
+
+input.q-minLength {
+  width: 3.5rem;
+  height: 2rem;
+}
+
+.adder {
+  display: grid;
+  padding: 2rem;
+  border-radius: 0.4rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.adder.popup {
+  width: 40rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.adder button {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.adder button {
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button.add {
+  width: 10rem;
+  padding: 0.6rem 1.2rem;
+  background: none;
+  border: 1px solid #dbdada;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button.add:hover {
+  background-color: #dbdada;
+}

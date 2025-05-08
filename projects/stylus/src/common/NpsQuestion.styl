@@ -1,0 +1,33 @@
+@import './config'
+
+.nps
+  display flex
+  flex-direction row
+  gap 0.4rem
+  padding $gap 0
+
+  .option
+    border-base(0.4rem)
+    flex 1
+    center-flex()
+    height 4rem
+    transition all 0.2s ease
+    font-weight 500
+
+    input[type='radio']
+      appearance none
+      margin 0
+
+.pre .nps
+  .option
+    cursor pointer
+
+    &:hover
+      background-color $color.background
+      border-color $color.primary
+
+    &.active
+      background-color $color.primary
+      border-color $color.primary
+      color $color.white
+      transform scale(1.05)

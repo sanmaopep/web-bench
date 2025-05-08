@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body>
+    <div class="calculator dark-mode scientific">
+      <input type="text" class="display" id="display" readonly />
+      <div class="buttons">
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>/</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>*</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>-</button>
+        <button>0</button>
+        <button>.</button>
+        <button>=</button>
+        <button>+</button>
+        <button style="grid-column: span 3">Clear</button>
+        <button>√</button>
+        <button>^2</button>
+        <button>1/x</button>
+        <button>π</button>
+        <button>sin</button>
+        <button>cos</button>
+        <button>tan</button>
+        <button>sinh</button>
+        <button>cosh</button>
+        <button class="memory-btn">MR</button>
+        <button class="memory-btn">M+</button>
+        <button class="memory-btn">M-</button>
+        <button class="memory-btn">MC</button>
+      </div>
+
+      <div class="info-panels">
+        <div class="memory-panel">
+          <span>Memory</span>
+          <span id="memory">0</span>
+        </div>
+        <div class="clicks-panel">
+          <span>History</span>
+          <span id="clicks" class="clicks-history">&nbsp;</span>
+        </div>
+      </div>
+    </div>
+
+    <button id="toggle">Light</button>
+    <button id="mode">Basic</button>
+    <script src="./index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web-Bench BOM</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body class="dark">
+    <div class="browser">
+      <div class="topbar">
+        <div class="toolbar">
+          <button class="homepage">⌂</button>
+          <button class="back">&lt;</button>
+          <button class="forward">&gt;</button>
+          <button class="refresh">↻</button>
+        </div>
+        <select class="address">
+          <option value="docs/intro.html" selected>Intro</option>
+          <option value="docs/javascript.html">Javascript</option>
+          <option value="docs/css.html">CSS</option>
+          <option value="docs/html.html">HTML</option>
+          <option value="docs/nodejs.html">Nodejs</option>
+        </select>
+        <div class="setting">
+          <div class="reading-time">0s</div>
+          <div class="network">N</div>
+          <div class="geolocation">G</div>
+          <select class="theme">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+          </select>
+          <button class="fullscreen">⇱</button>
+        </div>
+      </div>
+      <iframe name="content" class="content"></iframe>
+    </div>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>

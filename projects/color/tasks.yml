@@ -1,0 +1,176 @@
+- id: task-1
+  date: 2025-3-11
+  level: easy
+  description: |
+    - change `.color.rgb` background with rgba color whose each item is from the value of corresponding range input
+    - For each `.prop` in `.color.rgb`, move range slider to show value in `.result`
+
+- id: task-2
+  date: 2025-3-11
+  level: easy
+  description: |
+    For each `.prop` in `.color.rgb`:
+    - move range slider to change `.color` background color
+    - background color is rgb color whose each item is from the value of corresponding range input
+
+- id: task-3
+  date: 2025-3-12
+  level: easy
+  description: |
+    - add element `.color.hsl` to `.root`
+    - implement hsl color config panel like `.color.rgb`
+    - each color component value is 0 and alpha is 1
+    - change `.color.hsl` background with hsl color whose item is from the corespondent range value
+
+- id: task-4
+  date: 2025-3-12
+  level: easy
+  description: |
+    - add element `.color.lab` to `.root`
+    - implement lab color config panel like `.color.rgb`
+    - each color component default value is 0 and alpha is 1
+    - change `.color.lab` background with lab color whose item is from the corespondent range value
+
+- id: task-5
+  date: 2025-3-12
+  level: easy
+  description: |
+    - add element `.color.lch` to `.root`
+    - implement lch color config panel like `.color.rgb`
+    - each color component default value is 0 and alpha is 1
+    - change `.color.lch` background with lch color whose item is from the corespondent range value
+
+- id: task-6
+  date: 2025-3-12
+  level: moderate
+  description: |
+    - add element `.color.oklab` to `.root`
+    - implement oklab color config panel like `.color.rgb`
+    - each color component default value is 0 and alpha is 1
+    - change `.color.oklab` background with oklab color whose item is from the corespondent range value
+
+- id: task-7
+  date: 2025-3-12
+  level: moderate
+  description: |
+    - add element `.color.oklch` to `.root`
+    - implement oklch color config panel like `.color.rgb`
+    - each color component default value is 0 and alpha is 1
+    - change `.color.oklch` background with oklch color whose item is from the corespondent range value
+
+- id: task-8
+  date: 2025-3-12
+  level: moderate
+  description: |
+    - add element `.color.hwb` to `.root`
+    - implement hwb color config panel like `.color.rgb`
+    - each color component value is 0 and alpha is 1
+    - change `.color.hwb` background with hwb color whose item is from the corespondent range value
+
+- id: task-9
+  date: 2025-3-12
+  level: challenging
+  description: |
+    - add a button `#changeTheme` fixed at the bottom-center of the page
+    - click `#changeTheme` to change the light and dark theme of the page
+    - use `light-dark()` to manage themes
+
+- id: task-10
+  date: 2025-3-12
+  level: challenging
+  description: |
+    - use hsl relative color for dark theme
+
+- id: task-11
+  date: 2025-3-14
+  level: challenging
+  description: |
+    - make `.result` color contrast ratio to be more than 4.5 to comply with WCAG guidelines
+
+- id: task-12
+  date: 2025-3-14
+  level: challenging
+  description: |
+    - add element `.color.hsl-wheel` to `.root`
+    - draw a hsl color wheel (class `wheel`) canvas in the `.hsl-wheel`
+    - canvas has the same width and height, color wheel fill the entire canvas
+    - lightness is 50
+    - red is at the leftmost point of the color wheel, with red, green and blue arranged clockwise
+    - saturated red is the left point of the canvas, unsaturated red is the center point of the canvas
+
+- id: task-13
+  date: 2025-3-14
+  level: challenging
+  description: |
+    When click `.hsl-wheel .wheel` color:
+    - change `.hsl-wheel` background color to `.hsl-wheel .wheel` color
+    - add a block (class `block`) in the `.hsl-wheel` if it does not exist, and set its center at the clicked point
+      - `.block` width and height is less than or equal 12px
+
+- id: task-14
+  date: 2025-3-14
+  level: challenging
+  description: |
+    - add a vertical lightness range (class `l`) in the `.hsl-wheel`, at the right of `.hsl-wheel .wheel`
+    - default value is 50
+    - change lightness range to redraw `.hsl-wheel .wheel` with new lightness
+
+- id: task-15
+  date: 2025-3-16
+  level: challenging
+  description: |
+    - add element `.color.lch-wheel` to `.root`
+    - draw a hsl color wheel (class `wheel`) canvas in the `.lch-wheel`
+    - lightness is 50, saturate is 100
+    - red is at the leftmost point of the color wheel, with red, green and blue arranged clockwise
+
+- id: task-16
+  date: 2025-3-16
+  level: challenging
+  description: |
+    When click `.lch-wheel .wheel` color:
+    - change `.lch-wheel` background color to lch color with h from `.lch-wheel .wheel` angle, lightness 50 , chroma 50
+    - add a block (class `block`) in the `.lch-wheel` if it does not exist, and set its center at the clicked point
+      - `.block` width and height is less than or equal 12px
+
+- id: task-17
+  date: 2025-3-16
+  level: challenging
+  description: |
+    - default `.lch-wheel .wheel` angle (h) is 0
+    - add a lightness vertical range (class `l`) in the `.lch-wheel`
+      - default value is 50
+      - change lightness range to redraw `.lch-wheel .wheel` with new lightness, and update `.lch-wheel` background color
+    - add a chroma vertical range (class `c`) in the `.lch-wheel`
+      - default value is 50
+      - change chroma range to update `.lch-wheel` background color
+
+- id: task-18
+  date: 2025-3-16
+  level: challenging
+  description: |
+    - add element `.color.hwb-wheel` to `.root`
+    - draw a hsl color wheel (class `wheel`) canvas in the `.hwb-wheel`
+    - lightness is 50, saturate is 100
+    - red is at the leftmost point of the color wheel, with red, green and blue arranged clockwise
+
+- id: task-19
+  date: 2025-3-16
+  level: challenging
+  description: |
+    When click `.wheel` color:
+    - change `.hwb-wheel` background color to hwb color with h from `.wheel` angle, whiteness 0, blackness 0
+    - add a block (class `block`) in the `.hwb-wheel` if it does not exist, and set its center at the clicked point
+      - `.block` width and height is less than or equal 12px
+
+- id: task-20
+  date: 2025-3-16
+  level: challenging
+  description: |
+    - default `.wheel` angle (h)  is 0
+    - add a whiteness vertical range (class `w`) in the `.hwb-wheel`
+      - default value is 0
+      - change whiteness range to update `.hwb-wheel` background color
+    - add a blackness vertical range (class `b`) in the `.hwb-wheel`
+      - default value is 0
+      - change blackness range to update `.hwb-wheel` background color

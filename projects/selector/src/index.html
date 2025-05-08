@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web-Bench CSS Selector</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      p {
+        padding: 5px;
+      }
+
+      .class1,
+      #id3 {
+        text-decoration: underline;
+      }
+
+      #id1 {
+        font-family: monospace;
+      }
+
+      p.class1#id1 {
+        font-size: 15px;
+      }
+
+      * {
+        color: red;
+      }
+
+      #id4 > div {
+        color: green;
+      }
+
+      #id4-1 ~ div {
+        color: blue;
+      }
+
+      #id4-3 + div {
+        color: yellow;
+      }
+
+      #form input {
+        color: green;
+      }
+
+      #form input:nth-child(3) ~ input {
+        color: blue;
+      }
+
+      #form input:nth-last-child(4) + input {
+        color: yellow;
+      }
+
+      #form :not(input[name]) {
+        background-color: yellow;
+      }
+
+      #form input[name^='form'] {
+        background-color: red;
+      }
+
+      #form input[name$='end'] {
+        background-color: green;
+      }
+
+      #form input[class~='c2'] {
+        background-color: blue;
+      }
+
+      #form input[name='form-1'] {
+        background-color: white;
+      }
+
+      #form input[name*='unique'] {
+        background-color: white;
+      }
+
+      #form input[lang|='en'] {
+        background-color: white;
+      }
+
+      #form:focus-within input {
+        font-size: 20px;
+      }
+
+      #form::before,
+      #form::after {
+        content: '-';
+        display: block;
+        width: 500px;
+        height: 1px;
+        overflow: hidden;
+        background-color: black;
+      }
+
+      *:empty::before {
+        content: '><';
+      }
+
+      #table tr:nth-of-type(4) td:nth-child(3) {
+        background-color: yellow;
+      }
+
+      #table tr:nth-of-type(even) td:nth-of-type(n) {
+        background-color: lightgray;
+      }
+
+      #table tr:nth-of-type(n) td:nth-of-type(n):has(> p) {
+        background-color: yellow;
+      }
+
+      #form input:nth-of-type(n) {
+        background-color: pink;
+      }
+
+      #form input {
+        &:hover {
+          outline: 2px red solid;
+        }
+
+        &:focus {
+          background-color: black;
+        }
+      }
+
+      #table tr:nth-child(1) td:nth-child(3) {
+        input:disabled {
+          background-color: yellow;
+        }
+
+        input:enabled {
+          background-color: green;
+        }
+
+        input:required::after {
+          content: '*';
+          color: red;
+        }
+
+        input:invalid {
+          background-color: red;
+        }
+      }
+
+      #table tr:nth-child(1) td:nth-child(4) {
+        a:link {
+          text-decoration: underline;
+        }
+
+        a:visited {
+          text-decoration: none;
+        }
+
+        a:active {
+          outline: 1px solid blue;
+        }
+      }
+
+      :target {
+        background-color: lightgreen;
+      }
+
+      #id16,
+      #id18 {
+        /* Level 1 */
+        & > h1 {
+          font-size: 30px;
+          text-indent: 0;
+        }
+        /* Level 2 */
+        & > :is(section, article, aside, nav) {
+          & > h1 {
+            font-size: 25px;
+            text-indent: 10px;
+          }
+          /* Level 3 */
+          & > :is(section, article, aside, nav) {
+            & > h1 {
+              font-size: 20px;
+              text-indent: 20px;
+            }
+            /* Level 4 */
+            & > :is(section, article, aside, nav) {
+              h1 {
+                font-size: 15px;
+                text-indent: 30px;
+              }
+            }
+          }
+        }
+      }
+
+      #id17 {
+        /* Level 1 */
+        & > h1 {
+          font-size: 30px;
+        }
+        /* Level 2 */
+        & > :is(section, article, aside, nav) {
+          & > h1 {
+            font-size: 25px;
+          }
+          /* Level 3 */
+          & > :is(section, article, aside, nav) {
+            h1 {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+
+      #id18 {
+        /* Level 2 */
+        & > :is(section, article, aside, nav) {
+          & > h1 {
+            font-style: italic;
+          }
+          /* Level 3 */
+          & > :is(section, article, aside, nav) {
+            & > h1 {
+            }
+            /* Level 4 */
+            & > :is(section, article, aside, nav) {
+              h1 {
+                font-weight: normal;
+              }
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <p class="class1" id="id1">1</p>
+      <q id="id3">2</q>
+      <div id="id4">
+        <div id="id4-0">id4-0</div>
+        <div id="id4-1">id4-1</div>
+        <div id="id4-2">id4-2</div>
+        <div id="id4-3">id4-3</div>
+        <div id="id4-4">id4-4</div>
+      </div>
+      <form id="form">
+        <input type="text" name="form-1" value="text" />
+        <input type="text" name="form-2" lang="en1" value="text" />
+        <input type="text" name="form-3" lang="en-us" value="text" />
+        <input type="text" name="form-4" lang="en-au" value="text" />
+        <input type="text" name="form-5-end" class="c1 c2 c3" value="text" />
+        <input type="text" name="form-6" class="c22 c3 c4" value="text" />
+        <input type="text" name="form-7-unique" class="c2 c3 c4" value="text" />
+        <input type="text" value="text" />
+      </form>
+      <div id="id10"></div>
+      <table id="table">
+        <tr>
+          <td></td>
+          <td><p></p></td>
+          <td>
+            <form>
+              <input type="text" disabled />
+              <input type="text" />
+              <input type="text" required />
+              <button type="submit">Submit</button>
+            </form>
+          </td>
+          <td>
+            <a href="#table">table</a>
+            <a href="#form">form</a>
+            <a href="index.html">test</a>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><p></p></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><p></p></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><p></p></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+
+      <div id="id16">
+        <h1>H1</h1>
+        <section>
+          <h1>H1</h1>
+          <article>
+            <h1>H1</h1>
+            <aside>
+              <h1>H1</h1>
+              <nav>
+                <h1>H1</h1>
+              </nav>
+            </aside>
+          </article>
+        </section>
+      </div>
+
+      <div id="id17">
+        <h1>H1</h1>
+        <nav>
+          <h1>H1</h1>
+          <section>
+            <h1>H1</h1>
+            <section>
+              <h1>H1</h1>
+            </section>
+          </section>
+        </nav>
+      </div>
+
+      <div id="id18">
+        <h1>H1</h1>
+        <article>
+          <h1>H1</h1>
+          <section>
+            <h1>H1</h1>
+            <nav>
+              <h1>H1</h1>
+              <aside>
+                <h1>H1</h1>
+              </aside>
+            </nav>
+          </section>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

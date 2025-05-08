@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web-Bench Flex</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .root {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      .header {
+        background: #333;
+        color: white;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .logo img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .logo span {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      .menu {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .menu-item {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem;
+      }
+
+      .menu-item:hover {
+        background: #444;
+        border-radius: 4px;
+      }
+
+      .main {
+        flex: 1;
+        display: flex;
+        overflow: hidden;
+      }
+
+      .leftbar {
+        background: #ddd;
+        width: 200px;
+        flex-shrink: 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: stretch;
+      }
+
+      .left-grid-item {
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        width: 50%;
+        min-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .content {
+        flex: 1;
+        background: #fff;
+        display: flex;
+        flex-wrap: wrap-reverse;
+        align-content: stretch;
+        overflow-y: auto;
+        position: relative;
+      }
+
+      .right-drag,
+      .left-drag {
+        visibility: hidden;
+        position: absolute;
+        cursor: ew-resize;
+        background-color: #999;
+      }
+
+      .right-drag {
+        right: 0;
+        top: 0;
+        width: 3px;
+        height: 100%;
+      }
+
+      .left-drag {
+        left: 0;
+        top: 0;
+        width: 3px;
+        height: 100%;
+      }
+
+      .content:hover .right-drag,
+      .content:hover .left-drag {
+        visibility: visible;
+      }
+
+      .right-drag:hover,
+      .left-drag:hover {
+        width: 8px;
+        transition: all 0.1s ease-in;
+      }
+
+      .card {
+        background: #f5f5f5;
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        flex: 1 0 33%;
+        min-height: 100px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .card-image {
+        flex: 1;
+        background-color: #ccc;
+        min-height: 5rem;
+      }
+
+      .card-image::before {
+        content: 'image placeholder';
+      }
+
+      .card-title {
+        font-weight: bold;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        min-height: 1.5rem;
+      }
+
+      .card-price {
+        min-height: 1rem;
+      }
+
+      .rightbar {
+        background: #ddd;
+        width: 200px;
+        flex-shrink: 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: stretch;
+        gap: 0;
+      }
+
+      .tag {
+        background: #eee;
+        flex: 0 0 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .tag:nth-child(2n + 1) {
+        background: #ddd;
+      }
+
+      .footer {
+        background: #333;
+        color: white;
+        padding: 1rem;
+        flex-shrink: 0;
+        display: flex;
+      }
+
+      .footer-info {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .footer-logo {
+        flex-shrink: 0;
+        padding-right: 1rem;
+      }
+
+      @media screen and (max-width: 999px) {
+        .card {
+          flex-basis: 50%;
+        }
+      }
+
+      @media screen and (max-width: 799px) {
+        .leftbar {
+          display: none;
+        }
+
+        .logo {
+          display: none;
+        }
+
+        .menu {
+          gap: 0;
+          width: 100%;
+          justify-content: space-evenly;
+        }
+      }
+
+      @media screen and (max-width: 599px) {
+        .card {
+          flex-basis: 100%;
+        }
+      }
+
+      @media screen and (max-width: 399px) {
+        .main {
+          flex-direction: column;
+        }
+
+        .rightbar {
+          order: 2;
+          width: 100%;
+          box-sizing: border-box;
+          align-content: stretch;
+        }
+
+        .tag:nth-child(n + 7) {
+          display: none;
+        }
+
+        .content {
+          order: 1;
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        .header {
+          padding: 0;
+        }
+        
+        .menu {
+          width: 100%;
+          flex-direction: column;
+          justify-content: flex-start;
+        }
+
+        .menu-item {
+          box-sizing: border-box;
+          width: 100%;
+          text-align: center;
+          padding: 0.5rem 0;
+        }
+
+        .right-drag {
+          top: auto;
+          bottom: 0;
+          width: 100%;
+          height: 3px;
+          cursor: ns-resize;
+        }
+
+        .right-drag:hover {
+          width: 100%;
+          height: 8px;
+        }
+
+        .left-drag {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <div class="header">
+        <div class="logo">
+          <img src="logo.png" alt="Logo" />
+          <span>Company Name</span>
+        </div>
+        <nav class="menu">
+          <a href="#" class="menu-item">Home</a>
+          <a href="#" class="menu-item">About</a>
+          <a href="#" class="menu-item">Contact</a>
+        </nav>
+      </div>
+      <div class="main">
+        <div class="leftbar">
+          <div class="left-grid-item">1</div>
+          <div class="left-grid-item">2</div>
+          <div class="left-grid-item">3</div>
+          <div class="left-grid-item">4</div>
+          <div class="left-grid-item">5</div>
+          <div class="left-grid-item">6</div>
+          <div class="left-grid-item">7</div>
+          <div class="left-grid-item">8</div>
+          <div class="left-grid-item">9</div>
+          <div class="left-grid-item">10</div>
+          <div class="left-grid-item">11</div>
+          <div class="left-grid-item">12</div>
+          <div class="left-grid-item">13</div>
+          <div class="left-grid-item">14</div>
+          <div class="left-grid-item">15</div>
+          <div class="left-grid-item">16</div>
+          <div class="left-grid-item">17</div>
+          <div class="left-grid-item">18</div>
+          <div class="left-grid-item">19</div>
+          <div class="left-grid-item">20</div>
+          <div class="left-grid-item">21</div>
+          <div class="left-grid-item">22</div>
+          <div class="left-grid-item">23</div>
+          <div class="left-grid-item">24</div>
+          <div class="left-grid-item">25</div>
+          <div class="left-grid-item">26</div>
+          <div class="left-grid-item">27</div>
+          <div class="left-grid-item">28</div>
+          <div class="left-grid-item">29</div>
+          <div class="left-grid-item">30</div>
+          <div class="left-grid-item">31</div>
+          <div class="left-grid-item">32</div>
+          <div class="left-grid-item">33</div>
+          <div class="left-grid-item">34</div>
+          <div class="left-grid-item">35</div>
+          <div class="left-grid-item">36</div>
+          <div class="left-grid-item">37</div>
+          <div class="left-grid-item">38</div>
+          <div class="left-grid-item">39</div>
+          <div class="left-grid-item">40</div>
+        </div>
+        <div class="content">
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-title">
+              A beautiful red hat with twinkling stars and blooming flowers
+            </div>
+            <div class="card-price">111.23</div>
+          </div>
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-title">A beautiful red hat</div>
+            <div class="card-price">111.23</div>
+          </div>
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-title">
+              A beautiful red hat with twinkling stars and blooming flowers
+            </div>
+            <div class="card-price">111.23</div>
+          </div>
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-title">
+              A beautiful red hat with twinkling stars and blooming flowers
+            </div>
+            <div class="card-price">111.23</div>
+          </div>
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-title">A beautiful red hat</div>
+            <div class="card-price">111.23</div>
+          </div>
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-title">
+              A beautiful red hat with twinkling stars and blooming flowers
+            </div>
+            <div class="card-price">111.23</div>
+          </div>
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-title">
+              A beautiful red hat with twinkling stars and blooming flowers
+            </div>
+            <div class="card-price">111.23</div>
+          </div>
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-title">
+              A beautiful red hat with twinkling stars and blooming flowers
+            </div>
+            <div class="card-price">111.23</div>
+          </div>
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-title">
+              A beautiful red hat with twinkling stars and blooming flowers
+            </div>
+            <div class="card-price">111.23</div>
+          </div>
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-title">
+              A beautiful red hat with twinkling stars and blooming flowers
+            </div>
+            <div class="card-price">111.23</div>
+          </div>
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-title">
+              A beautiful red hat with twinkling stars and blooming flowers
+            </div>
+            <div class="card-price">111.23</div>
+          </div>
+          <div class="card">
+            <div class="card-image"></div>
+            <div class="card-title">
+              A beautiful red hat with twinkling stars and blooming flowers
+            </div>
+            <div class="card-price">111.23</div>
+          </div>
+          <div class="left-drag"></div>
+          <div class="right-drag"></div>
+        </div>
+        <div class="rightbar">
+          <div class="tag">1</div>
+          <div class="tag">2</div>
+          <div class="tag">3</div>
+          <div class="tag">4</div>
+          <div class="tag">5</div>
+          <div class="tag">6</div>
+          <div class="tag">7</div>
+          <div class="tag">8</div>
+          <div class="tag">9</div>
+          <div class="tag">10</div>
+          <div class="tag">11</div>
+          <div class="tag">12</div>
+          <div class="tag">13</div>
+          <div class="tag">14</div>
+          <div class="tag">15</div>
+          <div class="tag">16</div>
+          <div class="tag">17</div>
+          <div class="tag">18</div>
+          <div class="tag">19</div>
+          <div class="tag">20</div>
+          <div class="tag">21</div>
+          <div class="tag">22</div>
+          <div class="tag">23</div>
+          <div class="tag">24</div>
+          <div class="tag">25</div>
+          <div class="tag">26</div>
+          <div class="tag">27</div>
+          <div class="tag">28</div>
+          <div class="tag">29</div>
+          <div class="tag">30</div>
+          <div class="tag">31</div>
+          <div class="tag">32</div>
+          <div class="tag">33</div>
+          <div class="tag">34</div>
+          <div class="tag">35</div>
+          <div class="tag">36</div>
+          <div class="tag">37</div>
+          <div class="tag">38</div>
+          <div class="tag">39</div>
+          <div class="tag">40</div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="footer-logo">Logo</div>
+        <div class="footer-info">
+          Some important information for this wonderful site, Some important information for this
+          wonderful site
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let isDragging = false
+      let isRightDragging = false
+      let isLeftDragging = false
+      let startX
+      let startY
+      let contentStartWidth
+      let contentStartHeight
+      let leftbarStartWidth
+      let rightbarStartWidth
+      let rightbarStartHeight
+
+      function initDragHandlers() {
+        const content = document.querySelector('.content')
+        const leftbar = document.querySelector('.leftbar')
+        const rightbar = document.querySelector('.rightbar')
+        const leftDrag = document.querySelector('.left-drag')
+        const rightDrag = document.querySelector('.right-drag')
+
+        rightDrag.addEventListener('mousedown', (e) => {
+          isDragging = true
+          isRightDragging = true
+          startX = e.pageX
+          startY = e.pageY
+          contentStartWidth = content.offsetWidth
+          contentStartHeight = content.offsetHeight
+          rightbarStartWidth = rightbar.offsetWidth
+          rightbarStartHeight = rightbar.offsetHeight
+        })
+
+        leftDrag.addEventListener('mousedown', (e) => {
+          isDragging = true
+          isLeftDragging = true
+          startX = e.pageX
+          contentStartWidth = content.offsetWidth
+          leftbarStartWidth = leftbar.offsetWidth
+        })
+
+        document.addEventListener('mousemove', (e) => {
+          if (!isDragging) return
+
+          if (window.innerWidth <= 400 && isRightDragging) {
+            // Vertical dragging
+            const deltaY = e.pageY - startY
+            const newContentHeight = contentStartHeight + deltaY
+            const newRightbarHeight = rightbarStartHeight - deltaY
+
+            content.style.height = newContentHeight + 'px'
+            rightbar.style.height = newRightbarHeight + 'px'
+          } else {
+            // Normal horizontal
+            const deltaX = e.pageX - startX
+
+            if (isRightDragging) {
+              const newContentWidth = contentStartWidth + deltaX
+              const newRightbarWidth = rightbarStartWidth - deltaX
+              content.style.width = newContentWidth + 'px'
+              rightbar.style.width = newRightbarWidth + 'px'
+            }
+
+            if (isLeftDragging) {
+              const newContentWidth = contentStartWidth - deltaX
+              const newLeftbarWidth = leftbarStartWidth + deltaX
+              content.style.width = newContentWidth + 'px'
+              leftbar.style.width = newLeftbarWidth + 'px'
+            }
+          }
+
+          e.preventDefault()
+        })
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false
+          isRightDragging = false
+          isLeftDragging = false
+        })
+      }
+
+      document.addEventListener('DOMContentLoaded', initDragHandlers)
+    </script>
+  </body>
+</html>

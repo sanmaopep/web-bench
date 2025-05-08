@@ -1,0 +1,90 @@
+@use 'config';
+@use 'sass:map';
+
+form.survey {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // @include config.text-ellipsis();
+
+  > * {
+    width: 100%;
+  }
+
+  .survey-top {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: map.get(config.$color, background);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: config.$gap;
+  }
+
+  .survey-title {
+    font-size: 4rem;
+    font-weight: bold;
+  }
+
+  .survey-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    padding: config.$gap config.$gap config.$gap 0;
+
+    button {
+      margin-right: config.$gap;
+      background-color: map.get(config.$color, primary);
+      color: map.get(config.$color, white);
+      padding: 0.8rem 1.2rem;
+      border: none;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      font-size: 1.6rem;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: map.get(config.$color, primary-dark);
+      }
+    }
+  }
+}
+
+.adder {
+  display: grid;
+  padding: 2 * config.$gap;
+  border-radius: 0.4rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: config.$gap;
+
+  &.popup {
+    width: 40rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: map.get(config.$color, white);
+    box-shadow: 0 0.4rem 0.8rem map.get(config.$color, shadow-dark);
+  }
+
+  button {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+}
+
+.q button.add {
+  width: 10rem;
+  padding: 0.6rem 1.2rem;
+  background: none;
+  @include config.border-lighter(0.2rem);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: map.get(config.$color, border-lighter);
+  }
+}

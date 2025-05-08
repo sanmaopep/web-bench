@@ -1,0 +1,194 @@
+body {
+  margin: 0;
+}
+
+body.light {
+  color: #000;
+  background-color: #fff;
+}
+
+body.dark,
+body.dark a,
+body.dark select {
+  color: #ddd;
+  background-color: #333;
+}
+
+body.dark select,
+body.dark .topbar {
+  border-color: #666;
+}
+
+/*******************************************************************************
+ * .browser
+ ******************************************************************************/
+.browser {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+button {
+  min-width: 30px;
+  height: 30px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: #e9ecef;
+  border-color: #ced4da;
+}
+
+button:active {
+  background-color: #dee2e6;
+}
+
+button:disabled {
+  cursor: default;
+  background-color: #fff;
+}
+
+body.dark button,
+body.dark button:disabled {
+  color: #ddd;
+  background-color: #333;
+}
+
+body.dark button {
+  border-color: #666;
+}
+
+body.dark button:hover {
+  background-color: #666;
+}
+
+body.dark button:disabled {
+  background-color: #333;
+}
+
+/*******************************************************************************
+ * .topbar
+ ******************************************************************************/
+.topbar {
+  padding: 5px 10px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(13, 13, 13, 0.1);
+}
+
+.topbar select {
+  border-color: #ddd;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex: 0 0 auto;
+  margin-right: 10px;
+}
+
+.address {
+  width: 200px;
+  /* flex: 1; */
+  line-height: 40px;
+}
+
+.address:focus {
+  outline: none;
+}
+
+.setting {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  /* align-items: center; */
+}
+
+/*******************************************************************************
+ * .topbar .toolbar
+ ******************************************************************************/
+.toolbar button {
+  width: 32px;
+  margin-right: 8px;
+}
+
+.menu {
+  border: solid 1px #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  min-width: 160px;
+  max-width: 480px;
+}
+
+.menu-item {
+  padding: 10px;
+  background: #fff;
+}
+
+.menu-item:hover {
+  cursor: pointer;
+  background: #efefef;
+}
+
+/*******************************************************************************
+ * .topbar .setting
+ ******************************************************************************/
+.setting > * {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.network,
+.geolocation {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: rgb(192, 190, 190);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.network.online,
+.geolocation.reached {
+  background-color: rgb(63, 122, 63);
+}
+
+/*******************************************************************************
+ * .content
+ ******************************************************************************/
+.content {
+  flex: 1;
+  border: none;
+}
+
+/*******************************************************************************
+   * doc page
+   ******************************************************************************/
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #0066cc;
+}
+
+blockquote {
+  border-left: 4px solid #0066cc;
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  background-color: rgba(0, 102, 204, 0.1);
+}
+
+body.dark h1 {
+  color: #5792cd;
+}
+
+body.dark blockquote {
+  border-color: #5792cd;
+}

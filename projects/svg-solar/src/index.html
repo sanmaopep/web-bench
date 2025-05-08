@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web-Bench SVG-Solar</title>
+    <link rel="stylesheet" href="index.scss" />
+  </head>
+  <body>
+    <div class="root">
+      <svg class="system" version="2.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+        <image id="bg" href="./assets/bg.png" x="0" y="30" width="160"></image>
+        <defs id="systemDefs"></defs>
+        <g id="systemRoot"></g>
+
+        <defs>
+          <clipPath id="cut-off-ring-top">
+            <rect x="0" y="0.3" width="6" height="1.7" />
+          </clipPath>
+        </defs>
+        <symbol id="ring" width="6" height="2" viewBox="0 0 6 2">
+          <ellipse clip-path="url(#cut-off-ring-top)" />
+        </symbol>
+        <foreignObject id="configPanel">
+          <div class="config">
+            <label>Orbit<input id="orbitEnabled" type="checkbox" checked /></label>
+            <label>Tail<input id="tailEnabled" type="checkbox" checked /></label>
+            <label>Bg<input id="bgEnabled" type="checkbox" /></label>
+            <label
+              >X
+              <input id="speed" type="number" value="1.0" min="0.1" max="10" />
+            </label>
+            <button id="comet">+Comet</button>
+          </div>
+        </foreignObject>
+      </svg>
+    </div>
+
+    <script type="module" src="index.js"></script>
+  </body>
+</html>

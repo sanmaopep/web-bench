@@ -1,0 +1,213 @@
+- id: task-1
+  date: 2025-2-20
+  level: challenging
+  description: |
+    In `index.js`, import `assets/data.js` object `configs`. Each item in `configs` is a `config` object.
+    Do not generate `assets/data.js` which is existed in project.
+
+- id: task-2
+  date: 2025-2-20
+  level: easy
+  description: |
+    In `common/Chart.js`, `Chart` class contains properties: `svg` (SVG element, id `config.id`, class `chart {config.type}`, viewBox `0 0 100 70`). 
+    In `index.js`, For each `config` whose `type` is line, create a `LineChart` instance and append its `svg` to `.root`.
+
+- id: task-3
+  date: 2025-2-20
+  level: easy
+  description: |
+    In `common/LineChart.js`:
+    - append g element (class `datasets`) inside `svg` and make it fill the entire `svg` (no padding between them)
+    - append a polyline (class `dataset dataset-${index}`) inside `.datasets` for each `config.data.datasets` item (AKA. `dataset`)
+    - all lines have unique colors
+    - The min and max axis-y values correspond to the min and max values of all `dataset.data`
+
+- id: task-4
+  date: 2025-2-20
+  level: moderate
+  description: |
+    In `common/Chart.js`, when `options.axes` is true or not defined:
+    - append g element (class `axes axes-x`) inside `svg` and align it to the bottom
+    - append g element (class `axes axes-y`) inside `svg` and align it to the left
+    - append axis-x line (class `axis axis-x`, color gray) inside `.axes-x` and align it to the top
+    - append axis-y line (class `axis axis-y`, color gray) inside `.axes-y` and align it to the right
+
+    In `common/LineChart.js`, when `options.axes` is true or not defined:
+    - place `.datasets` to the right side of `.axis-y` and above `.axis-x`
+    - reduce `.datasets` lines width and height, and make `.datasets`, `.axes-x` and `.axes-y` fill the entire `svg` space
+
+- id: task-5
+  date: 2025-2-21
+  level: moderate
+  description: |
+    In `common/Chart.js`, when `options.axes` is true or not defined:
+    - append axis-x labels (class `label label-{index}`, color black) inside `.axes-x` and align them to the bottom
+      - axis-x labels, coming from `data.labels`, are evenly distributed from left to right, `.label-0` is aligned to the left of `.axes-x`
+    - append axis-y labels (class `label label-{index}`, color black) inside `.axes-y` and align them to the left
+      - The min and max axis-y values correspond to the min and max values of `dataset.data`
+      - 6 axis-y labels, ranging from the min to the max, are evenly distributed across 5 sections from bottom to top, `.label-0` is aligned to the bottom of `.axes-y`
+
+- id: task-6
+  date: 2025-2-21
+  level: moderate
+  description: |
+    In `common/Chart.js`, when `options.grids` is true or not defined:
+    - append g element (class `grids`) in `svg`
+    - append grid-x lines (each class `grid grid-x grid-x-{index}`, color gray) and grid-y lines (each class `grid grid-y grid-y-{index}`, color gray) in `.grids`
+    - Ensure that `.grids` is placed under `.datasets`, and that its size matches `.datasets`
+    - Each grid-x line is horizontally aligned with axis-x labels
+    - Each grid-y line is vertically aligned with axis-y labels
+
+- id: task-7
+  date: 2025-2-21
+  level: moderate
+  description: |
+    In `common/Chart.js`, when `options.legends` is true or not defined:
+    - append g element (class `legends`) on the top of `svg`
+    - append g element (class `legend legend-{index}`) in `.legends`
+    - append circle (color is the same as `.dataset` line color) and text (content `dataset.label`) in each `.legend`
+
+    In `common/Chart.js` and `common/LineChart.js`, when `options.legends` is true or not defined:
+    - reduce `.datasets` lines height
+    - reduce `.axes-y` axis-y height, update axis-y labels position
+    - and make `.legends`, `.datasets`, `.axes-x` and `.axes-y` fill the entire `svg` space
+
+- id: task-8
+  date: 2025-2-21
+  level: moderate
+  description: |
+    In `common/LineChart.js`, when `options.pointStyle` is `circle` or `rect`:
+    - append g element (class `points points-{index}`) inside `svg` for each `dataset`
+    - append points (each class `point point-{index}`, shape is `options.pointStyle`) inside `.points` for each item of `dataset.data`
+    - each point covers the `.dataset` line, distributes from left to right
+    - each point color is the same as `.dataset` line color
+
+- id: task-9
+  date: 2025-2-21
+  level: moderate
+  description: |
+    In `common/LineChart.js`, when `options.dataLabels` is true:
+    - append g element (class `dataLabels dataLabels-{index}`) inside `svg` for each `dataset`
+    - append data labels (each class `dataLabel dataLabel-{index}`) inside `.dataLabels` for each item of `dataset.data`
+    - each dataLabel is above the `.dataset` line, distributes from left to right
+    - each dataLabel color is the same as `.dataset` line color
+
+- id: task-10
+  date: 2025-2-22
+  level: challenging
+  description: |
+    In `common/LineChart.js`:
+    - append an initially hidden g element (class `tooltips hidden`) inside `svg`
+    - when mouse hovers over `.datasets` area, display `.tooltips` near the mouse position
+      - select the `.grid-x` (class `selected`) that is horizontally closest to the mouse 
+      - in `.tooltips`, show all data from the `.dataset` that corresponds to the selected `.grid-x`
+    - when mouse not hovers over `.datasets` area, hide `.tooltips` (add class `hidden`)
+
+- id: task-11
+  date: 2025-2-22
+  level: challenging
+  description: |
+    In `common/LineChart.js`, when `options.lineSmooth` is true:
+    - replace all polylines with smooth curved lines inside `.datasets`
+
+- id: task-12
+  date: 2025-2-22
+  level: moderate
+  description: |
+    In `common/Chart.js`, when click legend:
+    - show (remove class `hidden`) or hide (add class `hidden`) `.dataset` lines, dataLabels, points
+
+- id: task-13
+  date: 2025-2-22
+  level: challenging
+  description: |
+    In `common/ScatterChart.js`, class `ScatterChart` inherits from `LineChart`, `ScatterChart`:
+    - options.pointStyle is always circle
+    - options.dataLabels is always true
+    - all `.dataset` lines are hidden
+    
+    Update `index.js`, create `ScatterChart` instances when `config.type` is `scatter`.
+
+- id: task-14
+  date: 2025-2-22
+  level: challenging
+  description: |
+    In `common/StepChart.js`, class `StepChart` inherits from `LineChart`, `StepChart`:
+    - replace all polylines with step style polylines inside `.datasets`
+    - in each step style polyline:
+      - each `dataset.data` responds to a horizontal line segment whose width is the distance between two near grid-x
+        - the first and the last line segment width is the half
+      - connect all line segments to a step style polyline
+    
+    Update `index.js`, create `StepChart` instances when `config.type` is `step`.
+
+- id: task-15
+  date: 2025-2-23
+  level: challenging
+  description: |
+    In `common/AreaChart.js`, class `AreaChart` inherits from `LineChart`, `AreaChart`:
+    - append g element (class `areas`) inside `svg`
+    - append polygons (each class `area area-{index}`) inside `.areas` 
+    - each `.area` is below the `.dataset` line
+    - each `.area` color is the same as `.dataset` line color, half transparent
+    
+    Update `index.js`, create `AreaChart` instances when `config.type` is `area`.
+
+- id: task-16
+  date: 2025-2-23
+  level: challenging
+  description: |
+    In `common/BarChart.js`, class `BarChart` inherits from `Chart`, `BarChart`:
+    - there is 1 more grid-x line than LineChart, all the grid-x lines are evenly distributed in `.grids`
+    - append g element (class `datasets`) inside `svg` and make it fill the entire `svg` (no padding between them)
+    - append g element (class `dataset dataset-${index}`) inside `.datasets` for each `datasets` item
+    - append bars (rect elements, class `bar bar-{index}`) with the same color inside `.dataset` for each `dataset.data` item
+      - bars are distributed within each column enclosed by 2 adjacent grid-x lines  
+      - bars in different `.dataset` have unique colors
+      - bars in the same column are evenly distributed
+    
+    Update `index.js`, create `BarChart` instances when `config.type` is `bar`.
+
+- id: task-17
+  date: 2025-2-23
+  level: challenging
+  description: |
+    In `common/BarChart.js`, when `options.dataLabels` is true:
+    - append g element (class `dataLabels dataLabels-{index}`) inside `svg` for each `dataset`
+    - append data labels (each class `dataLabel dataLabel-{index}`) inside `.dataLabels` for each `dataset.data` item
+    - each dataLabel is above the `.dataset` bars, distributes from left to right
+    - each dataLabel color is the same as `.dataset` bars color
+
+- id: task-18
+  date: 2025-2-23
+  level: challenging
+  description: |
+    In `common/BarChart.js`:
+    - append an initially hidden g element (class `tooltips hidden`) inside `svg`
+    - when mouse hovers over `.datasets` area, display `.tooltips` near the mouse position
+      - select the `.grid-x` (class `selected`) that is horizontally closest to the mouse 
+      - in `.tooltips`, show all data from the `.dataset` that corresponds to the area enclosed by the selected `.grid-x` and next adjacent `.grid-x`
+    - when mouse not hovers over `.datasets` area, hide `.tooltips` (add class `hidden`)
+
+- id: task-19
+  date: 2025-2-24
+  level: challenging
+  description: |
+    In `common/PieChart.js`, class `PieChart` inherits from `Chart`, `PieChart`:
+    - append g element (class `datasets`) inside `svg` and make it fill the most area of `svg`
+    - append g element (class `dataset dataset-0`) inside `.datasets` for the first `datasets` item
+    - append sectors (path elements, each class `sector sector-{index}`) with the unique color inside `.dataset` for each `dataset.data` item
+    - all the sectors form a large circle
+    - the area of each sector is related to its proportion of the data
+    
+    Update `index.js`, create `PieChart` instances when `config.type` is `pie`.
+
+- id: task-20
+  date: 2025-2-24
+  level: challenging
+  description: |
+    In `common/PieChart.js`, when `options.dataLabels` is true:
+    - append g element (class `dataLabels dataLabels-0`) inside `svg` for the first `dataset`
+    - append data labels (each class `dataLabel dataLabel-{index}`) inside `.dataLabels` for each `dataset.data` item
+    - append connect lines (each class `connect connect-{index}`) inside `.dataLabels` to connect each dataLabel and its corresponding sector
+    - each dataLabel is positioned near its corresponding sector and distributed around the large circle

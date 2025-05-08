@@ -1,0 +1,245 @@
+- id: task-1
+  date: 2025-3-31
+  level: easy
+  description: |
+    - append an element <p> with arbitrary text, class `class1` and id `id1` to `.root`
+    - write css to the page with:
+      - type selector to set its `padding` to `5px`
+      - class selector to set its `text-decoration` to `underline`
+      - id selector to set its `font-family` to `monospace`
+    - no js, modify html file directly
+
+- id: task-2
+  date: 2025-4-1
+  level: easy
+  description: |
+    - write css to the page with:
+      - compound selector (type & class & id) to set `#id1`'s `font-size` to `15px`
+
+- id: task-3
+  date: 2025-4-1
+  level: easy
+  description: |
+    - append <q> with arbitrary text and id `id3` to `.root`
+    - write css to the page with:
+      - selector list (near to `.class1` property) to set its `text-decoration` to `underline` 
+      - universal selector to set all elements' `color` to `red`
+
+- id: task-4
+  date: 2025-4-1
+  level: easy
+  description: |
+    - append <div> with id `id4` to `.root`
+      - append 5 <div> to `#id4` with arbitrary text and id `id4-{index}` (index is 0-based)
+    - write css with:
+      - child combinator selector to set its children `color` to `green`
+
+- id: task-5
+  date: 2025-4-1
+  level: easy
+  description: |
+    - write css with:
+      - subsequent-sibling combinator selector to set the `color` of all siblings next to `#id4-1` to `blue` 
+      - next-sibling combinator selector to set the `color` of `#id4-3`'s next-sibling to `yellow`
+
+- id: task-6
+  date: 2025-4-1
+  level: moderate
+  description: |
+    - write css for elements in `#form`:
+      - descendant combinator selector to set `#form` children `color` to `green` 
+      - set the `color` of all children next to the third child to `blue` 
+      - set the `color` of the last forth child's next-sibling to `yellow`
+
+- id: task-7
+  date: 2025-4-1
+  level: challenging
+  description: |
+    write css for elements in `#form`:
+    - set `background-color` to `yellow` for those without attribute `name`
+    - set `background-color` to `red` for those whose attribute `name` starts with `form`
+    - set `background-color` to `green` for those whose attribute `name` ends with `end`
+    - set `background-color` to `blue` for those whose attribute `class` contains `c2`
+    - set `background-color` to `white` for those whose attribute `name` equals to `form-1`
+    - set `background-color` to `white` for those whose attribute `name` contains `unique`
+    - set `background-color` to `white` for those whose attribute `lang` starts with `en` immediately followed by a hyphen
+
+- id: task-8
+  date: 2025-4-2
+  level: moderate
+  description: |
+    use nesting selector to modify css for elements in `#form`:
+    - set input's `outline` to `2px solid red` when hovering it
+    - set input's `background-color` to `black` when focusing it
+
+- id: task-9
+  date: 2025-4-2
+  level: challenging
+  description: |
+    modify css for elements in `#form`:
+    - set `font-size` of all inputs to `20px` when focusing any input
+
+- id: task-10
+  date: 2025-4-2
+  level: moderate
+  description: |
+    - append <div> with id `id10`（no content） to `.root`
+    - modify css to add separate line (height 1px) before and after the `#form`
+    - modify css to prepend `><` for any element with no children other than white-space characters 
+    - do not modify html or js
+
+- id: task-11
+  date: 2025-4-3
+  level: challenging
+  description: |
+    modify css for elements in `#table`:
+    - set `background-color` of the third cell in the forth row to `yellow` 
+    - set `background-color` of all cells in even rows to `lightgray`
+    - do not use `!important` anytime
+
+- id: task-12
+  date: 2025-4-3
+  level: challenging
+  description: |
+    modify html and css for `#table`:
+    - `cell(x,y)` means the yth cell in the xth row
+    - append `<p>` in 4 cell(1,2), cell(2,3), cell(3,4), cell(4,2)
+    - set `background-color` of cells with `<p>` to `yellow`
+    - do not use `!important` anytime
+
+- id: task-13
+  date: 2025-4-3
+  level: challenging
+  description: |
+    modify css for elements in `#form`:
+    - set `background-color` to `pink` for all direct children
+    - keep setting input's `background-color` to `black` when focusing it
+    - do not use `!important` anytime
+
+- id: task-14
+  date: 2025-4-3
+  level: challenging
+  description: |
+    modify css for elements in `#table`:
+    - append in cell(1,3) with: 
+      `<form>
+        <input type="text" disabled />
+        <input type="text" />
+        <input type="text" required />
+        <button type="submit">Submit</button>
+      </form>` 
+      - set enabled control `background-color` to `green`
+      - set disabled control `background-color` to `yellow`
+      - suffix the required control with a red `*`
+      - set invalid control `background-color` to `red`
+    - do not use `!important` anytime
+
+- id: task-15
+  date: 2025-4-3
+  level: challenging
+  description: |
+    modify css for elements in `#table`:
+    - append in cell(1,4) with: 
+      `<a href="#table">table</a>
+        <a href="#form">form</a>
+        <a href="index.html">test</a>` 
+      - set default links `text-decoration` to `underline`
+      - set visited links `text-decoration` to `none`
+      - set active links `outline` to `1px solid blue`
+    - set page's targeted element `background-color` to `lightgreen`
+    - do not use `!important` anytime
+
+- id: task-16
+  date: 2025-4-3
+  level: moderate
+  description: |
+    - append to `.root` with:
+      `<div id="id16">
+        <h1>H1</h1>
+        <section>
+          <h1>H1</h1>
+          <article>
+            <h1>H1</h1>
+            <aside>
+              <h1>H1</h1>
+              <nav>
+                <h1>H1</h1>
+              </nav>
+            </aside>
+          </article>
+        </section>
+      </div>`
+    - modify css for <h1> in `#id16`:
+      - the first level (direct child) <h1> `font-size` is `30px`
+      - the second level <h1> `font-size` is `25px`
+      - the third level <h1> `font-size` is `20px`
+      - the forth and deeper level <h1> `font-size` is `15px`
+
+- id: task-17
+  date: 2025-4-3
+  level: moderate
+  description: |
+    - append to `.root` with:
+      `<div id="id17">
+        <h1>H1</h1>
+        <x>
+          <h1>H1</h1>
+          <x>
+            <h1>H1</h1>
+            <x>
+              <h1>H1</h1>
+            </x>
+          </x>
+        </x>
+      </div>`
+    - `x` is one of section, article, aside, nav
+    - modify css for <h1> in `#id17`:
+      - the first level (direct child) <h1> `font-size` is `30px`
+      - the second level <h1> `font-size` is `25px`
+      - the third and more level <h1> `font-size` is `20px`
+
+- id: task-18
+  date: 2025-4-3
+  level: moderate
+  description: |
+    - append to `.root` with:
+      `<div id="id18">
+        <h1>H1</h1>
+        <x>
+          <h1>H1</h1>
+          <x>
+            <h1>H1</h1>
+            <x>
+              <h1>H1</h1>
+              <x>
+                <h1>H1</h1>
+              </x>
+            </x>
+          </x>
+        </x>
+      </div>`
+    - `x` is one of section, article, aside, nav
+    - modify css for <h1> in `#id18`:
+      - the first level (direct child) <h1> `font-size` is `30px`
+      - the second level <h1> `font-size` is `25px`
+      - the third level <h1> `font-size` is `20px`
+      - the forth and deeper level <h1> `font-size` is `15px`
+
+- id: task-19
+  date: 2025-4-3
+  level: moderate
+  description: |
+    - modify css for <h1> in `#id18`:
+      - the first level (direct child) <h1> `text-indent` is `0`
+      - the second level <h1> `text-indent` is `10px`
+      - the third level <h1> `text-indent` is `20px`
+      - the forth and deeper level <h1> `text-indent` is `30px`
+
+- id: task-20
+  date: 2025-4-3
+  level: moderate
+  description: |
+    - add new css for <h1> in `#id18`:
+      - do not modify existed css rules
+      - the second level <h1> `font-style` is `italic`
+      - the forth and deeper level <h1> `font-weight` is `normal`

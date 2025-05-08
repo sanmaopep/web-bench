@@ -1,0 +1,96 @@
+@use './config';
+
+.chart {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  &:nth-child(4n + 2),
+  &:nth-child(4n + 3) {
+    background-color: #f6f6f6;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .debug {
+    fill: #ccc;
+    text-anchor: end;
+  }
+
+  polyline,
+  line {
+    stroke: black;
+    stroke-width: 0.2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  text {
+    font-size: 2px;
+  }
+
+  .legends {
+    .legend {
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.6;
+      }
+
+      &.hidden {
+        display: block;
+        opacity: 0.3;
+      }
+
+      circle {
+        r: 1;
+      }
+
+      text {
+        text-anchor: start;
+      }
+    }
+  }
+
+  .grids {
+    .grid {
+      stroke: #ddd;
+      stroke-width: 0.1;
+    }
+
+    .grid-x {
+      &.selected {
+        stroke: #aaa;
+        stroke-width: 0.2;
+        stroke-dasharray: 0.5 0.5;
+      }
+    }
+  }
+
+  .axes {
+    .axis {
+      stroke: #ddd;
+      stroke-width: 0.4;
+    }
+  }
+
+  .datasets {
+    .dataset {
+      stroke-width: 0.4;
+      fill: none;
+    }
+  }
+
+  // .points {
+  // }
+
+  .dataLabels {
+    text.dataLabel {
+      text-anchor: middle;
+      stroke-width: 0.1;
+    }
+  }
+}

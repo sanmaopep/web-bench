@@ -1,0 +1,146 @@
+$move-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><path d='M12 2L8 6h8L12 2zM12 22l4-4h-8l4 4zM2 12l4-4v8L2 12zM22 12l-4 4V8l4 4z' fill='black'/></svg>");
+$rotate-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><path d='M12 4V2C6.48 2 2 6.48 2 12h2c0-4.42 3.58-8 8-8zm0 16c-4.42 0-8-3.58-8-8H2c0 5.52 4.48 10 10 10v-2zm0-14V4c4.42 0 8 3.58 8 8h2c0-5.52-4.48-10-10-10zm0 16v2c5.52 0 10-4.48 10-10h-2c0 4.42-3.58 8-8 8z' fill='black'/></svg>");
+$zoom-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><circle cx='10' cy='10' r='7' stroke='black' stroke-width='2' fill='none'/><line x1='15' y1='15' x2='20' y2='20' stroke='black' stroke-width='2'/></svg>");
+$copy-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><rect x='4' y='4' width='12' height='12' stroke='black' stroke-width='2' fill='none'/><path d='M8 8h12v12H8V8z' stroke='black' stroke-width='2' fill='none'/></svg>");
+$delete-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><path d='M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z' fill='black'/></svg>");
+$fill-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 -3 24 24'><path d='M16.56 8.94L7.62 0 6.21 1.41l2.38 2.38-5.15 5.15c-.59.59-.59 1.54 0 2.12l5.5 5.5c.29.29.68.44 1.06.44s.77-.15 1.06-.44l5.5-5.5c.59-.58.59-1.53 0-2.12zM5.21 10L10 5.21 14.79 10H5.21zM19 11.5s-2 2.17-2 3.5c0 1.1.9 2 2 2s2-.9 2-2c0-1.33-2-3.5-2-3.5z' fill='black'/></svg>");
+
+$rect-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><rect x='2' y='2' width='20' height='20' stroke='black' stroke-width='2' fill='none'/></svg>");
+$circle-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10' stroke='black' stroke-width='2' fill='none'/></svg>");
+$ellipse-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><ellipse cx='12' cy='12' rx='10' ry='6' stroke='black' stroke-width='2' fill='none'/></svg>");
+$triangle-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><path d='M12 3 L2 22 h20 Z' stroke='black' stroke-width='2' fill='none'/></svg>");
+$trapezoid-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><path d='M4 18 L8 6 L16 6 L20 18 Z' stroke='black' stroke-width='2' fill='none'/></svg>");
+$hexagon-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><path d='M12 2 L20 7 L20 17 L12 22 L4 17 L4 7 Z' stroke='black' stroke-width='2' fill='none'/></svg>");
+$line-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><line x1='2' y1='12' x2='22' y2='12' stroke='black' stroke-width='2'/></svg>");
+$polyline-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><polyline points='2,12 8,4 16,16 22,8' stroke='black' stroke-width='2' fill='none'/></svg>");
+$curve-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><path d='M2,12 C8,4 16,20 22,12'  stroke='black' stroke-width='2' fill='none'/></svg>");
+$text-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><text x='12' y='18' text-anchor='middle' font-size='20'>T</text></svg>");
+
+.toolkit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
+
+  .shape,
+  .operation {
+    display: flex;
+    gap: 8px;
+  }
+
+  input[type='radio'] {
+    appearance: none;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    transition: background-color 0.2s;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  label:has(input[type='radio']:checked) {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  label.rect {
+    background-image: $rect-icon;
+  }
+
+  label.circle {
+    background-image: $circle-icon;
+  }
+
+  label.ellipse {
+    background-image: $ellipse-icon;
+  }
+
+  label.triangle {
+    background-image: $triangle-icon;
+  }
+
+  label.trapezoid {
+    background-image: $trapezoid-icon;
+  }
+
+  label.hexagon {
+    background-image: $hexagon-icon;
+  }
+
+  label.line {
+    background-image: $line-icon;
+  }
+
+  label.polyline {
+    background-image: $polyline-icon;
+  }
+
+  label.curve {
+    background-image: $curve-icon;
+  }
+
+  label.text {
+    background-image: $text-icon;
+  }
+
+  label.move {
+    background-image: $move-icon;
+  }
+
+  label.rotate {
+    background-image: $rotate-icon;
+  }
+
+  label.zoom {
+    background-image: $zoom-icon;
+  }
+
+  label.copy {
+    background-image: $copy-icon;
+  }
+
+  label.delete {
+    background-image: $delete-icon;
+  }
+
+  label.fill {
+    background-image: $fill-icon;
+  }
+
+  &:has(input[type='radio'][value='move']:checked) + .canvas > * {
+    cursor: $move-icon 16 16, auto;
+  }
+
+  &:has(input[type='radio'][value='zoom']:checked) + .canvas > * {
+    cursor: $zoom-icon 16 16, auto;
+  }
+
+  &:has(input[type='radio'][value='rotate']:checked) + .canvas > * {
+    cursor: $rotate-icon 16 16, auto;
+  }
+
+  &:has(input[type='radio'][value='copy']:checked) + .canvas > * {
+    cursor: $copy-icon 16 16, auto;
+  }
+
+  &:has(input[type='radio'][value='delete']:checked) + .canvas > * {
+    cursor: $delete-icon 16 16, auto;
+  }
+
+  &:has(input[type='radio'][value='fill']:checked) + .canvas > * {
+    cursor: $fill-icon 16 16, auto;
+  }
+}

@@ -1,0 +1,24 @@
+@import './config'
+
+.ranking
+  display flex
+  flex-direction column
+  gap 0.8rem
+
+  .option
+    height 4rem
+    line-height 4rem
+    padding-left $gap
+    border-radius 0.6rem
+    border 0.1rem solid $color.border-base
+
+    &:hover
+      border-color $color.primary
+
+    &.dragging
+      opacity 0.6
+      cursor grabbing
+      box-shadow 0 0.4rem 0.8rem $color.shadow
+
+    &.dragover
+      border-bottom 0.4rem solid $color.primary

@@ -1,0 +1,29 @@
+@use 'config';
+@use 'sass:map';
+
+.ranking {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  .option {
+    height: 4rem;
+    line-height: 4rem;
+    padding-left: config.$gap;
+    @include config.border-base(0.6rem);
+
+    &:hover {
+      border-color: map.get(config.$color, primary);
+    }
+
+    &.dragging {
+      opacity: 0.6;
+      cursor: grabbing;
+      box-shadow: 0 0.4rem 0.8rem map.get(config.$color, shadow);
+    }
+
+    &.dragover {
+      border-bottom: 0.4rem solid map.get(config.$color, primary);
+    }
+  }
+}

@@ -1,0 +1,304 @@
+html {
+  font-size: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+body {
+  font-size: 1.4rem;
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+
+form.survey {
+  width: 60%;
+}
+
+.survey-title {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.survey-questions {
+}
+
+fieldset.q {
+  margin: 2rem 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.q-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #333;
+  padding: 0 1rem;
+}
+
+.q-body {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.q-config {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Submit button styling */
+button {
+  background-color: #b0b5b0;
+  color: white;
+  padding: 1.2rem 2.4rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.6rem;
+  margin: 2rem 2rem 2rem 0;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #6f716f;
+}
+
+button[type='submit'] {
+  background-color: #4caf50;
+}
+
+button[type='submit']:hover {
+  background-color: #45a049;
+}
+
+/* Add styles for text inputs from OpenQuestion */
+textarea,
+select,
+input:not([type='radio']):not([type='checkbox']) {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+  font-family: inherit;
+  font-size: 1.4rem;
+}
+
+input[type='date'],
+input[type='number'] {
+  width: 30%;
+}
+
+textarea:focus,
+input:not([type='radio']):not([type='checkbox']):focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+/* Style for radio and checkbox inputs */
+input[type='radio'],
+input[type='checkbox'] {
+  margin-right: 1rem;
+}
+
+label {
+  display: block;
+  margin: 1rem 0;
+  color: #555;
+}
+
+/* Rating stars styling */
+.rating-container {
+  margin: 1rem 0;
+  display: flex;
+}
+
+.rating-container .star input[type='radio'] {
+  appearance: none;
+  margin: 0;
+  width: 0;
+}
+
+.rating-container .star {
+  cursor: pointer;
+  font-size: 2.4rem;
+  color: #ddd;
+  margin-right: 0.8rem;
+  transition: color 0.2s ease;
+}
+
+.rating-container .star:hover {
+  color: #4caf50;
+}
+
+.rating-container .star.active {
+  color: #4caf50;
+}
+
+/* Enhanced Ranking Question Styling */
+.ranking-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.ranking-item {
+  height: 4rem;
+  line-height: 4rem;
+  padding-left: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #fff;
+  cursor: grab;
+  /* transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); */
+}
+
+.ranking-item:hover {
+  border-color: #4caf50;
+  background-color: #f8f9fa;
+}
+
+.ranking-item.dragging {
+  opacity: 0.6;
+  cursor: grabbing;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ranking-item.dragover-above {
+  border-top: 4px solid #4caf50;
+}
+
+.ranking-item.dragover {
+  border-bottom: 4px solid #4caf50;
+}
+
+/* Enhanced NPS Question Styling */
+.nps-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  padding: 1rem 0;
+}
+
+.nps-container .score {
+  flex: 1;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.nps-container .score input[type='radio'] {
+  appearance: none; /* Remove default styling */
+  margin: 0;
+}
+
+.nps-container .score:hover {
+  background-color: #f5f5f5;
+  border-color: #4caf50;
+}
+
+.nps-container .score.active {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Enhanced Likert Question Styling */
+.likert-container {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.likert-container td {
+  padding: 1.2rem;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.likert-container tr:first-child td {
+  font-weight: 500;
+  color: #666;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.likert-container td:first-child {
+  text-align: left;
+  padding-left: 0;
+  width: 40%;
+}
+
+.likert-container input[type='radio'] {
+  width: 1.6rem;
+  height: 1.6rem;
+  cursor: pointer;
+  accent-color: #4caf50;
+}
+
+.likert-container tr:hover {
+  background-color: #f8f9fa;
+}
+
+.contents {
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+  bottom: 2rem;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden auto;
+  gap: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+  padding: 1.5rem;
+}
+
+.contents-item {
+  display: flex;
+  padding: 0rem 1.5rem;
+  min-height: 4rem;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: grab;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  /* transition: all 0.2s ease; */
+}
+
+.contents-item:hover {
+  border-color: #4caf50;
+  background-color: #f8f9fa;
+  transform: translateX(-4px);
+}
+
+.contents-item.dragging {
+  opacity: 0.3;
+  cursor: grabbing;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  background-color: #f8f9fa;
+  transform: scale(1.02);
+}
+
+.contents-item.dragover-above {
+  border-top: 4px solid #4caf50;
+}
+
+.contents-item.dragover {
+  border-bottom: 4px solid #4caf50;
+}

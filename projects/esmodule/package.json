@@ -1,0 +1,20 @@
+{
+  "name": "@web-bench/esmodule",
+  "version": "0.0.1",
+  "eval": {
+    "stable": true
+  },
+  "type": "module",
+  "scripts": {
+    "build": "",
+    "test": "npx @web-bench/test-util"
+  },
+  "author": "luics",
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.7.9",
+    "serve": "^14.2.4",
+    "@web-bench/test-util": "workspace:*"
+  }
+}
+

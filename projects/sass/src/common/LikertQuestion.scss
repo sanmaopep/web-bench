@@ -1,0 +1,94 @@
+@use 'config';
+@use 'sass:map';
+
+.likert {
+  width: 100%;
+  border-collapse: collapse;
+  margin: config.$gap 0;
+
+  td {
+    padding: 0.5rem;
+    text-align: center;
+    border-bottom: 0.1rem solid map.get(config.$color, border);
+
+    &:focus {
+      outline: none;
+    }
+
+    &:first-child {
+      text-align: left;
+      padding-left: 0;
+      width: 40%;
+    }
+  }
+
+  tr {
+    &:first-child td {
+      font-weight: 500;
+      color: map.get(config.$color, text-lighter);
+      border-bottom: 0.2rem solid map.get(config.$color, border);
+    }
+
+    &:hover {
+      background-color: map.get(config.$color, hover);
+    }
+  }
+
+  .statement {
+    height: 5rem;
+
+    .statement-text {
+      cursor: pointer;
+    }
+
+    .remove-statement {
+      cursor: pointer;
+      display: none;
+      margin-left: config.$gap;
+    }
+
+    &:hover .remove-statement {
+      display: inline;
+    }
+  }
+
+  .option {
+    display: table-cell;
+
+    .option-text {
+      cursor: pointer;
+    }
+
+    .add-option,
+    .remove-option {
+      display: none;
+    }
+
+    &:hover {
+      .add-option,
+      .remove-option {
+        display: inline;
+      }
+    }
+  }
+
+  input[type='radio'] {
+    width: 1.6rem;
+    height: 1.6rem;
+    accent-color: map.get(config.$color, primary);
+  }
+}
+
+.pre .likert {
+  .statement .statement-text {
+    cursor: default;
+  }
+
+  .option .option-text {
+    cursor: default;
+  }
+
+  input[type='radio'] {
+    cursor: pointer;
+  }
+}

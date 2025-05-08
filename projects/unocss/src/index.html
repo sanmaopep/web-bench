@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web-Bench Unocss</title>
+    <style>
+      @media (max-width: 599px) {
+        .content{
+          grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="h-lvh overflow-hidden">
+    <div
+      class="root h-full grid grid-rows-[auto_1fr_auto] grid-cols-[auto_1fr_auto] overflow-hidden max-[399px]:grid-rows-[auto_auto_1fr_fit-content_auto] max-[399px]:grid-cols-[auto]"
+    >
+      <div
+        class="header col-span-3 bg-gray-100 grid grid-cols-[auto_max-content] items-center p-2.5 max-[399px]:p-0"
+      >
+        <div class="logo w-10 h-10 bg-gray-600 rounded-full max-[399px]:hidden"></div>
+        <div class="menu grid grid-cols-3 gap-5 max-[399px]:justify-evenly max-[399px]:grid-cols-1">
+          <div class="menu-item px-2.5 py-1.5 bg-gray-300 rounded text-center">Menu 1</div>
+          <div class="menu-item px-2.5 py-1.5 bg-gray-300 rounded text-center">Menu 2</div>
+          <div class="menu-item px-2.5 py-1.5 bg-gray-300 rounded text-center">Menu 3</div>
+        </div>
+      </div>
+
+      <div
+        class="leftbar w-[min(200px,20vw)] bg-gray-200 grid grid-cols-2 overflow-y-hidden max-[799px]:hidden"
+      >
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+        <div class="leftbar-cell p-1 px-1.5 bg-white break-words overflow-hidden leading-tight">
+          this is a very long text sample to test word wrap
+        </div>
+      </div>
+
+      <div
+        class="content bg-white grid grid-cols-3 relative overflow-y-auto group max-[399px]:col-span-3 max-[599px]:grid-cols-1 max-[999px]:grid-cols-2"
+      >
+        <div
+          class="card grid grid-rows-[1fr_auto_auto] bg-gray-100 border border-gray-300 min-h-[100px] overflow-auto"
+        >
+          <div class="card-image bg-gray-300 grid place-items-center"></div>
+          <div class="card-title bg-gray-300 grid place-items-center">
+            Long Product Title That Goes Here
+          </div>
+          <div class="card-price min-h-4 grid items-center px-2.5 font-bold">$199.99</div>
+        </div>
+        <div
+          class="card grid grid-rows-[1fr_auto_auto] bg-gray-100 border border-gray-300 min-h-[100px] overflow-auto"
+        >
+          <div class="card-image bg-gray-300 grid place-items-center"></div>
+          <div class="card-title bg-gray-300 grid place-items-center">
+            Long Product Title That Goes Here
+          </div>
+          <div class="card-price min-h-4 grid items-center px-2.5 font-bold">$99.99</div>
+        </div>
+        <div
+          class="card grid grid-rows-[1fr_auto_auto] bg-gray-100 border border-gray-300 min-h-[100px] overflow-auto"
+        >
+          <div class="card-image bg-gray-300 grid place-items-center"></div>
+          <div class="card-title bg-gray-300 grid place-items-center">
+            Long Product Title That Goes Here
+          </div>
+          <div class="card-price min-h-4 grid items-center px-2.5 font-bold">$99.99</div>
+        </div>
+        <div
+          class="card grid grid-rows-[1fr_auto_auto] bg-gray-100 border border-gray-300 min-h-[100px] overflow-auto"
+        >
+          <div class="card-image bg-gray-300 grid place-items-center"></div>
+          <div class="card-title bg-gray-300 grid place-items-center">
+            Long Product Title That Goes Here
+          </div>
+          <div class="card-price min-h-4 grid items-center px-2.5 font-bold">$99.99</div>
+        </div>
+        <div
+          class="card grid grid-rows-[1fr_auto_auto] bg-gray-100 border border-gray-300 min-h-[100px] overflow-auto"
+        >
+          <div class="card-image bg-gray-300 grid place-items-center"></div>
+          <div class="card-title bg-gray-300 grid place-items-center">
+            Long Product Title That Goes Here
+          </div>
+          <div class="card-price min-h-4 grid items-center px-2.5 font-bold">$99.99</div>
+        </div>
+        <div
+          class="card grid grid-rows-[1fr_auto_auto] bg-gray-100 border border-gray-300 min-h-[100px] overflow-auto"
+        >
+          <div class="card-image bg-gray-300 grid place-items-center"></div>
+          <div class="card-title bg-gray-300 grid place-items-center">
+            Long Product Title That Goes Here
+          </div>
+          <div class="card-price min-h-4 grid items-center px-2.5 font-bold">$99.99</div>
+        </div>
+        <div
+          class="card grid grid-rows-[1fr_auto_auto] bg-gray-100 border border-gray-300 min-h-[100px] overflow-auto"
+        >
+          <div class="card-image bg-gray-300 grid place-items-center"></div>
+          <div class="card-title bg-gray-300 grid place-items-center">
+            Long Product Title That Goes Here
+          </div>
+          <div class="card-price min-h-4 grid items-center px-2.5 font-bold">$99.99</div>
+        </div>
+        <div
+          class="card grid grid-rows-[1fr_auto_auto] bg-gray-100 border border-gray-300 min-h-[100px] overflow-auto"
+        >
+          <div class="card-image bg-gray-300 grid place-items-center"></div>
+          <div class="card-title bg-gray-300 grid place-items-center">
+            Long Product Title That Goes Here
+          </div>
+          <div class="card-price min-h-4 grid items-center px-2.5 font-bold">$99.99</div>
+        </div>
+        <div
+          class="card grid grid-rows-[1fr_auto_auto] bg-gray-100 border border-gray-300 min-h-[100px] overflow-auto"
+        >
+          <div class="card-image bg-gray-300 grid place-items-center"></div>
+          <div class="card-title bg-gray-300 grid place-items-center">
+            Long Product Title That Goes Here
+          </div>
+          <div class="card-price min-h-4 grid items-center px-2.5 font-bold">$99.99</div>
+        </div>
+        <div
+          class="card grid grid-rows-[1fr_auto_auto] bg-gray-100 border border-gray-300 min-h-[100px] overflow-auto"
+        >
+          <div class="card-image bg-gray-300 grid place-items-center"></div>
+          <div class="card-title bg-gray-300 grid place-items-center">
+            Long Product Title That Goes Here
+          </div>
+          <div class="card-price min-h-4 grid items-center px-2.5 font-bold">$99.99</div>
+        </div>
+        <div
+          class="card grid grid-rows-[1fr_auto_auto] bg-gray-100 border border-gray-300 min-h-[100px] overflow-auto order-last"
+        >
+          <div class="card-image bg-gray-300 grid place-items-center"></div>
+          <div class="card-title bg-gray-300 grid place-items-center">
+            Long Product Title That Goes Here
+          </div>
+          <div class="card-price min-h-4 grid items-center px-2.5 font-bold">$299.99</div>
+        </div>
+        <div
+          class="card grid grid-rows-[1fr_auto_auto] bg-gray-100 border border-gray-300 min-h-[100px] overflow-auto"
+        >
+          <div class="card-image bg-gray-300 grid place-items-center"></div>
+          <div class="card-title bg-gray-300 grid place-items-center">
+            Long Product Title That Goes Here
+          </div>
+          <div class="card-price min-h-4 grid items-center px-2.5 font-bold">$399.99</div>
+        </div>
+
+        <div
+          class="left-drag invisible group-hover:visible w-1 hover:w-3 absolute left-0 top-0 h-full cursor-ew-resize bg-gray-400 transition-all duration-200 ease-in max-[399px]:hidden"
+        ></div>
+        <div
+          class="right-drag invisible group-hover:visible w-1 hover:w-3 absolute right-0 top-0 h-full cursor-ew-resize bg-gray-400 transition-all duration-200 ease-in max-[399px]:bottom-0 max-[399px]:top-auto max-[399px]:bottom-0 max-[399px]:w-full max-[399px]:h-1 max-[399px]:hover:h-3"
+        ></div>
+      </div>
+
+      <div
+        class="rightbar w-[max(200px,20vw)] overflow-y-hidden grid grid-cols-2 auto-rows-fr max-[399px]:col-span-3 max-[399px]:w-full"
+      >
+        <div class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight">
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight">
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight">
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight">
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight">
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight">
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+        <div
+          class="rightbar-cell p-0.5 px-1 break-all overflow-hidden leading-tight max-[399px]:hidden"
+        >
+          this-is-a-very-long-text-sample-to-test-overflow
+        </div>
+      </div>
+
+      <div class="footer col-span-3 bg-gray-100 p-5 grid grid-cols-[auto_1fr] items-center gap-4">
+        <div class="footer-logo w-[50px] h-[50px] bg-gray-600 rounded-full"></div>
+        <div class="footer-info whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
+          Company Name - Detailed Information About the Company That Might Be Long
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

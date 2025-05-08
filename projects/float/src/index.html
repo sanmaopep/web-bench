@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web-Bench Float</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .root {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .header {
+        width: 100%;
+        background-color: #f0f0f0;
+        padding: 10px;
+        overflow: hidden;
+      }
+
+      .logo {
+        float: left;
+        width: 40px;
+        height: 40px;
+        background-color: #666;
+        border-radius: 50%;
+      }
+
+      .header > span {
+        float: left;
+        margin-left: 20px;
+        line-height: 40px;
+      }
+
+      .menu {
+        float: right;
+      }
+
+      .menu-item {
+        float: left;
+        padding: 5px 10px;
+        background-color: #ddd;
+        border-radius: 4px;
+        text-align: center;
+        margin-left: 20px;
+      }
+
+      .leftbar {
+        float: left;
+        width: min(200px, 20vw);
+        height: calc(100% - 60px - 90px);
+        background-color: #e0e0e0;
+        overflow-y: hidden;
+      }
+
+      .leftbar-cell {
+        float: left;
+        width: 50%;
+        height: 5%;
+        padding: 2px 5px;
+        background-color: #fff;
+        word-wrap: break-word;
+        overflow: hidden;
+        line-height: 1.2;
+      }
+
+      .content {
+        float: left;
+        width: calc(100% - min(200px, 20vw) - max(200px, 20vw));
+        height: calc(100% - 60px - 90px);
+        background-color: #ffffff;
+        position: relative;
+        overflow-y: auto;
+      }
+
+      .card {
+        float: left;
+        width: 33.33%;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+        min-height: 100px;
+        height: max(100px, 25%);
+      }
+
+      .card-image {
+        width: 100%;
+        height: 100px;
+        background-color: #ddd;
+        text-align: center;
+        line-height: 100px;
+      }
+
+      .card-title {
+        min-height: 1.5rem;
+        padding: 0 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .card-price {
+        min-height: 1rem;
+        padding: 0 10px;
+        font-weight: bold;
+      }
+
+      .card:nth-child(11) {
+        float: right;
+      }
+
+      .right-drag,
+      .left-drag {
+        visibility: hidden;
+        position: absolute;
+        cursor: ew-resize;
+        background-color: #999;
+        width: 3px;
+        height: 100%;
+      }
+
+      .right-drag {
+        right: 0;
+        top: 0;
+      }
+
+      .left-drag {
+        left: 0;
+        top: 0;
+      }
+
+      .content:hover .right-drag,
+      .content:hover .left-drag {
+        visibility: visible;
+      }
+
+      .right-drag:hover,
+      .left-drag:hover {
+        width: 8px;
+        transition: all 0.2s ease-in;
+      }
+
+      .rightbar {
+        float: right;
+        width: max(200px, 20vw);
+        height: calc(100% - 60px - 90px);
+        overflow-y: hidden;
+      }
+
+      .rightbar-cell {
+        float: left;
+        width: 50%;
+        height: 5%;
+        padding: 2px 3px;
+        word-break: break-all;
+        overflow: hidden;
+        line-height: 1.2;
+      }
+
+      .footer {
+        clear: both;
+        width: 100%;
+        background-color: #f0f0f0;
+        padding: 20px;
+      }
+
+      .footer-logo {
+        float: left;
+        width: 50px;
+        height: 50px;
+        background-color: #666;
+        border-radius: 50%;
+      }
+
+      .footer-info {
+        margin-left: 65px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 50px;
+      }
+
+      @media screen and (max-width: 999px) {
+        .card {
+          width: 50%;
+        }
+      }
+
+      @media screen and (max-width: 799px) {
+        .leftbar {
+          display: none;
+        }
+
+        .content {
+          width: calc(100% - max(200px, 20vw));
+        }
+
+        .logo,
+        .header > span {
+          display: none;
+        }
+
+        .menu {
+          float: none;
+          text-align: center;
+        }
+
+        .menu-item {
+          float: none;
+          display: inline-block;
+          margin: 0 10px;
+        }
+      }
+
+      @media screen and (max-width: 599px) {
+        .card {
+          width: 100%;
+        }
+      }
+
+      @media screen and (max-width: 399px) {
+        .header {
+          padding: 0;
+          height: 110px;
+        }
+
+        .content {
+          width: 100%;
+          height: calc(100% - 100px - 60px - 50px);
+        }
+
+        .rightbar {
+          float: left;
+          width: 100%;
+          height: 60px;
+        }
+
+        .rightbar-cell {
+          height: 33.3%;
+        }
+
+        .footer {
+          padding: 0;
+        }
+
+        .menu-item {
+          display: block;
+          margin: 5px 0;
+        }
+
+        .right-drag {
+          top: auto;
+          bottom: 0;
+          width: 100%;
+          height: 3px;
+          cursor: ns-resize;
+        }
+
+        .right-drag:hover {
+          width: 100%;
+          height: 8px;
+        }
+
+        .left-drag {
+          display: none !important;
+        }
+
+        .rightbar-cell:nth-child(n + 7) {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <div class="header">
+        <div class="logo"></div>
+        <span>Header</span>
+        <div class="menu">
+          <div class="menu-item">Menu 1</div>
+          <div class="menu-item">Menu 2</div>
+          <div class="menu-item">Menu 3</div>
+        </div>
+      </div>
+      <div class="leftbar">
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+        <div class="leftbar-cell">this is a very long text sample to test word wrap</div>
+      </div>
+      <div class="content">
+        <div class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Long Product Title That Goes Here</div>
+          <div class="card-price">$199.99</div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Long Product Title That Goes Here</div>
+          <div class="card-price">$99.99</div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Long Product Title That Goes Here</div>
+          <div class="card-price">$99.99</div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Long Product Title That Goes Here</div>
+          <div class="card-price">$99.99</div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Long Product Title That Goes Here</div>
+          <div class="card-price">$99.99</div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Long Product Title That Goes Here</div>
+          <div class="card-price">$99.99</div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Long Product Title That Goes Here</div>
+          <div class="card-price">$99.99</div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Long Product Title That Goes Here</div>
+          <div class="card-price">$99.99</div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Long Product Title That Goes Here</div>
+          <div class="card-price">$99.99</div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Long Product Title That Goes Here</div>
+          <div class="card-price">$99.99</div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Long Product Title That Goes Here</div>
+          <div class="card-price">$299.99</div>
+        </div>
+        <div class="card">
+          <div class="card-image"></div>
+          <div class="card-title">Long Product Title That Goes Here</div>
+          <div class="card-price">$399.99</div>
+        </div>
+        <div class="content-drag left-drag"></div>
+        <div class="content-drag right-drag"></div>
+      </div>
+      <div class="rightbar">
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+        <div class="rightbar-cell">this-is-a-very-long-text-sample-to-test-overflow</div>
+      </div>
+      <div class="footer">
+        <div class="footer-logo"></div>
+        <div class="footer-info">
+          Company Name - Detailed Information About the Company That Might Be Long
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let isDragging = false
+      let isRightDragging = false
+      let isLeftDragging = false
+      let startX
+      let startY
+      let contentStartWidth
+      let contentStartHeight
+      let leftbarStartWidth
+      let rightbarStartWidth
+      let rightbarStartHeight
+
+      function initDragHandlers() {
+        const content = document.querySelector('.content')
+        const leftbar = document.querySelector('.leftbar')
+        const rightbar = document.querySelector('.rightbar')
+        const leftDrag = document.querySelector('.left-drag')
+        const rightDrag = document.querySelector('.right-drag')
+
+        rightDrag.addEventListener('mousedown', (e) => {
+          isDragging = true
+          isRightDragging = true
+          startX = e.pageX
+          startY = e.pageY
+          contentStartWidth = content.offsetWidth
+          contentStartHeight = content.offsetHeight
+          rightbarStartWidth = rightbar.offsetWidth
+          rightbarStartHeight = rightbar.offsetHeight
+        })
+
+        leftDrag.addEventListener('mousedown', (e) => {
+          isDragging = true
+          isLeftDragging = true
+          startX = e.pageX
+          contentStartWidth = content.offsetWidth
+          leftbarStartWidth = leftbar.offsetWidth
+        })
+
+        document.addEventListener('mousemove', (e) => {
+          if (!isDragging) return
+
+          if (window.innerWidth <= 400 && isRightDragging) {
+            // Vertical dragging
+            const deltaY = e.pageY - startY
+            const newContentHeight = contentStartHeight + deltaY
+            const newRightbarHeight = rightbarStartHeight - deltaY
+
+            content.style.height = newContentHeight + 'px'
+            rightbar.style.height = newRightbarHeight + 'px'
+          } else {
+            // Normal horizontal
+            const deltaX = e.pageX - startX
+
+            if (isRightDragging) {
+              const newContentWidth = contentStartWidth + deltaX
+              const newRightbarWidth = rightbarStartWidth - deltaX
+              content.style.width = newContentWidth + 'px'
+              rightbar.style.width = newRightbarWidth + 'px'
+            }
+
+            if (isLeftDragging) {
+              const newContentWidth = contentStartWidth - deltaX
+              const newLeftbarWidth = leftbarStartWidth + deltaX
+              content.style.width = newContentWidth + 'px'
+              leftbar.style.width = newLeftbarWidth + 'px'
+            }
+          }
+
+          e.preventDefault()
+        })
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false
+          isRightDragging = false
+          isLeftDragging = false
+        })
+      }
+
+      document.addEventListener('DOMContentLoaded', initDragHandlers)
+    </script>
+  </body>
+</html>

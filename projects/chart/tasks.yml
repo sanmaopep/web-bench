@@ -1,0 +1,220 @@
+- id: task-1
+  date: 2025-2-27
+  level: easy
+  description: |
+    - Check or uncheck `#axes` to create `LineChart` instance `chart` with config whose attributes values:
+      - type: the value of `#type`, default is `line`
+      - id: `{type}Chart`
+      - data: imported from `./assets/data.js`
+      - options: 
+        - axes: the `checked` value of `#axes`
+    - Call `chart.draw()`
+    - Clear `#chart`, append `chart.svg` to `#chart`
+    - Save codes as a function `createChart()` in `index.js`
+
+- id: task-2
+  date: 2025-2-27
+  level: easy
+  description: |
+    Check or uncheck `#grids` to create `LineChart` instance:
+    - reuse function `createChart()`
+    - add new `options` attribute:
+      - grids: the `checked` value of `#grids`
+
+- id: task-3
+  date: 2025-2-27
+  level: easy
+  description: |
+    Select one or more `#datasets` options to create `LineChart` instance:
+    - reuse function `createChart()`
+    - filter `config.data.datasets` whose item (dataset) `label` value is selected
+
+- id: task-4
+  date: 2025-2-27
+  level: moderate
+  description: |
+    - Check or uncheck `#legends` to create `LineChart` instance:
+      - reuse function `createChart()`
+      - add new `options` attribute:
+        - legends: the `checked` value of `#legends`
+    - In `./common/Chart.js`, when `options.legends` is true or not defined:
+      - append g element (class `legends`) on the top of `svg`
+      - append g element (class `legend legend-{index}`) in `.legends`
+      - append circle (color is the same as `.dataset` line color) and text (content `dataset.label`) in each `.legend`
+    - In `./common/Chart.js` and `./common/LineChart.js`, when `options.legends` is true or not defined:
+      - reduce `.datasets` lines height
+      - reduce `.axes-y` axis-y height, update axis-y labels position
+      - and make `.legends`, `.datasets`, `.axes-x` and `.axes-y` fill the entire `svg` space
+
+- id: task-5
+  date: 2025-2-27
+  level: moderate
+  description: |
+    - Check or uncheck `#dataLabels` to create `LineChart` instance:
+      - reuse function `createChart()`
+      - add new `options` attribute:
+        - dataLabels: the `checked` value of `#dataLabels`
+    - In `./common/LineChart.js`, when `options.pointStyle` is `circle` or `rect`:
+      - append g element (class `points points-{index}`) inside `svg` for each `dataset`
+      - append points (each class `point point-{index}`, shape is `options.pointStyle`) inside `.points` for each item of `dataset.data`
+      - each point covers the `.dataset` line, distributes from left to right
+      - each point color is the same as `.dataset` line color
+
+- id: task-6
+  date: 2025-2-27
+  level: moderate
+  description: |
+    - Select `#pointStyle` to create `LineChart` instance:
+      - reuse function `createChart()`
+      - add new `options` attribute:
+        - pointStyle: the value of `#pointStyle`
+    - In `./common/LineChart.js`, when `options.pointStyle` is `circle` or `rect`:
+      - append g element (class `points points-{index}`) inside `svg` for each `dataset`
+      - append points (each class `point point-{index}`, shape is `options.pointStyle`) inside `.points` for each item of `dataset.data`
+      - each point covers the `.dataset` line, distributes from left to right
+      - each point color is the same as `.dataset` line color
+
+- id: task-7
+  date: 2025-2-28
+  level: challenging
+  description: |
+    In `./common/LineChart.js`:
+    - append an initially hidden g element (class `tooltips hidden`) inside `svg`
+    - when mouse hovers over the `.datasets` area in `svg`, display `.tooltips` near the mouse position
+      - select the `.grid-x` (class `selected`) that is horizontally closest to the mouse 
+      - append rect element (class `bg`) inside `.tooltips`
+      - in `.tooltips`, show all data items from the `.dataset` that corresponds to the selected `.grid-x`
+    - when mouse not hovers over `.datasets` area in `svg`, hide `.tooltips` (add class `hidden`)
+
+- id: task-8
+  date: 2025-2-28
+  level: challenging
+  description: |
+    - In `./common/SmoothLineChart.js`, class `SmoothLineChart` inherits from `LineChart`, `SmoothLineChart`:
+      - replace all polylines with smooth curved lines inside `.datasets`
+    - Select the option `SmoothLine Chart` of `#type` to create `SmoothLineChart` instance
+
+- id: task-9
+  date: 2025-2-28
+  level: moderate
+  description: |
+    In `./common/Chart.js`, when click legend:
+    - show (remove class `hidden`) or hide (add class `hidden`) `.dataset` lines, dataLabels, points
+
+- id: task-10
+  date: 2025-2-28
+  level: challenging
+  description: |
+    -In `./common/ScatterChart.js`, class `ScatterChart` inherits from `LineChart`, `ScatterChart`:
+      - options.pointStyle is default circle
+      - options.dataLabels is always true
+      - all `.dataset` lines are hidden
+    - Select the option `Scatter Chart` of `#type` to create `ScatterChart` instance, and make `#dataLabels` disabled
+
+- id: task-11
+  date: 2025-2-28
+  level: challenging
+  description: |
+    -In `./common/StepChart.js`, class `StepChart` inherits from `LineChart`, `StepChart`:
+      - replace all polylines with step style polylines inside `.datasets`
+      - in each step style polyline:
+        - each `dataset.data` responds to a horizontal line segment whose width is the distance between two near grid-x
+          - the first and the last line segment width is the half
+        - connect all line segments to a step style polyline
+    - Select the option `Step Chart` of `#type` to create `StepChart` instance
+
+- id: task-12
+  date: 2025-2-28
+  level: challenging
+  description: |
+    - In `./common/AreaChart.js`, class `AreaChart` inherits from `LineChart`, `AreaChart`:
+      - append g element (class `areas`) inside `svg`
+      - append polygons (each class `area area-{index}`) inside `.areas` 
+      - each `.area` is below the `.dataset` line
+      - each `.area` color is the same as `.dataset` line color, half transparent
+    - Select the option `Area Chart` of `#type` to create `AreaChart` instance
+
+- id: task-13
+  date: 2025-2-28
+  level: challenging
+  description: |
+    - In `./common/BarChart.js`, class `BarChart` inherits from `Chart`, `BarChart`:
+      - there is 1 more grid-x line than LineChart, all the grid-x lines are evenly distributed in `.grids`
+      - axis-x labels are placed between 2 adjacent grids below the `.axis-x`
+      - append g element (class `datasets`) inside `svg` and make it fill the entire `svg` (no padding between them)
+      - append g element (class `dataset dataset-${index}`) inside `.datasets` for each `datasets` item
+      - append bars (rect elements, class `bar bar-{index}`) with the same color inside `.dataset` for each `dataset.data` item
+        - bars are distributed within each column enclosed by 2 adjacent grid-x lines  
+        - bars in different `.dataset` have unique colors
+        - bars in the same column are evenly distributed
+    - Select the option `Bar Chart` of `#type` to create `BarChart` instance
+
+- id: task-14
+  date: 2025-2-28
+  level: challenging
+  description: |
+    In `./common/BarChart.js`, when `options.dataLabels` is true:
+    - append g element (class `dataLabels dataLabels-{index}`) inside `svg` for each `dataset`
+    - append data labels (each class `dataLabel dataLabel-{index}`) inside `.dataLabels` for each `dataset.data` item
+    - each dataLabel is above the `.dataset` bars, distributes from left to right
+    - each dataLabel color is the same as `.dataset` bars color
+
+- id: task-15
+  date: 2025-2-28
+  level: challenging
+  description: |
+    In `./common/BarChart.js`:
+    - append an initially hidden g element (class `tooltips hidden`) inside `svg`
+    - when mouse hovers over the `.datasets` area in `svg`, display `.tooltips` near the mouse position
+      - select the `.grid-x` (class `selected`) that is horizontally closest to the mouse 
+      - in `.tooltips`, show all data from the `.dataset` that corresponds to the area enclosed by the selected `.grid-x` and next adjacent `.grid-x`
+    - when mouse not hovers over `.datasets` area, hide `.tooltips` (add class `hidden`)
+
+- id: task-16
+  date: 2025-2-28
+  level: challenging
+  description: |
+    - In `./common/PieChart.js`, class `PieChart` inherits from `Chart`, `PieChart`:
+      - append g element (class `datasets`) inside `svg` and make it fill the most area of `svg`
+      - append g element (class `dataset dataset-0`) inside `.datasets` for the first `datasets` item
+      - append sectors (path elements, each class `sector sector-{index}`) with the unique color inside `.dataset` for each `dataset.data` item
+      - all the sectors form a large circle
+      - the area of each sector is related to its proportion of the data
+    - Select the option `Pie Chart` of `#type` to create `PieChart` instance, make `#axes`, `#grids`, `#pointStyle` disabled, and make `#datasets` single selection mode
+
+- id: task-17
+  date: 2025-2-28
+  level: moderate
+  description: |
+    - In `./common/DoughnutChart.js`, class `DoughnutChart` inherits from `PieChart`, `DoughnutChart`:
+      - cover the central circle area with `#circleMask` from `assets/res.svg`
+    - Select the option `Doughnut Chart` of `#type` to create `DoughnutChart` instance
+
+- id: task-18
+  date: 2025-2-28
+  level: challenging
+  description: |
+    In `./common/PieChart.js`, when `options.dataLabels` is true:
+    - append g element (class `dataLabels dataLabels-0`) inside `svg` for the first `dataset`
+    - append data labels (each class `dataLabel dataLabel-{index}`) inside `.dataLabels` for each `dataset.data` item
+    - show the sector data and proportion in each dataLabel
+    - append connect lines (each class `connect connect-{index}`) inside `.dataLabels` to connect each dataLabel and its corresponding sector
+    - each dataLabel is positioned near its corresponding sector and distributed around the large circle
+
+- id: task-19
+  date: 2025-2-28
+  level: moderate
+  description: |
+    In `./common/PieChart.js`:
+    - when mouse hovers over a sector, it scales up by 1.05 times proportionally around pie center point
+    - when mouse leaves a sector, its size returns to normal
+
+- id: task-20
+  date: 2025-2-28
+  level: challenging
+  description: |
+    In `./common/PieChart.js`:
+    - append an initially hidden g element (class `tooltips hidden`) inside `svg`
+    - when mouse hovers over a sector in `svg`, display `.tooltips` near the mouse position
+    - show the sector data and proportion in `.tooltips`
+    - when mouse leaves a sector, hide `.tooltips` (add class `hidden`)

@@ -1,0 +1,54 @@
+@gap: 1rem;
+
+@color: {
+  primary: #4caf50;
+  primary-dark: #45a049;
+  background: #f5f5f5;
+  border: #ddd;
+  border-light: lighten(#ddd, 5%);
+  border-lighter: lighten(#ddd, 10%);
+  border-lightest: lighten(#ddd, 15%);
+  text: #333;
+  text-light: #555;
+  text-lighter: #666;
+  white: #fff;
+  hover: #f8f9fa;
+  star: #ddd;
+  shadow: rgba(0, 0, 0, 0.05);
+  shadow-dark: rgba(0, 0, 0, 0.5);
+  primary-transparent: rgba(76, 175, 80, 0.2);
+};
+
+// Common border mixins
+.border(@radius, @color) {
+  border: 0.1rem solid @color;
+  border-radius: @radius;
+}
+
+.border-base(@radius) {
+  .border(@radius, @color[border]);
+}
+
+.border-light(@radius) {
+  .border(@radius, @color[border-light]);
+}
+
+.border-lighter(@radius) {
+  .border(@radius, @color[border-lighter]);
+}
+
+.border-lightest(@radius) {
+  .border(@radius, @color[border-lightest]);
+}
+
+.center-flex() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

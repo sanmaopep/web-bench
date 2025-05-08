@@ -1,0 +1,20 @@
+{
+  "name": "@web-bench/dom1",
+  "version": "0.0.1",
+  "eval": {
+    "stable": true
+  },
+  "scripts": {
+    "build": "",
+    "test": "npx @web-bench/test-util",
+    "test1": "npx playwright test"
+  },
+  "author": "luics",
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.7.9",
+    "serve": "^14.2.4",
+    "@web-bench/test-util": "workspace:*"
+  }
+}
+

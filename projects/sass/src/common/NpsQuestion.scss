@@ -1,0 +1,41 @@
+@use 'config';
+@use 'sass:map';
+
+.nps {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  padding: config.$gap 0;
+
+  .option {
+    @include config.border-base(0.4rem);
+    flex: 1;
+    @include config.center-flex();
+    height: 4rem;
+    transition: all 0.2s ease;
+    font-weight: 500;
+
+    input[type='radio'] {
+      appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+.pre .nps {
+  .option {
+    cursor: pointer;
+
+    &:hover {
+      background-color: map.get(config.$color, background);
+      border-color: map.get(config.$color, primary);
+    }
+
+    &.active {
+      background-color: map.get(config.$color, primary);
+      border-color: map.get(config.$color, primary);
+      color: map.get(config.$color, white);
+      transform: scale(1.05);
+    }
+  }
+}

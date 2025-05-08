@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: #1f1f1f;
+  color: #eee;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.explorer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.leftbar {
+  position: relative;
+  width: 300px;
+  flex-shrink: 0;
+  height: 100%;
+  border-right: 1px solid #444;
+  display: flex;
+  flex-direction: column;
+  background-color: #252525;
+  overflow-y: auto;
+}
+
+.resizer {
+  display: none;
+  position: absolute;
+  cursor: ew-resize;
+  background-color: #999;
+  width: 3px;
+  height: 100%;
+  right: 0;
+  top: 0;
+}
+
+.leftbar:hover .resizer {
+  display: block;
+}
+
+.resizer:hover {
+  width: 8px;
+  transition: all 0.2s ease-in;
+}
+
+.editor {
+  flex: 1;
+  height: 100%;
+  background-color: #1f1f1f;
+  color: #eee;
+  border: 0;
+  padding: 1rem;
+  font-size: 14px;
+  line-height: 1.5;
+  outline: none;
+}
+
+.tools {
+  flex: 0 0 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #252525;
+  border-bottom: 1px solid #444;
+}
+
+.tools button {
+  height: 20px;
+  line-height: 20px;
+  padding: 0 4px;
+  margin-right: 4px;
+  background-color: #2f2f2f;
+  color: #eee;
+  border: 1px solid #444;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tools button:hover {
+  background-color: #3f3f3f;
+  border-color: #666;
+}
+
+.tools button:active {
+  background-color: #444;
+  transform: translateY(1px);
+}
+
+.entries {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.entry {
+  padding: 3px 0 0 16px;
+  cursor: pointer;
+}
+
+.entry.selected,
+.entry:hover {
+  background-color: #333;
+}
+
+.file {
+}
+
+.dir {
+  padding-left: 0;
+}
+
+.dir::before {
+  width: 16px;
+  text-align: center;
+  content: '›';
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.dir.open::before {
+  transform: rotate(90deg);
+}
+
+.dir-content {
+  display: none;
+  padding-left: 16px;
+  background-color: #1f1f1f;
+}
+
+.dir.open > .dir-content {
+  display: block;
+}
+
+.entry.dragging {
+  opacity: 0.5;
+}
+
+.entry.dragover,
+.entries.dragover {
+  border-bottom: 2px solid #666;
+}
+
+.dir.dragover,
+.entries.dragover {
+  background-color: #333;
+}
+
+.menu {
+  position: fixed;
+  background: #2f2f2f;
+  border: 1px solid #444;
+  padding: 4px 0;
+  min-width: 150px;
+  display: none;
+  z-index: 1000;
+}
+
+.menu-item {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background: #3f3f3f;
+}

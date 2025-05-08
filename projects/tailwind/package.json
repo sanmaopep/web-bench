@@ -1,0 +1,21 @@
+{
+  "name": "@web-bench/tailwind",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "",
+    "start": "vite src --config vite.config.mjs",
+    "test": "npx @web-bench/test-util"
+  },
+  "author": "luics",
+  "eval": {
+    "stable": true
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.7.9",
+    "tailwindcss": "^4.1.4",
+    "@tailwindcss/vite": "^4.1.4",
+    "vite": "^6.2.2",
+    "@web-bench/test-util": "workspace:*"
+  }
+}

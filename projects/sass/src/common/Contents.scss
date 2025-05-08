@@ -1,0 +1,50 @@
+@use 'config';
+@use 'sass:map';
+
+.contents {
+  position: fixed;
+  right: config.$gap;
+  top: config.$gap;
+  bottom: config.$gap;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden auto;
+  gap: 0.5rem;
+  background-color: map.get(config.$color, white);
+  border-radius: 0.8rem;
+  padding: 1.5rem;
+
+  &-item {
+    display: flex;
+    padding: 0rem 1.5rem;
+    min-height: 4rem;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: grab;
+    background-color: map.get(config.$color, white);
+    @include config.border-base(0.6rem);
+
+    &:hover {
+      border-color: map.get(config.$color, primary);
+      background-color: map.get(config.$color, hover);
+      transform: translateX(-0.4rem);
+    }
+
+    &.dragging {
+      opacity: 0.3;
+      cursor: grabbing;
+      background-color: map.get(config.$color, hover);
+      transform: scale(1.02);
+    }
+
+    &.dragover-above {
+      border-top: 0.4rem solid map.get(config.$color, primary);
+    }
+
+    &.dragover {
+      border-bottom: 0.4rem solid map.get(config.$color, primary);
+    }
+  }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web-Bench Color</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .root {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      
+      .color {
+        width: 50vw;
+        height: 25vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #999;
+      }
+
+      .color .prop {
+        width: 60%;
+        display: flex;
+      }
+
+      .color input[type='range'] {
+        width: 70%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <div class="color rgb">
+        <label class="prop">
+          <input type="range" name="r" min="0" max="255" value="0" />
+          R
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="g" min="0" max="255" value="0" />
+          G
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="b" min="0" max="255" value="0" />
+          B
+          <span class="result"></span>
+        </label>
+        <label class="prop">
+          <input type="range" name="a" min="0" max="1" value="1" step="0.1" />
+          A
+          <span class="result"></span>
+        </label>
+      </div>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+$color: black;
+$bgColor: white;
+
+body {
+  margin: 0;
+  color: $color;
+  background-color: $bgColor;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
