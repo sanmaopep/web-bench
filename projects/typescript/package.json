@@ -1,0 +1,34 @@
+{
+  "name": "@web-bench/typescript",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "vite src --port 3005 --config vite.config.ts",
+    "init": "cd $EVAL_PROJECT_ROOT && rm -rf tasks",
+    "test": "npx @web-bench/test-util"
+  },
+  "eval": {
+    "screenshot": false,
+    "stable": true
+  },
+  "author": "guanxinyi",
+  "dependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "promise-fs": "^2.1.1",
+    "@playwright/test": "^1.49.1",
+    "@types/promise-fs": "^2.1.5",
+    "execa": "^9.5.2",
+    "typescript": "^5.6.3",
+    "@types/node": "^22.7.9",
+    "serve": "^14.2.4",
+    "fs-extra": "^11.2.0",
+    "@types/fs-extra": "^11.0.4",
+    "@web-bench/test-util": "workspace:*",
+    "@vitejs/plugin-react": "^4.3.3",
+    "vite": "^6.2.2"
+  }
+}

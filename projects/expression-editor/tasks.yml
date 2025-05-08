@@ -1,0 +1,740 @@
+-
+  id: task-1
+  date: 20250311
+  level: easy
+  description: |
+    Add a contenteditable editor in this page.
+    Set font-family to `Menlo, Monaco, "Courier New", monospace` for it.
+    Add an `id` attribute with the value `editor` to the editor element to facilitate element lookup later.
+
+-
+  id: task-2
+  date: 20250311
+  level: easy
+  description: |
+    The min height of the editor is 100px, and with 10px padding.
+    The final visible height of the element remains at 100px, with the padding and any border thickness included within this measurement, rather than adding extra height.
+    The editor height should always fit its content whenever user types.
+
+-
+  id: task-3
+  date: 20250311
+  level: easy
+  description: |
+    Add a toolbar above the editor.
+    On the right side of the toolbar, there is a button labeled "Documentation".
+    Upon clicking the button, a popup appears with the title "Document" and the content "WIP".
+    This popup includes a close button labeled "Close", Clicking this close button will close the popup.
+
+-
+  id: task-4
+  date: 20250311
+  level: moderate
+  description: |
+    On the right side of the toolbar, and before the `Documentation` button, add a new button labeled "Uppercase".
+    When a user selects text in the editor and clicks the "Uppercase" button, the text should be converted to uppercase and then replaced with the uppercased one.
+
+-
+  id: task-5
+  date: 20250311
+  level: moderate
+  description: |
+    On the right side of the toolbar, and before the `Documentation` button, add a new button labeled "Insert Snippet".
+    Upon click the `Insert Snippet` button:
+    - Ensure that the editor remains focused (meaning the cursor continues to blink within the editor) if it was initially focused.
+    - The content "true OR false" will be inserted at the cursor's current position or replace the selected text in the editor. If the editor is not focused, insert the content at the end of the editor.
+    - Considering that users may need to delete newly inserted text, the new text should be selected after insertion.
+
+-
+  id: task-6
+  date: 20250311
+  level: moderate
+  description: |
+    Add parenthesis auto closing capability for the editor.
+    - When a user types an opening parenthesis (, the editor should automatically insert a closing parenthesis ) immediately after the opening parenthesis.
+    - After inserting the closing parenthesis, programmatically set the cursor position to be between the opening and closing parentheses, ensuring that the user can continue typing without needing to manually adjust the cursor.
+
+-
+  id: task-7
+  date: 20250311
+  level: challenging
+  description: |
+    # Target
+    Use JavaScript to implement a `tokenize` function in `parser.js` and export `tokenize` with ESM named export.
+
+    CAUTION: I want the file to be implemented with JavaScript but NOT TypeScript, and the filename should be `parser.js`.
+
+    # Technical Design Document
+    To complete the target, let's dig it deeper.
+
+    ## `tokenize` function implemention detail
+
+    `tokenize` receive a `string` as input, and return `Token[]` as output.
+
+    ### Constraints
+
+    Ignore all tab、whitespaces、newlines
+
+    ### Token Types
+
+    I'll give you the TypeScript type definitions for your convenience.
+
+    ```ts
+    type Token = Identifier | Operator | LeftParen | RightParen
+
+    type Identifier = {
+      type: 'identifier';
+      from: number;
+      to: number;
+      value: string;
+    }
+
+    type Operator = {
+      type: 'operator';
+      from: number;
+      to: number;
+      value: 'AND' | 'OR';
+    }
+
+    type LeftParen = {
+      type: 'lparen';
+      from: number;
+      to: number;
+    }
+
+    type RightParen = {
+      type: 'rparen';
+      from: number;
+      to: number;
+    }
+    ```
+
+    ### Examples
+    Besides these, here are some examples for you to better understand the tokenize result.
+    <examples>
+      <example source="" description="empty source">
+        ```js
+        []
+        ```
+      </example>
+
+      <example source="foo" description="Single identifier">
+        ```js
+        [
+          {
+            type: 'identifier',
+            from: 0,
+            to: 3,
+            value: 'foo'
+          }
+        ]
+        ```
+      </example>
+
+      <example source="foo AND bar" description="Use AND with two identifiers">
+        ```js
+        [
+          {
+            type: 'identifier',
+            from: 0,
+            to: 3,
+            value: 'foo'
+          },
+          {
+            type: 'operator',
+            from: 4,
+            to: 7,
+            value: 'AND'
+          },
+          {
+            type: 'identifier',
+            from: 8,
+            to: 11,
+            value: 'bar'
+          }
+        ]
+        ```
+      </example>
+
+      <example source="foo OR (bar OR baz)" description="Compound expression with parens">
+        ```js
+        [
+          {
+            type: 'identifier',
+            from: 0,
+            to: 3,
+            value: 'foo'
+          },
+          {
+            type: 'operator',
+            from: 4,
+            to: 6,
+            value: 'OR'
+          },
+          {
+            type: 'lparen',
+            from: 7,
+            to: 8,
+          },
+          {
+            type: 'identifier',
+            from: 8,
+            to: 11,
+            value: 'bar'
+          },
+          {
+            type: 'operator',
+            from: 12,
+            to: 14,
+            value: 'OR'
+          },
+          {
+            type: 'identifier',
+            from: 15,
+            to: 18,
+            value: 'baz'
+          },
+          {
+            type: 'rparen',
+            from: 18,
+            to: 19,
+          },
+        ]
+        ```
+      </example>
+    </examples>
+
+-
+  id: task-8
+  date: 20250102
+  level: challenging
+  description: |
+    # Target
+    Use JavaScript to implement a `parse` function in `parser.js` and export `parse` with ESM named export.
+    You should implement `parse` based on existing `tokenize` function.
+
+    CAUTION: I want the file to be implemented with JavaScript but NOT TypeScript, and the filename should be `parser.js`.
+
+    # Technical Design Document
+    To complete the target, let's dig it deeper.
+
+    ## `parse` function implemention detail
+
+    `parse` receive a `string` as input, and return `Program` as output.
+
+    ### Constraints
+
+    #### Syntax Rules
+    - Identifier: A string composed of letters (a-z, A-Z), digits (0-9), and underscores, but it cannot start with a digit.
+    - LogicalExpression: Includes AND and OR. These operators are used to connect expressions and must be in uppercase.
+    - Parentheses: Used to change the order of operations or to group expressions, including left parenthesis ( and right parenthesis ).
+
+    #### Precedence and Associativity
+    - The AND and OR operators are left-associative, meaning they are evaluated from left to right in the absence of parentheses.
+    - The precedence of the AND operator is higher than that of OR.
+
+    ### Node Types
+
+    I'll give you the TypeScript type definitions for your convenience.
+
+    ```ts
+    type Program = {
+      type: 'Program';
+      children: SyntaxNode[];
+    }
+
+    type Identifier = {
+      type: 'Identifier';
+      name: string;
+    }
+
+    type LogicalExpression = {
+      type: 'LogicalExpression';
+      operator: 'AND' | 'OR';
+      left: SyntaxNode;
+      right: SyntaxNode;
+    }
+
+    type SyntaxNode = Identifier | LogicalExpression
+    ```
+
+    ### Examples
+
+    Besides these, here are some examples for you to better understand the AST structure.
+
+    <examples>
+      <example source="" description="Empty source">
+        ```js
+        {
+          type: 'Program',
+          body: []
+        }
+        ```
+      </example>
+
+      <example source="foo" description="Single identifier">
+        ```js
+        {
+          type: 'Program',
+          body: [
+            {
+              type: 'Identifier',
+              name: 'foo'
+            }
+          ]
+        }
+        ```
+      </example>
+
+      <example source="foo AND bar" description="Use AND with two identifiers">
+        ```js
+        {
+          type: 'Program',
+          body: [
+            {
+              type: 'LogicalExpression',
+              operator: 'AND',
+              left: {
+                type: 'Identifier',
+                name: 'foo'
+              },
+              right: {
+                type: 'Identifier',
+                name: 'bar'
+              }
+            }
+          ]
+        }
+        ```
+      </example>
+
+      <example source="foo OR bar AND baz" description="Precedence of AND is higher than OR">
+        ```js
+        {
+          type: 'Program',
+          body: [
+            {
+              type: 'LogicalExpression',
+              operator: 'OR',
+              left: {
+                type: 'Identifier',
+                name: 'foo'
+              },
+              right: {
+                type: 'LogicalExpression',
+                operator: 'AND',
+                left: {
+                  type: 'Identifier',
+                  name: 'bar'
+                },
+                right: {
+                  type: 'Identifier',
+                  name: 'baz'
+                }
+              }
+            }
+          ]
+        }
+        ```
+      </example>
+
+      <example source="foo OR bar OR baz" description="And/OR operators are both left associative">
+        ```js
+        {
+          type: 'Program',
+          body: [
+            {
+              type: 'LogicalExpression',
+              operator: 'OR',
+              left: {
+                type: 'LogicalExpression',
+                operator: 'OR',
+                left: {
+                  type: 'Identifier',
+                  name: 'foo'
+                },
+                right: {
+                  type: 'Identifier',
+                  name: 'bar'
+                }
+              },
+              right: {
+                type: 'Identifier',
+                name: 'baz'
+              }
+            }
+          ]
+        }
+        ```
+      </example>
+
+      <example source="foo OR (bar OR baz)" description="Parentheses can change default associativity">
+        ```js
+        {
+          type: 'Program',
+          body: [
+            {
+              type: 'LogicalExpression',
+              operator: 'OR',
+              left: {
+                type: 'Identifier',
+                name: 'foo'
+              },
+              right: {
+                type: 'LogicalExpression',
+                operator: 'OR',
+                left: {
+                  type: 'Identifier',
+                  name: 'bar'
+                },
+                right: {
+                  type: 'Identifier',
+                  name: 'baz'
+                }
+              }
+            }
+          ]
+        }
+        ```
+      </example>
+
+      <example source="  foo   OR     (   bar   OR   baz   )   " description="Any number of whitespaces are allowed, and does not affect the result">
+        ```js
+        {
+          type: 'Program',
+          body: [
+            {
+              type: 'LogicalExpression',
+              operator: 'OR',
+              left: {
+                type: 'Identifier',
+                name: 'foo'
+              },
+              right: {
+                type: 'LogicalExpression',
+                operator: 'OR',
+                left: {
+                  type: 'Identifier',
+                  name: 'bar'
+                },
+                right: {
+                  type: 'Identifier',
+                  name: 'baz'
+                }
+              }
+            }
+          ]
+        }
+        ```
+      </example>
+    </examples>
+
+-
+  id: task-9
+  date: 20250106
+  level: moderate
+  description: |
+    Add range field for every Node in AST. The type of range is Range
+
+    ```ts
+    interface Range {
+      from: number;
+      to: number;
+    }
+    ```
+
+-
+  id: task-10
+  date: 20250109
+  level: challenging
+  description: |
+    Implement syntax highlighting in the editor, and avoid disrupting the original cursor position while the user is typing.
+
+    The syntax rules can be found in `parser.js`. Use `tokenize` result to highlight editor content.
+
+    Here are the syntax highlight styles requirements:
+    - identifier: text color is #0000ff
+    - operator: text color is #00ff00
+
+-
+  id: task-11
+  date: 20250107
+  level: moderate
+  description: |
+    # Background
+    Now let's implement the lint capability for the editor
+
+    # Target
+
+    1. Refactor `parse` in parser.js
+      - `parse` should be case-insensitive when encounters operator(e.g. AND, and, And are both valid operators), and should return a Syntax Tree without throwing errors.
+      - add operatorRange field for LogicalExpression AST node to save the operator range, type of operatorRange is { from: number; to: number }
+      - add `source` field for Program AST node, tracking the original source code.
+    2. Implement a function named `lint`, and export it in `lint.js` with ESM.
+
+    # Constraints
+
+    DO NOT modify files other than `parser.js` and `lint.js`.
+
+    # Detail of `lint`
+
+    `lint` receives Program(return type of `parse`) as input, returns Diagnostic[] as output.
+
+    Type definition of Program is
+
+    ```ts
+    interface Range {
+      from: number;
+      to: number;
+    }
+
+    type Program = {
+      type: 'Program';
+      source: string;
+      children: SyntaxNode[];
+      range: Range;
+    }
+
+    type Identifier = {
+      type: 'Identifier';
+      name: string;
+      range: Range;
+    }
+
+    type LogicalExpression = {
+      type: 'LogicalExpression';
+      operator: string;
+      operatorRange: Range;
+      left: SyntaxNode;
+      right: SyntaxNode;
+      range: Range;
+    }
+
+    type SyntaxNode = Identifier | LogicalExpression
+    ```
+
+    Type definition of Diagnostic is
+
+    ```ts
+    type Diagnostic = {
+      range: {
+        from: number;
+        to: number;
+      };
+      level: 'error' | 'warning';
+      message: string;
+    }
+    ```
+
+    ## Lint Rules
+
+    <rules>
+      <rule
+        level="error"
+        description="AND and OR should be uppercase. All misspells should be reported"
+      />
+    </rules>
+
+    ## Examples
+
+    <examples>
+      <example description="No error found">
+        <input>foo AND bar</input>
+        <diagnostics>
+          []
+        </diagnostics>
+      </example>
+
+      <example description="Find two errors">
+        <input>foo and bar or baz</input>
+        <diagnostics>
+          [
+            {
+              range: {
+                from: 4,
+                to: 7,
+              },
+              level: 'error',
+              message: 'Operator should be uppercase. Use AND instead of and.'
+            },
+            {
+              range: {
+                from: 12,
+                to: 14,
+              },
+              level: 'error',
+              message: 'Operator should be uppercase. Use OR instead of or.'
+            }
+          ]
+        </diagnostics>
+      </example>
+    </examples>
+
+-
+  id: task-12
+  date: 20250113
+  level: moderate
+  description: |
+    Add bottom border(with border color of #ff0000) for ranges with errors(from lint in `lint.js`) in editor.
+    Add class "diagnostic-error" for the wrapper element of error range.
+
+- id: task-13
+  date: 20250113
+  level: easy
+  description: |
+    Add `data-diagnostic-message` attribute for the wrapper element of error range showing the error message.
+
+-
+  id: task-14
+  date: 20250115
+  level: easy
+  description: |
+    Show diagnostic message in tooltip when user hover on any diagnostic in editor.
+
+-
+  id: task-15
+  date: 20250116
+  level: moderate
+  description: |
+    Refactor `parse` in `parser.js`, throw SyntaxError if input doesn't conform to the syntax rules.
+
+    If user input doesn't conform to the current syntax rules, display an error message showing "Syntax Error" below the editor element.
+
+    Syntax error validation should be real-time as the user types.
+
+    The element showing "Syntax Error" has a red background.
+
+-
+  id: task-16
+  date: 20250117
+  level: moderate
+  description: |
+    Implement an `evaluate` function in `evaluate.js`, and export `evaluate` with ESM named export.
+
+    # Details
+    - When encounters some error during evaluating, return null.
+    - When operator is not uppercase, return null.
+    - Hard-code the builtin variables when doing evaluating. Available builtin variables:
+      - foo: true
+      - fooooo: false
+      - bar: true
+      - barrrr: false
+    - Nonexistent variables should be considered as `false` when doing evaluating.
+
+    # Examples
+
+    <examples>
+      <example>
+        <input description="empty input"></input>
+        <output>false</output>
+      <example>
+
+      <example>
+        <input>foo</input>
+        <output>true</output>
+      <example>
+
+      <example>
+        <input>foo a</input>
+        <output description="return null because there is a syntax error">null</output>
+      <example>
+
+      <example>
+        <input>foo AND</input>
+        <output description="return null because there is a syntax error">null</output>
+      <example>
+
+      <example>
+        <input>foo and bar</input>
+        <output description="return null because 'and' is not a leagal operator">null</output>
+      </example>
+
+      <example>
+        <input>foo AND bar</input>
+        <output>true</output>
+      </example>
+
+      <example>
+        <input>x AND bar</input>
+        <output>false</output>
+      </example>
+
+      <example>
+        <input>foo AND barrrr</input>
+        <output>false</output>
+      </example>
+
+      <example>
+        <input>foo OR barrrr</input>
+        <output>true</output>
+      </example>
+    </examples>
+
+-
+  id: task-17
+  date: 20250311
+  level: easy
+  description: |
+    On the left side of the toolbar, add a new button labeled "Run".
+    Upon clicking the "Run" button, use editor content as input for `evaluate` function in `evaluate.js`, and display the evaluate result below the editor.
+    - If the evaluate result is null, display "null".
+    - If the evaluate result is true, display "true".
+    - If the evaluate result is false, display "false".
+
+-
+  id: task-18
+  date: 20250115
+  level: challenging
+  description: |
+    Add autocompletion for the editor.
+    
+    # Details
+
+    - Support auto complete builtin variables and operators.
+      - builtin variables: foo, fooooo, bar, barrrr
+      - operators: AND, OR
+    - Use prefix match to search.
+    - User can click on completion item to insert the completion item
+      - Remove the common prefix already in the editor to avoid duplicate text after inserting
+    - Syntax highlighting still works after inserting completion
+
+    Here are some examples:
+    - When user input f, suggest `foo` and `fooooo`
+    - When user input fo, suggest `foo` and `fooooo`
+    - When user input foa, no suggestion
+    - When user input a, suggest AND
+    - When user input aN, suggest AND
+    - When user input aNb, no suggestion
+
+-
+  id: task-19
+  date: 20250116
+  level: challenging
+  description: |
+    Add keyboard support for completion navigation and inserting.
+
+    The goal of this feature is to enable users to:
+
+    - Navigate through this list using the up and down arrow keys.
+    - Insert the highlighted completion into the editor using the Enter key.
+
+    # Details
+    - When completion popover appears, select first item by default
+    - Selected completion item should have a different background color from unselected one.
+    - Loop from the last item back to the first (and vice versa) when navigating beyond the end (or beginning) of the list.
+
+-
+  id: task-20
+  date: 20250116
+  level: challenging
+  description: |
+    Add undo/redo ability to the editor.
+
+    The undo shortcut is
+    - Command+z on Mac
+    - Control+z on Windows
+
+    The redo shortcut is
+    - Command+y on Mac
+    - Control+y on Windows
+

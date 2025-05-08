@@ -1,0 +1,14 @@
+{
+  "name": "project",
+  "description": "project",
+  "scripts": {
+    "dev": "",
+    "build": ""
+  },
+  "dependencies": {
+    "vue": "^3.3.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {}
+}

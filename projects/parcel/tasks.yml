@@ -1,0 +1,283 @@
+-
+  id: task-1
+  date: 20250125
+  level: easy
+  description: |
+    Setup project with parcel. Here are the requirements:
+    - Add dev and build to npm scripts.
+    - Set dev server port to environment variable `process.env.PROJECT_PORT`.
+    - Generate sourceMap after bundling(If parcel generates sourceMap by default, then you don't need to do anything here).
+    - Set output directory to `dist` for build command.
+    - Set output directory to `dist-serve` for dev command.
+
+-
+  id: task-2
+  date: 20250208
+  level: easy
+  description: |
+    Add path alias `@` for `src`.
+
+    Besides this:
+    Add `import alias from '@/alias'` in `src/index.js`.
+    Display `alias` value in `src/index.js`.
+
+-
+  id: task-3
+  date: 20250208
+  level: easy
+  description: |
+    Setup global constants replacement for process.env.__VERSION__ via bundler capability.
+    process.env.__VERSION__ should be replaced with "v1.0.0" during bundling.
+
+    Besides this:
+    - Add `import './version'` in `src/index.js`.
+
+-
+  id: task-4
+  date: 20250214
+  level: easy
+  description: |
+    I want to write a Single Page Application.
+    When visiting non-existent page, dev server should fallback to `index.html`.
+    If it's already the default behavior in parcel, do nothing.
+
+-
+  id: task-5
+  date: 20250214
+  level: easy
+  description: |
+    My targeting browsers support `?.` (Optional Chaining Operator), so I want to keep this syntax as is after bundling.
+    Try to address it.
+
+-
+  id: task-6
+  date: 20250217
+  level: easy
+  description: |
+    I want to proxy every request prefixed with `/postman/` to `https://postman-echo.com` in dev server.
+    For example, request to `/postman/get` will be forwarded to `https://postman-echo.com/get`.
+    Try to address it using .proxyrc.js.
+
+-
+  id: task-7
+  date: 20250217
+  level: easy
+  description: |
+    Add `import bird from './images/bird.png'` in `src/index.js`.
+    Update `src/index.js` to display the png image in <img /> element with id `bird`.
+
+    Add `import svg from './images/TablerAntennaBars5.svg'` in `src/index.js`.
+    Update `src/index.js` to display the svg image in <img /> element with id `svg`.
+
+    Update bundler configuration if necessary.
+
+-
+  id: task-8
+  date: 20250217
+  level: moderate
+  description: |
+    Add `import './index.css'` in `src/index.js`.
+    Display text `hello css` in div with CSS class `.css` in `src/index.js`.
+
+    Add `import './index.less'` in `src/index.js`.
+    Display text `hello less` in div with CSS class `.less` in `src/index.js`.
+
+    Add `import lessStyles from './index.module.less'` in `src/index.js`.
+    Display text `hello less modules` in div with CSS class referencing to variable`lessStyles.lessModules` in `src/index.js`.
+
+    Also help me update other files in this project to ensure `dev` and `build` commands won't throw errors after doing that.
+
+-
+  id: task-9
+  date: 20250217
+  level: moderate
+  description: |
+    Add `import ts from './index.ts'` in `src/index.js`.
+    Display `ts()` return value in `src/index.js`.
+    
+    Also help me update other files in this project to ensure `dev` and `build` commands won't throw errors after doing that.
+
+-
+  id: task-10
+  date: 20250217
+  level: moderate
+  description: |
+    Add `import VueComponent from './component.vue';` in `src/index.js`.
+    Mount VueComponent in `src/index.js`.
+
+    Add `import ReactComponent from './component.jsx'` in `src/index.js`.
+    Mount ReactComponent in `src/index.js`.
+
+    DO NOT use jsx syntax.
+
+    Also help me update other files in this project to ensure `dev` and `build` commands won't throw errors after doing that.
+
+-
+  id: task-11
+  date: 20250218
+  level: challenging
+  description: |
+    I want to do something with sourcemap files in output directory.
+    Implement this as a local parcel reporter plugin.
+
+    ## Requirements
+    - Move all sourcemap files into `<project_root>/sourcemaps` after build.
+    - Add `//# sourceMappingURL=https://internal.com/sourcemaps/<sourcemap_path>` at the end of original js file.
+    
+    ## Examples
+    Assume we have following files in dist directory before moving:
+    - dist/assets/index.js
+    - dist/assets/index.js.map
+    - dist/assets/index.css
+    - dist/assets/index.css.map
+
+    After moving, the files should be:
+    - dist/assets/index.js
+    - dist/assets/index.css
+    - sourcemaps/assets/index.js.map
+    - sourcemaps/assets/index.css.map
+
+    And the `dist/assets/index.js` should contain the following content at its end(Using JS comment):
+    //# sourceMappingURL=https://internal.com/sourcemaps/assets/index.js.map
+
+    And the `dist/assets/index.css` should contain the following content at its end(Using CSS comment):
+    /*# sourceMappingURL=https://internal.com/sourcemaps/assets/index.css.map */
+
+-
+  id: task-12
+  date: 20250218
+  level: challenging
+  description: |
+    Update the bundler configuration to remove all `console.log` call expression after running build command.
+    DONOT use terser or other compressor tool, implement it on your own locally.
+
+-
+  id: task-13
+  date: 20250218
+  level: challenging
+  description: |
+    During bundling, extract all license information into `dist/vendor-licenses.txt` from all npm packages imported directly or transitively in source file.
+
+-
+  id: task-14
+  date: 20250225
+  level: challenging
+  description: |
+    Implement dynamical generation of in-memory virtual modules as a parcel plugin.
+
+    For example:
+
+    src/files/a.ts
+    ```js
+    export default 'a'
+    ```
+
+    src/files/b.ts
+    ```js
+    export default 'b'
+    ```
+
+    src/index.js
+    ```js
+    import files from '~files'
+    files.a.default // should be 'a'
+    files.b.default // should be 'b'
+    ```
+
+    You can hardcode `src/files` and `~files` as a builtin rule when implementing this.
+
+    Besides this
+    - Add `import files from '~files'` in `src/index.js`
+    - Display JSON stringified files(without any whitespaces) in div element in `src/index.js`
+
+-
+  id: task-15
+  date: 20250225
+  level: moderate
+  description: |
+    I have some mock data in `<project_root>/mock.json`, setup dev server to return them as mock data.
+
+-
+  id: task-16
+  date: 20250225
+  level: challenging
+  description: |
+    Implement an image compression plugin for bundler, only for build command
+
+-
+  id: task-17
+  date: 20250226
+  level: moderate
+  description: |
+    I want to import markdown files directly, and get rendered html by importing them.
+    For example:
+    ```js
+    import md from './hello.md'
+    ```
+
+    The `md` variable is expected to be a html string rendered by its markdown content.
+
+    Implement this in a local parcel plugin.
+
+    Besides this:
+    - Add `import md from './hello.md'` in `src/index.js`.
+    - Display `md` inside a div in `src/index.js`.
+
+-
+  id: task-18
+  date: 20250226
+  level: moderate
+  description: |
+    Supporting importing frontmatter from markdown files.
+
+    For example:
+
+    hello.md
+    ```md
+    ---
+    author: hello
+    tags:
+      - foo
+      - bar
+    ---
+
+    ## Markdown Heading
+    ```
+
+    index.js
+    ```js
+    import md, { frontmatter } from './hello.md'
+
+    frontmatter.author // should be "hello"
+    frontmatter.tags // should be ["foo", "bar"]
+    ```
+
+    Besides this
+    - Update `import md from './hello.md'` to `import md, { frontmatter } from './hello.md'` in `src/index.js`.
+    - Display `frontmatter.author` in div element in `src/index.js`
+
+-
+  id: task-19
+  date: 20250226
+  level: challenging
+  description: |
+    Add new feature for markdown parcel plugin.
+    When markdown content includes images, the images should be recognized as dependency of markdown file.
+    Image url in rendered html string should reference to the image in output directory.
+
+-
+  id: task-20
+  date: 20250226
+  level: challenging
+  description: |
+    Add `language` option for markdown parcel plugin
+
+    For example:
+    ```js
+    import md from './hello.md'
+    ```
+    If langauge is 'en', `./hello.md` will resolved to `./hello.en.md` if it exists.
+    If langauge is 'zh', `./hello.md` will resolved to `./hello.zh.md` if it exists.
+    If both `./hello.en.md` and `./hello.zh.md` are not found, fallback to its original path `./hello.md`
+
+    Besides this, set language="zh" as default value.

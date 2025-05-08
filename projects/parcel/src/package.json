@@ -1,0 +1,43 @@
+{
+  "name": "project",
+  "description": "project",
+  "scripts": {
+    "dev": "parcel serve index.html --dist-dir dist-serve --port $PROJECT_PORT --host 0.0.0.0",
+    "build": "parcel build index.html --dist-dir dist --public-url ./ --no-cache"
+  },
+  "dependencies": {
+    "glob": "^8.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@babel/generator": "^7.24.1",
+    "@babel/parser": "^7.24.1",
+    "@babel/traverse": "^7.24.1",
+    "@parcel/plugin": "^2.0.0",
+    "@parcel/utils": "^2.13.3",
+    "@parcel/transformer-less": "^2.13.3",
+    "@parcel/transformer-vue": "^2.13.3",
+    "http-proxy-middleware": "^3.0.3",
+    "glob": "^11.0.1",
+    "imagemin": "^8.0.1",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.1",
+    "parcel": "^2.9.3",
+    "parcel-optimizer-imagemin": "^1.0.0",
+    "process": "^0.11.10",
+    "svgo": "^3.3.2",
+    "marked": "^9.0.0",
+    "gray-matter": "^4.0.3"
+  },
+  "alias": {
+    "@/**/*": "./src/$1/$2"
+  },
+  "browserslist": [
+    "chrome >= 80",
+    "firefox >= 74"
+  ]
+}

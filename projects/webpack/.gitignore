@@ -1,0 +1,5 @@
+package-lock.json
+sourcemaps
+.parcel-cache
+dist*
+ignore-src

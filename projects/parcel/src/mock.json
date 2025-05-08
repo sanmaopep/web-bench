@@ -1,0 +1,9 @@
+{
+  "get /mock-api/ping": {
+    "code": 0,
+    "data": "mock"
+  },
+  "post /mock-api/add-project": {
+    "success": true
+  }
+}

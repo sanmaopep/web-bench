@@ -1,0 +1,6 @@
+assets/
+node_modules/
+sourcemaps/
+.parcel-cache/
+dist/
+dist-serve/
