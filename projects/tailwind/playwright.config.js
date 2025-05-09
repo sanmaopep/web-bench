@@ -32,16 +32,16 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: `http://localhost:${PORT}`,
+    baseURL: `http://127.0.0.1:${PORT}`,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     // headless: false,
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: `npx vite --port ${PORT} --config vite.config.mjs`,
-    url: `http://localhost:${PORT}`,
-    reuseExistingServer: false,
+    command: `npx serve ${PROJECT_DIR} -p ${PORT}`,
+    url: `http://127.0.0.1:${PORT}`,
+    reuseExistingServer: process.env.IS_EVAL_PRODUCTION ? false : true,
   },
 
   /* Configure projects for major browsers */
