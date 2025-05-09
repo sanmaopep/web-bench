@@ -1,5 +1,5 @@
 - id: task-1
-  date: 2025-2-27
+  date: 2025-05-12
   level: easy
   description: |
     - Check or uncheck `#axes` to create `LineChart` instance `chart` with config whose attributes values:
@@ -13,7 +13,7 @@
     - Save codes as a function `createChart()` in `index.js`
 
 - id: task-2
-  date: 2025-2-27
+  date: 2025-05-12
   level: easy
   description: |
     Check or uncheck `#grids` to create `LineChart` instance:
@@ -22,7 +22,7 @@
       - grids: the `checked` value of `#grids`
 
 - id: task-3
-  date: 2025-2-27
+  date: 2025-05-12
   level: easy
   description: |
     Select one or more `#datasets` options to create `LineChart` instance:
@@ -30,7 +30,7 @@
     - filter `config.data.datasets` whose item (dataset) `label` value is selected
 
 - id: task-4
-  date: 2025-2-27
+  date: 2025-05-12
   level: moderate
   description: |
     - Check or uncheck `#legends` to create `LineChart` instance:
@@ -47,7 +47,7 @@
       - and make `.legends`, `.datasets`, `.axes-x` and `.axes-y` fill the entire `svg` space
 
 - id: task-5
-  date: 2025-2-27
+  date: 2025-05-12
   level: moderate
   description: |
     - Check or uncheck `#dataLabels` to create `LineChart` instance:
@@ -61,7 +61,7 @@
       - each point color is the same as `.dataset` line color
 
 - id: task-6
-  date: 2025-2-27
+  date: 2025-05-12
   level: moderate
   description: |
     - Select `#pointStyle` to create `LineChart` instance:
@@ -75,7 +75,7 @@
       - each point color is the same as `.dataset` line color
 
 - id: task-7
-  date: 2025-2-28
+  date: 2025-05-12
   level: challenging
   description: |
     In `./common/LineChart.js`:
@@ -87,7 +87,7 @@
     - when mouse not hovers over `.datasets` area in `svg`, hide `.tooltips` (add class `hidden`)
 
 - id: task-8
-  date: 2025-2-28
+  date: 2025-05-12
   level: challenging
   description: |
     - In `./common/SmoothLineChart.js`, class `SmoothLineChart` inherits from `LineChart`, `SmoothLineChart`:
@@ -95,14 +95,14 @@
     - Select the option `SmoothLine Chart` of `#type` to create `SmoothLineChart` instance
 
 - id: task-9
-  date: 2025-2-28
+  date: 2025-05-12
   level: moderate
   description: |
     In `./common/Chart.js`, when click legend:
     - show (remove class `hidden`) or hide (add class `hidden`) `.dataset` lines, dataLabels, points
 
 - id: task-10
-  date: 2025-2-28
+  date: 2025-05-12
   level: challenging
   description: |
     -In `./common/ScatterChart.js`, class `ScatterChart` inherits from `LineChart`, `ScatterChart`:
@@ -112,7 +112,7 @@
     - Select the option `Scatter Chart` of `#type` to create `ScatterChart` instance, and make `#dataLabels` disabled
 
 - id: task-11
-  date: 2025-2-28
+  date: 2025-05-12
   level: challenging
   description: |
     -In `./common/StepChart.js`, class `StepChart` inherits from `LineChart`, `StepChart`:
@@ -124,7 +124,7 @@
     - Select the option `Step Chart` of `#type` to create `StepChart` instance
 
 - id: task-12
-  date: 2025-2-28
+  date: 2025-05-12
   level: challenging
   description: |
     - In `./common/AreaChart.js`, class `AreaChart` inherits from `LineChart`, `AreaChart`:
@@ -135,7 +135,7 @@
     - Select the option `Area Chart` of `#type` to create `AreaChart` instance
 
 - id: task-13
-  date: 2025-2-28
+  date: 2025-05-12
   level: challenging
   description: |
     - In `./common/BarChart.js`, class `BarChart` inherits from `Chart`, `BarChart`:
@@ -150,7 +150,7 @@
     - Select the option `Bar Chart` of `#type` to create `BarChart` instance
 
 - id: task-14
-  date: 2025-2-28
+  date: 2025-05-12
   level: challenging
   description: |
     In `./common/BarChart.js`, when `options.dataLabels` is true:
@@ -160,7 +160,7 @@
     - each dataLabel color is the same as `.dataset` bars color
 
 - id: task-15
-  date: 2025-2-28
+  date: 2025-05-12
   level: challenging
   description: |
     In `./common/BarChart.js`:
@@ -171,7 +171,7 @@
     - when mouse not hovers over `.datasets` area, hide `.tooltips` (add class `hidden`)
 
 - id: task-16
-  date: 2025-2-28
+  date: 2025-05-12
   level: challenging
   description: |
     - In `./common/PieChart.js`, class `PieChart` inherits from `Chart`, `PieChart`:
@@ -183,7 +183,7 @@
     - Select the option `Pie Chart` of `#type` to create `PieChart` instance, make `#axes`, `#grids`, `#pointStyle` disabled, and make `#datasets` single selection mode
 
 - id: task-17
-  date: 2025-2-28
+  date: 2025-05-12
   level: moderate
   description: |
     - In `./common/DoughnutChart.js`, class `DoughnutChart` inherits from `PieChart`, `DoughnutChart`:
@@ -191,7 +191,7 @@
     - Select the option `Doughnut Chart` of `#type` to create `DoughnutChart` instance
 
 - id: task-18
-  date: 2025-2-28
+  date: 2025-05-12
   level: challenging
   description: |
     In `./common/PieChart.js`, when `options.dataLabels` is true:
@@ -202,7 +202,7 @@
     - each dataLabel is positioned near its corresponding sector and distributed around the large circle
 
 - id: task-19
-  date: 2025-2-28
+  date: 2025-05-12
   level: moderate
   description: |
     In `./common/PieChart.js`:
@@ -210,7 +210,7 @@
     - when mouse leaves a sector, its size returns to normal
 
 - id: task-20
-  date: 2025-2-28
+  date: 2025-05-12
   level: challenging
   description: |
     In `./common/PieChart.js`:

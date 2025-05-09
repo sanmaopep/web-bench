@@ -1,19 +1,19 @@
 - id: task-1
-  date: 2025-2-20
+  date: 2025-05-12
   level: challenging
   description: |
     In `index.js`, import `assets/data.js` object `configs`. Each item in `configs` is a `config` object.
     Do not generate `assets/data.js` which is existed in project.
 
 - id: task-2
-  date: 2025-2-20
+  date: 2025-05-12
   level: easy
   description: |
     In `common/Chart.js`, `Chart` class contains properties: `svg` (SVG element, id `config.id`, class `chart {config.type}`, viewBox `0 0 100 70`). 
     In `index.js`, For each `config` whose `type` is line, create a `LineChart` instance and append its `svg` to `.root`.
 
 - id: task-3
-  date: 2025-2-20
+  date: 2025-05-12
   level: easy
   description: |
     In `common/LineChart.js`:
@@ -23,7 +23,7 @@
     - The min and max axis-y values correspond to the min and max values of all `dataset.data`
 
 - id: task-4
-  date: 2025-2-20
+  date: 2025-05-12
   level: moderate
   description: |
     In `common/Chart.js`, when `options.axes` is true or not defined:
@@ -37,7 +37,7 @@
     - reduce `.datasets` lines width and height, and make `.datasets`, `.axes-x` and `.axes-y` fill the entire `svg` space
 
 - id: task-5
-  date: 2025-2-21
+  date: 2025-05-12
   level: moderate
   description: |
     In `common/Chart.js`, when `options.axes` is true or not defined:
@@ -48,7 +48,7 @@
       - 6 axis-y labels, ranging from the min to the max, are evenly distributed across 5 sections from bottom to top, `.label-0` is aligned to the bottom of `.axes-y`
 
 - id: task-6
-  date: 2025-2-21
+  date: 2025-05-12
   level: moderate
   description: |
     In `common/Chart.js`, when `options.grids` is true or not defined:
@@ -59,7 +59,7 @@
     - Each grid-y line is vertically aligned with axis-y labels
 
 - id: task-7
-  date: 2025-2-21
+  date: 2025-05-12
   level: moderate
   description: |
     In `common/Chart.js`, when `options.legends` is true or not defined:
@@ -73,7 +73,7 @@
     - and make `.legends`, `.datasets`, `.axes-x` and `.axes-y` fill the entire `svg` space
 
 - id: task-8
-  date: 2025-2-21
+  date: 2025-05-12
   level: moderate
   description: |
     In `common/LineChart.js`, when `options.pointStyle` is `circle` or `rect`:
@@ -83,7 +83,7 @@
     - each point color is the same as `.dataset` line color
 
 - id: task-9
-  date: 2025-2-21
+  date: 2025-05-12
   level: moderate
   description: |
     In `common/LineChart.js`, when `options.dataLabels` is true:
@@ -93,7 +93,7 @@
     - each dataLabel color is the same as `.dataset` line color
 
 - id: task-10
-  date: 2025-2-22
+  date: 2025-05-12
   level: challenging
   description: |
     In `common/LineChart.js`:
@@ -104,21 +104,21 @@
     - when mouse not hovers over `.datasets` area, hide `.tooltips` (add class `hidden`)
 
 - id: task-11
-  date: 2025-2-22
+  date: 2025-05-12
   level: challenging
   description: |
     In `common/LineChart.js`, when `options.lineSmooth` is true:
     - replace all polylines with smooth curved lines inside `.datasets`
 
 - id: task-12
-  date: 2025-2-22
+  date: 2025-05-12
   level: moderate
   description: |
     In `common/Chart.js`, when click legend:
     - show (remove class `hidden`) or hide (add class `hidden`) `.dataset` lines, dataLabels, points
 
 - id: task-13
-  date: 2025-2-22
+  date: 2025-05-12
   level: challenging
   description: |
     In `common/ScatterChart.js`, class `ScatterChart` inherits from `LineChart`, `ScatterChart`:
@@ -129,7 +129,7 @@
     Update `index.js`, create `ScatterChart` instances when `config.type` is `scatter`.
 
 - id: task-14
-  date: 2025-2-22
+  date: 2025-05-12
   level: challenging
   description: |
     In `common/StepChart.js`, class `StepChart` inherits from `LineChart`, `StepChart`:
@@ -142,7 +142,7 @@
     Update `index.js`, create `StepChart` instances when `config.type` is `step`.
 
 - id: task-15
-  date: 2025-2-23
+  date: 2025-05-12
   level: challenging
   description: |
     In `common/AreaChart.js`, class `AreaChart` inherits from `LineChart`, `AreaChart`:
@@ -154,7 +154,7 @@
     Update `index.js`, create `AreaChart` instances when `config.type` is `area`.
 
 - id: task-16
-  date: 2025-2-23
+  date: 2025-05-12
   level: challenging
   description: |
     In `common/BarChart.js`, class `BarChart` inherits from `Chart`, `BarChart`:
@@ -169,7 +169,7 @@
     Update `index.js`, create `BarChart` instances when `config.type` is `bar`.
 
 - id: task-17
-  date: 2025-2-23
+  date: 2025-05-12
   level: challenging
   description: |
     In `common/BarChart.js`, when `options.dataLabels` is true:
@@ -179,7 +179,7 @@
     - each dataLabel color is the same as `.dataset` bars color
 
 - id: task-18
-  date: 2025-2-23
+  date: 2025-05-12
   level: challenging
   description: |
     In `common/BarChart.js`:
@@ -190,7 +190,7 @@
     - when mouse not hovers over `.datasets` area, hide `.tooltips` (add class `hidden`)
 
 - id: task-19
-  date: 2025-2-24
+  date: 2025-05-12
   level: challenging
   description: |
     In `common/PieChart.js`, class `PieChart` inherits from `Chart`, `PieChart`:
@@ -203,7 +203,7 @@
     Update `index.js`, create `PieChart` instances when `config.type` is `pie`.
 
 - id: task-20
-  date: 2025-2-24
+  date: 2025-05-12
   level: challenging
   description: |
     In `common/PieChart.js`, when `options.dataLabels` is true:

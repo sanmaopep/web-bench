@@ -1,5 +1,5 @@
 - id: task-1
-  date: 2024-11-29
+  date: 2025-05-12
   level: easy
   description: |
     1) Create home page (views/home.ejs) with route '/' showing '🛍️🛍️🛍️ Welcome to Shopping Mart !' in h1 tag
@@ -8,7 +8,7 @@
     4) Create Home Plugin in plugins/home.ts to render this pages
 
 - id: task-2
-  date: 2024-11-29
+  date: 2025-05-12
   level: easy
   description: |
     1) Every page in this app will have a appealing header showing '🛍️ WebBench Shopping Mart', and a beautiful footer showing 'Copyright: Web Bench'
@@ -19,7 +19,7 @@
     6) Hint: Layout can be configured by @fastify/view plugin, and in layout.ejs, <%- body %> is the content of the page
 
 - id: task-3
-  date: 2024-11-29
+  date: 2025-05-12
   level: easy
   description: |
     1) If Page Not Found, shows 'Oops! Looks like you have wandered off the beaten path.' in h1 tag
@@ -29,7 +29,7 @@
     5) Hint: Use Fastify's setNotFoundHandler to handle 404 errors
 
 - id: task-4
-  date: 2024-11-29
+  date: 2025-05-12
   level: easy
   description: |
     1) Create libs/db.ts to export a new sqlite3.Database(process.env.DB_HOST!) by node-sqlite3
@@ -41,7 +41,7 @@
     7) Create Product Plugin in plugins/product.ts to register these apis
 
 - id: task-5
-  date: 2024-11-29
+  date: 2025-05-12
   level: easy
   description: |
     1) Add page with path '/products' to display all products (image, name, price)
@@ -51,7 +51,7 @@
     5) Create CSS to beautify UI
 
 - id: task-6
-  date: 2024-11-29
+  date: 2025-05-12
   level: moderate
   description: |
     1) Add product detail page with path '/products/:product_id'
@@ -61,7 +61,7 @@
     5) If the product is not found, show 'Product Not Found' in the product detail page
 
 - id: task-7
-  date: 2024-11-29
+  date: 2025-05-12
   level: moderate
   description: |
     1) In libs/setup.sql, Create User Table, setup User Table with two initial users:
@@ -73,7 +73,7 @@
     5) Use '@fastify/cookie' plugin to manage cookies
 
 - id: task-8
-  date: 2024-11-29
+  date: 2025-05-12
   level: moderate
   description: |
     1) Create login form (.login-form) with username input (.username), password input (.password), and submit button (.login-btn)
@@ -82,7 +82,7 @@
     4) Create CSS to beautify UI
 
 - id: task-9
-  date: 2024-11-29
+  date: 2025-05-12
   level: moderate
   description: |
     1) Create register page with route '/register' with form (.register-form) containing:
@@ -101,7 +101,7 @@
     8) Use Fastify's schema validation for request validation
 
 - id: task-10
-  date: 2024-11-29
+  date: 2025-05-12
   level: moderate
   description: |
     1) Render page /profile/:username to display the user profile with UI:
@@ -114,7 +114,7 @@
     6) DO NOT use a third-party UI library
 
 - id: task-11
-  date: 2024-11-29
+  date: 2025-05-12
   level: challenging
   description: |
     1) Add a client-side component in public/components/HeaderUserMenu.js:
@@ -128,7 +128,7 @@
     5) DO NOT use a third-party UI library
 
 - id: task-12
-  date: 2024-11-29
+  date: 2025-05-12
   level: challenging
   description: |
     1) Add Recharge Button (.recharge-button) in Profile page
@@ -138,7 +138,7 @@
     5) DO NOT use a third-party UI library
 
 - id: task-13
-  date: 2024-11-29
+  date: 2025-05-12
   level: challenging
   description: |
     1) Create Admin Portal for admin role with routes '/admin/products' and '/admin/users'
@@ -149,7 +149,7 @@
     6) Create CSS to beautify UI
 
 - id: task-14
-  date: 2024-12-01
+  date: 2025-05-12
   level: challenging
   description: |
     1) Implement Wishlist feature where users can add products to their wishlist using button (.add-to-wishlist) in the product detail page
@@ -162,7 +162,7 @@
     8) DO NOT use a third-party UI library
 
 - id: task-15
-  date: 2024-11-29
+  date: 2025-05-12
   level: challenging
   description: |
     1) In public/components/Cart.js, create an appealing cart button .cart-button that shows the number of items in the cart
@@ -176,7 +176,7 @@
     9) DO NOT use a third-party UI library
 
 - id: task-16
-  date: 2024-12-01
+  date: 2025-05-12
   level: challenging
   description: |
     1) Add a button .place-order-in-cart in the Popover of Shopping Cart
@@ -191,7 +191,7 @@
     10) DO NOT use a third-party UI library
 
 - id: task-17
-  date: 2024-11-29
+  date: 2025-05-12
   level: challenging
   description: |
     1) Add the .pay-my-order button to /order/:order-id
@@ -206,7 +206,7 @@
     7) Implement database transaction to ensure data integrity
 
 - id: task-18
-  date: 2024-11-30
+  date: 2025-05-12
   level: challenging
   description: |
     1) Add a .refund-button in Order Detail Page when order is paid
@@ -221,7 +221,7 @@
     8) DO NOT use a third-party UI library
 
 - id: task-19
-  date: 2024-12-01
+  date: 2025-05-12
   level: challenging
   description: |
     1) Implement a Comment and Rating System where users can leave feedback on products only after completing a payment transaction
@@ -247,7 +247,7 @@
     9) DO NOT use a third-party UI library
 
 - id: task-20
-  date: 2024-12-01
+  date: 2025-05-12
   level: challenging
   description: |
     1) Implement an invitation system where current users can view their unique .referral-code (with pure referral-code as innerText) on their profile page

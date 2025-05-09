@@ -1,12 +1,12 @@
 - id: task-1
-  date: 2024-11-29
+  date: 2025-05-12
   level: easy
   description: |
     1) create home page (app/page.tsx) with route '/' showing '🛍️🛍️🛍️ Welcome to Shopping Mart !' in h1 tag
     2) create login page (app/login/page.tsx) at route '/login' showing '💡 Please Login First' in h1 tag
 
 - id: task-2
-  date: 2024-11-29
+  date: 2025-05-12
   level: easy
   description: |
     1) create a new api (GET /api/usernames) by creating api route file (app/api/usernames/route.ts)
@@ -14,7 +14,7 @@
     3) Hint: use global.db.data.users and get user model by lowdb API
 
 - id: task-3
-  date: 2024-11-29
+  date: 2025-05-12
   level: easy
   description: |
     1) define a Product type in global.d.ts, update defaultData in instrumentation.ts
@@ -25,7 +25,7 @@
     6) Hint: use global.db.data.products and get product model by lowdb API
 
 - id: task-4
-  date: 2024-11-29
+  date: 2025-05-12
   level: easy
   description: |
     1) create api route file (app/api/products/[id]/route.ts) for /api/products/:product_id
@@ -36,7 +36,7 @@
     6) DELETE /api/products/:product_id to delete product data (Return { success: true, data: {'id': 'xxxx' } } when deleted successfully)
 
 - id: task-5
-  date: 2024-11-29
+  date: 2025-05-12
   level: easy
   description: |
     1) Add page with path '/products' to display all products (image, name, price)
@@ -46,7 +46,7 @@
     5) create css file to beautify CSS
 
 - id: task-6
-  date: 2024-11-29
+  date: 2025-05-12
   level: moderate
   description: |
     1) Add product detail page with path '/products/:product_id'
@@ -56,7 +56,7 @@
     5) If Not Found, show 'Product Not Found'
 
 - id: task-7
-  date: 2024-11-29
+  date: 2025-05-12
   level: moderate
   description: |
     1) POST /api/auth to login into system with example payload {username: 'xxx', password: 'xxx'} and example response { success: true } 
@@ -66,7 +66,7 @@
     5) secret is 'WEBBENCH-SECRET', use default HS256 algorithm and expired in 1 hour
 
 - id: task-8
-  date: 2024-11-29
+  date: 2025-05-12
   level: moderate
   description: |
     1) Create login form (.login-form) with username input (.username), password input (.password), and submit button (.login-btn)
@@ -75,7 +75,7 @@
     4) create css file to beautify CSS
 
 - id: task-9
-  date: 2024-11-29
+  date: 2025-05-12
   level: moderate
   description: |
     1) Create register page with route '/register' with form (.register-form) containing:
@@ -93,7 +93,7 @@
     7) create CSS file to beautify CSS
 
 - id: task-10
-  date: 2024-11-29
+  date: 2025-05-12
   level: moderate
   description: |
     1) Render STATIC page /profile/:username to display the user profile with UI:
@@ -106,7 +106,7 @@
     6) DO NOT use a third-party UI library
 
 - id: task-11
-  date: 2024-11-29
+  date: 2025-05-12
   level: challenging
   description: |
     1) Add a component in components/HeaderUserMenu.tsx:
@@ -119,7 +119,7 @@
     4) DO NOT use a third-party UI library
 
 - id: task-12
-  date: 2024-11-29
+  date: 2025-05-12
   level: challenging
   description: |
     1) Add Recharge Button (.recharge-button) in Profile page
@@ -130,7 +130,7 @@
     6) Keep profile page STATIC
 
 - id: task-13
-  date: 2024-11-29
+  date: 2025-05-12
   level: challenging
   description: |
     1) Create Admin Portal for admin role with routes '/admin/products' and '/admin/users'
@@ -141,7 +141,7 @@
     6) Create CSS files to beautify CSS
 
 - id: task-14
-  date: 2024-12-01
+  date: 2025-05-12
   level: challenging
   description: |
     1) Implement Wishlist feature where users can add products to their wishlist using button (.add-to-wishlist) in the product detail page
@@ -154,7 +154,7 @@
     8) DO NOT use a third-party UI library
 
 - id: task-15
-  date: 2024-11-29
+  date: 2025-05-12
   level: challenging
   description: |
     1) In components/Cart.tsx, create an appealing cart button .cart-button that shows the number of items in the cart
@@ -167,7 +167,7 @@
     8) DO NOT use a third-party UI library
 
 - id: task-16
-  date: 2024-12-01
+  date: 2025-05-12
   level: challenging
   description: |
     1) Add a button .place-order-in-cart in the Popover of Shopping Cart
@@ -182,7 +182,7 @@
     10) DO NOT use a third-party UI library
 
 - id: task-17
-  date: 2024-11-29
+  date: 2025-05-12
   level: challenging
   description: |
     1) Add the .pay-my-order button to /order/:order-id
@@ -196,7 +196,7 @@
     6) DO NOT use a third-party UI library
 
 - id: task-18
-  date: 2024-11-30
+  date: 2025-05-12
   level: challenging
   description: |
     1) Add a .refund-button in Order Detail Page when order is paid
@@ -211,7 +211,7 @@
     8) DO NOT use a third-party UI library
 
 - id: task-19
-  date: 2024-12-01
+  date: 2025-05-12
   level: challenging
   description: |
     1) Implement a Comment and Rating System where users can leave feedback on products only after completing a payment transaction
@@ -237,7 +237,7 @@
     9) DO NOT use a third-party UI library
 
 - id: task-20
-  date: 2024-12-01
+  date: 2025-05-12
   level: challenging
   description: |
     1) Implement an invitation system where current users can view their unique .referral-code (with pure referral-code as innerText) on their profile page
