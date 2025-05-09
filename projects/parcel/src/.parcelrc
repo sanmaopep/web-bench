@@ -10,10 +10,26 @@
       "./plugins/parcel-remove-console-log",
       "..."
     ],
-    "*.md": ["./plugins/parcel-transformer-markdown"]
+    "*.md": [
+      "./plugins/parcel-transformer-markdown"
+    ],
+    "*.{svg,png}": [
+      "@parcel/transformer-raw"
+    ]
   },
-  "resolvers": ["./plugins/parcel-resolver-markdown-i18n", "./plugins/parcel-virtual-files.js", "..."],
+  "resolvers": [
+    "./plugins/parcel-resolver-markdown-i18n",
+    "./plugins/parcel-virtual-files.js",
+    "..."
+  ],
   "optimizers": {
-    "*.{jpg,jpeg,png,gif,svg}": ["./plugins/parcel-optimizer-imagemin", "..."]
+    "*.{jpg,jpeg,png,gif}": [
+      "./plugins/parcel-optimizer-imagemin",
+      "..."
+    ],
+    "*.svg": [
+      "@parcel/optimizer-svgo"
+    ]
   }
 }
+ 

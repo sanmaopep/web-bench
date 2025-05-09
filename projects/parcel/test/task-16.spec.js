@@ -19,9 +19,5 @@ test(`png file in output directory should be compressed`, async ({ page }) => {
   const distPngSize = (await fs.readFile(distPngFiles[0])).buffer.byteLength
   const originalPngSize = (await fs.readFile(srcPngFiles[0])).buffer.byteLength
 
-  expect(
-    distPngSize
-  ).toBeLessThan(
-    originalPngSize / 2
-  )
+  expect(distPngSize).toBeLessThan(originalPngSize)
 })

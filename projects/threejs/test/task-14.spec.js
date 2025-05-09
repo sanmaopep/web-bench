@@ -25,17 +25,17 @@ test('Check camera rotate by left mouse drag. Up', async ({ page }) => {
   expect(camera.position.z).toBe(15);
 
   // 这说明视角是跟着鼠标走的
-  expect(camera.rotation._x).toBeLessThan(originRotation._x);
+  expect(originRotation._x).toBeLessThan(camera.rotation._x);
   expect(Math.abs(camera.rotation._y)).toBe(0);
   expect(Math.abs(camera.rotation._z)).toBe(0);
 })
 
 test('Check camera rotate by left mouse drag. Right', async ({ page }) => {
-  await page.mouse.move(0, 0);
+  await page.mouse.move(100, 0);
   await page.mouse.down({
     button: 'left'
   });
-  await page.mouse.move(100, 0);
+  await page.mouse.move(0, 0);
   await page.mouse.up();
 
   const { camera } = await getWindowMirror(page, 'camera');

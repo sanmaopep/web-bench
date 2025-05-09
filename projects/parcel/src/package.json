@@ -2,7 +2,7 @@
   "name": "project",
   "description": "project",
   "scripts": {
-    "dev": "parcel serve index.html --dist-dir dist-serve --port $PROJECT_PORT --host 0.0.0.0",
+    "dev": "parcel serve index.html --dist-dir dist-serve --port $PROJECT_PORT --no-hmr --host 0.0.0.0",
     "build": "parcel build index.html --dist-dir dist --public-url ./ --no-cache"
   },
   "dependencies": {

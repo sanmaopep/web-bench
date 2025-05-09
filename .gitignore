@@ -70,6 +70,7 @@ jspm_packages/
 .env.test.local
 .env.production.local
 .env.local
+!projects/parcel/src/.env
 
 # next.js build output
 .next/
