@@ -1,6 +1,6 @@
 -
   id: init
-  date: 20250324
+  date: 2025-05-12
   level: easy
   description: |
     Create a file at types/setter.ts that exports the following interfaces:
@@ -12,21 +12,21 @@
 
 -
   id: task-1
-  date: 20250327
+  date: 2025-05-12
   level: easy
   description: |
     InputSetter、NumberSetter、CheckboxSetter add optional type onChange. onChange is a function type, parameter is the value of the corresponding type and may be undefined,  return type is void.
 
 -
   id: task-2
-  date: 20250327
+  date: 2025-05-12
   level: easy
   description: |
     Create a file at types/setter-check.ts that exports the function isInputSetter to check the Setter is InputSetter.
 
 -
   id: task-3
-  date: 20250327
+  date: 2025-05-12
   level: easy
   description: |
     1. Export interface `BaseSetter`, has `value` and `onChange`, onChange is a function type, parameter is the value of the corresponding type and may be undefined,  return type is void.
@@ -36,7 +36,7 @@
 
 -
   id: task-4
-  date: 20250331
+  date: 2025-05-12
   level: easy
   description: |
     In types/setter.ts:
@@ -46,20 +46,20 @@
 -
   id: task-5
   level: easy
-  date: 20250331
+  date: 2025-05-12
   description: |
     In types/setter.ts create and export a type `ValueSetter`, Dynamically create supported Setter types according to the provided generic type.
 
 -
   id: task-6
-  date: 20250331
+  date: 2025-05-12
   level: moderate
   description: |
     In types/setter.ts: create and export Setter `PasswordSetter` type 'password' and value type string.
 
 -
   id: task-7
-  date: 20250331
+  date: 2025-05-12
   level: moderate
   description: |
     In types/setter.ts: create and export Setter `SelectSetter` type 'select' and value could be string or number.
@@ -67,7 +67,7 @@
 
 -
   id: task-8
-  date: 20250331
+  date: 2025-05-12
   level: challenging
   description: |
     In types/setter.ts, create and export Setter `ArraySetter`:
@@ -76,7 +76,7 @@
 
 -
   id: task-9
-  date: 20250407
+  date: 2025-05-12
   level: challenging
   description: |
     In types/setter.ts, create and export Setter `TupleSetter`:
@@ -85,7 +85,7 @@
 
 -
   id: task-10
-  date: 20250331
+  date: 2025-05-12
   level: challenging
   description: |
     In types/setter.ts, create and export Setter `ObjectSetter`:
@@ -94,7 +94,7 @@
 
 -
   id: task-11
-  date: 20250401
+  date: 2025-05-12
   level: moderate
   description: |
     In types/setter.ts, create and export Setter `CustomSetter`:
@@ -104,7 +104,7 @@
 
 -
   id: task-12
-  date: 20250401
+  date: 2025-05-12
   level: challenging
   description: |
     The Setter implements generic ValueType where:
@@ -113,7 +113,7 @@
 
 -
   id: task-13
-  date: 20250401
+  date: 2025-05-12
   level: moderate
   description: |
     Create a file at types/schema.ts that exports interface `FormSchema`:
@@ -131,7 +131,7 @@
       
 -
   id: task-14
-  date: 20250402
+  date: 2025-05-12
   level: challenging
   description: |
       In BaseSetter, add optional prop `visible`
@@ -140,7 +140,7 @@
 
 -
   id: task-15
-  date: 20250402
+  date: 2025-05-12
   level: challenging
   description: |
       In types/setter.ts, create and export `CustomSetterRender`, has prop `render` which is a FC from React, props contain:
@@ -153,14 +153,14 @@
 
 -
   id: task-16
-  date: 20250402
+  date: 2025-05-12
   level: challenging
   description: |
       CustomSetter needs to constrain the type of customType. In the fields of FormSchema, the customType must be included in the key of CustomSetterRenderDef.
 
 -
   id: task-17
-  date: 20250402
+  date: 2025-05-12
   level: challenging
   description: |
     Add a new optional prop `props` to CustomSetter:
@@ -168,7 +168,7 @@
 
 -
   id: task-18
-  date: 20250403
+  date: 2025-05-12
   level: challenging
   description: |
     Add a prop `ctxValue` to ExpressionEvent:
@@ -178,7 +178,7 @@
 
 -
   id: task-19
-  date: 20250403
+  date: 2025-05-12
   level: moderate
   description: |
     Edit CustomSetter customType:
@@ -186,7 +186,7 @@
 
 -
   id: task-20
-  date: 20250407
+  date: 2025-05-12
   level: challenging
   description: |
     In types/schema.ts, create and export interface `EditorRef`:

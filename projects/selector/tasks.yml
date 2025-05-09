@@ -1,5 +1,5 @@
 - id: task-1
-  date: 2025-3-31
+  date: 2025-05-12
   level: easy
   description: |
     - append an element <p> with arbitrary text, class `class1` and id `id1` to `.root`
@@ -10,14 +10,14 @@
     - no js, modify html file directly
 
 - id: task-2
-  date: 2025-4-1
+  date: 2025-05-12
   level: easy
   description: |
     - write css to the page with:
       - compound selector (type & class & id) to set `#id1`'s `font-size` to `15px`
 
 - id: task-3
-  date: 2025-4-1
+  date: 2025-05-12
   level: easy
   description: |
     - append <q> with arbitrary text and id `id3` to `.root`
@@ -26,7 +26,7 @@
       - universal selector to set all elements' `color` to `red`
 
 - id: task-4
-  date: 2025-4-1
+  date: 2025-05-12
   level: easy
   description: |
     - append <div> with id `id4` to `.root`
@@ -35,7 +35,7 @@
       - child combinator selector to set its children `color` to `green`
 
 - id: task-5
-  date: 2025-4-1
+  date: 2025-05-12
   level: easy
   description: |
     - write css with:
@@ -43,7 +43,7 @@
       - next-sibling combinator selector to set the `color` of `#id4-3`'s next-sibling to `yellow`
 
 - id: task-6
-  date: 2025-4-1
+  date: 2025-05-12
   level: moderate
   description: |
     - write css for elements in `#form`:
@@ -52,7 +52,7 @@
       - set the `color` of the last forth child's next-sibling to `yellow`
 
 - id: task-7
-  date: 2025-4-1
+  date: 2025-05-12
   level: challenging
   description: |
     write css for elements in `#form`:
@@ -65,7 +65,7 @@
     - set `background-color` to `white` for those whose attribute `lang` starts with `en` immediately followed by a hyphen
 
 - id: task-8
-  date: 2025-4-2
+  date: 2025-05-12
   level: moderate
   description: |
     use nesting selector to modify css for elements in `#form`:
@@ -73,14 +73,14 @@
     - set input's `background-color` to `black` when focusing it
 
 - id: task-9
-  date: 2025-4-2
+  date: 2025-05-12
   level: challenging
   description: |
     modify css for elements in `#form`:
     - set `font-size` of all inputs to `20px` when focusing any input
 
 - id: task-10
-  date: 2025-4-2
+  date: 2025-05-12
   level: moderate
   description: |
     - append <div> with id `id10`（no content） to `.root`
@@ -89,7 +89,7 @@
     - do not modify html or js
 
 - id: task-11
-  date: 2025-4-3
+  date: 2025-05-12
   level: challenging
   description: |
     modify css for elements in `#table`:
@@ -98,7 +98,7 @@
     - do not use `!important` anytime
 
 - id: task-12
-  date: 2025-4-3
+  date: 2025-05-12
   level: challenging
   description: |
     modify html and css for `#table`:
@@ -108,7 +108,7 @@
     - do not use `!important` anytime
 
 - id: task-13
-  date: 2025-4-3
+  date: 2025-05-12
   level: challenging
   description: |
     modify css for elements in `#form`:
@@ -117,7 +117,7 @@
     - do not use `!important` anytime
 
 - id: task-14
-  date: 2025-4-3
+  date: 2025-05-12
   level: challenging
   description: |
     modify css for elements in `#table`:
@@ -135,7 +135,7 @@
     - do not use `!important` anytime
 
 - id: task-15
-  date: 2025-4-3
+  date: 2025-05-12
   level: challenging
   description: |
     modify css for elements in `#table`:
@@ -150,7 +150,7 @@
     - do not use `!important` anytime
 
 - id: task-16
-  date: 2025-4-3
+  date: 2025-05-12
   level: moderate
   description: |
     - append to `.root` with:
@@ -176,7 +176,7 @@
       - the forth and deeper level <h1> `font-size` is `15px`
 
 - id: task-17
-  date: 2025-4-3
+  date: 2025-05-12
   level: moderate
   description: |
     - append to `.root` with:
@@ -199,7 +199,7 @@
       - the third and more level <h1> `font-size` is `20px`
 
 - id: task-18
-  date: 2025-4-3
+  date: 2025-05-12
   level: moderate
   description: |
     - append to `.root` with:
@@ -226,7 +226,7 @@
       - the forth and deeper level <h1> `font-size` is `15px`
 
 - id: task-19
-  date: 2025-4-3
+  date: 2025-05-12
   level: moderate
   description: |
     - modify css for <h1> in `#id18`:
@@ -236,7 +236,7 @@
       - the forth and deeper level <h1> `text-indent` is `30px`
 
 - id: task-20
-  date: 2025-4-3
+  date: 2025-05-12
   level: moderate
   description: |
     - add new css for <h1> in `#id18`:

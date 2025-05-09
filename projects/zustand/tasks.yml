@@ -1,5 +1,5 @@
 - id: task-1
-  date: 20250310
+  date: 2025-05-12
   level: easy
   description: |
     1) Create components/Header.tsx that displays 'Hello Blog' at the top of the page with appealing background color.
@@ -9,7 +9,7 @@
     4) The classname of title in Blog.tsx is 'blog-title', the width of blog-title is 'fit-content', fontSize is 24px
 
 - id: task-2
-  date: 20250310
+  date: 2025-05-12
   level: easy
   description: |
     1) Create a appealing BlogList component that accepts an array of blogs as props and displays the titles in div elements with the className 'list-item'.
@@ -22,7 +22,7 @@
     4) Only One Blog.tsx occupies the remaining space of Main.tsx. The content of Blog.tsx should be the first item of blog list.
 
 - id: task-3
-  date: 20250310
+  date: 2025-05-12
   level: easy
   description: |
     1) Make blog items in BlogList selectable. When an item in BlogList is selected, highlight it with appealing style and display its content in the Blog Component. 
@@ -31,7 +31,7 @@
     4) Use Zustand to manage the selected blog
 
 - id: task-4
-  date: 20250310
+  date: 2025-05-12
   level: easy
   description: |
     1) Create a BlogForm component as a appealing Modal with the title 'Create Blog'. 
@@ -41,7 +41,7 @@
     5) Place the BlogForm component in App.tsx.
 
 - id: task-5
-  date: 20250310
+  date: 2025-05-12
   level: easy
   description: |
     1) An API is prepared, here is the docs of API:
@@ -64,7 +64,7 @@
     5) Notice: When Initial Blog is fetching, Header is always visible but 'Add Blog' button should be disabled.
 
 - id: task-6
-  date: 20250310
+  date: 2025-05-12
   level: moderate
   description: |
     1) Add appealing Form with label (label[htmlFor="title"], label[htmlFor="detail"]) in BlogForm to input title and detail; BlogForm can be submitted by button (.submit-btn); 
@@ -74,7 +74,7 @@
     5) Add a span(.blog-list-len) near 'Hello Blog' in Header.tsx to show the length of blogs
 
 - id: task-7
-  date: 20250310
+  date: 2025-05-12
   level: moderate
   description: |
     1) Add 'Delete' appealing red button (.delete-btn) in top&right of Blog.tsx to delete the selected blog.
@@ -82,7 +82,7 @@
     3) If blogs is empty, shows 'No Blog' instead.
 
 - id: task-8
-  date: 20250310
+  date: 2025-05-12
   level: moderate
   description: |
     1) Add 'Edit' appealing blue button (.edit-btn) in top&right of Blog.tsx. 
@@ -90,7 +90,7 @@
     3) Use Zustand to manage edit logic.
 
 - id: task-9
-  date: 20250310
+  date: 2025-05-12
   level: moderate
   description: |
     1) Here is Search API:
@@ -115,7 +115,7 @@
     Constraint: DO NOT USE any third-party packages, ONLY React/Zustand APIs can be used to optimize performance.
 
 - id: task-10
-  date: 20250310
+  date: 2025-05-12
   level: moderate
   description: |
     1) Add stores/route.ts to control the Route Logic
@@ -132,16 +132,16 @@
     Constraint: DO NOT USE any third-party packages, ONLY React/Zustand APIs can be used to optimize performance.
 
 - id: task-11
-  date: 20250310
-  level: chanllenging
+  date: 2025-05-12
+  level: challenging
   description: |
     1) Add a button with the text '🔀' in Header to append 100,000 blogs to BlogList at one time. Each blog should have a title formatted in regex 'RandomBlog-[\\d]{12}', digits in title is random. 
     2) Ensure the page will not be stuck when 100000 blogs are appended. 
     Constraint: DO NOT USE any third-party packages, ONLY React/Zustand APIs can be used to optimize performance.
 
 - id: task-12
-  date: 20250310
-  level: chanllenging
+  date: 2025-05-12
+  level: challenging
   description: |
     1) Enable Markdown text input for blog details. Preview the Markdown in Blog.tsx. 
     2) Develop a utility to reuse Markdown-related logic. 
@@ -149,8 +149,8 @@
     Constraint: DO NOT use any third-party packages; ONLY React/Zustand APIs are permitted.
 
 - id: task-13
-  date: 20250310
-  level: chanllenging
+  date: 2025-05-12
+  level: challenging
   description: |
     Implement user login, logout, and display blog poster's username.
 
@@ -166,8 +166,8 @@
     Constraint: DO NOT use any third-party packages; ONLY React/Zustand APIs are permitted.
 
 - id: task-14
-  date: 20250310
-  level: chanllenging
+  date: 2025-05-12
+  level: challenging
   description: |
     Implement blog comment feature:
     1) Display commenter's username with class '.comment-author' and text with '.comment-text'.
@@ -177,8 +177,8 @@
     Constraint: DO NOT use any third-party packages; ONLY React/Zustand APIs are permitted.
 
 - id: task-15
-  date: 20250310
-  level: chanllenging
+  date: 2025-05-12
+  level: challenging
   description: |
     Write a Gomoku chess game in route: '/game'
     1) Add a button with the text '🎮' in Header, when clicked, jump to new page '/game'
@@ -190,8 +190,8 @@
     Constraint: DO NOT use any third-party packages; ONLY React/Zustand APIs are permitted.
 
 - id: task-16
-  date: 20250310
-  level: chanllenging
+  date: 2025-05-12
+  level: challenging
   description: |
     Enhance the Gomoku game with multi-step undo functionality.
     1) Implement keyboard shortcut (Ctrl+Z on Windows/Linux or Command+Z on Mac) to trigger the undo action.
@@ -201,8 +201,8 @@
     Constraint: DO NOT use any third-party packages; ONLY React/Zustand APIs are permitted; Use Zustand to manage the logic;
 
 - id: task-17
-  date: 20250310
-  level: chanllenging
+  date: 2025-05-12
+  level: challenging
   description: |
     Implement a recording and replay system for Gomoku games.
     1) Every games will be auto recorded, and can be replayed by play button (.replay-play-btn) after the game is finished. 
@@ -212,8 +212,8 @@
     Constraint: DO NOT use any third-party packages; ONLY React/Zustand APIs are permitted; Use Zustand to manage the logic;
 
 - id: task-18
-  date: 20250310
-  level: chanllenging
+  date: 2025-05-12
+  level: challenging
   description: |
     Create functionality to share Gomoku games as blog posts.
     1) Shows the "Share to Blog" button with className '.share-to-blog-btn' in the Gomoku game after the game is finished.
@@ -225,8 +225,8 @@
     Constraint: DO NOT use any third-party packages; ONLY React/Zustand APIs are permitted; Use Zustand to manage the logic.
 
 - id: task-19
-  date: 20250312
-  level: chanllenging
+  date: 2025-05-12
+  level: challenging
   description: |
     Add new page '/rooms':
     1) Add a button with the text '🚪' in Header, when clicked, jump to new page '/rooms'
@@ -237,8 +237,8 @@
     Constraint: DO NOT use any third-party packages; ONLY React/Zustand APIs are permitted; Use Zustand to manage the state and sync logic.
 
 - id: task-20
-  date: 20250310
-  level: chanllenging
+  date: 2025-05-12
+  level: challenging
   description: |
     Implement a multi-user chat system based on rooms
     1) When a user clicks on a chat room card (with className '.room-card'), navigate to '/chat/:roomId' route.

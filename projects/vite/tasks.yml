@@ -1,6 +1,6 @@
 -
   id: task-1
-  date: 20250125
+  date: 2025-05-12
   level: easy
   description: |
     Setup project with vite. Here are the requirements:
@@ -13,7 +13,7 @@
 
 -
   id: task-2
-  date: 20250208
+  date: 2025-05-12
   level: easy
   description: |
     Add path alias `@` for `src`.
@@ -24,7 +24,7 @@
 
 -
   id: task-3
-  date: 20250208
+  date: 2025-05-12
   level: easy
   description: |
     Setup global constants replacement for __VERSION__.
@@ -35,14 +35,14 @@
 
 -
   id: task-4
-  date: 20250214
+  date: 2025-05-12
   level: easy
   description: |
     I want to write a Single Page Applications, but when visiting the route path, dev server response with 404, help me make it fallback to `index.html`.
 
 -
   id: task-5
-  date: 20250214
+  date: 2025-05-12
   level: easy
   description: |
     My targeting browsers support `?.` (Optional Chaining Operator), so I want to keep this syntax as is after bundling.
@@ -50,7 +50,7 @@
 
 -
   id: task-6
-  date: 20250217
+  date: 2025-05-12
   level: easy
   description: |
     I want to proxy every request prefixed with `/postman/` to `https://postman-echo.com` in dev server.
@@ -59,7 +59,7 @@
 
 -
   id: task-7
-  date: 20250217
+  date: 2025-05-12
   level: easy
   description: |
     Add `import bird from './images/bird.png'` in `src/index.js`.
@@ -72,7 +72,7 @@
 
 -
   id: task-8
-  date: 20250217
+  date: 2025-05-12
   level: moderate
   description: |
     Add `import './index.css'` in `src/index.js`.
@@ -88,7 +88,7 @@
 
 -
   id: task-9
-  date: 20250217
+  date: 2025-05-12
   level: moderate
   description: |
     Add `import ts from './index.ts'` in `src/index.js`.
@@ -98,7 +98,7 @@
 
 -
   id: task-10
-  date: 20250217
+  date: 2025-05-12
   level: moderate
   description: |
     Add `import VueComponent from './component.vue';` in `src/index.js`.
@@ -113,7 +113,7 @@
 
 -
   id: task-11
-  date: 20250218
+  date: 2025-05-12
   level: challenging
   description: |
     I want to do something with sourcemap files in output directory.
@@ -136,7 +136,7 @@
 
 -
   id: task-12
-  date: 20250218
+  date: 2025-05-12
   level: challenging
   description: |
     Update the bundler configuration to remove all `console.log` call expression after running build command.
@@ -144,14 +144,14 @@
 
 -
   id: task-13
-  date: 20250218
+  date: 2025-05-12
   level: challenging
   description: |
     During bundling, extract all license information into `dist/vendor-licenses.txt` from all npm packages imported directly or transitively in source file.
 
 -
   id: task-14
-  date: 20250225
+  date: 2025-05-12
   level: challenging
   description: |
     Implement dynamical generation of in-memory virtual modules as a vite plugin.
@@ -183,21 +183,21 @@
 
 -
   id: task-15
-  date: 20250225
+  date: 2025-05-12
   level: moderate
   description: |
     I have some mock data in `<project_root>/mock.json`, setup dev server to return them as mock data.
 
 -
   id: task-16
-  date: 20250225
+  date: 2025-05-12
   level: challenging
   description: |
     Implement an image compression plugin for bundler, only for build command
 
 -
   id: task-17
-  date: 20250226
+  date: 2025-05-12
   level: moderate
   description: |
     I want to import markdown files directly, and get rendered html by importing them.
@@ -216,7 +216,7 @@
 
 -
   id: task-18
-  date: 20250226
+  date: 2025-05-12
   level: moderate
   description: |
     Supporting importing frontmatter from markdown files.
@@ -249,7 +249,7 @@
 
 -
   id: task-19
-  date: 20250226
+  date: 2025-05-12
   level: challenging
   description: |
     Add new feature for markdown vite plugin.
@@ -258,7 +258,7 @@
 
 -
   id: task-20
-  date: 20250226
+  date: 2025-05-12
   level: challenging
   description: |
     Add `language` option for markdown vite plugin
