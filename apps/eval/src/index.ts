@@ -9,6 +9,7 @@ import 'dotenv/config'
 import { compressFolder } from './utils/compress'
 import { BenchEvalInitConfig } from './base'
 import { BenchEvalRunner } from './bench-eval-runner'
+import { getStableProject } from './utils/project'
 // import { CustomEvalRunner } from './custom-eval-runner'
 export { CustomEvalRunner as EvalRunner } from './custom-eval-runner'
 
@@ -37,31 +38,7 @@ const start = async () => {
 
     // 使用 stable projects 初始化
     if (argv['use-stable-projects']) {
-      const projectRoot = path.join(__dirname, '../../../projects/')
-
-      const allProjects = await readdir(projectRoot)
-
-      const projectStats = await Promise.all(
-        allProjects.map((p) => {
-          return stat(path.join(projectRoot, p))
-        })
-      )
-
-      const projects = allProjects.filter((_, i) => projectStats[i].isDirectory())
-
-      const packageJsons = await Promise.all(
-        projects.map((p) =>
-          readFile(path.join(projectRoot, p, 'package.json'), {
-            encoding: 'utf-8',
-          }).catch((e) => {
-            return undefined
-          })
-        )
-      )
-
-      config.projects = packageJsons
-        .filter((json) => json && JSON.parse(json).eval?.stable)
-        .map((json) => JSON.parse(json!).name)
+      config.projects = await getStableProject()
     }
 
     const cmdConfigs = getCmdConfigs()
