@@ -1,6 +1,14 @@
 # Web-Bench
 
-English | [中文 README](README.zh_CN.md)
+
+<p align="center">
+    <a href="./README.zh_CN.md">中文</a> •
+    <a href="https://huggingface.co/datasets/bytedance-research/Web-Bench">Datasets</a> •
+    <a href="">LeaderBoard</a> •
+    <a href="#-citation">Citation</a>
+</p>
+
+
 
 ## 📖 Overview
 
