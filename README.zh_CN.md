@@ -3,8 +3,8 @@
 <p align="center">
     <a href="./README.md">English</a> •
     <a href="https://huggingface.co/datasets/bytedance-research/Web-Bench">Datasets</a> •
-    <a href="">LeaderBoard</a> •
-    <a href="#-citation">Citation</a>
+    <a href="">LeaderBoard(WIP)</a> •
+    <a href="#-citation">Citation(WIP)</a>
 </p>
 
 ## **📖** Overview
