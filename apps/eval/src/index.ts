@@ -14,7 +14,7 @@
 
 import minimist from 'minimist'
 import { startServer } from './utils/server'
-import { readdir, readFile, readFileSync, stat } from 'promise-fs'
+import { readFileSync } from 'promise-fs'
 import { EvaluatorConfig } from '@web-bench/evaluator-types'
 import { getCmdConfigs } from './utils/cmd'
 import path from 'path'
