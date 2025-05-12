@@ -32,7 +32,7 @@ Please check local config files if:
 
   - ` apps/eval/src/config.json5 `, this file must be created locally
 
-    ```
+    ```json
     {
       "agentMode": "http",
       "agentEndPoint": "http://example.com/path/to/agent"
@@ -43,7 +43,7 @@ Please check local config files if:
 
   - `apps/eval/src/config.json5`, this file must be created locally
 
-    ```
+    ```json
     {
       "models": ["claude-3-5-sonnet-20241022", "openai/gpt-4o"],
       "agentMode": "local"
@@ -52,7 +52,7 @@ Please check local config files if:
 
   - `apps/eval/.env`, this file must be created locally
 
-    ```shell
+    ```bash
     ANTHROPIC_API_KEY=xxx
     OPENROUTER_API_KEY=xxx
     # Comment
@@ -93,13 +93,13 @@ Please check local config files if:
 
 ### Build
 
-```Bash
+```bash
 docker build -f ./start.dockerfile -t web-bench .
 ```
 
 ## 📘 Usage
 
-```JSON
+```bash
 docker run web-bench
 ```
 
@@ -147,7 +147,7 @@ Both Local-Agent and HTTP-Agent are Web-Agent.
       ```
 
    2. `option` – define parameters for LLM requests:
-   3. ```TypeScript
+   3. ```typescript
       export interface LLMOption {
         contextLength: number
         maxTokens: number
@@ -168,7 +168,7 @@ Web-Bench supports custom Agent capabilities by invoking your custom Agent API t
 
 Therefore, the **request and response formats** of your CustomAgent must adhere to the following interfaces:
 
-```go
+```typescript
 export interface AgentRequest {
   type: 'normal' | 'init'
 
