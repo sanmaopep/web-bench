@@ -4,7 +4,13 @@ English | [中文 README](README.zh_CN.md)
 
 ## 📖 Overview
 
-**Web-Bench** is a benchmark designed to evaluate the performance of LLMs in actual Web development. Web-Bench contains 50 projects, each consisting of 20 tasks with sequential dependencies. The tasks implement project features in sequence, simulating real-world human development workflows. When designing Web-Bench, we aim to cover the foundational elements of Web development: Web Standards and Web Frameworks. Given the scale and complexity of these projects, which were designed by engineers with 5-10 years of experience, each presents a significant challenge. On average, a single project takes 4–8 hours for a senior engineer to complete.
+**Web-Bench** is a benchmark designed to evaluate the performance of LLMs in actual Web development. Web-Bench contains 50 projects, each consisting of 20 tasks with sequential dependencies. The tasks implement project features in sequence, simulating real-world human development workflows. When designing Web-Bench, we aim to cover the foundational elements of Web development: Web Standards and Web Frameworks. Given the scale and complexity of these projects, which were designed by engineers with 5-10 years of experience, each presents a significant challenge. On average, a single project takes 4–8 hours for a senior engineer to complete. On our given benchmark agent (Web-Agent), SOTA (Claude 3.7 Sonnet) achieves only 25.1\% Pass@1, significantly lower than SWE-Bench's Verified (65.4\%) and Full (33.8\%) scores (2025.4). 
+
+The distribution of the experimental data aligns well with the current code generation capabilities of mainstream LLMs.
+![pass@1](./docs/assets/pass-1.png)
+
+HumanEval and MBPP have approached saturation. APPS and EvalPlus are approaching saturation. The SOTA for Web-Bench is 25.1\%, which is lower (better) than that of the SWE-bench Full and Verified sets.
+![SOTAs](./docs/assets/sotas.png)
 
 ## 🚀 Set Up
 
@@ -24,9 +30,9 @@ Please check local config files if:
 
 - **Use HTTP-Agent**
 
-  - ` apps/eval/src/``config.json5 `, this file must be created locally
+  - ` apps/eval/src/config.json5 `, this file must be created locally
 
-    ```
+    ```json
     {
       "agentMode": "http",
       "agentEndPoint": "http://example.com/path/to/agent"
@@ -37,7 +43,7 @@ Please check local config files if:
 
   - `apps/eval/src/config.json5`, this file must be created locally
 
-    ```
+    ```json
     {
       "models": ["claude-3-5-sonnet-20241022", "openai/gpt-4o"],
       "agentMode": "local"
@@ -46,7 +52,7 @@ Please check local config files if:
 
   - `apps/eval/.env`, this file must be created locally
 
-    ```shell
+    ```bash
     ANTHROPIC_API_KEY=xxx
     OPENROUTER_API_KEY=xxx
     # Comment
@@ -87,13 +93,13 @@ Please check local config files if:
 
 ### Build
 
-```Bash
+```bash
 docker build -f ./start.dockerfile -t web-bench .
 ```
 
 ## 📘 Usage
 
-```JSON
+```bash
 docker run web-bench
 ```
 
@@ -141,7 +147,7 @@ Both Local-Agent and HTTP-Agent are Web-Agent.
       ```
 
    2. `option` – define parameters for LLM requests:
-   3. ```TypeScript
+   3. ```typescript
       export interface LLMOption {
         contextLength: number
         maxTokens: number
@@ -162,7 +168,7 @@ Web-Bench supports custom Agent capabilities by invoking your custom Agent API t
 
 Therefore, the **request and response formats** of your CustomAgent must adhere to the following interfaces:
 
-```go
+```typescript
 export interface AgentRequest {
   type: 'normal' | 'init'
 
