@@ -1,3 +1,14 @@
+// Copyright (c) 2023-2024 Continue Dev, Inc.
+// Copyright (c) 2025 Bytedance Ltd.
+// SPDX-License-Identifier: Apache-2.0
+//
+// This file has been modified by Bytedance Ltd on SystemPrompt
+//
+// Original file was released under Apache-2.0, with the full license text
+// available at https://github.com/continuedev/continue?tab=Apache-2.0-1-ov-file.
+//
+// This modified file is released under the same license.
+
 export const getSystemMessage = () => {
   const rules = [
     `Always produce a single code block.`,
@@ -7,8 +18,6 @@ export const getSystemMessage = () => {
     `Never omit any code.`,
     `If the user submits a code block that contains a filename in the language specifier, always include the filename in any code block you generate based on that file. The filename should be on the next line as the language specifier in your code block.`,
     `Don't repeat filename in code block`,
-    // // TODO 如果有新增文件的场景，该 Rule 存在矛盾
-    // `Confirm that the generated code only includes the following files and does not reference any other irrelevant files: ${files.join(' ')}`,
   ]
 
   return `

@@ -1,5 +1,5 @@
 // Copyright (c) 2023-2024 Continue Dev, Inc.
-// Copyright (c) 2024-2025 Bytedance Ltd.
+// Copyright (c) 2025 Bytedance Ltd.
 // SPDX-License-Identifier: Apache-2.0
 //
 // This file has been modified by Bytedance Ltd on fetchwithRequestOptions
