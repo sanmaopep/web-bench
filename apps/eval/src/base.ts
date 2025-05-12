@@ -6,6 +6,7 @@ import path from 'path'
 import { BenchAgent } from '@web-bench/bench-agent'
 import { HttpAgent } from '@web-bench/http-agent'
 import { loadEnvForModels } from './utils/env'
+import { getStableProject } from './utils/project'
 
 export interface BenchEvalInitConfig extends EvaluatorConfig {
   models: string[]
@@ -58,7 +59,6 @@ export const getEvaluatorConfig = async (
   // Generate default config
   if (!fs.existsSync(configPath)) {
     const defaultConfig = {
-      projects: ['@web-bench/calculator'],
       models: ['claude-3-5-sonnet-20241022'],
     }
     fs.writeFileSync(configPath, JSON5.stringify(defaultConfig, null, 2), 'utf-8')
@@ -77,12 +77,12 @@ export const getEvaluatorConfig = async (
     ...initConfig,
   }
 
-  return fillEvaluationDefaultValue(EvaluatorConfig)
+  return await fillEvaluationDefaultValue(EvaluatorConfig)
 }
 
-export const fillEvaluationDefaultValue = (
+export const fillEvaluationDefaultValue = async (
   EvaluatorConfig: Partial<BenchEvalInitConfig>
-): BenchEvalInitConfig => {
+):  Promise<BenchEvalInitConfig> => {
   if (!EvaluatorConfig.agentMode) {
     EvaluatorConfig.agentMode = 'local'
   }
@@ -93,6 +93,10 @@ export const fillEvaluationDefaultValue = (
 
   if (!EvaluatorConfig.agentDir) {
     EvaluatorConfig.agentDir = path.join(__dirname, '..')
+  }
+
+  if (!EvaluatorConfig.projects) {
+    EvaluatorConfig.projects = await getStableProject()
   }
   return EvaluatorConfig as BenchEvalInitConfig
 }

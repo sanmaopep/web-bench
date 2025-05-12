@@ -20,7 +20,7 @@ export class BenchEvalRunner {
     const init = async () => {
       const EvaluatorConfig = mergeLocalConfig
         ? await getEvaluatorConfig(initConfig)
-        : fillEvaluationDefaultValue(initConfig)
+        : await fillEvaluationDefaultValue(initConfig)
 
       const agents = await getAgents(EvaluatorConfig)
 

@@ -50,9 +50,9 @@ Please check local config files if:
     }
     ```
 
-  - `apps/eval/env`, this file must be created locally
+  - `apps/eval/.env`, this file must be created locally
 
-    ```
+    ```shell
     ANTHROPIC_API_KEY=xxx
     OPENROUTER_API_KEY=xxx
     # Comment
@@ -63,19 +63,19 @@ Please check local config files if:
   
     XXX_API_KEY is used in `apps/eval/src/model.json`
   
-    ```
+    ```json
     {
-      "models": [
-        {
-          "model": "claude-3-5-sonnet-20241022",
-          "apiKey": "{{ANTHROPIC_API_KEY}}"
-        },
-        {
-          "model": "openai/gpt-4o",
-          "apiKey": "{{OPENROUTER_API_KEY}}"
-        }
-      ]
-    }
+        "models": [
+          {
+            "model": "claude-3-5-sonnet-20241022",
+            "apiKey": "{{ANTHROPIC_API_KEY}}"
+          },
+          {
+            "model": "openai/gpt-4o",
+            "apiKey": "{{OPENROUTER_API_KEY}}"
+          }
+        ]
+      }
     ```
   
 

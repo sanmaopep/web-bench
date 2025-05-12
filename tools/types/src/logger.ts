@@ -1,3 +1,5 @@
+import { LoggerLevel } from "./config"
+
 /**
  * logger
  */
@@ -30,4 +32,8 @@ export interface ILogger {
    * 清空日志历史
    */
   clearHistory(): void
+  /**
+   * 
+   */
+  shouldLog: (level: LoggerLevel) => boolean
 }
