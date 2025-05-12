@@ -73,4 +73,7 @@ export class Logger implements ILogger {
   clearHistory(): void {
     this.cache = []
   }
+
+  shouldLog = (level: LoggerLevel) => this.canLogger(level)
+  
 }

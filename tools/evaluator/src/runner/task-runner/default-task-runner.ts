@@ -125,13 +125,17 @@ export class DefaultTaskRunner implements ITaskRunner {
         for (const [file, fileContent] of Object.entries(agentRes.files)) {
           const oldFileContent = agentRequest.files[file]
           if (fileContent !== oldFileContent) {
-            logger.debug(
-              '\n' +
-                (await diff(oldFileContent ?? '', fileContent, {
-                  language: getLanguageFromPath(file),
-                  displayFilename: file,
-                }))
-            )
+            // diff 为高内存操作，仅在 debugger 模式开启
+            if (logger.shouldLog('debug')) {
+              logger.debug(
+                '\n' +
+                  (await diff(oldFileContent ?? '', fileContent, {
+                    language: getLanguageFromPath(file),
+                    displayFilename: file,
+                  }))
+              )
+            }
+         
           }
         }
 
