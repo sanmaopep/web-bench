@@ -5,7 +5,7 @@
     <a href="./README.zh_CN.md">中文</a> •
     <a href="https://huggingface.co/datasets/bytedance-research/Web-Bench">Datasets</a> •
     <a href="">LeaderBoard(WIP)</a> •
-    <a href="#-citation">Citation(WIP)</a>
+    <a href="#-citation">Citation</a>
 </p>
 
 
@@ -195,6 +195,20 @@ export interface AgentResponse {
   files: Record<string, string>
 
   // [filePath:string]: string  Poor Extension
+}
+```
+
+## **📚** Citation
+
+```bibtex
+@misc{xu2025webbench,
+      title={Web-Bench: A LLM Code Benchmark Based on Web Standards and Frameworks}, 
+      author={Kai Xu and YiWei Mao and XinYi Guan and ZiLong Feng},
+      year={2025},
+      eprint={2505.07473},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2505.07473}, 
 }
 ```
 
