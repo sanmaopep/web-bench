@@ -3,6 +3,7 @@
 
 <p align="center">
     <a href="./README.zh_CN.md">中文</a> •
+    <a href="https://arxiv.org/abs/2505.07473">Paper</a> •
     <a href="https://huggingface.co/datasets/bytedance-research/Web-Bench">Datasets</a> •
     <a href="">LeaderBoard(WIP)</a> •
     <a href="#-citation">Citation</a>
