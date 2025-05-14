@@ -4,7 +4,7 @@
     <a href="./README.md">English</a> •
     <a href="https://arxiv.org/abs/2505.07473">Paper</a> •
     <a href="https://huggingface.co/datasets/bytedance-research/Web-Bench">Datasets</a> •
-    <a href="">LeaderBoard(WIP)</a> •
+    <a href="https://huggingface.co/spaces/bytedance-research/Web-Bench-Leaderboard">LeaderBoard</a> •
     <a href="#-citation">Citation</a>
 </p>
 
@@ -106,15 +106,13 @@ docker build -f ./start.dockerfile -t web-bench .
 docker run web-bench
 ```
 
-评测结果输出在：`apps/eval/report`
+评测结果输出在 Docker Container：`app/apps/eval/report`
 
 ## **📌** Q & A
 
-### Local-Agent 和 HTTP-Agent 的区别
+### Web-Agent 和 HTTP-Agent 的区别
 
-Local-Agent 和 HTTP-Agent 均为 Web-Agent。
-
-- Local-Agent: Local-Agent 有基础和 LLMs 的交互能力。可以直接传入 `apps/eval/src/model.json` 中配置的模型。
+- Web-Agent: Web-Agent 有基础和 LLMs 的交互能力。可以直接传入 `apps/eval/src/model.json` 中配置的模型。
 - HTTP-Agent: 通过 HTTP-Agent，调用 `agentEndPoint` 配置的接口请求自定义 Agent。
 
 ### 新增模型进行评测
