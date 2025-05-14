@@ -5,7 +5,7 @@
     <a href="./README.zh_CN.md">中文</a> •
     <a href="https://arxiv.org/abs/2505.07473">Paper</a> •
     <a href="https://huggingface.co/datasets/bytedance-research/Web-Bench">Datasets</a> •
-    <a href="">LeaderBoard(WIP)</a> •
+    <a href="https://huggingface.co/spaces/bytedance-research/Web-Bench-Leaderboard">LeaderBoard</a> •
     <a href="#-citation">Citation</a>
 </p>
 
@@ -48,7 +48,7 @@ Please check local config files if:
     }
     ```
 
-- **Use Local-Agent**
+- **Use Web-Agent**
 
   - `apps/eval/src/config.json5`, this file must be created locally
 
@@ -112,15 +112,13 @@ docker build -f ./start.dockerfile -t web-bench .
 docker run web-bench
 ```
 
-The eval results will be saved in `apps/eval/report`
+The eval results will be saved in `app/apps/eval/report` in Docker Container.
 
 ## **📌** Q & A
 
-### Difference between Local-Agent and HTTP-Agent
+### Difference between Web-Agent and HTTP-Agent
 
-Both Local-Agent and HTTP-Agent are Web-Agent.
-
-- Local-Agent: Local-Agent has the basic capability to interact with LLM. It can specify the corresponding model in the `apps/eval/src/model.json`.
+- Web-Agent: Web-Agent has the basic capability to interact with LLM. It can specify the corresponding model in the `apps/eval/src/model.json`.
 - HTTP-Agent: Through HTTP-Agent, it calls the configured `agentEndPoint` to send a request to the custom Agent.
 
 ### Add new model for evaluation

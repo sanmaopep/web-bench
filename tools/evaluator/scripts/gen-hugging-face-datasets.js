@@ -63,6 +63,9 @@ const dayjs = require('dayjs')
       } else {
         throw new Error(`No tasks found for project ${projectDir}`)
       }
+      baseTasks.forEach((t) => {
+        t.project = project
+      })
       results.push({
         project,
         prompt_list: baseTasks.filter((t) => t.id !== 'init'),
