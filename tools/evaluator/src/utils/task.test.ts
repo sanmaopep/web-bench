@@ -39,7 +39,8 @@ test('tasks2setting init', () => {
       isInit: true,
       description:
         "generate a calculator in a single HTML file. the first row should be an input element with id 'display'; the next 4 rows should contain buttons with digits from '0' to '9' and operators including '+-*/=.'; the last row should have a 'Clear' button. display 'Error' when catching exception or getting undefined value during calculating.",
-      testcase: [`projects/calculator/test/init.spec.js`],
+      testcase: undefined,
+      context: undefined,
     },
   ])
 
@@ -63,7 +64,8 @@ test('tasks2setting init', () => {
       index: 1,
       isInit: false,
       description: '',
-      testcase: [`projects/calculator/test/task-1.spec.js`],
+      testcase: undefined,
+      context: undefined,
     },
   ])
 })
