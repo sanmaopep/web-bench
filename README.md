@@ -3,6 +3,7 @@
 
 <p align="center">
     <a href="./README.zh_CN.md">中文</a> •
+    <a href="#-installation">Install</a> •
     <a href="https://arxiv.org/abs/2505.07473">Paper</a> •
     <a href="https://huggingface.co/datasets/bytedance-research/Web-Bench">Datasets</a> •
     <a href="https://huggingface.co/spaces/bytedance-research/Web-Bench-Leaderboard">LeaderBoard</a> •
@@ -24,7 +25,7 @@ HumanEval and MBPP have approached saturation. APPS and EvalPlus are approaching
 <img width="500" alt="SOTAs" src="./docs/assets/sotas.png" />
 
 
-# 🚀 Installation
+## 🚀 Installation
 
 1. [Install Node.js 22+](https://nodejs.org/en/download)
 2. Init
@@ -38,7 +39,7 @@ rush build
 
 If you wish to use Docker, refer to [Docker Guide](https://github.com/bytedance/web-bench/wiki/Docker).
 
-# **📘** Usage
+## **📘** Usage
 
 Complete [Configuration](https://github.com/bytedance/web-bench/wiki/Config) and run:
 

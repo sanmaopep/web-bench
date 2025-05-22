@@ -2,10 +2,11 @@
 
 <p align="center">
     <a href="./README.md">English</a> •
+    <a href="#-安装">安装</a> •
     <a href="https://arxiv.org/abs/2505.07473">论文</a> •
     <a href="https://huggingface.co/datasets/bytedance-research/Web-Bench">数据集</a> •
     <a href="https://huggingface.co/spaces/bytedance-research/Web-Bench-Leaderboard">排行榜</a> •
-    <a href="#-citation">引文</a>
+    <a href="#-引文">引文</a>
 </p>
 
 ## **📖** 概要
@@ -26,6 +27,10 @@ HumanEval 和 MBPP 已趋于饱和，APPS 和 EvalPlus 也正在接近饱和状�
 1. [安装 Node.js 22+](https://nodejs.org/en/download)
 2. 初始化
 ```bash
+
+1. [安装 Node.js 22+](https://nodejs.org/en/download)
+2. 初始化
+```bash
 git clone https://github.com/bytedance/Web-Bench.git
 cd Web-Bench
 npm i -g pnpm@9.12.0 @microsoft/rush@5.140.0
@@ -35,7 +40,7 @@ rush build
 
 如果想使用 Docker 环境，参考 [Docker 指南](https://github.com/bytedance/web-bench/wiki/Docker).
 
-# **📘** 使用
+## **📘** 使用
 
 完成[配置](https://github.com/bytedance/web-bench/wiki/Config)后执行： 
 
