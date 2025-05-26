@@ -238,6 +238,11 @@ export interface ProjectSetting
      */
     exclude?: string[]
   }
+
+  /**
+   * Full package.json
+   */
+  packageJson?: Record<string, any>
 }
 
 /**

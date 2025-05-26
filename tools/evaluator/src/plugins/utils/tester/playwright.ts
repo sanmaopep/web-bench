@@ -1,11 +1,11 @@
 // Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,7 +34,6 @@ export default class PlaywrightTester implements CodeTester {
   public run(projectPath: string, outputSrc: string, index: number): Promise<string> {
     const {
       project: { logger, settings, currentTask },
-      
     } = this
     return new Promise(async (resolve) => {
       logger.debug('excute test', `cd ${projectPath} && npm run test -- ${index}`)
@@ -103,12 +102,12 @@ export default class PlaywrightTester implements CodeTester {
     return res
   }
 
-  async screenshot(filename: string, settings: ProjectSetting): Promise<void> {
+  async screenshot(filename: string, task: Task, settings: ProjectSetting): Promise<void> {
     // 判断端口占用这个操作是相对耗时的且端口重复占用为小概率事件
     // 所以每次启动时假设端口没有被占用，当发现端口被占用后再重试，减少整体耗时
     for (let i = 0; i < RETRY_TIMES; i++) {
       const port = LocalPort.applyPort()
-      const res = await generateScreenShot(filename, settings, port)
+      const res = await generateScreenShot(filename, settings, { task, port })
       LocalPort.releasePort(port)
       this.project.logger.debug('screenshot error', res)
       if (!res || (res?.indexOf('config.webServer') === -1 && res.indexOf('net::ERR_ABORTED'))) {
