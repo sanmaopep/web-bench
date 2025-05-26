@@ -26,13 +26,13 @@ export class LLMSchedule {
   }
 
   public async scheduleTask(
-    taskInfo: Pick<ScheduleTask, 'llm' | 'run' | 'inputToken' | 'outputToken'>,
+    taskInfo: Pick<ScheduleTask, 'llm' | 'run' | 'inputTokens' | 'outputTokens'>,
     log: (message: string) => void
   ) {
     const taskId = this._getTaskId()
 
     try {
-      const { llm, run, inputToken, outputToken } = taskInfo
+      const { llm, run, inputTokens, outputTokens } = taskInfo
 
       const checked = llm.checkLimit({
         runningTask: this.runningTasks.filter((t) => t.llm.provider === llm.provider),
@@ -43,8 +43,8 @@ export class LLMSchedule {
       const task = {
         id: taskId,
         llm,
-        inputToken,
-        outputToken,
+        inputTokens,
+        outputTokens,
         requestTime: +new Date(),
         run,
       }

@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import { TaskSnippet } from '@web-bench/evaluator-types'
+import { sum } from 'lodash'
 
 export function getOrdinalNumberAbbreviation(num: number): string {
   const lastDigit = num % 10
@@ -100,4 +101,13 @@ export const getErrorRate = (taskSnippets: TaskSnippet[], allTaskCount: number, 
     return +((count / allTaskCount) * 100).toFixed(2)
   })
   return errorRate
+}
+
+
+export const getTotalInputToken = (taskSnippets: TaskSnippet[]) => {
+  return sum(taskSnippets.map((v) => v.inputTokens || 0))
+}
+
+export const getTotalOutputToken = (taskSnippets: TaskSnippet[]) => {
+  return sum(taskSnippets.map((v) => v.outputTokens || 0))
 }

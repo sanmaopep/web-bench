@@ -31,6 +31,10 @@ export interface AgentResponse {
   // Code files, key is filePath, value is fileContent
   files: Record<string, string>
 
+  // count input tokens and output tokens
+  inputTokens?: number
+  outputTokens?: number
+
   // [filePath:string]: string  Poor Extension
 }
 

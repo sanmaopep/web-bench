@@ -112,9 +112,9 @@ export class BenchAgent implements IAgent {
       ),
     ]
 
-    const inputToken = await llm.countToken(compiledMessages)
+    const inputTokens = await llm.countToken(compiledMessages)
 
-    this.emitter.emit('log', 'debug', 'inputTokenCount: ' + inputToken)
+    this.emitter.emit('log', 'debug', 'inputTokensCount: ' + inputTokens)
 
     while (requestTimes > 0) {
       try {
@@ -122,8 +122,8 @@ export class BenchAgent implements IAgent {
         await schedule.scheduleTask(
           {
             llm,
-            inputToken,
-            outputToken: llm.option.maxTokens,
+            inputTokens,
+            outputTokens: llm.option.maxTokens,
             run: async () => {
               agentRes = await llm.chat(compiledMessages, this.config)
             },
@@ -167,12 +167,26 @@ export class BenchAgent implements IAgent {
       snippets.forEach((snippet) => {
         files[snippet.filename] = snippet.code
       })
+
+      const outputTokens = await llm.countToken([
+        {
+          role: 'assistant',
+          content: response,
+        },
+      ])
+
+      this.emitter.emit('log', 'debug', 'outputTokensCount: ' + outputTokens)
+
       return {
         files,
+        inputTokens,
+        outputTokens,
       }
     }
     return {
       files: {},
+      inputTokens,
+      outputTokens: 0,
     }
   }
 

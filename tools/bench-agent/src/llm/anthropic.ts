@@ -152,11 +152,11 @@ export class AnthropicLLM extends BaseLLM {
     }
 
     const inputTokens = recentTasks.reduce((pre, cur) => {
-      return pre + cur.inputToken
+      return pre + cur.inputTokens
     }, 0)
 
     const outputTokens = recentTasks.reduce((pre, cur) => {
-      return pre + cur.outputToken
+      return pre + cur.outputTokens
     }, 0)
 
     return inputTokens < ITPM && outputTokens < OTPM

@@ -39,11 +39,11 @@ export interface ScheduleTask {
   /**
    * 请求 token 数
    */
-  inputToken: number
+  inputTokens: number
   /**
    * 返回消耗 token 数
    */
-  outputToken: number
+  outputTokens: number
   /**
    *  执行代码
    */

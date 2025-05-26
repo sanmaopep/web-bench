@@ -290,10 +290,6 @@ export class OpenAILLM extends BaseLLM {
     }
   }
 
-  public countToken = async (compiledMessages: ChatMessage[]): Promise<number> => {
-    return 0
-  }
-
   public checkLimit: (_: { runningTask: ScheduleTask[] }) => boolean = ({ runningTask }) => {
     // 设置最大并行执行 task 为 15，目前为拍脑袋定的值，可以根据需要调整
     return runningTask.length <= 15
