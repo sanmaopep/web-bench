@@ -1,11 +1,11 @@
 // Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,7 +14,13 @@
 
 import { TaskResultSnippet, TaskSnippet } from '@web-bench/evaluator-types'
 import dayjs from 'dayjs'
-import { getErrorRate, getOrdinalNumberAbbreviation, getPassRate } from '../../../utils/report'
+import {
+  getErrorRate,
+  getOrdinalNumberAbbreviation,
+  getPassRate,
+  getTotalInputToken,
+  getTotalOutputToken,
+} from '../../../utils/report'
 import path from 'path'
 import fs from 'fs/promises'
 
@@ -44,14 +50,15 @@ ${
 }
         
     
-*Request:*
+*Request${result.inputTokens ? ` (${result.inputTokens} input tokens)` : ''}:*
         
 \`\`\`json
 ${JSON.stringify(JSON.parse(result.request || '{}'), null, 2)}
 \`\`\`
         
         
-*Response:*          
+*Response${result.outputTokens ? ` (${result.outputTokens} output tokens)` : ''}:*
+
 ${Object.keys(result.response || {})
   .map((path) => {
     return `
@@ -107,11 +114,17 @@ ${result.errorMessage}
 
     const errorRate: number[] = getErrorRate(taskSnippets, allTaskCount, times)
 
+    const totalInputToken = getTotalInputToken(taskSnippets)
+    const totalOutputToken = getTotalOutputToken(taskSnippets)
+
+
     return `	  
 | Metric | Result |
 | ------ | ------ |
 ${passRate.map((v, i) => `|pass@${i + 1} | ${v}% |`).join('\n')}
 ${errorRate.map((v, i) => `|error@${i + 1} | ${v}% |`).join('\n')}
+|inputTokens|${totalInputToken}|
+|outputTokens|${totalOutputToken}|
 `
   }
 
@@ -119,12 +132,12 @@ ${errorRate.map((v, i) => `|error@${i + 1} | ${v}% |`).join('\n')}
     const timeArr = new Array(times).fill(0)
 
     return `
-| Task             | ${timeArr.map((v, i) => `${getOrdinalNumberAbbreviation(i + 1)} Result |`).join('')}
-| ---------------- | ${timeArr.map(() => `---------------|`).join('')}
+| Task             | ${timeArr.map((v, i) => `${getOrdinalNumberAbbreviation(i + 1)} Result |`).join('')} Input Tokens | Output Tokens |
+| ---------------- | ${timeArr.map((v, i) => `----------- | `).join('')} ----------- | ----------- |
 ${taskSnippets
   .map(
     (task) =>
-      `|${task.id}|${timeArr.map((v, i) => (task.result[i] ? (task.result[i].success ? '✅ |' : '❌ |') : '- |')).join('')}`
+      `|${task.id}|${timeArr.map((v, i) => (task.result[i] ? (task.result[i].success ? '✅ |' : '❌ |') : '- |')).join('')} ${task.inputTokens} | ${task.outputTokens} |`
   )
   .join('\n')}
 `

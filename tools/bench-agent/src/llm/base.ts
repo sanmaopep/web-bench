@@ -12,6 +12,7 @@
 import { ChatMessage, CompletionOptions } from '@web-bench/evaluator-types'
 import { Model, ScheduleTask } from '../type'
 import { FetchUtils } from '../utils/fetch'
+import { countChatMessageTokens } from '../utils/token'
 
 export interface LLMOption {
   contextLength: number
@@ -118,5 +119,11 @@ export abstract class BaseLLM {
 
   public checkLimit: (_: { runningTask: ScheduleTask[] }) => boolean = () => true
 
-  public abstract countToken: (compiledMessages: ChatMessage[]) => Promise<number>
+  public countToken: (compiledMessages: ChatMessage[]) => Promise<number> = (compiledMessages) => {
+    const totalTokens = compiledMessages.reduce((acc, message) => {
+      return acc + countChatMessageTokens(this.info.model, message)
+    }, 0)
+
+    return Promise.resolve(totalTokens)
+  }
 }

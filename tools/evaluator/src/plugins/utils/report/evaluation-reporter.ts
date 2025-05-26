@@ -14,7 +14,7 @@
 
 import dayjs from 'dayjs'
 import { groupBy } from 'lodash'
-import { getErrorCounts, getErrorRate, getPassCounts, getPassRate } from '../../../utils/report'
+import { getErrorCounts, getErrorRate, getPassCounts, getPassRate,getTotalInputToken, getTotalOutputToken } from '../../../utils/report'
 import { EvaluatorConfig, IProjectRunner, Task } from '@web-bench/evaluator-types'
 import { toCamelCase } from '../../../utils/word'
 import { ProjectReporter } from './project-reporter'
@@ -25,6 +25,10 @@ type AgentRateInfo = {
   pass: number[]
 
   error: number[]
+
+  inputTokens: number
+
+  outputTokens: number
 }
 
 export class EvaluationReport {
@@ -32,8 +36,8 @@ export class EvaluationReport {
     const passTitleArr = new Array(times).fill(0)
     const errorTitleArr = new Array(times - 1).fill(0)
     const linesArr = new Array(times * 2 - 1).fill(0)
-    return `|   | ${passTitleArr.map((_, i) => `pass@${i + 1} |`).join('')}  ${errorTitleArr.map((_, i) => `error@${i + 1} |`).join('')}
-| ------ |${linesArr.map(() => `------ |`).join('')}`
+    return `|   | ${passTitleArr.map((_, i) => `pass@${i + 1} |`).join('')}  ${errorTitleArr.map((_, i) => `error@${i + 1} |`).join('')} inputTokens | outputTokens |
+| ------ |${linesArr.map(() => `------ |`).join('')} ------ | ------ |`
   }
 
   /**
@@ -47,6 +51,8 @@ export class EvaluationReport {
     times: number
   }): string {
     const allRate = new Array(times * 2 - 1).fill(0)
+    let totalInputToken = 0
+    let totalOutputToken = 0
 
     const projectLength = projects.length
 
@@ -60,6 +66,12 @@ export class EvaluationReport {
         const taskSnippetsWithoutInit = taskSnippets.filter((taskSnippet) => {
           return !taskInfo.get(taskSnippet.id)?.isInit
         })
+
+        const projectTotalInputToken = getTotalInputToken(taskSnippets)
+        const projectTotalOutputToken = getTotalOutputToken(taskSnippets)
+
+        totalOutputToken += projectTotalOutputToken
+        totalInputToken += projectTotalInputToken
 
         return `| >> ${settings.model || settings.endpoint} | ${getPassRate(
           taskSnippetsWithoutInit,
@@ -79,13 +91,13 @@ export class EvaluationReport {
             allRate[i + times] += v
             return ` ${v}% |`
           })
-          .join('')}`
+          .join('')} ${projectTotalInputToken} | ${projectTotalOutputToken} |`
       })
       .join('\n')}
 `
     return `
 ${this.getMetricsTableHeader(times)}
-| average | ${allRate.map((v) => ` ${(v / projectLength).toFixed(2)}% |`).join('')}
+| overview | ${allRate.map((v) => ` ${(v / projectLength).toFixed(2)}% |`).join('')} ${totalInputToken} | ${totalOutputToken} |
 ${detailContent}
   `
   }
@@ -115,6 +127,8 @@ ${taskCount ? `* Tasks: ${taskCount}` : ''}
     allPassRate: number[]
     agentRates: Array<AgentRateInfo>
     allErrorRate: number[]
+    allTotalInputToken: number
+    allTotalOutputToken: number
   } {
     const groupedProjects = Object.values(groupBy(projectsList.flat(), (p) => p.agent.key))
 
@@ -122,13 +136,16 @@ ${taskCount ? `* Tasks: ${taskCount}` : ''}
 
     const numeratorOfPass: number[] = new Array(times).fill(0)
     const numeratorOfError: number[] = new Array(times - 1).fill(0)
-
+    let allTotalInputToken = 0
+    let allTotalOutputToken = 0
     const agentRates: Array<AgentRateInfo> = []
 
     groupedProjects.forEach((projects) => {
       const projectNumeratorOfPass: number[] = new Array(times).fill(0)
       const projectNumeratorOfError: number[] = new Array(times - 1).fill(0)
       let projectAllCount = 0
+      let projectTotalInputToken = 0
+      let projectTotalOutputToken = 0
 
       projects.forEach((project) => {
         const {
@@ -136,6 +153,8 @@ ${taskCount ? `* Tasks: ${taskCount}` : ''}
           settings: { taskCount },
         } = project
         projectAllCount += project.settings.taskCount
+        projectTotalInputToken += getTotalInputToken(taskSnippets)
+        projectTotalOutputToken += getTotalOutputToken(taskSnippets)
 
         const taskInfo = new Map<string, Task>()
         project.tasks.forEach((task) => taskInfo.set(task.task.id, task.task))
@@ -156,6 +175,9 @@ ${taskCount ? `* Tasks: ${taskCount}` : ''}
         })
       })
 
+      allTotalInputToken += projectTotalInputToken
+      allTotalOutputToken += projectTotalOutputToken
+
       agentRates.push({
         name: projects[0].agent.key!,
         pass: projectNumeratorOfPass.map((v, i) => {
@@ -166,6 +188,8 @@ ${taskCount ? `* Tasks: ${taskCount}` : ''}
           numeratorOfError[i] += v
           return +((v / projectAllCount) * 100).toFixed(2)
         }),
+        inputTokens: projectTotalInputToken,
+        outputTokens: projectTotalOutputToken,
       })
 
       allCounts += projectAllCount
@@ -175,6 +199,8 @@ ${taskCount ? `* Tasks: ${taskCount}` : ''}
       agentRates,
       allPassRate: numeratorOfPass.map((v) => +((v / allCounts) * 100).toFixed(2)),
       allErrorRate: numeratorOfError.map((v) => +((v / allCounts) * 100).toFixed(2)),
+      allTotalInputToken,
+      allTotalOutputToken,
     }
   }
 
@@ -188,15 +214,15 @@ ${taskCount ? `* Tasks: ${taskCount}` : ''}
     projectsList: IProjectRunner[][]
     retry: number
   }) {
-    const { allErrorRate, allPassRate, agentRates } = this.calculateEvalOverviewMetrics({
+    const { allErrorRate, allPassRate, agentRates, allTotalInputToken, allTotalOutputToken } = this.calculateEvalOverviewMetrics({
       projectsList,
       times: retry,
     })
 
     return `
 ${this.getMetricsTableHeader(retry)}
-| average | ${allPassRate.map((v) => ` ${v}% |`).join('')} ${allErrorRate.map((v) => ` ${v}%  |`).join('')}
-${agentRates.map((agent) => `| >> ${agent.name} | ${agent.pass.map((v) => ` ${v}% |`).join('')} ${agent.error.map((v) => ` ${v}%  |`).join('')}`).join('\n')}
+| overview | ${allPassRate.map((v) => ` ${v}% |`).join('')} ${allErrorRate.map((v) => ` ${v}%  |`).join('')} ${allTotalInputToken} | ${allTotalOutputToken} |
+${agentRates.map((agent) => `| >> ${agent.name} | ${agent.pass.map((v) => ` ${v}% |`).join('')} ${agent.error.map((v) => ` ${v}%  |`).join('')} ${agent.inputTokens} | ${agent.outputTokens} |`).join('\n')}
     `
   }
 

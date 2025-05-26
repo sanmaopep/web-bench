@@ -26,6 +26,7 @@ import path from 'node:path'
 import { clearErrorMsg } from '../../utils/error'
 import { getOrdinalNumberAbbreviation } from '../../utils/report'
 import { ProjectRunner } from '../project-runner'
+import { sum } from 'lodash'
 
 export class DefaultTaskRunner implements ITaskRunner {
   public type: AgentRequest['type'] = 'normal'
@@ -64,6 +65,9 @@ export class DefaultTaskRunner implements ITaskRunner {
       const taskBegin = +new Date()
 
       let response: Record<string, string> = {}
+
+      let inputTokens = 0
+      let outputTokens = 0
 
       const description = this.task.description
 
@@ -132,6 +136,8 @@ export class DefaultTaskRunner implements ITaskRunner {
         requestEnd = +new Date()
 
         response = agentRes?.files || ''
+        inputTokens = agentRes.inputTokens || 0
+        outputTokens = agentRes.outputTokens || 0
         logger.silentLog(`Request - response`, JSON.stringify(response))
 
         logger.debug(`The file is writing...`)
@@ -252,6 +258,8 @@ export class DefaultTaskRunner implements ITaskRunner {
         request,
         screenshot: screenshotPath,
         response,
+        inputTokens,
+        outputTokens,
       }
 
       // 执行时间，请求时间 + 测试时间，是否成功（请求 / 测试），失败原因
@@ -287,6 +295,8 @@ export class DefaultTaskRunner implements ITaskRunner {
       id: this.task.id,
       description: this.task.description,
       result,
+      inputTokens: sum(result.map(_task => _task.inputTokens || 0)),
+      outputTokens: sum(result.map(_task => _task.outputTokens || 0)),
     })
 
     // 只要有运行成功即完整运行成功
