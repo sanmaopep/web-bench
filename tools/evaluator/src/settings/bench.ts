@@ -48,6 +48,7 @@ export class BenchProjectSettingGetter implements ProjectSettingGetter {
       endTask,
       production = true,
       fileDiffLog = false,
+      screenshotLog = false,
       taskMode = 'sequential',
     } = project
 
@@ -207,6 +208,7 @@ export class BenchProjectSettingGetter implements ProjectSettingGetter {
       srcDir: srcDir,
       initFiles,
       fileDiffLog,
+      screenshotLog,
       files: [],
       assetsDir,
       packageJson,

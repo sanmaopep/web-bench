@@ -77,6 +77,11 @@ interface BaseConfig {
    * default: false
    */
   fileDiffLog?: boolean
+  /**
+   * screenshot log
+   * default: false
+   */
+  screenshotLog?: boolean
 }
 /**
  * 对外暴露的用户可配置的 config

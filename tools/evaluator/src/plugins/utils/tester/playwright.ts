@@ -112,10 +112,13 @@ export default class PlaywrightTester implements CodeTester {
       LocalPort.releasePort(port)
       if (error) {
         this.project.logger.debug('screenshot error', error)
-      } else {
+      } else if (settings.screenshotLog) {
         this.project.logger.debug('screenshot success\n', await terminalImage.file(filename))
       }
-      if (!error || (error?.indexOf('config.webServer') === -1 && error.indexOf('net::ERR_ABORTED'))) {
+      if (
+        !error ||
+        (error?.indexOf('config.webServer') === -1 && error.indexOf('net::ERR_ABORTED'))
+      ) {
         return
       }
     }
