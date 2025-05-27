@@ -96,6 +96,8 @@ export const generateScreenShot = async (
 ${await getTestBeforeEach(taskTestSpec)}
 
 test("Take Screenshot", async ({ page }) => {
+  await page.waitForLoadState()
+  await page.waitForLoadState('networkidle', { timeout: 5000 })
   await page.screenshot({
     path: "${filename}"
   })
