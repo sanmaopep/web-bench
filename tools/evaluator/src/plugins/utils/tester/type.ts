@@ -31,5 +31,5 @@ export interface CodeTester {
   /**
    * 执行截图
    */
-  screenshot?(filename: string, settings: ProjectSetting): Promise<void>
+  screenshot?(filename: string, task: Task, settings: ProjectSetting): Promise<void>
 }
