@@ -19,6 +19,7 @@ import { CodeTester } from './type'
 import { generateScreenShot } from '../../../utils/screenshot'
 import { LocalPort } from '../../../utils/port'
 import { getErrorMessage, prettierErrorMessage } from '../../../utils/error'
+import terminalImage from 'terminal-image'
 const RETRY_TIMES = 3
 
 const EXCEED_TIME = 1000 * 10 * 60
@@ -107,10 +108,14 @@ export default class PlaywrightTester implements CodeTester {
     // 所以每次启动时假设端口没有被占用，当发现端口被占用后再重试，减少整体耗时
     for (let i = 0; i < RETRY_TIMES; i++) {
       const port = LocalPort.applyPort()
-      const res = await generateScreenShot(filename, settings, { task, port })
+      const error = await generateScreenShot(filename, settings, { task, port })
       LocalPort.releasePort(port)
-      this.project.logger.debug('screenshot error', res)
-      if (!res || (res?.indexOf('config.webServer') === -1 && res.indexOf('net::ERR_ABORTED'))) {
+      if (error) {
+        this.project.logger.debug('screenshot error', error)
+      } else {
+        this.project.logger.debug('screenshot success\n', await terminalImage.file(filename))
+      }
+      if (!error || (error?.indexOf('config.webServer') === -1 && error.indexOf('net::ERR_ABORTED'))) {
         return
       }
     }
