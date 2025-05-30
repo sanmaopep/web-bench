@@ -24,7 +24,7 @@ export const startServer = async () => {
 
   const EvaluatorConfig = await getEvaluatorConfig({})
 
-  // bench-agent server 这里的 agent 走的还是本地的，所以这里需要改成 local 来获取 agent
+  // bench-agent server The agent here is still local, so it needs to be changed to local to get the agent
   EvaluatorConfig.agentMode = 'local'
 
   const agents = await getAgents(EvaluatorConfig)

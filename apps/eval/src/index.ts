@@ -29,12 +29,12 @@ export { CustomEvalRunner as EvalRunner } from './custom-eval-runner'
 
 const argv = minimist(process.argv.slice(2))
 const start = async () => {
-  // server 模式
+  // server mode
   if (argv.server) {
     startServer()
   } else {
     let config: Partial<BenchEvalInitConfig> = {}
-    // 使用 config 文件初始化
+    // Initialize with config file
     if (argv.config) {
       const configFile = await readFileSync(argv.config, { encoding: 'utf-8' })
       config = {
@@ -50,7 +50,7 @@ const start = async () => {
       config.hash = argv['hash']
     }
 
-    // 使用 stable projects 初始化
+    // Initialize with stable projects
     if (argv['use-stable-projects']) {
       config.projects = await getStableProject()
     }

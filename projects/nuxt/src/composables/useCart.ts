@@ -23,7 +23,7 @@ export const useCart = () => {
         method: 'POST',
         body: { productId, quantity: 1 },
       })
-      // 触发购物车更新
+      // Trigger cart update
       await fetchCartItems()
     } catch (error) {
       console.error('Failed to add to cart:', error)
@@ -68,4 +68,4 @@ export const useCart = () => {
     fetchCartItems,
     clearCart
   }
-} 
+}

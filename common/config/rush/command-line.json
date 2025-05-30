@@ -182,10 +182,10 @@
       "description": "For details, see the article \"Using watch mode\" on the Rush website: https://rushjs.io/",
       "ignoreMissingScript": true,
       "safeForSimultaneousRushProcesses": true,
-      // 使用增量构建逻辑 (重要)
+      // Use incremental build logic (important)
       "incremental": true,
       "enableParallelism": true,
-      // 启用 "watch mode"
+      // Enable "watch mode"
       "watchForChanges": true
     },
     {
