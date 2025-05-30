@@ -49,7 +49,7 @@ export class LLMSchedule {
         run,
       }
 
-      // 如果达到限制需要先排队
+      // If the limit is reached, it needs to be queued first
       if (!checked) {
         await this.queue(task)
       }
@@ -104,13 +104,13 @@ export class LLMSchedule {
   public triggerQueue = async (log: (message: string) => void, provider: string) => {
     while (this.queuingTasks.length !== 0) {
       const queueIdx = this.queuingTasks.findIndex((t) => t.llm.provider === provider)
-      // 当没有 queuingTasks 没有同一个 provider 的 task 就结束
+      // End when there are no queuingTasks and no tasks from the same provider
 
       log(['scheduleTask', 'queueIdx', queueIdx, this.queuingTasks.length].join(' '))
 
       if (queueIdx !== -1) {
         const nextTask = this.queuingTasks[queueIdx]
-        // 当达到限制就结束
+        // End when the limit is reached
         const queueCheck = nextTask.llm.checkLimit({
           runningTask: this.runningTasks.filter((t) => t.llm.provider === provider),
         })

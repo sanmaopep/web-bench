@@ -111,7 +111,7 @@ export const CustomProjectPlugin: EvalPlugin[] = [
             stdout: ['pipe'],
             stderr: ['pipe'],
             cwd: process.cwd(),
-            // 设置超时 10min，避免出现卡死的情况
+            // Set timeout to 10min to avoid getting stuck
             timeout: 10 * 60 * 1000,
             env: {
               ...process.env,

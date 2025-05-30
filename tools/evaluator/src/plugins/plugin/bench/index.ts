@@ -35,9 +35,9 @@ export const BenchProjectPlugin: EvalPlugin[] = [
 
       await fs.mkdir(currentOutputProjectDir, { recursive: true })
 
-      // 初始化的 outputProjectDir 为空，此时没有前序 task，不需要将上一次 task 的结果 copy 到本次 task 执行目录
+      // The initialized outputProjectDir is empty. At this time, there is no preceding task, and there is no need to copy the result of the previous task to the execution directory of this task.
       if (lastOutputProjectDir) {
-        // 上一次 task 的结果 copy 到本次 task 执行目录
+        // Copy the result of the last task to the execution directory of this task
         await fs.cp(lastOutputProjectDir, currentOutputProjectDir, {
           recursive: true,
           dereference: true,

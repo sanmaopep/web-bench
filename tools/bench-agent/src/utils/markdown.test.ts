@@ -15,7 +15,7 @@
 import { expect, test } from 'vitest'
 import { MarkdownParser } from './markdown'
 
-test('MarkdownParser 前面有多空行', () => {
+test('MarkdownParser with multiple empty lines at the beginning', () => {
   const content = `
 \`\`\`
 
@@ -35,7 +35,7 @@ export default Title;
   expect(res[0]?.filename).toStrictEqual('src/components/Title.tsx')
 })
 
-test('MarkdownParser 处理缺少 language', () => {
+test('MarkdownParser handles missing language', () => {
   const content = `
   \`\`\`src/demo/index.html
 	<!doctype html>
@@ -141,7 +141,7 @@ test('MarkdownParser 处理缺少 language', () => {
   expect(res[0]?.language).toStrictEqual('html')
 })
 
-test('MarkdownParser 处理缺少 language', () => {
+test('MarkdownParser handles missing language', () => {
   const content = `
 	\`\`\`src/demo/index.html
 	  <!doctype html>
@@ -247,7 +247,7 @@ test('MarkdownParser 处理缺少 language', () => {
   expect(res[0]?.language).toStrictEqual('html')
 })
 
-test('MarkdownParser 处理 url 在尾部', () => {
+test('MarkdownParser handles URL at the end', () => {
   const content =
     '```html\n<html>\n  <body>\n    <div class="root"></div>\n  </body>\n</html>\n/user/index.html\n```'
 
@@ -259,7 +259,7 @@ test('MarkdownParser 处理 url 在尾部', () => {
   expect(res[0]?.language).toStrictEqual('html')
 })
 
-test('判断是非是本地路径', () => {
+test('Check if it is a local path', () => {
   expect(MarkdownParser.isFileName('test.txt')).toBe(true)
   expect(MarkdownParser.isFileName('/usr/local/file.txt')).toBe(true)
   expect(MarkdownParser.isFileName('./relative/path.txt')).toBe(true)
@@ -277,7 +277,7 @@ test('判断是非是本地路径', () => {
   expect(MarkdownParser.isFileName('test@email.com')).toBe(false)
 })
 
-test('去除字符串开始和结尾的换行符', () => {
+test('Remove line breaks at the beginning and end of the string', () => {
   expect(MarkdownParser.trimNewlines('\nHello World\n')).toBe('Hello World')
   expect(MarkdownParser.trimNewlines('\n')).toBe('')
   expect(MarkdownParser.trimNewlines('\r\nMultiple\r\nLines\r\n')).toBe('Multiple\r\nLines')

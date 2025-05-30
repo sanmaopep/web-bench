@@ -14,12 +14,12 @@
 
 export interface CodeParser {
   /**
-   * 文件后缀
+   * File extension
    */
   suffix: string[]
   /**
-   * 解析文件内容是否合法，合法返回空字符串
-   * @param codeText 代码文本
+   * Parse whether the file content is legal, return an empty string if legal
+   * @param codeText code text
    */
   validate(codeText?: string): string
 }

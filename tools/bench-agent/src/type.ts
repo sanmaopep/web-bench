@@ -29,23 +29,23 @@ export interface ScheduleTask {
    */
   id: string
   /**
-   * llm 实例
+   * llm instance
    */
   llm: BaseLLM
   /**
-   * 发起请求时间
+   * Request time
    */
   requestTime: number
   /**
-   * 请求 token 数
+   * Number of request tokens
    */
   inputTokens: number
   /**
-   * 返回消耗 token 数
+   * Number of returned consumed tokens
    */
   outputTokens: number
   /**
-   *  执行代码
+   *  Execute code
    */
   run: () => Promise<void>
 }

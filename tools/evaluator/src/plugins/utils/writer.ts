@@ -44,11 +44,11 @@ export class Writer {
     this.project.logger.debug('files', Object.keys(files), Object.keys(originFiles))
 
     /**
-     * 将返回的结果修改到具体文件
+     * Modify the returned result to a specific file
      */
 
     for (const [filename, content] of Object.entries(files)) {
-      // 文件夹不存在时，创建文件夹
+      // If the folder does not exist, create the folder
       const fileDir = path.dirname(filename)
 
       try {
@@ -73,7 +73,7 @@ export class Writer {
 
       this.project.logger.debug('Writing file: ', filename)
 
-      // 需要验证新增文件这样会不会报错
+      // Need to verify if adding new files like this will cause errors
       if (content.trim()) {
         await fs.writeFile(filename, content, {
           encoding: 'utf-8',
@@ -81,14 +81,14 @@ export class Writer {
         this.project.logger.debug('Writing file - end: ', filename)
       } else {
         try {
-          // 当这个文件存在的话不进行操作
+          // If this file exists, do nothing
           await stat(filename)
           this.project.logger.debug('Writing file-  end: content is empty.')
         } catch (error) {
           await fs.writeFile(filename, content, {
             encoding: 'utf-8',
           })
-          // 当这个文件不存在的话需要创建文件，其他文件会引用该文件，不写入会导致 build 时报错
+          // If this file does not exist, it needs to be created. Other files will reference this file, and not writing it will cause an error during build.
           this.project.logger.debug('Writing file-  end: create empty file')
         }
       }

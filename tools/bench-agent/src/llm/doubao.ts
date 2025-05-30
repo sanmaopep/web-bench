@@ -35,14 +35,14 @@ export class Doubao extends OpenAILLM {
   public async fetch(url: RequestInfo | URL, originInit: RequestInit = {}): Promise<Response> {
     const client = axios.create()
 
-    // 配置重试机制
+    // Configure retry mechanism
     axiosRetry(client, {
-      retries: 3, // 重试次数
+      retries: 3, // Number of retries
       retryDelay: (retryCount) => {
-        return retryCount * 1000 // 重试延迟时间
+        return retryCount * 1000 // Retry delay time
       },
       retryCondition: (error) => {
-        // 只在网络错误或 TLS 错误时重试
+        // Retry only on network or TLS errors
         return (
           axiosRetry.isNetworkOrIdempotentRequestError(error) ||
           error.message.includes('Client network socket disconnected')

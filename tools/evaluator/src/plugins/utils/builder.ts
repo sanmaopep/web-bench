@@ -63,7 +63,7 @@ export class Builder {
 
             outputData = outputData
               .split('\n')
-              // 过滤掉  playwright 输出后就会清理的日志
+              // Filter out logs that will be cleared after playwright output
               .filter((v) => !filterNumberStartString(v) && !v.startsWith('<'))
               .join('\n')
 

@@ -41,7 +41,7 @@ export class EvaluationReport {
   }
 
   /**
-   * 获取各 project 下各个 model 的指标
+   * Get metrics for each model under each project
    */
   public getProjectMetricsTable({
     projects,
@@ -205,7 +205,7 @@ ${taskCount ? `* Tasks: ${taskCount}` : ''}
   }
 
   /**
-   * 获取 overview 指标表格
+   * Get overview metrics table
    */
   public getEvalOverviewTable({
     projectsList,
@@ -227,7 +227,7 @@ ${agentRates.map((agent) => `| >> ${agent.name} | ${agent.pass.map((v) => ` ${v}
   }
 
   /**
-   * 获取 project report 内容
+   * Get project report content
    */
 
   public getProjectReportContent({
@@ -266,7 +266,7 @@ ${reporter.getResultsTable({ taskSnippets: p.taskSnippets, times: retry })}
   }
 
   /**
-   * 获取 eval report 内容
+   * Get eval report content
    */
   public getEvaluationReportContent({
     projectsList,

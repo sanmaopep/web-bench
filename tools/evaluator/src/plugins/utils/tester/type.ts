@@ -16,20 +16,20 @@ import { ProjectSetting, Task } from '@web-bench/evaluator-types'
 
 export interface CodeTester {
   /**
-   * provider 唯一标识
+   * provider unique identifier
    */
   provider: string
   /**
-   * 判断当前是否有该环境
+   * Judge whether the current environment exists
    */
   exist(): Promise<boolean>
 
   /**
-   * 执行测试代码
+   * Execute test code
    */
   test(task: Task, projectSetting: ProjectSetting): Promise<string>
   /**
-   * 执行截图
+   * Execute screenshot
    */
   screenshot?(filename: string, task: Task, settings: ProjectSetting): Promise<void>
 }

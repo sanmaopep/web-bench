@@ -46,7 +46,7 @@ export default class PlaywrightTester implements CodeTester {
           stdout: ['pipe'],
           stderr: ['pipe'],
           cwd: projectPath,
-          // 设置超时 10min，避免出现卡死的情况
+          // Set timeout to 10min to avoid getting stuck
           timeout: EXCEED_TIME,
           env: {
             ...process.env,
@@ -91,8 +91,8 @@ export default class PlaywrightTester implements CodeTester {
 
   async test(task: Task, settings: ProjectSetting): Promise<string> {
     let res: string | null = ''
-    // 判断端口占用这个操作是相对耗时的且端口重复占用为小概率事件
-    // 所以每次启动时假设端口没有被占用，当发现端口被占用后再重试，减少整体耗时
+    // Judging port occupation is a relatively time-consuming operation, and repeated port occupation is a small probability event
+    // Therefore, it is assumed that the port is not occupied each time it is started. If the port is found to be occupied, retry to reduce the overall time consumption
     for (let i = 0; i < RETRY_TIMES; i++) {
       res = await this.run(settings.projectDir, settings.outputProjectDir[0], task.index)
 
@@ -104,8 +104,8 @@ export default class PlaywrightTester implements CodeTester {
   }
 
   async screenshot(filename: string, task: Task, settings: ProjectSetting): Promise<void> {
-    // 判断端口占用这个操作是相对耗时的且端口重复占用为小概率事件
-    // 所以每次启动时假设端口没有被占用，当发现端口被占用后再重试，减少整体耗时
+    // Judging port occupation is a relatively time-consuming operation, and repeated port occupation is a small probability event
+    // Therefore, it is assumed that the port is not occupied each time it is started. If the port is found to be occupied, retry to reduce the overall time consumption
     for (let i = 0; i < RETRY_TIMES; i++) {
       const port = LocalPort.applyPort()
       const error = await generateScreenShot(filename, settings, { task, port })
