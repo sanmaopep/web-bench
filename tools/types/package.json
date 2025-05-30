@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "npm run clean && npm run build:fast -- --dts-resolve",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "build:watch": "tsup",
     "build:fast": "tsup",
     "test": "vitest"
@@ -23,6 +23,7 @@
     "@types/node": "^22.7.9",
     "prettier": "^3.3.3",
     "tsup": "^8.3.5",
-    "@ianvs/prettier-plugin-sort-imports": "^4.4.0"
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
+    "rimraf": "~6.0.1"
   }
 }

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "start": "vite src --port 3005 --config vite.config.ts",
-    "init": "cd $EVAL_PROJECT_ROOT && rm -rf tasks",
+    "init": "cd $EVAL_PROJECT_ROOT && rimraf tasks",
     "test": "npx @web-bench/test-util"
   },
   "eval": {
@@ -29,6 +29,7 @@
     "@types/fs-extra": "^11.0.4",
     "@web-bench/test-util": "workspace:*",
     "@vitejs/plugin-react": "^4.3.3",
-    "vite": "^6.2.2"
+    "vite": "^6.2.2",
+    "rimraf": "~6.0.1"
   }
 }

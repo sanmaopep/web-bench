@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "npm run clean && npm run build:fast -- --dts-resolve",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "test": "vitest",
     "build:watch": "tsup",
     "build:fast": "tsup"
@@ -45,7 +45,8 @@
     "@types/fs-extra": "^11.0.4",
     "execa": "^9.5.2",
     "string-diff-viewer": "^0.4.1",
-    "terminal-image": "~3.1.1"
+    "terminal-image": "~3.1.1",
+    "rimraf": "~6.0.1"
   },
   "license": "ISC"
 }

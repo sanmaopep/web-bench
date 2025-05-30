@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "npm run clean && npm run build:fast -- --dts-resolve",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "build:fast": "tsup",
     "dev": "tsup --watch",
     "build:watch": "tsup",
@@ -30,7 +30,8 @@
     "@types/promise-fs": "^2.1.5",
     "serve": "^14.2.4",
     "tsup": "^8.3.5",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "rimraf": "~6.0.1"
   },
   "dependencies": {
     "promise-fs": "^2.1.1",
