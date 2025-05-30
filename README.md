@@ -1,6 +1,5 @@
 # Web-Bench
 
-
 <p align="center">
     <a href="./README.zh_CN.md">中文</a> •
     <a href="#-installation">Install</a> •
@@ -9,7 +8,6 @@
     <a href="https://huggingface.co/spaces/bytedance-research/Web-Bench-Leaderboard">LeaderBoard</a> •
     <a href="#-citation">Citation</a>
 </p>
-
 
 
 ## 📖 Overview
