@@ -291,7 +291,7 @@ export class OpenAILLM extends BaseLLM {
   }
 
   public checkLimit: (_: { runningTask: ScheduleTask[] }) => boolean = ({ runningTask }) => {
-    // 设置最大并行执行 task 为 15，目前为拍脑袋定的值，可以根据需要调整
+    // Set the maximum number of parallel tasks to 15. This value is currently a placeholder and can be adjusted as needed.
     return runningTask.length <= 15
   }
 }

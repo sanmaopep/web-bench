@@ -54,7 +54,7 @@ export class DefaultTaskRunner implements ITaskRunner {
 
     const beforeErrors: string[] = []
 
-    // 2. 遍历 task
+    // 2. Iterate through tasks
     for (let times = 0; times < retry; times++) {
       const { settings, pluginSchedule } = this.project
 
@@ -97,7 +97,7 @@ export class DefaultTaskRunner implements ITaskRunner {
           times,
         })
 
-        // 获取上下文
+        // Get context
         const files = await pluginSchedule.run(
           'onTaskContextCollect',
           { task: this.task, project: this.project },
@@ -106,7 +106,7 @@ export class DefaultTaskRunner implements ITaskRunner {
 
         logger.debug(`Get the context`)
 
-        // 3. 请求 agent 返回结果
+        // 3. Request agent to return results
 
         const agentRequest = {
           files,
@@ -158,7 +158,7 @@ export class DefaultTaskRunner implements ITaskRunner {
           }
         }
 
-        // 4. 将文件写回
+        // 4. Write files back
 
         await pluginSchedule.run('onTaskRewriteFiles', {
           task: this.task,
@@ -171,7 +171,7 @@ export class DefaultTaskRunner implements ITaskRunner {
 
         logger.debug(`The file screenshots...`)
 
-        // 5. 初始化文件运行环境
+        // 5. Initialize file runtime environment
 
         if (settings.needInit) {
           await pluginSchedule.run('onTaskInitEnv', {
@@ -180,7 +180,7 @@ export class DefaultTaskRunner implements ITaskRunner {
           })
         }
 
-        // 6. build 校验
+        // 6. Build verification
 
         if (settings.needBuild) {
           const buildResult = await pluginSchedule.run('onTaskBuild', {
@@ -193,7 +193,7 @@ export class DefaultTaskRunner implements ITaskRunner {
           }
         }
 
-        // 生成截图
+        // Generate screenshot
         if (!settings.notScreenshot) {
           screenshotPath = this.task.id + '-' + (times + 1) + '.png'
 
@@ -208,7 +208,7 @@ export class DefaultTaskRunner implements ITaskRunner {
 
         testBegin = +new Date()
 
-        // 7. 调用测试用例
+        // 7. Call test cases
         const originTestResult = await pluginSchedule.run('onTaskTest', {
           task: this.task,
           project: this.project,
@@ -262,7 +262,7 @@ export class DefaultTaskRunner implements ITaskRunner {
         outputTokens,
       }
 
-      // 执行时间，请求时间 + 测试时间，是否成功（请求 / 测试），失败原因
+      // Execution time, request time + test time, whether successful (request / test), reason for failure
 
       const taskEnd = +new Date()
 
@@ -290,7 +290,7 @@ export class DefaultTaskRunner implements ITaskRunner {
       }
     }
 
-    // 存储当前运行的日志
+    // Store current run log
     this.project.addTaskSnippet({
       id: this.task.id,
       description: this.task.description,
@@ -299,7 +299,7 @@ export class DefaultTaskRunner implements ITaskRunner {
       outputTokens: sum(result.map(_task => _task.outputTokens || 0)),
     })
 
-    // 只要有运行成功即完整运行成功
+    // As long as there is a successful run, it is considered a complete successful run
     return result.some((v) => v.success)
   }
 }

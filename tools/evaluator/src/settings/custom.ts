@@ -49,7 +49,7 @@ export class CustomProjectSettingGetter implements ProjectSettingGetter {
 
     const projectRoot = process.cwd()
 
-    // 1. 获取 package.json
+    // 1. Get package.json
 
     const packageJsonContent = await readFile(path.join(projectRoot, 'package.json'), {
       encoding: 'utf-8',
@@ -63,7 +63,7 @@ export class CustomProjectSettingGetter implements ProjectSettingGetter {
 
     const name = packageJson.name
 
-    // 3. 获取对应的项目的 tasks
+    // 3. Get the corresponding project's tasks
 
     let baseTasks = []
     if (await fse.pathExists(path.join(projectRoot, 'tasks.yml'))) {
@@ -86,13 +86,13 @@ export class CustomProjectSettingGetter implements ProjectSettingGetter {
 
     const outputProjectDir: string[] = []
 
-    // 输出的 eval 的路径
+    // Output path for eval
     const evalPath = path.join(projectRoot, 'eval', 'eval-' + this.hash)
 
     // assetsDir
     let assetsDir = ''
 
-    // 7. 返回项目完整的 setting
+    // 7. Return the complete project setting
     return {
       name,
       agentDir: projectRoot,
@@ -132,7 +132,7 @@ export class CustomProjectSettingGetter implements ProjectSettingGetter {
     prevSettings: ProjectSetting,
     { task, times }: Parameters<ProjectSettingGetter['updateSettingBeforeRunTask']>[1]
   ): Promise<ProjectSetting> {
-    // 更新文件，使用最新运行的 project 的运行路径
+    // Update files, use the run path of the latest run project
 
     let files: string[] = []
     if (prevSettings.outputProjectDir[0]) {

@@ -20,8 +20,8 @@ export const promiseSpawn = (
   return new Promise(async (resolve, reject) => {
     const task = ChildProcess.spawn(...param)
     task.on('close', (code) => {
-      // code 0 为 成功
-      // 1 为失败
+      // code 0 means success
+      // 1 means failure
       resolve(code)
     })
 

@@ -35,12 +35,12 @@ export const getPassCounts = (
 ): number[] => {
   const timeArr = new Array(retry).fill(0)
   const passRate: number[] = [...timeArr].map((_, n) => {
-    // 所有任务的前 n 次结果
+    // The first n results of all tasks
     const allTaskFirstNResult = taskSnippets.map((v) => {
       return [...v.result].splice(0, Math.min(n + 1, v.result.length))
     })
 
-    // 找到前 n 个全部失败的结果的 index
+    // Find the index of the first n results that all failed
     const failIndex = allTaskFirstNResult.findIndex((taskResults) =>
       taskResults.every((result) => !result.success)
     )
@@ -76,12 +76,12 @@ export const getErrorCounts = (
   const timeArr = new Array(retry).fill(0)
 
   const errorCounts: number[] = [...timeArr].map((_, n) => {
-    // 所有任务的前 n 次结果
+    // The first n results of all tasks
     const allTaskFirstNResult = taskSnippets.map((v) =>
       [...v.result].slice(0, Math.min(n + 1, v.result.length))
     )
 
-    // 找到前 n 个结果中存在失败的列
+    // Find columns with failures in the first n results
     const failCount = allTaskFirstNResult.filter((taskResults) =>
       taskResults.some((result) => !result.success)
     ).length

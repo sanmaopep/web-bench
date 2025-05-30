@@ -1,11 +1,11 @@
 // Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
+//
 //     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -242,7 +242,7 @@ function isExisted(filePath, srcPath) {
   // }
 }
 /**
- * 从浏览器环境中获取当前 page 上下文的 window 下特定一些 key 的字段。
+ * Get specific key fields under window in the current page context from the browser environment.
  * @param {import('@playwright/test').Page} page
  * @param {string[]} _keys
  */
@@ -265,7 +265,7 @@ async function getWindowMirror(page, _keys) {
 }
 
 /**
- * 获取特定 dom 下的特定 key 的 values 对象
+ * Get the values object of a specific key under a specific DOM
  * @param {import('@playwright/test').Locator} locator
  * @param {string[]} _keys
  */

@@ -58,7 +58,7 @@ export class EvaluatorRunner implements IRunner {
 
     await this.pluginSchedule.run('onEvalStart', { config, hash })
 
-    // 3. 执行 project eval，最大并行执行 maxdop 个 project
+    // 3. Execute project eval, with a maximum of maxdop projects running in parallel
     const projectsList: IProjectRunner[] = []
 
     config.projects?.forEach((packageName) => {

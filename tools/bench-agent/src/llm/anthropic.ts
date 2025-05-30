@@ -137,14 +137,14 @@ export class AnthropicLLM extends BaseLLM {
   }
 
   public checkLimit = ({ runningTask }: { runningTask: ScheduleTask[] }): boolean => {
-    // 留 20% buffer
+    // Leave 20% buffer
     const RPM = 2_000 * 0.8
     const ITPM = 160_000 * 0.8
     const OTPM = 32000 * 0.8
 
     const now = +Date.now()
 
-    // 过去一分钟内请求的 tasks
+    // Tasks requested in the past minute
     const recentTasks = runningTask.filter((t) => now - t.requestTime <= 1000 * 60)
 
     if (recentTasks.length > RPM) {

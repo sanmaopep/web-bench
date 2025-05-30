@@ -52,11 +52,11 @@ export class BenchProjectSettingGetter implements ProjectSettingGetter {
       taskMode = 'sequential',
     } = project
 
-    // TODO: 这里怎么更优雅一点
+    // TODO: How to make this more elegant
     const projectRoot = path.join(__dirname, '../../../projects/')
     const repositoryDir = path.join(__dirname, '../../..')
 
-    // 1. 获取所有的 projects 的 package.json
+    // 1. Get all projects' package.json files
 
     const allProjects = await fs.readdir(projectRoot)
 
@@ -80,7 +80,7 @@ export class BenchProjectSettingGetter implements ProjectSettingGetter {
       )
     )
 
-    // 2. 找到对应的项目的 package.json
+    // 2. Find the corresponding project's package.json file
     const idx = packageJsons.findIndex((json) => json && JSON.parse(json).name === packageName)
 
     const packageJson: { eval?: ProjectEvalConfig; scripts?: Record<string, string> } =
@@ -94,17 +94,17 @@ export class BenchProjectSettingGetter implements ProjectSettingGetter {
 
     const name = project.name || toCamelCase(projects[idx])
 
-    // 3. 获取对应的项目的 tasks
+    // 3. Get the corresponding project's tasks
 
     const projectDir = path.join(projectRoot, projects[idx])
 
-    // 4. 找到 init 文件的所有文件
+    // 4. Find all files in the init directory
 
     const initDir = path.join(projectDir, 'src-init')
 
     const initFiles = await FileUtils.getAllFiles(initDir, { relative: true })
 
-    // 5. 获取对应的项目的 tasks
+    // 5. Get the corresponding project's tasks
     let baseTasks = []
     if (await fse.pathExists(path.join(projectDir, 'tasks.yml'))) {
       const ymlContent = await fs.readFile(path.join(projectDir, 'tasks.yml'), {
@@ -126,29 +126,29 @@ export class BenchProjectSettingGetter implements ProjectSettingGetter {
 
     const tasks = await this.pluginSchedule.run('onGetTasks', { originTasks }, originTasks)
 
-    // 6. 初始化一些属性
-    // 6.1 强制设置非 production mode，以及只执行部分任务则认为是开发模式
+    // 6. Initialize some properties
+    // 6.1 Force non-production mode, and executing only some tasks is considered development mode
     const isDevMode = !production || fullTasks.length !== tasks.length
 
     const hasInit = tasks.find((task) => task.isInit)
     const srcDir = path.join(projectDir, 'src')
-    // 6.2 设置初始文件夹的路径，考虑以下几种 case
-    //   6.2.1 从 init task 开始的 eval：不需要读取任何初始文件
-    //   6.2.2 没有 init task 的 eval: 存在 startTask 说明是校准过程，从 src 中复制
-    //   6.2.3 没有 init task 的 eval: 不存在 startTask 从 init 文件下复制
+    // 6.2 Set the initial folder path, considering the following cases
+    //   6.2.1 Eval starting from init task: no need to read any initial files
+    //   6.2.2 Eval without init task: if startTask exists, it indicates a calibration process, copy from src
+    //   6.2.3 Eval without init task: if startTask does not exist, copy from the init directory
     const outputProjectDir: string[] = []
-    // 存在 init task 就不需要复制 init 文件了
+    // If init task exists, no need to copy init files
     if (!hasInit) {
-      // 存在 startTask 说明是校准过程，从 src 中复制
+      // If startTask exists, it indicates a calibration process, copy from src
       if (startTask) {
         outputProjectDir.push(srcDir)
       } else {
-        // 不存在 startTask 从 init 文件下复制
+        // If startTask does not exist, copy from the init directory
         outputProjectDir.push(initDir)
       }
     }
 
-    // 输出的 eval 的路径
+    // Output path for eval
     const evalPath = path.join(projectDir, 'eval', 'eval-' + this.hash)
 
     if (await fse.pathExists(outputProjectDir[0])) {
@@ -176,7 +176,7 @@ export class BenchProjectSettingGetter implements ProjectSettingGetter {
       assetsDir = path.join(projectDir, 'assets')
     }
 
-    // 7. 返回项目完整的 setting
+    // 7. Return the complete project setting
     return {
       name,
       taskMode,
@@ -186,7 +186,7 @@ export class BenchProjectSettingGetter implements ProjectSettingGetter {
       taskCount: tasks.filter((t) => !t.isInit).length,
       packageName: project.packageName,
       retry: project.retry || 2,
-      // TODO: tester 改为从 package.json 中获取
+      // TODO: Change tester to be obtained from package.json
       tester: 'playwright',
       testUtilDir: path.join(repositoryDir, 'libraries', 'test-util'),
       needBuild: !!packageJson.scripts?.build,
@@ -195,7 +195,7 @@ export class BenchProjectSettingGetter implements ProjectSettingGetter {
       production: !isDevMode,
       outputWorkspaceDir: evalPath,
       endpoint: project.endpoint,
-      // 该值在 initProject 和 updateSettingBeforeRunTask 中更新
+      // This value is updated in initProject and updateSettingBeforeRunTask
       outputProjectDir,
       notScreenshot: !screenshot,
       logLevel: logLevel || 'info',
@@ -219,7 +219,7 @@ export class BenchProjectSettingGetter implements ProjectSettingGetter {
     prevSettings: ProjectSetting,
     { task, times }: Parameters<ProjectSettingGetter['updateSettingBeforeRunTask']>[1]
   ): Promise<ProjectSetting> {
-    // 更新文件，使用最新运行的 project 的运行路径
+    // Update files, use the run path of the latest run project
 
     let files: string[] = []
     if (prevSettings.outputProjectDir[0]) {

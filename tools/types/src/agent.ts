@@ -51,33 +51,33 @@ export interface AgentRequest {
 }
 
 /**
- * evaluation 事件参数定义
- * key 为事件名，value 为回调参数
- */
+   * Evaluation event parameter definition
+   * key is event name, value is callback parameter
+   */
 export interface AgentEvent {
   /**
-   * llm，网络请求，回调第一参数为 request, 第二参数为 response
-   */
+     * LLM network request, first callback parameter is request, second is response
+     */
   onRequest: [string, string]
   /**
-   * log 事件
-   */
+     * Log event
+     */
   log: ['info' | 'warn' | 'error' | 'debug', string]
 }
 
 export interface IAgent {
   /**
-   * Agent 唯一索引
-   */
+     * Agent unique index
+     */
   key?: string
   /**
-   * 关联的 model
-   */
+     * Associated model
+     */
   model?: Model
 
   /**
-   * 事件 emit
-   */
+     * Event emit
+     */
   emitter?: EventEmitter<AgentEvent>
 
   /**
@@ -86,8 +86,8 @@ export interface IAgent {
   endpoint?: string
 
   /**
-   * 请求接口
-   */
+     * Request interface
+     */
   request: (req: AgentRequest) => Promise<AgentResponse>
   /**
    * clone agent

@@ -18,12 +18,12 @@ import path from 'path'
 
 export function compressFolder(folderPath: string) {
   return new Promise((resolve, reject) => {
-    // 检查文件夹是否存在
+    // Check if folder exists
     if (!fs.existsSync(folderPath)) {
-      return reject(new Error(`文件夹 ${folderPath} 不存在`))
+      return reject(new Error(`Folder ${folderPath} does not exist`))
     }
 
-    // 获取文件夹名称，用于生成压缩文件名称
+    // Get folder name to generate compressed file name
     const folderName = path.basename(folderPath)
     const outputPath = path.join(path.dirname(folderPath), `${folderName}.zip`)
 

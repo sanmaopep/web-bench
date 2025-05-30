@@ -15,7 +15,7 @@
 export const PORT_UPPER = 25000
 export const PORT_LOWER = 10000
 
-// 部分 port unsafe
+// Some ports are unsafe
 const UNSAFE_PORT = [10080]
 
 // function checkPortUse(port: number): Promise<boolean> {
@@ -34,9 +34,9 @@ const UNSAFE_PORT = [10080]
 // }
 
 /**
- * port 端口管理
- * 1. 启动时，随机分配一个端口
- * 2. 结束时，释放端口
+ * Port management
+ * 1. Assign a random port at startup
+ * 2. Release the port at the end
  */
 export class LocalPort {
   private static _portSet = new Set<number>()
@@ -59,7 +59,7 @@ export class LocalPort {
 
   public static releasePort(port: number): void {
     this._portSet.delete(port)
-    // 用后即弃，避免频繁申请同一个 port
+    // Dispose after use to avoid frequently applying for the same port
     this._index += 1
   }
 }

@@ -31,12 +31,12 @@ import { getDefaultPlugins, getInternalPluginsByName } from '../plugins/plugin'
 
 export class ProjectRunner implements IProjectRunner {
   /**
-   * 项目完整配置
+   * Complete project configuration
    */
   private _settings: ProjectSetting
 
   /**
-   * 项目用户配置
+   * Project user configuration
    */
   private _config: ProjectConfig
 
@@ -79,13 +79,13 @@ export class ProjectRunner implements IProjectRunner {
     this.pluginSchedule = new PluginSchedule(plugins)
 
     // new ProjectReporter()
-    // init 行为不对外透出，避免给用户增加无关的逻辑
+    // The init behavior is not exposed externally to avoid adding irrelevant logic for users
     this._initSetting()
   }
 
   private _initSetting = async () => {
     /**
-     * 初始化
+     * Initialization
      */
     const init = async () => {
       this.projectGetter = getInitProjectSettingGetter(
@@ -96,11 +96,11 @@ export class ProjectRunner implements IProjectRunner {
 
       const settingGetter = this.projectGetter
       // 1. init settings
-      // 注意：这里是基于用户生成的配置生成完整的配置，注意是完整的配置
-      // 在之后就不会感知任何 project 的各种结构了，直接读取
-      // 比如 project 的模板文件的路径，是 project / src-init 具体路径会在 settingGetter 里感知
-      // 对外只感知 settings.initDir
-      // ！！不要在外部去单独再拼路径了
+      // Note: This generates the complete configuration based on the user-generated configuration. Note that it is the complete configuration.
+      // Afterwards, it will not perceive any project structures; it will read directly.
+      // For example, the path to the project's template files, like project / src-init, will be perceived in settingGetter.
+      // Externally, only settings.initDir is perceived.
+      // !! Do not concatenate paths separately outside.
       const settings = await settingGetter.getInitProjectSetting(this._config)
       this.updateSettings(settings)
       this.logger.silentLog(`settings`, JSON.stringify(settings))
@@ -136,7 +136,7 @@ export class ProjectRunner implements IProjectRunner {
 
     const needBreak = this.settings.taskMode === 'sequential'
 
-    // 5. 执行 所有 task，任务出错则退出
+    // 5. Execute all tasks; exit if a task encounters an error.
     for (const runner of this.tasks) {
       this.currentTask = runner
 

@@ -21,19 +21,19 @@ import { IRunner } from '../runner'
 import { ITaskRunner, TaskSnippet } from '../task'
 
 /**
- * project runner 定义
+ * Project runner definition
  */
 export interface IProjectRunner extends IRunner {
   hash: string
 
   /**
-   * 运行设置
-   */
+     * Runtime settings
+     */
   settings: ProjectSetting
 
   /**
-   * 运行结果
-   */
+     * Runtime results
+     */
   tasks: ITaskRunner[]
 
   currentTask?: ITaskRunner
@@ -41,8 +41,8 @@ export interface IProjectRunner extends IRunner {
   projectGetter: ProjectSettingGetter
 
   /**
-   * 存储 plugin 上下文
-   */
+     * Store plugin context
+     */
   metadata: Map<string, any>
 
   ignore: {
@@ -51,8 +51,8 @@ export interface IProjectRunner extends IRunner {
 
   taskSnippets: TaskSnippet[]
   /**
-   * 获取日志管理
-   */
+     * Get logger management
+     */
   logger: ILogger
 
   /**

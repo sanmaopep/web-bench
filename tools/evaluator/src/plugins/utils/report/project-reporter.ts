@@ -26,7 +26,7 @@ import fs from 'fs/promises'
 
 export class ProjectReporter {
   /**
-   * 单次 task 执行的详细记录
+   * Detailed record of a single task execution
    */
   public getReportResultSnippet(
     id: string,
@@ -84,7 +84,7 @@ ${result.errorMessage}
   }
 
   /**
-   * 每个 task 执行包括多次的记录
+   * Each task execution includes multiple records
    */
   public getReportSnippet(task: TaskSnippet) {
     return `
@@ -99,7 +99,7 @@ ${result.errorMessage}
   }
 
   /**
-   * 根据 taskSnippets 生成指标表格
+   * Generate metrics table based on taskSnippets
    */
   public getMetricsTable({
     allTaskCount,
@@ -144,7 +144,7 @@ ${taskSnippets
   }
 
   /**
-   * 临时报告初始化内容
+   * Temporary report initialization content
    */
   public getTempleReportInitContent({
     model,
@@ -170,7 +170,7 @@ ${endpoint ? `* EndPoint: ${endpoint}` : ''}
   }
 
   /**
-   * 报告完整内容
+   * Complete report content
    */
   public getModelReportContent = ({
     taskSnippets,
@@ -217,7 +217,7 @@ ${taskSnippets.map((task) => this.getReportSnippet(task)).join('\n')}
   }
 
   /**
-   * report 临时日志
+   * report temporary log
    */
 
   public async reportTaskSnippet(ctx: {

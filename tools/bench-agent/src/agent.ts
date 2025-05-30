@@ -93,7 +93,7 @@ export class BenchAgent implements IAgent {
 
     const llm = LLMFactory.createLLM(model)
 
-    // 出错再试 3 次
+    // Retry 3 times on error
     let requestTimes = 3
 
     let agentRes

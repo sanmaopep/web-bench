@@ -19,7 +19,7 @@ interface CodeInfo {
 }
 
 const markdownLanguages = [
-  // 编程语言
+  // Programming languages
   'javascript',
   'js',
   'typescript',
@@ -40,7 +40,7 @@ const markdownLanguages = [
   'kotlin',
   'scala',
 
-  // 前端相关
+  // Frontend related
   'html',
   'css',
   'scss',
@@ -57,30 +57,30 @@ const markdownLanguages = [
   'stylus',
   'styl',
 
-  // 模板引擎
+  // Template engines
   'pug',
   'ejs',
 
-  // 脚本/Shell
+  // Script/Shell
   'bash',
   'shell',
   'powershell',
   'batch',
   'sql',
 
-  // 标记语言
+  // Markup languages
   'markdown',
   'md',
   'tex',
   'latex',
   'diff',
 
-  // 配置文件
+  // Configuration files
   'ini',
   'toml',
   'dockerfile',
 
-  // 其他
+  // Others
   'text',
   'plaintext',
   'diff',
@@ -90,19 +90,19 @@ const markdownLanguages = [
 
 export namespace MarkdownParser {
   export function parseMarkdownCodeBlocks(markdown: string): CodeInfo[] {
-    // 匹配 Markdown 代码块的正则表达式
+    // Regular expression to match Markdown code blocks
     const codeBlockRegex = /```([\s\S]+?)```/g
 
-    // 存储解析结果
+    // Store parsing results
     const codeBlocks: CodeInfo[] = []
 
-    // 使用正则表达式遍历所有匹配项
+    // Use regular expression to iterate through all matches
     let match
     while ((match = codeBlockRegex.exec(markdown)) !== null) {
       const content = match[1] || '\n'
       const lines = trimNewlines(content).split('\n')
 
-      // 提取语言标识和文件名
+      // Extract language identifier and filename
 
       let language = ''
       if (markdownLanguages.includes(lines[0])) {
@@ -132,22 +132,22 @@ export namespace MarkdownParser {
   }
 
   export function isFileName(str: string): boolean {
-    // 基本文件名正则模式
+    // Basic filename regex pattern
     const fileNamePattern = /^[\[\]\w,\s-]*(\.[A-Za-z]+)+$/
 
-    // 带路径的文件名正则模式
+    // Filename with path regex pattern
     const pathFilePattern = /^(.+\/)?([^/]+)$/
 
-    // 检查是否是基本文件名格式
+    // Check if it is a basic filename format
     if (fileNamePattern.test(str)) {
       return true
     }
 
-    // 检查是否是带路径的文件名
+    // Check if it is a filename with path
     if (pathFilePattern.test(str)) {
-      // 提取文件名部分
+      // Extract filename part
       const fileName = str.split('/').pop()
-      // 再次检查提取的文件名是否符合基本文件名格式
+      // Recheck if the extracted filename conforms to the basic filename format
       return fileName ? fileNamePattern.test(fileName) : false
     }
 
@@ -155,7 +155,7 @@ export namespace MarkdownParser {
   }
 
   export function trimNewlines(str: string) {
-    // 使用正则表达式匹配开头和结尾的换行符（支持 \n、\r 和 \r\n）
+    // Use regular expression to match line breaks at the beginning and end (supports \n, \r, and \r\n)
     return str.replace(/^[\n\r]+|[\n\r]+$/g, '')
   }
 }

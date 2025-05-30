@@ -1,7 +1,7 @@
 import { DataTypes, Model } from 'sequelize'
 import { sequelize } from '@/libs/db'
 
-// 定义 User 模型
+// Define User model
 export class User extends Model {
   public id!: number
   public username!: string
@@ -39,7 +39,7 @@ User.init(
   }
 )
 
-// 初始化用户数据
+// Initialize user data
 export const initUsers = async () => {
   const count = await User.count()
   if (count === 0) {

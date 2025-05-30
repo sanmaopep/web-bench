@@ -45,7 +45,7 @@ export default defineConfig({
     watch: process.env.EVAL ? null : undefined,
   },
   build: {
-    // chunk size warning 提示改为 1M
+    // Change chunk size warning prompt to 1M
     chunkSizeWarningLimit: 1024,
   },
   plugins: [htmlScriptInject()],

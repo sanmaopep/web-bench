@@ -39,7 +39,7 @@ const strategies: Strategy[] = [
   {
     type: 'custom-mode',
     rewriteIgnore: false,
-    // 兜底
+    // Fallback
     match: () => true,
     getFileContent: async (filepath: string) =>
       await fs.readFile(filepath, {

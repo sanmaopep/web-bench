@@ -85,7 +85,7 @@ const tasks = new Array(21).fill(0).map((_, index) => getTask(index))
 
 describe('getTasksFromStartTaskToEndTask test ', () => {
   test('tasks 21, start empty, end empty', () => {
-    // 前后都省略
+    // Both start and end omitted
     const res = getTasksFromStartTaskToEndTask(tasks)
     expect(res.length).toBe(21)
     expect(res[0]?.id).toBe('init')
@@ -93,7 +93,7 @@ describe('getTasksFromStartTaskToEndTask test ', () => {
   })
 
   test('tasks 21, start init, end task-20', () => {
-    // 开头到结尾
+    // From beginning to end
     const res = getTasksFromStartTaskToEndTask(tasks, 'init', 'task-20')
     expect(res.length).toBe(21)
     expect(res[0]?.id).toBe('init')
@@ -101,7 +101,7 @@ describe('getTasksFromStartTaskToEndTask test ', () => {
   })
 
   test('tasks 21, start task-3, end task-20', () => {
-    // 中间到结束
+    // From middle to end
     const res = getTasksFromStartTaskToEndTask(tasks, 'task-3')
     expect(res.length).toBe(18)
     expect(res[0]?.id).toBe('task-3')
@@ -109,7 +109,7 @@ describe('getTasksFromStartTaskToEndTask test ', () => {
   })
 
   test('tasks 21, start init, end task-5', () => {
-    // 开始到中间
+    // From start to middle
     const res = getTasksFromStartTaskToEndTask(tasks, 'init', 'task-5')
     expect(res.length).toBe(6)
     expect(res[0]?.id).toBe('init')
@@ -117,7 +117,7 @@ describe('getTasksFromStartTaskToEndTask test ', () => {
   })
 
   test('tasks 21, start task-9, end task-16', () => {
-    // 中间到中间
+    // From middle to middle
     const res = getTasksFromStartTaskToEndTask(tasks, 'task-9', 'task-16')
     expect(res.length).toBe(8)
     expect(res[0]?.id).toBe('task-9')
@@ -125,7 +125,7 @@ describe('getTasksFromStartTaskToEndTask test ', () => {
   })
 
   test('tasks 21, start task-9, end task-9', () => {
-    // 起点终点重合
+    // Start and end points coincide
     const res = getTasksFromStartTaskToEndTask(tasks, 'task-9', 'task-9')
     expect(res.length).toBe(1)
     expect(res[0]?.id).toBe('task-9')
@@ -133,7 +133,7 @@ describe('getTasksFromStartTaskToEndTask test ', () => {
   })
 
   test('tasks 21, start task-10000, end task-10000', () => {
-    // 起点终点非法
+    // Invalid start and end points
     const res = getTasksFromStartTaskToEndTask(tasks, 'task-10000', 'task-10000')
     expect(res.length).toBe(21)
     expect(res[0]?.id).toBe('init')
@@ -141,7 +141,7 @@ describe('getTasksFromStartTaskToEndTask test ', () => {
   })
 
   test('tasks 0, start init, end init', () => {
-    // task 0 个
+    // Zero tasks
     const res = getTasksFromStartTaskToEndTask([], 'init', 'init')
     expect(res.length).toBe(0)
   })

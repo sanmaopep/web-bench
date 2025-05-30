@@ -18,8 +18,8 @@ import fse from 'fs-extra'
 
 export namespace FileUtils {
   /**
-   * 遍历文件夹
-   * @param rootDir 根目录
+   * Traverse a folder
+   * @param rootDir The root directory
    * @param callback
    */
   export async function travelDir(
@@ -63,23 +63,23 @@ export namespace FileUtils {
   }
 
   export function getRelativePath(pathA: string, pathB: string) {
-    // 将路径转换为绝对路径
+    // Convert the path to an absolute path
     const absolutePathA = path.resolve(pathA)
     const absolutePathB = path.resolve(pathB)
 
-    // 计算相对路径
+    // Calculate the relative path
     const relativePath = path.relative(path.dirname(absolutePathB), absolutePathA)
 
-    // 统一使用正斜杠
+    // Use forward slashes uniformly
     return relativePath.replace(/\\/g, '/')
   }
 
   export async function checkDirectoryExists(path: string) {
     try {
       const stats = await fs.stat(path);
-      return stats.isDirectory(); // 返回 true 表示是目录，false 表示不是目录
+      return stats.isDirectory(); // Returns true if it is a directory, false if it is not
     } catch (err) {
-      return false; // 如果路径不存在，会抛出错误
+      return false; // If the path does not exist, an error will be thrown
     }
   }
 }

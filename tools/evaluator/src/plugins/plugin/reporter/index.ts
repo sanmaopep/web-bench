@@ -67,14 +67,14 @@ export const ReportPlugin: EvalPlugin[] = [
        * │ │ │ │ ├─ ...others
        * │ │ ├─ proj2
        */
-      // 1. 创建 report 文件夹
+      // 1. Create report folder
       await fs.mkdir(path.join(agentDir!, 'report'), {
         recursive: true,
       })
 
       const reportBase = path.join(agentDir!, 'report', `eval-${hash}`)
 
-      // 2. 创建 本次执行 的 eval-hash 文件夹
+      // 2. Create eval-hash folder for this execution
       await fs.mkdir(reportBase, {
         recursive: true,
       })
@@ -83,7 +83,7 @@ export const ReportPlugin: EvalPlugin[] = [
     onEvalEnd: async ({ projects, config, agents, hash }) => {
       const reportBase = path.join(config.agentDir!, 'report', `eval-${hash}`)
 
-      // 4. 生成 project 级别报告
+      // 4. Generate project-level report
       const projects2DList: IProjectRunner[][] = groupProjectsList(
         projects,
         config.projects!,
@@ -105,7 +105,7 @@ export const ReportPlugin: EvalPlugin[] = [
         })
       )
 
-      // 5. 生成 eval 级别报告
+      // 5. Generate eval-level report
       const content = report.getEvaluationReportContent({
         projectsList: projects2DList,
         evalConfig: config,
@@ -115,7 +115,7 @@ export const ReportPlugin: EvalPlugin[] = [
         encoding: 'utf-8',
       })
 
-      // 6. 拷贝一份 完整报告 至 project eval 目录
+      // 6. Copy a complete report to the project eval directory
       for (const project of projects) {
         if (await fse.pathExists(project.settings.evalRootDir)) {
           await fse.copy(reportBase, path.join(project.settings.evalRootDir, 'report'))
@@ -129,12 +129,12 @@ export const ReportPlugin: EvalPlugin[] = [
     onProjectStart: async ({ project, hash }) => {
       const evalPath = path.join(project.settings.agentDir, 'report', 'eval-' + hash)
 
-      // 1. 创建 eval-hash 下的 project 文件夹
+      // 1. Create project folder under eval-hash
       await fs.mkdir(path.join(evalPath, project.settings.name), {
         recursive: true,
       })
 
-      // 2. 创建当前 project report 的文件夹
+      // 2. Create folder for current project report
       const reportDir = getReportDir(project)
 
       await fs.mkdir(reportDir, {
@@ -143,7 +143,7 @@ export const ReportPlugin: EvalPlugin[] = [
 
       const reporter = new ProjectReporter()
 
-      // 4. 生成 初始化 report
+      // 4. Generate initial report
       const templeReport = reporter.getTempleReportInitContent({
         model: project.settings.model,
         allTaskCount: project.tasks.length,
@@ -212,7 +212,7 @@ export const ReportPlugin: EvalPlugin[] = [
     },
 
     onTaskEnd: async ({ project, task, result, index }) => {
-      // 生成临时报告
+      // Generate temporary report
       const evalPath = path.join(project.settings.agentDir, 'report', 'eval-' + project.hash)
 
       const reportDir = path.join(evalPath, project.settings.name, getReportName(project))

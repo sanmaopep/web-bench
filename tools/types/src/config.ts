@@ -33,8 +33,8 @@ interface BaseConfig {
    */
   name?: string
   /**
-   * 默认 2
-   */
+     * Default 2
+     */
   retry?: number
   /**
    * logLevel
@@ -84,7 +84,7 @@ interface BaseConfig {
   screenshotLog?: boolean
 }
 /**
- * 对外暴露的用户可配置的 config
+ * User-configurable config exposed externally
  */
 export interface ProjectConfig extends BaseConfig {
   /**
@@ -143,8 +143,8 @@ export interface EvaluatorConfig extends BaseConfig {
 }
 
 /**
- * tools 内部需要感知的完整的 project 运行的所有配置
- * 和 config 不同的是 config 是对外部用户，setting 是对 tools 开发者感知
+ * Complete project runtime configuration that tools need to be aware of internally
+ * Unlike config which is for external users, setting is for tools developers
  */
 export interface ProjectSetting
   extends Required<
@@ -255,12 +255,12 @@ export interface ProjectSetting
  */
 export interface ProjectSettingGetter {
   /**
-   * 获取项目配置
-   */
+     * Get project configuration
+     */
   getInitProjectSetting: (project: ProjectConfig) => Promise<ProjectSetting>
   /**
-   * 运行 Task 前更新 Setting (粒度是 task 每次执行，即发生重试会也会再次触发)
-   */
+     * Update Setting before running Task (granularity is per task execution, retries will trigger again)
+     */
   updateSettingBeforeRunTask: (
     setting: ProjectSetting,
     ctx: {

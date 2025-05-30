@@ -13,9 +13,9 @@
 // limitations under the License.
 
 /**
- * 一些命名约定：
- * 1. 某个 class 需要为定义接口，其接口和 class 同名，以 I 开头，I 表示 interface
- * 例如 ProjectRunner 为 class, IProjectRunner 为 ProjectRunner 的接口定义
+ * Some naming conventions:
+ * 1. When a class needs an interface definition, the interface has same name as class but starts with I (for Interface)
+ * For example: ProjectRunner is the class, IProjectRunner is its interface definition
  */
 
 export * from './config'

@@ -17,7 +17,7 @@ import { onMounted } from 'vue'
 
 interface User {
   username: string
-  // 添加其他用户属性
+  // Add other user attributes
 }
 
 export const useUser = () => {
@@ -41,14 +41,14 @@ export const useUser = () => {
     }
   }
 
-  // 自动获取用户信息
+  // Automatically fetch user information
   onMounted( () => {
     if (!user.value) {
       fetchUser()
     }
   })
 
-  // 刷新用户状态
+  // Refresh user status
   const refreshAuth = async () => {
     return await fetchUser()
   }
@@ -59,4 +59,4 @@ export const useUser = () => {
     error,
     refreshAuth
   }
-} 
+}
