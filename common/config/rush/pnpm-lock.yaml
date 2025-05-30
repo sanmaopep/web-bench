@@ -68,6 +68,9 @@ importers:
       prettier:
         specifier: ^3.3.3
         version: 3.4.2
+      rimraf:
+        specifier: ~6.0.1
+        version: 6.0.1
       serve:
         specifier: ^14.2.4
         version: 14.2.4
@@ -861,6 +864,9 @@ importers:
       execa:
         specifier: ^9.5.2
         version: 9.5.2
+      rimraf:
+        specifier: ~6.0.1
+        version: 6.0.1
       tinyglobby:
         specifier: ^0.2.11
         version: 0.2.11
@@ -1377,6 +1383,9 @@ importers:
       promise-fs:
         specifier: ^2.1.1
         version: 2.1.1
+      rimraf:
+        specifier: ~6.0.1
+        version: 6.0.1
       serve:
         specifier: ^14.2.4
         version: 14.2.4
@@ -1419,6 +1428,9 @@ importers:
       execa:
         specifier: ^9.5.2
         version: 9.5.2
+      rimraf:
+        specifier: ~6.0.1
+        version: 6.0.1
       tinyglobby:
         specifier: ^0.2.11
         version: 0.2.11
@@ -1465,6 +1477,9 @@ importers:
       execa:
         specifier: ^9.5.2
         version: 9.5.2
+      rimraf:
+        specifier: ~6.0.1
+        version: 6.0.1
       tinyglobby:
         specifier: ^0.2.11
         version: 0.2.11
@@ -1541,6 +1556,9 @@ importers:
       node-fetch:
         specifier: ^2.6.11
         version: 2.7.0
+      rimraf:
+        specifier: ~6.0.1
+        version: 6.0.1
     devDependencies:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.4.0
@@ -1605,6 +1623,9 @@ importers:
       promise-fs:
         specifier: ^2.1.1
         version: 2.1.1
+      rimraf:
+        specifier: ~6.0.1
+        version: 6.0.1
       string-diff-viewer:
         specifier: ^0.4.1
         version: 0.4.1
@@ -1676,6 +1697,9 @@ importers:
       prettier:
         specifier: ^3.3.3
         version: 3.4.2
+      rimraf:
+        specifier: ~6.0.1
+        version: 6.0.1
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(typescript@5.7.2)
@@ -1697,6 +1721,9 @@ importers:
       prettier:
         specifier: ^3.3.3
         version: 3.4.2
+      rimraf:
+        specifier: ~6.0.1
+        version: 6.0.1
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(typescript@5.7.2)
@@ -12186,7 +12213,6 @@ packages:
       minipass: 7.1.2
       package-json-from-dist: 1.0.1
       path-scurry: 2.0.0
-    dev: false
 
   /glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
@@ -13096,7 +13122,6 @@ packages:
     engines: {node: 20 || >=22}
     dependencies:
       '@isaacs/cliui': 8.0.2
-    dev: false
 
   /jake@10.9.2:
     resolution: {integrity: sha512-2P4SQ0HrLQ+fw6llpLnOaGAvN2Zu6778SJMrCUwns4fOoG9ayrTiZk3VV8sCPkVZF8ab0zksVpS8FDY5pRCNBA==}
@@ -13653,7 +13678,6 @@ packages:
   /lru-cache@11.1.0:
     resolution: {integrity: sha512-QIXZUBJUx+2zHUdQujWejBkcD9+cs94tLn0+YL8UrCh+D5sCXZ4c7LaEH48pNwRY3MLDgqUFyhlCyjJPf1WP0A==}
     engines: {node: 20 || >=22}
-    dev: false
 
   /lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
@@ -13973,7 +13997,6 @@ packages:
     engines: {node: 20 || >=22}
     dependencies:
       brace-expansion: 2.0.1
-    dev: false
 
   /minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
@@ -15421,7 +15444,6 @@ packages:
     dependencies:
       lru-cache: 11.1.0
       minipass: 7.1.2
-    dev: false
 
   /path-to-regexp@0.1.12:
     resolution: {integrity: sha512-RA1GjUVMnvYFxuqovrEqZoxxW5NUZqbwKtYz/Tt7nXerk0LbLblQmrsgdeOxV5SFHf0UDggjS/bSeOZwt1pmEQ==}
@@ -16747,6 +16769,14 @@ packages:
     hasBin: true
     dependencies:
       glob: 10.4.5
+
+  /rimraf@6.0.1:
+    resolution: {integrity: sha512-9dkvaxAsk/xNXSJzMgFqqMCuFgt2+KsOFek3TMLfo8NCPfWpBmqwyNn5Y+NX56QUYfCtsyhF3ayiboEoUmJk/A==}
+    engines: {node: 20 || >=22}
+    hasBin: true
+    dependencies:
+      glob: 11.0.1
+      package-json-from-dist: 1.0.1
 
   /rollup-plugin-visualizer@5.14.0(rollup@4.36.0):
     resolution: {integrity: sha512-VlDXneTDaKsHIw8yzJAFWtrzguoJ/LnQ+lMpoVfYJ3jJF4Ihe5oYLAqLklIK/35lgUY+1yEzCkHyZ1j4A5w5fA==}

@@ -38,7 +38,7 @@ TIP: run all tests with `npm test -- -a`
 src/                 # final source codes
     index.html
 src-init/            # initial source codes
-    index.html 
+    index.html
 test/
     init.spec.js     # cases for initial codes
     task-1.spec.js   # cases for task-1
@@ -60,7 +60,7 @@ rush update
 
 # Prepare for Evaluation
 git checkout -b eval
-rm -rf src
+rimraf src
 mv src-init src
 npm test
 ```

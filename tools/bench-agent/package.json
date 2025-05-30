@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "npm run clean && npm run build:fast -- --dts-resolve",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "build:watch": "tsup",
     "test": "vitest",
     "build:fast": "tsup"
@@ -33,7 +33,8 @@
     "axios": "1.7.9",
     "axios-retry": "4.5.0",
     "node-fetch": "^2.6.11",
-    "follow-redirects": "^1.15.5"
+    "follow-redirects": "^1.15.5",
+    "rimraf": "~6.0.1"
   },
   "keywords": [],
   "author": "",
