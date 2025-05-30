@@ -78,24 +78,24 @@ export interface EvalPluginHook {
   }) => HookReturnType<void>
 
   /**
-   * hooks：获取本次执行的任务列表
-   * @returns 返回新的任务列表
-   */
+     * hooks: Get task list for current execution
+     * @returns New task list
+     */
   onGetTasks?: (ctx: { originTasks?: Undefinable<Task[]> }) => HookReturnType<Task[]>
 
   /**
-   * hooks：收集 task 上下文
-   * @returns 返回新的上下文路径
-   */
+     * hooks: Collect task context
+     * @returns New context path
+     */
   onTaskContextCollect?: (ctx: {
     task: Task
     project: IProjectRunner
   }) => HookReturnType<Record<string, string>>
 
   /**
-   * hooks：task 调用 agent 获取结果
-   * @returns 返回新的 agent 结果
-   */
+     * hooks: Task calls agent to get result
+     * @returns New agent result
+     */
   onTaskCallAgent?: (ctx: {
     request: AgentRequest
     response: Undefinable<AgentResponse>
@@ -103,9 +103,9 @@ export interface EvalPluginHook {
   }) => HookReturnType<AgentResponse>
 
   /**
-   * hooks：task 将 agent 结果写入文件内容
-   * @returns 返回新的写入文件内容
-   */
+     * hooks: Task writes agent result to file
+     * @returns New file content
+     */
   onTaskRewriteFiles?: (ctx: {
     task: Task
     files: Record<string, string>
@@ -114,9 +114,9 @@ export interface EvalPluginHook {
   }) => HookReturnType<void>
 
   /**
-   * hooks：task 初始化运行环境
-   * @returns 返回新的初始化 cwd
-   */
+     * hooks: Initialize task runtime environment
+     * @returns New initialization cwd
+     */
   onTaskInitEnv?: (ctx: { task: Task; project: IProjectRunner }) => HookReturnType<string>
 
   /**
@@ -129,9 +129,9 @@ export interface EvalPluginHook {
   }) => HookReturnType<void>
 
   /**
-   * hooks：task 构建代码
-   * @returns 返回新的构建 cwd
-   */
+     * hooks: Task builds code
+     * @returns New build cwd
+     */
   onTaskBuild?: (ctx: {
     task: Task
     // cwd: string
@@ -139,9 +139,9 @@ export interface EvalPluginHook {
   }) => HookReturnType<string>
 
   /**
-   * hooks：task 执行测试
-   * @returns 返回新的测试 cwd
-   */
+     * hooks: Task executes tests
+     * @returns New test cwd
+     */
   onTaskTest?: (ctx: {
     task: Task
     project: IProjectRunner
@@ -149,12 +149,12 @@ export interface EvalPluginHook {
   }) => HookReturnType<string>
 
   /**
-   * hooks：task 出错后重试
-   */
+     * hooks: Task retry after error
+     */
   onTaskRetry?: (ctx: { project: IProjectRunner }) => void
   /**
-   * hooks：生成 report
-   */
+     * hooks: Generate report
+     */
   onReport?: (ctx: { taskSnippet: TaskSnippet[]; project: IProjectRunner }) => HookReturnType<void>
 }
 
@@ -165,8 +165,8 @@ export interface EvalPlugin extends EvalPluginHook {
   name: string
 
   /**
-   * plugin 执行顺序，设置为 default 则为执行阶段执行，仅支持一个 default 执行
-   * default: pre
-   */
+     * Plugin execution order, set to default for execution phase (only one default allowed)
+     * default: pre
+     */
   enforce?: 'pre' | 'post' | 'replace'
 }

@@ -66,7 +66,7 @@ const getTestBeforeEach = async (taskTestSpec: string) => {
     else if (taskTestSpecContent[end] === ')') stack--
     end++
   }
-  // 提取括号内内容
+  // Extract content inside parentheses
   return `test.beforeEach(${taskTestSpecContent.slice(i, end - 1)})`
 }
 
@@ -83,7 +83,7 @@ export const generateScreenShot = async (
 ) => {
   const isESModule = settings.packageJson?.type === 'module'
 
-  // 带上端口号，避免多个 model 同时运行时，删除其他的 screenshot.spec.js 导致截图出错
+  // Include port number to avoid screenshot errors when multiple models run simultaneously and delete other screenshot.spec.js files
   const screenshotPath = path.join(settings.testDir, `screenshot-${port}.spec.js`)
   const taskTestSpec = path.join(settings.testDir, `${task.id}.spec.js`)
 

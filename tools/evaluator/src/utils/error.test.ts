@@ -15,7 +15,7 @@
 import { expect, test } from 'vitest'
 import { clearErrorMsg } from './error'
 
-test('清理 errormsg 的一些无关信息', () => {
+test('Clean up some irrelevant information in errormsg', () => {
   expect(
     clearErrorMsg(
       '/Documents/project/web-bench/projects/calculator/test/task-1.spec.js:13:14',

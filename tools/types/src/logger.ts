@@ -35,16 +35,16 @@ export interface ILogger {
    */
   debug: (...args: any[]) => void
   /**
-   * 只写入日志内，但是在控制台不输出
-   */
+     * Only write to log but not output to console
+     */
   silentLog: (...args: any[]) => void
   /**
-   * 获取日志输出历史
-   */
+     * Get log output history
+     */
   getHistory: () => string[]
   /**
-   * 清空日志历史
-   */
+     * Clear log history
+     */
   clearHistory(): void
   /**
    * 

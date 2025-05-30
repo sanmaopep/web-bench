@@ -45,7 +45,7 @@ ${initFiles.length > 0 ? `The existing files: ${settings.initFiles.join()}` : ''
 
       this.project.updateSettings({
         ...settings,
-        // init 任务都失败的话，则将最新的 输出 output 设置为 init 目录，这样下次执行时会将 init 目录内容拷贝到下一个 task 运行目录内
+        // If all init tasks fail, set the latest output to the init directory, so that the content of the init directory will be copied to the next task's run directory during the next execution.
         outputProjectDir: [settings.initDir, ...settings.outputProjectDir],
       })
     }

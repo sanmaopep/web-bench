@@ -38,7 +38,7 @@ const getTaskSnippets = (
   }))
 }
 
-test('pass@n 总共 20 个 task, 6、8 第一次失败, 11 次都失败', () => {
+test('pass@n total 20 tasks, 6 and 8 failed the first time, 11 failed all times', () => {
   /**
    * task-1 *  ✅    -
    * task-2 *  ✅    -
@@ -63,7 +63,7 @@ test('pass@n 总共 20 个 task, 6、8 第一次失败, 11 次都失败', () => 
   expect(getErrorRate(snippets1, 20, 2)).toStrictEqual([15])
 })
 
-test('pass@n 总共 20 个 task, 6、8 第一次失败, 11 次都失败', () => {
+test('pass@n total 20 tasks, 6 and 8 failed the first time, 11 failed all times', () => {
   /**
    * task-1 *  ✅    -
    * task-2 *  ✅    -
@@ -86,7 +86,7 @@ test('pass@n 总共 20 个 task, 6、8 第一次失败, 11 次都失败', () => 
   expect(getErrorRate(snippets1, 20, 2)).toStrictEqual([5])
 })
 
-test('pass@n 总共 20 个 task全通过', () => {
+test('pass@n total 20 tasks, all passed', () => {
   const snippets2: TaskSnippet[] = getTaskSnippets(20)
   // pass@1: 100%, pass@2: 100%
   expect(getPassRate(snippets2, 20, 2)).toStrictEqual([100, 100])
@@ -94,7 +94,7 @@ test('pass@n 总共 20 个 task全通过', () => {
   expect(getErrorRate(snippets2, 20, 2)).toStrictEqual([0])
 })
 
-test('pass@n 总共 20 个 task,第一个就全失败了', () => {
+test('pass@n total 20 tasks, the first one failed completely', () => {
   const snippets2: TaskSnippet[] = getTaskSnippets(1, Result.fail)
   // pass@1: 0%, pass@2: 0%
   expect(getPassRate(snippets2, 20, 2)).toStrictEqual([0, 0])

@@ -99,13 +99,13 @@ export interface TaskSnippet {
    */
   outputTokens?: number
   /**
-   * 每次执行结果快照，可能会执行多次
-   */
+     * Snapshot of each execution result (may execute multiple times)
+     */
   result: TaskResultSnippet[]
 }
 
 /**
- * task runner 定义
+ * Task runner definition
  */
 export interface ITaskRunner extends IRunner {
   /**
@@ -113,12 +113,12 @@ export interface ITaskRunner extends IRunner {
    */
   task: Task
   /**
-   * 当前执行信息
-   */
+     * Current execution information
+     */
   executeInfo?: {
     /**
-     * 执行次数
-     */
+       * Execution count
+       */
     times: number
   }
 }
