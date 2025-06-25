@@ -23,7 +23,6 @@ HumanEval 和 MBPP 已趋于饱和，APPS 和 EvalPlus 也正在接近饱和状�
 
 ## 🚀 安装
 
-
 1. [安装 Node.js 22+](https://nodejs.org/en/download)
 2. 初始化
 
@@ -40,7 +39,7 @@ rush build
 
 ## **📘** 使用
 
-完成[配置](https://github.com/bytedance/web-bench/wiki/Config)后执行： 
+完成[配置](https://github.com/bytedance/web-bench/wiki/Config)后执行：
 
 ```bash
 rush eval
@@ -48,8 +47,7 @@ rush eval
 
 ## **🛠️** 贡献
 
-* [项目贡献指南](https://github.com/bytedance/web-bench/wiki/Project-Contribution)
-
+- [项目贡献指南](https://github.com/bytedance/web-bench/wiki/Project-Contribution)
 
 ## **📚** 引文
 
@@ -62,7 +60,12 @@ rush eval
 }
 ```
 
-
 ## **📄** 许可证
 
 [Apache 2.0](./LICENSE.md)
+
+## **🌟** 联系我们
+
+- 飞书：扫描二维码 [注册飞书](https://www.feishu.cn/) 加入 Web Bench 用户群.
+
+<img width="300" alt="pass@1" src="./docs/assets/lark-group-qr-code.png" />

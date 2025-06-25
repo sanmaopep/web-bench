@@ -21,11 +21,11 @@ HumanEval and MBPP have approached saturation. APPS and EvalPlus are approaching
 
 <img width="500" alt="SOTAs" src="./docs/assets/sotas.png" />
 
-
 ## 🚀 Installation
 
 1. [Install Node.js 22+](https://nodejs.org/en/download)
 2. Init
+
 ```bash
 git clone https://github.com/bytedance/Web-Bench.git
 cd Web-Bench
@@ -47,8 +47,7 @@ rush eval
 
 ## **🛠️** Contribution
 
-* [Project Contribution](https://github.com/bytedance/web-bench/wiki/Project-Contribution)
-
+- [Project Contribution](https://github.com/bytedance/web-bench/wiki/Project-Contribution)
 
 ## **📚** Citation
 
@@ -63,4 +62,10 @@ rush eval
 
 ## **📄** License
 
-[Apache 2.0](./LICENSE.md) 
+[Apache 2.0](./LICENSE.md)
+
+## **🌟** Contact us
+
+- Lark: Scan the QR code below with [Register Feishu](https://www.feishu.cn/en/) to join our Web Bench user group.
+
+<img width="300" alt="pass@1" src="./docs/assets/lark-group-qr-code.png" />
