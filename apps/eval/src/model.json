@@ -7,6 +7,32 @@
       "title": "claude-3-5-sonnet-20241022"
     },
     {
+      "model": "claude-sonnet-4-20250514",
+      "provider": "anthropic",
+      "extendThinking": true,
+      "apiKey": "{{ANTHROPIC_API_KEY}}",
+      "title": "claude-4-0-sonnet-latest-thinking"
+    },
+    {
+      "model": "claude-sonnet-4-20250514",
+      "provider": "anthropic",
+      "apiKey": "{{ANTHROPIC_API_KEY}}",
+      "title": "claude-4-0-sonnet-latest"
+    },
+    {
+      "model": "claude-opus-4-20250514",
+      "provider": "anthropic",
+      "extendThinking": true,
+      "apiKey": "{{ANTHROPIC_API_KEY}}",
+      "title": "claude-4-0-opus-latest-thinking"
+    },
+    {
+      "model": "claude-opus-4-20250514",
+      "provider": "anthropic",
+      "apiKey": "{{ANTHROPIC_API_KEY}}",
+      "title": "claude-4-0-opus-latest"
+    },
+    {
       "model": "claude-3-7-sonnet-latest",
       "provider": "anthropic",
       "extendThinking": true,
@@ -224,6 +250,18 @@
       "provider": "doubao",
       "model": "{{DOUBAO_256K_ENDPOINT}}",
       "apiKey": "{{DOUBAO_256K_API_KEY}}"
+    },
+    {
+      "title": "doubao-seed-1.6",
+      "provider": "doubao",
+      "model": "{{DOUBAO_SEED_1_6_ENDPOINT}}",
+      "apiKey": "{{DOUBAO_API_KEY}}"
+    },
+    {
+      "title": "doubao-seed-1.6-thinking",
+      "provider": "doubao",
+      "model": "{{DOUBAO_SEED_1_6_THINKING_ENDPOINT}}",
+      "apiKey": "{{DOUBAO_API_KEY}}"
     },
     {
       "title": "aliyun/qwen-max",
