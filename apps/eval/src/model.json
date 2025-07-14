@@ -279,6 +279,11 @@
       "title": "ollama/mistral-small",
       "provider": "ollama",
       "model": "mistral-small"
+    },
+    {
+      "title": "gemini-2.5-pro",
+      "provider": "google",
+      "model": "gemini-2.5-pro"
     }
   ]
 }

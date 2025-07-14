@@ -18,6 +18,7 @@ import { AnthropicLLM } from './anthropic'
 import { BaseLLM } from './base'
 import { DeepseekLLM } from './deepseek'
 import { Doubao } from './doubao'
+import { GeminiLLM } from './gemini'
 import { Ollama } from './ollama'
 import { OpenAILLM } from './openai'
 import { OpenRouter } from './openrouter'
@@ -45,6 +46,9 @@ export class LLMFactory {
       }
       case 'ollama': {
         return new Ollama(info)
+      }
+      case 'google': {
+        return new GeminiLLM(info)
       }
       default:
         throw Error(`Unknown provider: ${info.provider}`)

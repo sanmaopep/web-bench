@@ -14,7 +14,7 @@
 
 import { EventEmitter } from 'events'
 
-export type ModelProvider = 'anthropic' | 'openrouter' | 'openai' | 'doubao' | 'deepseek' | 'aliyun' | 'ollama'
+export type ModelProvider = 'anthropic' | 'openrouter' | 'openai' | 'doubao' | 'deepseek' | 'aliyun' | 'ollama' | 'google'
 
 export interface Model {
   model: string
