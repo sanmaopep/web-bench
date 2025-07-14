@@ -63,7 +63,13 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'], viewport: { width: 640, height: 1280 } },
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 640, height: 1280 },
+        launchOptions: {
+          chromiumSandbox: true
+        },
+      },
     },
     // {
     //   name: 'firefox',
