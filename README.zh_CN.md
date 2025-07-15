@@ -70,7 +70,7 @@ docker compose up
 
 5. 评测报告将生成在 `./report/` 目录下。
 
-如果你希望从源代码进行评测，或为 Web-Bench 做出贡献，请参阅[从源代码安装](https://github.com/bytedance/web-bench/wiki/Installation)。
+如果你希望从源代码进行评测，请参阅[从源代码安装](https://github.com/bytedance/web-bench/wiki/Installation)。
 
 ## **🛠️** 贡献
 

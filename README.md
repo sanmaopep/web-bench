@@ -70,7 +70,7 @@ docker compose up
 
 5. Evaluation Report will be generated under `./report/`
 
-If you wish to evaluate from source code, or contribute to Web-Bench, refer to [Install from source](https://github.com/bytedance/web-bench/wiki/Installation).
+If you wish to evaluate from source code, refer to [Install from source](https://github.com/bytedance/web-bench/wiki/Installation).
 
 ## **🛠️** Contribution
 
