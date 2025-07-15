@@ -7,7 +7,7 @@ node_modules/
 *.log
 .env
 **/.env
-**/report/
+apps/eval/report/
 projects/**/eval/
 **/.DS_Store
 # next.js build output
