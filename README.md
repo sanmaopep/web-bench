@@ -23,6 +23,8 @@ HumanEval and MBPP have approached saturation. APPS and EvalPlus are approaching
 
 ## 🚀 Quick Start
 
+Refer to the [Docker setup guide](https://docs.docker.com/engine/install/) for instructions on installing Docker on your machine
+
 1. Create a new empty folder, add **two files** in this folder:
 
 ```

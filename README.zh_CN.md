@@ -23,6 +23,8 @@ HumanEval 和 MBPP 已趋于饱和，APPS 和 EvalPlus 也正在接近饱和状�
 
 ## 🚀 快速上手
 
+参考 [Docker 安装指南](https://docs.docker.com/engine/install/) 在您的机器上安装 Docker。
+
 1. 创建一个新的空文件夹，在该文件夹中添加 **两个文件**：
 
 ```
