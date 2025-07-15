@@ -5,11 +5,12 @@ dist/
 .env
 report/
 projects/**/eval/
-.DS_Store
+**/.DS_Store
 # next.js build output
-.next/
-.mongo/
-*.sqlite
+**/.next/
+**.mongo/
+**/.angular/
+**/*.sqlite
 
 # Rush temporary files
 common/deploy/
@@ -17,4 +18,4 @@ common/temp/
 common/autoinstallers/*/.npmrc
 **/.rush/temp/
 *.lock
-test-results/
+**/test-results/
