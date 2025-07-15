@@ -1,16 +1,26 @@
 node_modules/
+**/node_modules/
 .git/
-dist/
+**/dist/
+**/dist-server/
+**/*.log
 *.log
 .env
-report/
+**/.env
+**/report/
 projects/**/eval/
 **/.DS_Store
 # next.js build output
 **/.next/
+**/.nuxt/
+**/.output/
 **.mongo/
 **/.angular/
+**/prisma/src/generated/
+**/parcel/src/sourcemaps/
 **/*.sqlite
+**/.parcel-cache/
+
 
 # Rush temporary files
 common/deploy/
