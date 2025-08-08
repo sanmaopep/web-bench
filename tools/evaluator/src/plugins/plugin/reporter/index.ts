@@ -22,7 +22,7 @@ import { formatEndpoint, formatModelName } from '../../../utils/format'
 import stripAnsi from 'strip-ansi'
 import fse from 'fs-extra'
 import { getOrdinalNumberAbbreviation } from '../../../utils/report'
-import { TesterFactory } from '../../utils'
+import { isJSONString, TesterFactory } from '../../utils'
 
 const getReportName = (project: IProjectRunner) => {
   const { name, model } = project.settings
@@ -245,7 +245,7 @@ export const ReportPlugin: EvalPlugin[] = [
             '## Request',
             '```json\n' + JSON.stringify(JSON.parse(request || '{}'), null, 2) + '\n```\n',
             '## Response',
-            '```json\n' + JSON.stringify(JSON.parse(response || '{}'), null, 2) + '\n```\n',
+            isJSONString(response) ? '```json\n' + JSON.stringify(JSON.parse(response || '{}'), null, 2) + '\n```\n' : response,
             '',
           ].join('\n'),
           {
