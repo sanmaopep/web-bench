@@ -241,7 +241,7 @@ export const ReportPlugin: EvalPlugin[] = [
             '## Request',
             '```json\n' + JSON.stringify(JSON.parse(request || '{}'), null, 2) + '\n```\n',
             '## Response',
-            response,
+            '```json\n' + response + '\n```\n',
             '',
           ].join('\n'),
           {
