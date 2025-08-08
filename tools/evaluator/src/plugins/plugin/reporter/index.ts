@@ -195,9 +195,13 @@ export const ReportPlugin: EvalPlugin[] = [
         encoding: 'utf-8',
       })
       project.logger.info('The report was generated successfully. The file path is ', reportPath)
-      await fs.appendFile(logPath, stripAnsi(project.logger.getHistory().join('\n')), {
-        encoding: 'utf-8',
-      })
+      // Write log history directly to avoid RangeError
+      const logHistory = project.logger.getHistory()
+      for (const log of logHistory) {
+        await fs.appendFile(logPath, stripAnsi(log) + '\n', {
+          encoding: 'utf-8',
+        })
+      }
       project.logger.clearHistory()
     },
 
