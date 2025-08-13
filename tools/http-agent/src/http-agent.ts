@@ -49,6 +49,8 @@ export class HttpAgent implements IAgent {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(req),
+        // No timeout
+        signal: AbortSignal.timeout(Number.MAX_SAFE_INTEGER)
       })
     } catch (error) {
       console.log('error', error)
